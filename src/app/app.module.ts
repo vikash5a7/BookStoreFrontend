@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './Component/home/home.component';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './Component/toolbar/toolbar.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
@@ -25,6 +25,12 @@ import { OrdergreetingComponent } from './Component/ordergreeting/ordergreeting.
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { ResetPasswordComponent } from './component/auth/reset-password/reset-password.component';
+import { LoginComponent } from './component/auth/login/login.component';
+import { RegistrationComponent } from './component/auth/registration/registration.component';
+import { ForgetPasswordComponent } from './component/auth/forget-password/forget-password.component';
+import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +41,11 @@ import {MatIconModule} from '@angular/material/icon';
     BooksearchpipePipe,
     CartComponent,
     OrdergreetingComponent,
-   
+    ResetPasswordComponent,
+    LoginComponent,
+    RegistrationComponent,
+    ForgetPasswordComponent,
+    PagenotfoundComponent,
   ],
   imports: [
     MatBadgeModule,
@@ -55,9 +65,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatRadioModule,
     MatIconModule,
     FlexLayoutModule,
-    MatMenuModule
-    
-    
+    MatMenuModule,
+    MatButtonModule
 
   ],
   providers: [HttpClient],
