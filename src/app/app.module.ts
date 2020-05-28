@@ -31,6 +31,7 @@ import { LoginComponent } from './component/auth/login/login.component';
 import { RegistrationComponent } from './component/auth/registration/registration.component';
 import { ForgetPasswordComponent } from './component/auth/forget-password/forget-password.component';
 import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.component';
+import { LoaderComponent } from './component/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.com
     RegistrationComponent,
     ForgetPasswordComponent,
     PagenotfoundComponent,
+    LoaderComponent,
   ],
   imports: [
     MatBadgeModule,
