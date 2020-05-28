@@ -28,10 +28,11 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ResetPasswordComponent } from './component/auth/reset-password/reset-password.component';
 import { LoginComponent } from './component/auth/login/login.component';
-import { RegistrationComponent } from './component/auth/registration/registration.component';
 import { ForgetPasswordComponent } from './component/auth/forget-password/forget-password.component';
 import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.component';
 import { LoaderComponent } from './component/loader/loader.component';
+import { LogoComponent } from './component/logo/logo.component';
+import { RegisterComponent } from './Component/auth/register/register.component';
 
 @NgModule({
   declarations: [
@@ -44,10 +45,11 @@ import { LoaderComponent } from './component/loader/loader.component';
     OrdergreetingComponent,
     ResetPasswordComponent,
     LoginComponent,
-    RegistrationComponent,
     ForgetPasswordComponent,
     PagenotfoundComponent,
     LoaderComponent,
+    LogoComponent,
+    RegisterComponent,
   ],
   imports: [
     MatBadgeModule,

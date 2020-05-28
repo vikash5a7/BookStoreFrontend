@@ -1,13 +1,12 @@
+import { RegisterComponent } from './Component/auth/register/register.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './Component/home/home.component';
 import { ToolbarComponent } from './Component/toolbar/toolbar.component';
 import { DisplaybookComponent } from './Component/displaybook/displaybook.component';
 import { CartComponent } from './Component/cart/cart.component';
 import { OrdergreetingComponent } from './Component/ordergreeting/ordergreeting.component';
 import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.component';
 import { LoginComponent } from './component/auth/login/login.component';
-import { RegistrationComponent } from './component/auth/registration/registration.component';
 
 
 
@@ -23,7 +22,7 @@ const routes: Routes = [
   {path: 'cart', component: CartComponent},
   {path: 'greeting', component: OrdergreetingComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'registration', component: RegistrationComponent},
+  {path: 'register', component: RegisterComponent},
   {path: '**', component: PagenotfoundComponent},
 ];
 
