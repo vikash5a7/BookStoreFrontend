@@ -8,8 +8,17 @@ import { Component, OnInit } from '@angular/core';
 export class ResetPasswordComponent implements OnInit {
 
   constructor() { }
+  public error = null;
+  public form = {
+    email: null,
+    newPassword: null,
+    confirmPassword: null,
+  };
 
   ngOnInit(): void {
   }
 
+  onSubmit() {
+    console.log('------');
+  }
 }
