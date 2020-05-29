@@ -1,3 +1,5 @@
+import { ForgetPasswordComponent } from './Component/auth/forget-password/forget-password.component';
+import { ResetPasswordComponent } from './Component/auth/reset-password/reset-password.component';
 import { RegisterComponent } from './Component/auth/register/register.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -17,12 +19,14 @@ const routes: Routes = [
   },
   {path: '', component: DisplaybookComponent},
   {path: 'toolbar', component: ToolbarComponent},
-  {path: 'index', component: DisplaybookComponent},
   {path: 'Displaybook', component: DisplaybookComponent},
   {path: 'cart', component: CartComponent},
   {path: 'greeting', component: OrdergreetingComponent},
+  {path: 'reset-password', component: ResetPasswordComponent},
+  {path: 'forget-password', component: ForgetPasswordComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+
   {path: '**', component: PagenotfoundComponent},
 ];
 

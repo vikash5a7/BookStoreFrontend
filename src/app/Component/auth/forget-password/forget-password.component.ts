@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./forget-password.component.scss']
 })
 export class ForgetPasswordComponent implements OnInit {
-
+  public form = {
+    email: null,
+  };
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  onSubmit() {
+    console.log('-----');
+  }
 }

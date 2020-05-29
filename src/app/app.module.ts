@@ -26,13 +26,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { ResetPasswordComponent } from './component/auth/reset-password/reset-password.component';
 import { LoginComponent } from './component/auth/login/login.component';
-import { ForgetPasswordComponent } from './component/auth/forget-password/forget-password.component';
 import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.component';
 import { LoaderComponent } from './component/loader/loader.component';
 import { LogoComponent } from './component/logo/logo.component';
 import { RegisterComponent } from './Component/auth/register/register.component';
+import { ForgetPasswordComponent } from './Component/auth/forget-password/forget-password.component';
+import { ResetPasswordComponent } from './Component/auth/reset-password/reset-password.component';
+
 
 @NgModule({
   declarations: [
@@ -43,13 +44,13 @@ import { RegisterComponent } from './Component/auth/register/register.component'
     BooksearchpipePipe,
     CartComponent,
     OrdergreetingComponent,
-    ResetPasswordComponent,
     LoginComponent,
-    ForgetPasswordComponent,
     PagenotfoundComponent,
     LoaderComponent,
     LogoComponent,
     RegisterComponent,
+    ForgetPasswordComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     MatBadgeModule,
@@ -70,7 +71,7 @@ import { RegisterComponent } from './Component/auth/register/register.component'
     MatIconModule,
     FlexLayoutModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
 
   ],
   providers: [HttpClient],
