@@ -1,6 +1,9 @@
+import { SellerComponent } from './Component/seller/seller/seller.component';
+import { AdminComponent } from './Component/admin/admin/admin.component';
+import { RegistrationComponent } from './Component/auth/registration/registration.component';
+import { LoginComponentComponent } from './Component/auth/login-component/login-component.component';
 import { ForgetPasswordComponent } from './Component/auth/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './Component/auth/reset-password/reset-password.component';
-import { RegisterComponent } from './Component/auth/register/register.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ToolbarComponent } from './Component/toolbar/toolbar.component';
@@ -8,7 +11,7 @@ import { DisplaybookComponent } from './Component/displaybook/displaybook.compon
 import { CartComponent } from './Component/cart/cart.component';
 import { OrdergreetingComponent } from './Component/ordergreeting/ordergreeting.component';
 import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.component';
-import { LoginComponent } from './component/auth/login/login.component';
+
 
 
 
@@ -24,8 +27,10 @@ const routes: Routes = [
   {path: 'greeting', component: OrdergreetingComponent},
   {path: 'reset-password', component: ResetPasswordComponent},
   {path: 'forget-password', component: ForgetPasswordComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginComponentComponent},
+  {path: 'seller', component: SellerComponent},
+  {path: 'admin', component: AdminComponent},
+  {path: 'register', component: RegistrationComponent},
 
   {path: '**', component: PagenotfoundComponent},
 ];

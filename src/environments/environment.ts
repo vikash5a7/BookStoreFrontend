@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-
+  BASE_URL: 'http://localhost:8081',
   BookUrl: 'http://localhost:8080/',
   getallbooksurl: '',
   getbookbyIdurl: 'books/',
@@ -13,13 +13,17 @@ export const environment = {
   SortNewestArrival: 'books/unsorting',
   cusUrl : 'books/pagewise',
 
-  CartUrl: 'http://localhost:8080/',
+  CartUrl: 'http://localhost:8081/',
   addUrl: 'customers/addcustomer',
   addtocart: 'carts/addcart',
   getbookprice: 'getbookprice',
 
-  quantity: 'http://localhost:8080/',
-  addbooksquantity: 'addbooksquantity'
+  quantity: 'http://localhost:8081/',
+  addbooksquantity: 'addbooksquantity',
+  USER_REGISTRATION: 'registration',
+  USER_LOGIN: 'login',
+  USER_FORGET_PASSWORD: 'forgotpassword',
+  USER_RESETPASSWORD: 'update'
 };
 
 

@@ -1,6 +1,6 @@
 <div fxLayoutAlign="center center" fxFlexFill>
     <div *ngIf="isloading">
-
+        <app-spineer></app-spineer>
     </div>
     <mat-card fxFlex="35" *ngIf="!isloading">
         <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="flex-start" style="background-color: #A03037; padding-top: 16px;">
@@ -16,9 +16,9 @@
         </div>
         <!-- form  -->
         <form #regForm=ngForm (ngSubmit)="onSubmit(); regForm.resetForm();" *ngIf="!isloading">
-            <div *ngIf="firstName.touched && !firstName.valid">
-                <div *ngIf="firstName.errors.minlength">
-                    <small><mat-error>First Name is minimum {{ firstName.errors.minlength.requiredLength }} character.</mat-error></small>
+            <div *ngIf="name.touched && !name.valid">
+                <div *ngIf="name.errors.minlength">
+                    <small><mat-error>First Name is minimum {{ name.errors.minlength.requiredLength }} character.</mat-error></small>
                 </div>
             </div>
 
@@ -55,7 +55,7 @@
                 <div class="alert alert-success text-justify" [hidden]="!message">{{message}}</div>
                 <mat-form-field appearance="outline" fxLayout="column" style="width: 100%;">
                     <mat-label>Enter Your Your name</mat-label>
-                    <input matInput minlength="3" maxlength="20" #firstName="ngModel" required [(ngModel)]="form.fname" name="fname">
+                    <input matInput minlength="3" maxlength="20" #name="ngModel" required [(ngModel)]="form.name" name="name">
                     <mat-error>Please Enter valid Name </mat-error>
 
                 </mat-form-field>
@@ -90,9 +90,9 @@
             <h4 style="margin-right: 130px;">Register as</h4>
             <div class="container text-right">
                 <mat-radio-group aria-label="Select an option" [(ngModel)]="form.role" name="role">
-                    <mat-radio-button color="primary" value="User" required="required"> User </mat-radio-button> &nbsp;
-                    <mat-radio-button color="primary" value="Seller" required="required">Seller </mat-radio-button> &nbsp;
-                    <mat-radio-button color="primary" value="Admin" required="required"> Admin </mat-radio-button>
+                    <mat-radio-button color="primary" value="user" required="required"> User </mat-radio-button> &nbsp;
+                    <mat-radio-button color="primary" value="seller" required="required">Seller </mat-radio-button> &nbsp;
+                    <mat-radio-button color="primary" value="admin" required="required"> Admin </mat-radio-button>
                 </mat-radio-group>
             </div>
             <br>

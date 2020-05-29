@@ -26,13 +26,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { LoginComponent } from './component/auth/login/login.component';
 import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.component';
-import { LoaderComponent } from './component/loader/loader.component';
-import { RegisterComponent } from './Component/auth/register/register.component';
 import { ForgetPasswordComponent } from './Component/auth/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './Component/auth/reset-password/reset-password.component';
-
+import { AdminComponent } from './Component/admin/admin/admin.component';
+import { SpineerComponent } from './Component/spineer/spineer.component';
+import { LoginComponentComponent } from './Component/auth/login-component/login-component.component';
+import { RegistrationComponent } from './Component/auth/registration/registration.component';
+import { SellerComponent } from './Component/seller/seller/seller.component';
 
 @NgModule({
   declarations: [
@@ -43,12 +44,14 @@ import { ResetPasswordComponent } from './Component/auth/reset-password/reset-pa
     BooksearchpipePipe,
     CartComponent,
     OrdergreetingComponent,
-    LoginComponent,
     PagenotfoundComponent,
-    LoaderComponent,
-    RegisterComponent,
     ForgetPasswordComponent,
     ResetPasswordComponent,
+    AdminComponent,
+    SpineerComponent,
+    LoginComponentComponent,
+    RegistrationComponent,
+    SellerComponent,
   ],
   imports: [
     MatBadgeModule,
