@@ -22,25 +22,18 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private titleService: Title,
-    private elementRef: ElementRef
   ) {
     this.setTitle('Bookstore | Login');
    }
 
   ngOnInit(): void {
-   this.invokeParticles();
   }
-//   ngAfterViewInit(){
-//     this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#b39ddb';
-//  }
+
   onSubmit() {
     console.log('==========');
     console.log('value is ' + this.form.role);
   }
   public setTitle( dashboard: string) {
     this.titleService.setTitle( dashboard );
-    }
-    public invokeParticles(): void {
-      particlesJS('particles-js', ParticlesConfig, function() {});
     }
 }

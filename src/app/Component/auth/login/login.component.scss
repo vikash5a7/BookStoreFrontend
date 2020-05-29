@@ -1,11 +1,15 @@
-.btext {
-    color: #f9f3f4;
-    position: absolute;
-    text-align: center;
-    top: 10%;
-    width: 100%;
+.title {
+    text-align: left;
+    font: Regular 20px/26px Roboto;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    text-transform: capitalize;
+    opacity: 1;
 }
 
-#particles-js {
-    height: 100vh;
+.imgLogo {
+    margin-left: 110px;
+    width: 31px;
+    height: 24px;
+    opacity: 1;
 }
