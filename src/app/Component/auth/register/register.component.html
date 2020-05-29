@@ -57,27 +57,25 @@
                     <mat-label>Enter Your Your name</mat-label>
                     <input matInput minlength="3" maxlength="20" #firstName="ngModel" required [(ngModel)]="form.fname" name="fname">
                     <mat-error>Please Enter valid Name </mat-error>
-                    <mat-hint>Enter your name </mat-hint>
+
                 </mat-form-field>
             </div>
             <mat-form-field appearance="outline" fxLayout="column" style="width: 100%;">
                 <mat-label>Enter your Email</mat-label>
                 <input email required matInput type="email" placeholder="Email" [(ngModel)]="form.email" name="email">
                 <mat-icon matSuffix>email</mat-icon>
-                <mat-hint>Enter your email id </mat-hint>
-                <mat-error>Enter Valid Email Id</mat-error>
+                <mat-error>Please Enter valid email </mat-error>
+
             </mat-form-field>
             <div class="example-container">
                 <mat-form-field appearance="outline">
                     <mat-label>Enter password</mat-label>
                     <input #password="ngModel" matInput required type="password" minlength="5" [(ngModel)]="form.password" name="password" pattern="^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$">
                     <mat-error>Please Enter Strong Password</mat-error>
-                    <mat-hint>Set your password</mat-hint>
                 </mat-form-field>
                 <mat-form-field appearance="outline" style="padding-left: 6px;">
                     <mat-label>Confirm password</mat-label>
                     <input [(ngModel)]="form.confirmPassword" #pasword="ngModel" name="confirmPassword" matInput required type="password" #confirmpassword="ngModel" pattern="{{ password.value }}">
-                    <mat-hint>Enter confirm password</mat-hint>
                     <mat-error required>Please Enter valid Password</mat-error>
                 </mat-form-field>
             </div>
@@ -89,17 +87,18 @@
                 <mat-hint>Please enter valid phone number</mat-hint>
             </mat-form-field>
             <br>
+            <h4 style="margin-right: 130px;">Register as</h4>
             <div class="container text-right">
-                <span style="margin-right: 130px;">Register as</span>
                 <mat-radio-group aria-label="Select an option" [(ngModel)]="form.role" name="role">
-                    <mat-radio-button value="User" required="required"> User </mat-radio-button> &nbsp;
-                    <mat-radio-button value="Seller" required="required">Seller </mat-radio-button> &nbsp;
-                    <mat-radio-button value="Admin" required="required"> Admin </mat-radio-button>
+                    <mat-radio-button color="primary" value="User" required="required"> User </mat-radio-button> &nbsp;
+                    <mat-radio-button color="primary" value="Seller" required="required">Seller </mat-radio-button> &nbsp;
+                    <mat-radio-button color="primary" value="Admin" required="required"> Admin </mat-radio-button>
                 </mat-radio-group>
             </div>
-            <button [routerLink]="['/login']" mat-raised-button>Login</button>
             <br>
-            <button type="submit" [disabled]="!regForm.valid" style="margin-left: 70%;" id="registrationBtn" mat-raised-button color="primary">Submit</button>
+            <div class="text-right">
+                <button type="submit" fxFlexAlign="end" [disabled]="!regForm.valid" id="registrationBtn" mat-raised-button color="primary">Submit</button>
+            </div>
         </form>
     </mat-card>
 </div>

@@ -29,7 +29,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { LoginComponent } from './component/auth/login/login.component';
 import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.component';
 import { LoaderComponent } from './component/loader/loader.component';
-import { LogoComponent } from './component/logo/logo.component';
 import { RegisterComponent } from './Component/auth/register/register.component';
 import { ForgetPasswordComponent } from './Component/auth/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './Component/auth/reset-password/reset-password.component';
@@ -47,7 +46,6 @@ import { ResetPasswordComponent } from './Component/auth/reset-password/reset-pa
     LoginComponent,
     PagenotfoundComponent,
     LoaderComponent,
-    LogoComponent,
     RegisterComponent,
     ForgetPasswordComponent,
     ResetPasswordComponent,
@@ -72,7 +70,6 @@ import { ResetPasswordComponent } from './Component/auth/reset-password/reset-pa
     FlexLayoutModule,
     MatMenuModule,
     MatButtonModule,
-
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent],
