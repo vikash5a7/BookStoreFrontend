@@ -7,10 +7,9 @@ import { ToolbarComponent } from './Component/toolbar/toolbar.component';
 import { DisplaybookComponent } from './Component/displaybook/displaybook.component';
 import { CartComponent } from './Component/cart/cart.component';
 import { OrdergreetingComponent } from './Component/ordergreeting/ordergreeting.component';
-import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.component';
-import { LoginComponent } from './component/auth/login/login.component';
-
-
+import { PagenotfoundComponent } from './Component/pagenotfound/pagenotfound.component';
+import { LoginComponent } from './Component/auth/login/login.component';
+import {BooksComponent} from './Component/seller/books/books.component';
 
 const routes: Routes = [
   {
@@ -26,6 +25,8 @@ const routes: Routes = [
   {path: 'forget-password', component: ForgetPasswordComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'seller/books', component: BooksComponent},
+
 
   {path: '**', component: PagenotfoundComponent},
 ];

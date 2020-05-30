@@ -1,0 +1,25 @@
+<h1>Book Details</h1>
+
+    <table>
+        <tr>
+            <td>Book Id</td>
+            <td>{{book.bookId}}</td>
+        </tr>
+        <tr>
+            <td>Book Name</td>
+            <td>{{book.bookName}}</td>
+        </tr>
+        <tr>
+            <td>Book Author</td>
+            <td>{{book.authorName}}</td>
+        </tr>
+        <tr>
+            <td>Book Price</td>
+            <td>{{book.price}}</td>
+        </tr>
+    </table>
+    <br>
+    <img src="{{book.image}}" height="200" width="200">
+    <br><br>
+
+    <a class="btn btn-small btn-danger" (click)="deleteBook()">delete</a>

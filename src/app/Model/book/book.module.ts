@@ -18,4 +18,5 @@ export class BookModule {
   price:number;
   quantity:number;
   image:string;
+  picByte:string;
  }

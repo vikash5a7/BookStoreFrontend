@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { BookModule } from '../Model/book/book.module';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,14 @@ export class HttpserviceService {
   }
   public getRequest(url :any):any{
     return this.http.get(url);
+  }
+  public getBooks() {
+    return this.http.get<BookModule[]>('http://localhost:8080/books/get');
+  }
+  public addBook(newBook: BookModule) {
+    return this.http.post<BookModule>('http://localhost:8080/books/add', newBook);
+  }
+ public deleteBook(id) {
+    return this.http.delete<BookModule>('http://localhost:8080/books/' + id);
   }
 }

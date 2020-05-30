@@ -26,12 +26,15 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { LoginComponent } from './component/auth/login/login.component';
-import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.component';
-import { LoaderComponent } from './component/loader/loader.component';
+import { LoginComponent } from './Component/auth/login/login.component';
+import { PagenotfoundComponent } from './Component/pagenotfound/pagenotfound.component';
+import { LoaderComponent } from './Component/loader/loader.component';
 import { RegisterComponent } from './Component/auth/register/register.component';
 import { ForgetPasswordComponent } from './Component/auth/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './Component/auth/reset-password/reset-password.component';
+import { BooksComponent } from './Component/seller/books/books.component';
+import { AddbookComponent } from './Component/seller/books/addbook/addbook.component';
+import { ViewbookComponent } from './Component/seller/books/viewbook/viewbook.component';
 
 
 @NgModule({
@@ -49,6 +52,9 @@ import { ResetPasswordComponent } from './Component/auth/reset-password/reset-pa
     RegisterComponent,
     ForgetPasswordComponent,
     ResetPasswordComponent,
+    BooksComponent,
+    AddbookComponent,
+    ViewbookComponent,
   ],
   imports: [
     MatBadgeModule,
