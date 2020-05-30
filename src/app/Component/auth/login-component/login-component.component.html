@@ -1,6 +1,6 @@
 <div fxLayoutAlign="center center" fxFlexFill>
     <div *ngIf="isLoading">
-        <app-loader></app-loader>
+        <app-spineer></app-spineer>
     </div>
     <mat-card fxFlex="28" *ngIf="!isLoading">
         <div style="text-align: center;">
@@ -16,8 +16,9 @@
             <h2>Sign in</h2>
             <p>Use your Bookstore Account</p>
         </div>
+        <div class="alert alert-danger text-justify" [hidden]="!error">{{error}}</div>
         <form action="" fxLayout="column" fxLayoutAlign="start start" #loginForm=ngForm (ngSubmit)="onSubmit()" *ngIf="!isLoading">
-            <div class="alert alert-danger text-justify" [hidden]="!error">{{error}}</div>
+
             <mat-form-field appearance="outline" fxLayout="column" style="width: 100%;">
                 <mat-label>Enter your Email</mat-label>
                 <input email required matInput #emailId="ngModel" type="email" placeholder="Email" [(ngModel)]="form.email" name="email">
@@ -29,8 +30,8 @@
                 <mat-label>Enter Password</mat-label>
                 <input minlength="3" required [(ngModel)]="form.password" name="password" matInput [type]="hide ? 'password' : 'text'">
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
                 <mat-hint>Enter your password</mat-hint>
                 <mat-error>Valid password Required</mat-error>
             </mat-form-field>
@@ -42,9 +43,9 @@
                         <span>Login As</span>
                     </div>
                     <mat-radio-group aria-label="Select an option" [(ngModel)]="form.role" name="role">
-                        <mat-radio-button value="User" required="required"> User </mat-radio-button> &nbsp;
-                        <mat-radio-button value="Seller" required="required">Seller </mat-radio-button> &nbsp;
-                        <mat-radio-button value="Admin" required="required"> Admin </mat-radio-button>
+                        <mat-radio-button value="user" required="required"> User </mat-radio-button> &nbsp;
+                        <mat-radio-button value="seller" required="required">Seller </mat-radio-button> &nbsp;
+                        <mat-radio-button value="admin" required="required"> Admin </mat-radio-button>
                     </mat-radio-group>
                 </div>
             </div>
