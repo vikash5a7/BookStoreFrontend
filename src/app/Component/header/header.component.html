@@ -1,0 +1,18 @@
+<nav class="navbar navbar-light  justify-content-between fixed" style="background-color: #A03037;">
+
+    <div style="text-align: center;">
+        <div fxLayout="row wrap" fxLayoutGap="10px">
+            <div class="imgLogo">
+                <img src="assets\education.svg" alt="">
+            </div>
+            <h2 class="title">Bookstore</h2>
+        </div>
+    </div>
+    <div class="text-right">
+        <button mat-button [matMenuTriggerFor]="beforeMenu">User</button>
+        <mat-menu #beforeMenu="matMenu" xPosition="before">
+            <button mat-menu-item>Name: {{name}}</button>
+            <button mat-menu-item (click)="logout($event)">Logout</button>
+        </mat-menu>
+    </div>
+</nav>

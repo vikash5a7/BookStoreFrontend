@@ -60,7 +60,7 @@ export class LoginComponentComponent implements OnInit {
       duration: 5000
     });
     if (this.form.role === 'admin') {
-      this.route.navigateByUrl('Displaybook');
+      this.route.navigateByUrl('admin');
       return;
     }
     if (this.form.role === 'seller') {

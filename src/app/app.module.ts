@@ -34,6 +34,7 @@ import { SpineerComponent } from './Component/spineer/spineer.component';
 import { LoginComponentComponent } from './Component/auth/login-component/login-component.component';
 import { RegistrationComponent } from './Component/auth/registration/registration.component';
 import { SellerComponent } from './Component/seller/seller/seller.component';
+import { HeaderComponent } from './Component/header/header.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { SellerComponent } from './Component/seller/seller/seller.component';
     LoginComponentComponent,
     RegistrationComponent,
     SellerComponent,
+    HeaderComponent,
   ],
   imports: [
     MatBadgeModule,
