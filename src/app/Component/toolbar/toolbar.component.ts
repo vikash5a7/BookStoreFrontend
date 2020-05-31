@@ -8,15 +8,20 @@ import { BookService } from 'src/app/Service/book.service';
 })
 export class ToolbarComponent implements OnInit {
 
+  name: any;
+  id: any;
+  isUser = false;
+  isSeller = false;
   bookName: string;
- length : any;
- @Input() output : any;
- @Input() function : any;
-  constructor( private service : BookService, ) { }
+  totalItem;
+  isbudget = false;
+  isLogin = false;
+ @Input() output: any;
+ @Input() function: any;
+  constructor( private service: BookService, ) { }
 
   ngOnInit(): void {
-    this.length  = sessionStorage.length;
-    
+
   }
   bookSearch() {
     // console.log(this.bookName);

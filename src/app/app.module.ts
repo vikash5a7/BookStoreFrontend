@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './Component/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './Component/toolbar/toolbar.component';
 import {MatInputModule} from '@angular/material/input';
@@ -35,11 +34,12 @@ import { LoginComponentComponent } from './Component/auth/login-component/login-
 import { RegistrationComponent } from './Component/auth/registration/registration.component';
 import { SellerComponent } from './Component/seller/seller/seller.component';
 import { HeaderComponent } from './Component/header/header.component';
+import { FooterComponent } from './Component/footer/footer.component';
+import { DashboardComponent } from './Component/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     ToolbarComponent,
     DisplaybookComponent,
     BooksearchpipePipe,
@@ -54,6 +54,8 @@ import { HeaderComponent } from './Component/header/header.component';
     RegistrationComponent,
     SellerComponent,
     HeaderComponent,
+    FooterComponent,
+    DashboardComponent,
   ],
   imports: [
     MatBadgeModule,
