@@ -68,8 +68,8 @@ export class BooksComponent implements OnInit {
     this.selectedBook = new BookModule();
     this.router.navigate(['seller', 'books'], { queryParams: { action: 'add' } });
   }
-  viewBook(id: number) {
-    this.router.navigate(['seller', 'books'], { queryParams: { id, action: 'view' } });
+  viewBook(bookId: number) {
+    this.router.navigate(['seller', 'books'], { queryParams: { bookId, action: 'view' } });
   }
 }
     // this.books=new Array<BookModule>();

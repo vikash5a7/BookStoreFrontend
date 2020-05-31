@@ -1,10 +1,11 @@
-<h1>Add Book seller</h1>
+<!-- <h1>Add Book</h1> -->
+<h1>{{book.bookId == null ? 'Add' : 'Edit'}} Book - {{book.bookId}}</h1>
 
 <form>
-  <label for="name">Name</label>
+  <label for="name">Book name</label>
   <input type="text" class="form-control" id="name" placeholder="Book Name" [(ngModel)]="book.bookName" name="name">
 
-  <label for="author">Author</label>
+  <label for="author">Author name</label>
   <input type="text" class="form-control" id="author" placeholder="author" name="author" [(ngModel)]="book.authorName">
 
   <label for="author">Price</label>
@@ -13,7 +14,7 @@
 
     <br>
     <input type="file" (change)="onFileChanged($event)">
-    <!-- <img [src]="imgURL" height="200" width="200" *ngIf="imgURL"> -->
+    <img [src]="imgURL" height="200" width="200" *ngIf="imgURL">
 
   <br>
   <button type="button" class="btn btn-success" (click)="saveBook()">Save Book</button>

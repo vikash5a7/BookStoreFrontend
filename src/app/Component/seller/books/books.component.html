@@ -1,4 +1,4 @@
-<h1>Books Seller</h1>
+<h1>Book Seller</h1>
 <a class="btn btn-primary mb-3" (click)="addBook()">Add New Book</a>
 <div class="container row">
   <div class="col-md-6">
@@ -15,7 +15,6 @@
           <td>{{book.bookId}}</td>
           <td>{{book.bookName}}</td>
           <td>
-            <button>Show Details</button>
             <button type="button" class="btn btn-primary" (click)="viewBook(book.bookId)">Show Details</button>
           </td>
         </tr>
@@ -23,7 +22,8 @@
     </table>
   </div>
   <div class="col-md-6">
-    <app-addbook *ngIf="action === 'add'" [book]="selectedBook"></app-addbook>
-    <app-viewbook *ngIf="action === 'view'" [book]="selectedBook"></app-viewbook>
+    <app-addbook *ngIf="action === 'edit' || action === 'add'" [book]="selectedBook" (bookAddedEvent)="refreshData()"></app-addbook>
+    <!-- <app-addbook *ngIf="action === 'add'" [book]="selectedBook"></app-addbook> -->
+    <app-viewbook *ngIf="action === 'view'" [book]="selectedBook" (bookDeletedEvent)="refreshData()"></app-viewbook>
   </div>
 </div>

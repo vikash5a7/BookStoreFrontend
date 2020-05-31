@@ -29,12 +29,15 @@ export class HttpserviceService {
     return this.http.get(url);
   }
   public getBooks() {
-    return this.http.get<BookModule[]>('http://localhost:8080/books/get');
+    return this.http.get<BookModule[]>('http://localhost:8080/books');
   }
   public addBook(newBook: BookModule) {
-    return this.http.post<BookModule>('http://localhost:8080/books/add', newBook);
+    return this.http.post<BookModule>('http://localhost:8080/books/addbook', newBook);
   }
- public deleteBook(id) {
-    return this.http.delete<BookModule>('http://localhost:8080/books/' + id);
+ public deleteBook(bookId) {
+    return this.http.delete<BookModule>('http://localhost:8080/books/deletebook' + bookId);
+  }
+  public updateBook(updatedBook: BookModule) {
+    return this.http.put<BookModule>('http://localhost:8080/books/editbook', updatedBook);
   }
 }
