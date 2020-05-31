@@ -1,3 +1,5 @@
+import { DashboardComponent } from './Component/dashboard/dashboard.component';
+import { HeaderComponent } from './Component/header/header.component';
 import { SellerComponent } from './Component/seller/seller/seller.component';
 import { AdminComponent } from './Component/admin/admin/admin.component';
 import { RegistrationComponent } from './Component/auth/registration/registration.component';
@@ -22,6 +24,7 @@ const routes: Routes = [
   },
   {path: '', component: DisplaybookComponent},
   {path: 'toolbar', component: ToolbarComponent},
+  {path: 'dashboard/displaybook', component: DashboardComponent},
   {path: 'Displaybook', component: DisplaybookComponent},
   {path: 'cart', component: CartComponent},
   {path: 'greeting', component: OrdergreetingComponent},
@@ -31,7 +34,7 @@ const routes: Routes = [
   {path: 'seller', component: SellerComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'register', component: RegistrationComponent},
-
+  {path: 'dashboard', component: HeaderComponent},
   {path: '**', component: PagenotfoundComponent},
 ];
 

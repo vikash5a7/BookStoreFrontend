@@ -3,17 +3,19 @@
         <app-spineer></app-spineer>
     </div>
     <mat-card fxFlex="35" *ngIf="!isloading">
-        <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="flex-start" style="background-color: #A03037; padding-top: 16px;">
-            <ng-container>
+        <div style="text-align: center;">
+
+            <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="flex-start" style="background-color: #A03037; padding-top: 16px;">
                 <div class="imgLogo">
                     <img src="assets\education.svg" alt="">
                 </div>
                 <h2 class="title">Bookstore</h2>
-            </ng-container>
+            </div>
         </div>
-        <div class="container">
-            <h2>Create Your Account</h2>
-        </div>
+        <br>
+
+        <h2>Create Your Account</h2>
+
         <!-- form  -->
         <form #regForm=ngForm (ngSubmit)="onSubmit(); regForm.resetForm();" *ngIf="!isloading">
             <div *ngIf="name.touched && !name.valid">
@@ -63,17 +65,17 @@
             <mat-form-field appearance="outline" fxLayout="column" style="width: 100%;">
                 <mat-label>Enter your Email</mat-label>
                 <input email required matInput type="email" placeholder="Email" [(ngModel)]="form.email" name="email">
-                <mat-icon matSuffix>email</mat-icon>
+                <mat-icon style="color: #e1e4e4;" matSuffix>email</mat-icon>
                 <mat-error>Please Enter valid email </mat-error>
 
             </mat-form-field>
             <div class="example-container">
-                <mat-form-field appearance="outline">
+                <mat-form-field style="width: 245px;" appearance="outline">
                     <mat-label>Enter password</mat-label>
                     <input #password="ngModel" matInput required type="password" minlength="5" [(ngModel)]="form.password" name="password" pattern="^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$">
                     <mat-error>Please Enter Strong Password</mat-error>
                 </mat-form-field>
-                <mat-form-field appearance="outline" style="padding-left: 6px;">
+                <mat-form-field appearance="outline" style="width: 248px; padding-left: 6px;">
                     <mat-label>Confirm password</mat-label>
                     <input [(ngModel)]="form.confirmPassword" #pasword="ngModel" name="confirmPassword" matInput required type="password" #confirmpassword="ngModel" pattern="{{ password.value }}">
                     <mat-error required>Please Enter valid Password</mat-error>
@@ -82,22 +84,30 @@
             <mat-form-field appearance="outline" style="width: 100%;">
                 <mat-label>Enter your Phone Number </mat-label>
                 <input #phoneNumber="ngModel" pattern="^[6-9]\d{9}$" [(ngModel)]="form.mobileNumber" minlength="10" maxlength="10" name="mobileNumber" matInput placeholder="Placeholder" required>
-                <mat-icon matSuffix>phone</mat-icon>
+                <mat-icon style="color: #e1e4e4;" matSuffix>phone</mat-icon>
                 <mat-error>Enter valid Phone number </mat-error>
-                <mat-hint>Please enter valid phone number</mat-hint>
             </mat-form-field>
-            <br>
             <h4 style="margin-right: 130px;">Register as</h4>
-            <div class="container text-right">
-                <mat-radio-group aria-label="Select an option" [(ngModel)]="form.role" name="role">
-                    <mat-radio-button color="primary" value="user" required="required"> User </mat-radio-button> &nbsp;
-                    <mat-radio-button color="primary" value="seller" required="required">Seller </mat-radio-button> &nbsp;
-                    <mat-radio-button color="primary" value="admin" required="required"> Admin </mat-radio-button>
-                </mat-radio-group>
-            </div>
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="form.role" name="role">
+                <mat-radio-button value="user" required="required"> User </mat-radio-button> &nbsp;
+                <mat-radio-button value="seller" required="required">Seller </mat-radio-button> &nbsp;
+                <mat-radio-button value="admin" required="required"> Admin </mat-radio-button>
+            </mat-radio-group>
+
+            <br>
             <br>
             <div class="text-right">
-                <button type="submit" fxFlexAlign="end" [disabled]="!regForm.valid" id="registrationBtn" mat-raised-button color="primary">Submit</button>
+                <button type="submit" style="
+                background-color: #a03037;
+                width: 100%;
+                height: 43px;
+                border-radius: 35px;
+                display: flexbox;
+                text-decoration-color:#FFFFFF;
+                font-size: 20px;
+              font-weight: 500;
+              color: whitesmoke;
+                " [disabled]="!regForm.valid" id="registrationBtn" mat-raised-button>Register</button>
             </div>
         </form>
     </mat-card>
