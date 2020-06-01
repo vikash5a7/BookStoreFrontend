@@ -60,16 +60,18 @@ export class LoginComponentComponent implements OnInit {
       duration: 5000
     });
     if (this.form.role === 'admin') {
-
-      this.route.navigateByUrl('admin');
+      localStorage.setItem('role', 'admin');
+      this.route.navigateByUrl('dashboard');
       return;
     }
     if (this.form.role === 'seller') {
-      this.route.navigateByUrl('seller');
+      localStorage.setItem('role', 'seller');
+      this.route.navigateByUrl('dashboard');
       return;
     }
     if (this.form.role === 'user') {
-      this.route.navigateByUrl('Displaybook');
+      localStorage.setItem('role', 'user');
+      this.route.navigateByUrl('dashboard/');
       return;
     }
 }

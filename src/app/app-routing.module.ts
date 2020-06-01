@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   {path: '', component: DisplaybookComponent},
   {path: 'toolbar', component: ToolbarComponent},
-  {path: 'dashboard/displaybook', component: DashboardComponent},
+  {path: 'dashboard', component: DashboardComponent},
   {path: 'Displaybook', component: DisplaybookComponent},
   {path: 'cart', component: CartComponent},
   {path: 'greeting', component: OrdergreetingComponent},
