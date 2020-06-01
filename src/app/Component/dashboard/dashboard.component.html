@@ -1,10 +1,22 @@
 <body>
-    <div class="container">
+    <div class="container" >
         <div style="width: 100%;" style="height: 11%;">
-            <app-toolbar flexLayout="row"></app-toolbar>
+            <app-toolbar flexLayout="row" (toggleEvent)="nameEventHander($event)"></app-toolbar>
+            <!-- <app-toolbar></app-toolbar> -->
         </div>
-        <div class="dashboard-content" style="height: 84%;">
-
+        <div class="dashboard-content" style="height: 84%; margin-left: 0%; padding-left: 0%;">
+            <mat-sidenav-container style="width: 100%; height: 100%;  display: flex;margin-left: 0%;  padding-left: 0%;">
+       
+                <mat-sidenav [(opened)]="opened2" mode="side"  style="  border: none; width: 15%; align-content: center;">
+                    <app-sidenavbar class="app-sidenavbar" fxFlex></app-sidenavbar>
+                </mat-sidenav>
+               
+                <mat-sidenav-content style=" background-color: white; width: 100%; align-content: center;padding: 30px;">
+                 <router-outlet ></router-outlet> 
+                    <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, dolorum.
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Id non a fuga nisi aperiam voluptates accusantium veniam saepe quaerat minima nihil dignissimos sunt itaque laboriosam facilis necessitatibus ut fugit magni, eligendi excepturi recusandae. Deleniti ipsa tenetur similique! Dolore magni illum delectus vero, sint eaque mollitia quo vel eos ducimus fugit amet quam impedit ab ut eligendi quisquam alias eveniet! Quia, eveniet alias? Repellat temporibus delectus inventore. Iure itaque, rerum repellendus eos laudantium est, neque et debitis voluptate tempore ab dolor dolorem! Mollitia eligendi nihil modi voluptatem blanditiis ea, adipisci deleniti, doloremque molestias, quisquam earum voluptas aliquam odio nam culpa minima? -->
+                </mat-sidenav-content>
+            </mat-sidenav-container>
         </div>
         <div class="bottom" style="height: 5%;">
             Copyright &copy; 2020, Bookstore All rights reserved

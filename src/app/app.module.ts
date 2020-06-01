@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './Component/toolbar/toolbar.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
+import {MatSidenavModule} from '@angular/material/sidenav';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { HttpClient } from '@angular/common/http';
@@ -36,6 +37,7 @@ import { SellerComponent } from './Component/seller/seller/seller.component';
 import { HeaderComponent } from './Component/header/header.component';
 import { FooterComponent } from './Component/footer/footer.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
+import { SidenavbarComponent } from './Component/sidenavbar/sidenavbar.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,7 @@ import { DashboardComponent } from './Component/dashboard/dashboard.component';
     HeaderComponent,
     FooterComponent,
     DashboardComponent,
+    SidenavbarComponent,
   ],
   imports: [
     MatBadgeModule,
@@ -77,6 +80,7 @@ import { DashboardComponent } from './Component/dashboard/dashboard.component';
     FlexLayoutModule,
     MatMenuModule,
     MatButtonModule,
+    MatSidenavModule,
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent],
