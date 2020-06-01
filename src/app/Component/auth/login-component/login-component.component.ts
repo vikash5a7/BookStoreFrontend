@@ -60,6 +60,7 @@ export class LoginComponentComponent implements OnInit {
       duration: 5000
     });
     if (this.form.role === 'admin') {
+
       this.route.navigateByUrl('admin');
       return;
     }
