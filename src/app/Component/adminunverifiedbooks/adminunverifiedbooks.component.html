@@ -27,18 +27,16 @@
              
             </div>
           </div>
-          <div style="margin-bottom: 10px; font: Bold 18px/15px Lato;">
+          <div style="margin-bottom: 8px;margin-top: 10px; font: Bold 18px/15px Lato;margin-left: 27px;">
             Description:
           </div>
-          <div>{{book.bookDetails}}</div>
-  
-          <!-- </div> -->
+          <div style="margin-left: 27px;">{{book.bookDetails}}</div>
           <div fxLayout="row wrap" fxLayoutAlign="end end" >
-            <button mat-raised-button class="button" style="background-color: #f44336;" (click)="approveBooks(book.bookId)">
-              REJECT
-            </button>
-            <button mat-raised-button class="button" (click)="rejectBooks(book.bookId)">
+            <button mat-raised-button class="button" (click)="approveBooks(book.bookId)">
               APPROVE
+            </button>
+            <button mat-raised-button class="button" style="background-color: #f44336;" (click)="rejectBooks(book.bookId)">
+              REJECT
             </button>
           </div>
 

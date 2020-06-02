@@ -19,7 +19,6 @@ import { AdminunverifiedbooksComponent } from './Component/adminunverifiedbooks/
 
 
 const routes: Routes = [
-  {path: 'verifybook', component: AdminunverifiedbooksComponent},
   {
     path: '', redirectTo: 'Displaybook',
     pathMatch: 'full'
@@ -37,7 +36,8 @@ const routes: Routes = [
   {path: 'admin', component: AdminComponent},
   {path: 'register', component: RegistrationComponent},
   {path: 'dashboard', component: HeaderComponent},
-  {path: '**', component: PagenotfoundComponent}
+  {path: '**', component: PagenotfoundComponent},
+  {path: 'verifybook', component: AdminunverifiedbooksComponent},
 
 ];
 
