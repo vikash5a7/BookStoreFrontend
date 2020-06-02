@@ -19,7 +19,6 @@
 
         <br>
 
-
         <div class="alert alert-danger text-justify" [hidden]="!error">{{error}}</div>
         <form action="" fxLayout="column" fxLayoutAlign="start start" #loginForm=ngForm (ngSubmit)="onSubmit()" *ngIf="!isLoading">
 
@@ -48,18 +47,19 @@
                 </mat-radio-group>
             </div>
             <br>
-
-            <button mat-raised-button type="submit" style="
+            <div fxFlexAlign="end">
+                <button mat-raised-buttontype="submit" style="
             background-color: #a03037;
-            width: 100%;
-            height: 43px;
-            border-radius: 35px;
-            display: flexbox;
+            border-radius: 5px;
             text-decoration-color:#FFFFFF;
             font-size: 20px;
-          font-weight: 500;
-          color: whitesmoke;
+            font-weight: 500;
+            color: whitesmoke;
+            width: 106px;
+            height: 40px;
+
             " [disabled]="!loginForm.valid" type="submit">Login</button>
+            </div>
         </form>
     </mat-card>
 </div>

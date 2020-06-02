@@ -1,46 +1,51 @@
-<div class="main">
-    <div fxLayout="row">
-        <h3 style="font-family: 'Lato', sans-serif;font-size: 25px; float: left;"> Books <span style="font-size: 11px; color: rgb(139, 136, 136);">({{ size }} items)</span
-      ></h3>
-      <!-- <button (click)="SortNewestArrival()"> Newest Arrivals</button><button (click)="sortingl()"> Low to High</button> <button (click)="sortingh()">High to Low  </button> -->
+<div class="main-container">
+    <div class="container">
+        <div class="title">Books
+            <span style="font-size: 15px; font-family: Lato, Regular; color: rgb(139, 136, 136);
+          ">({{ size }} &nbsp;Items)</span>
         </div>
-    <div  style="margin-left: 70%; ">
-        <button style="box-shadow: 0 0 1px rgba(0,0,0,0.6); height: 25px;">
-    <mat-form-field>
-        <select matNativeControl  (change)="modo($event.target.value)" required style="padding-left: 25px; border: none; outline: none;">
-          <option value="mod1" style="font-family: 'Lato', sans-serif;"><button (click)="sortingl()"> Low to High</button></option>
-          <option value="mod2"style="font-family: 'Lato', sans-serif;"><button (click)="sortingh()">High to Low  </button></option>
-          <option value="mod3"style="font-family: 'Lato', sans-serif;"><button (click)="SortNewestArrival()"> Newest Arrivals</button></option>
-        </select>
-      </mat-form-field>
-    </button>
- </div>
-    <div class="row" *ngIf = "pageEvent"  >
-        <div class="column" *ngFor = "let books of boo | booksearchpipe : bookSearch">
-        <mat-card class="card" style="padding: 0px;">
-          <div style="height: auto ;width: 100%; background-color: #F5F5F5;">
-            <img src="assets\bookimage\{{books.image}}" class="bookimage" /><br><br></div>
-            <span class="bookname" style="font-family: 'Lato', sans-serif; ">{{books.bookName}}</span><br>
-            <h2 class="author" style="font-family: 'Lato', sans-serif;">by {{books.authorName}}</h2>
-            <h2 class="price" style="font-family: 'Lato', sans-serif;">Rs.{{books.price}}</h2>
-            <div class="availablity" style="font-size: large;" *ngIf="!books.quantity">
-                Out Of stock
+        <br>
+        <br>
+        <div class="list-books">
+            <div class="getAllNotes" *ngFor="let book of bookList" fxFlexOffset="3 ">
+                <mat-card style="height: 21.5em; width: 233px;  margin-right: 20px;">
+                    <mat-card-title matTooltip="Book Image ">
+                        <img src="{{ book.bookImage }} " style=" height: 150px; width: 120px; margin-left: 55px; margin-right: 55px; padding-top: 20px; padding-bottom: 20px; " />
+                    </mat-card-title>
+                    <mat-card-content style="width: 17em; ">
+                        <div class="out-of-stock " *ngIf="!book.quantity ">Out Of stock</div>
+                        <div class="bookname ">{{ book.bookName }}</div>
+                        <div class="authorname ">by {{ book.authorName }}</div>
+                        <div class="price ">Rs. {{ book.price }}</div>
+                        <div class="availablity " style="color: rgb(163, 43, 6); " *ngIf="book.quantity < 5 && book.quantity; else elsecondition ">
+                            Only {{ book.quantity }} left hurry up
+                        </div>
+                        <ng-template #elsecondition>
+                            <div class="availablity " style="color: rgb(2, 110, 2); " *ngIf="book.quantity ">
+                                Available Books: {{ book.quantity }}
+                            </div>
+                            <div style="height: 26px; " *ngIf="!book.quantity "></div>
+                        </ng-template>
+                        <div class="cart-buttons " *ngIf="book.quantity && value[book.bookId] !=book.bookId ">
+                            <div><button class="addtobag " #clickState mat-button>ADD TO BAG</button>
+                            </div>
+                            <div>
+                                <button style="border: 1px solid #9d9d9d; outline: none; ">WISHLIST</button>
+                            </div>
+                        </div>
+                        <div class="addedbtn " *ngIf="book.quantity && value[book.bookId]==book.bookId ">
+                            <button style=" height: 32px; width: 191px; background-color: #3371b5;
+                         border-radius: 2px; color: whitesmoke; text-align: center; " mat-button>
+                        ADDED TO BAG</button>
+                        </div>
+                        <div class="addedbtn " *ngIf="!book.quantity ">
+                            <button style=" height: 34px; width: 191px; border-radius: 0px; display: flex;
+                     align-items: center; justify-content: center; margin-top: 10px; border: 1px solid #9d9d9d; " mat-button>
+                     WISHLIST</button>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
             </div>
-            <div class="buttons">
-                <div *ngIf="value[books.bookId]!=books.bookId; else elsecondition" style="margin-left: -13px;">
-                    <button class="button1" (output)="getUpdatedNotes($event)" (click)="addtobag( books.bookId)
-              " style="font-family: 'Lato', sans-serif;margin-top: 7px;">ADD TO BAG </button>
-                    <button class="button2" style="font-family: 'Lato', sans-serif;">WISHLIST</button>
-                </div>
-                <ng-template #elsecondition>
-                    <div style="margin-top: 10px;">
-                        <button class="button3" style="font-family: 'Lato', sans-serif;">ADDED TO BAG</button>
-                    </div>
-                </ng-template>
-            </div>
-            </mat-card>
+        </div>
     </div>
 </div>
-</div>
-<mat-paginator [length]="lengths" [pageSize]="pageSize" (page)="pageEvent = getData($event)">
-</mat-paginator>
