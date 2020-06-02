@@ -1,16 +1,19 @@
 <div class="main-container">
     <div class="container">
-        <div class="title">Books
-            <span style="font-size: 15px; font-family: Lato, Regular; color: rgb(139, 136, 136);
-          ">({{ size }} &nbsp;Items)</span>
+        <div *ngIf="size!=0">
+            <div class="title">Books
+                <span style="font-size: 15px; font-family: Lato, Regular; color: rgb(139, 136, 136);">
+                ({{ size }} &nbsp;Items)
+                </span>
+            </div>
         </div>
         <br>
-        <br>
         <div class="list-books">
-            <div class="getAllNotes" *ngFor="let book of bookList" fxFlexOffset="3 ">
-                <mat-card style="height: 21.5em; width: 233px;  margin-right: 20px;">
-                    <mat-card-title matTooltip="Book Image ">
-                        <img src="{{ book.bookImage }} " style=" height: 150px; width: 120px; margin-left: 55px; margin-right: 55px; padding-top: 20px; padding-bottom: 20px; " />
+            <div *ngFor="let book of bookList">
+                <mat-card style="height: 22.5em; width: 220px;  margin-right: 40px;">
+                    <mat-card-title matTooltip="Book Image">
+                        <img src="assets\bookimage\{{book.image}}" style="height: 150px; width: 90px;
+                        margin-left: 55px; margin-right: 55px; padding-top: 20px; padding-bottom: 20px; " />
                     </mat-card-title>
                     <mat-card-content style="width: 17em; ">
                         <div class="out-of-stock " *ngIf="!book.quantity ">Out Of stock</div>
@@ -27,25 +30,50 @@
                             <div style="height: 26px; " *ngIf="!book.quantity "></div>
                         </ng-template>
                         <div class="cart-buttons " *ngIf="book.quantity && value[book.bookId] !=book.bookId ">
-                            <div><button class="addtobag " #clickState mat-button>ADD TO BAG</button>
+                            <div>
+                                <button class="addtobag " (output)="getUpdatedNotes($event)" (click)="addtobag(book.bookId)" #clickState mat-button>ADD TO BAG</button>
                             </div>
                             <div>
-                                <button style="border: 1px solid #9d9d9d; outline: none; ">WISHLIST</button>
+                                <button style="border: 1px solid #e0d6d6;
+                                outline: none;
+                                width: 83px;
+                                height: 35px;
+                                background-color: white;
+                                border-radius: 3px;">WISHLIST</button>
                             </div>
                         </div>
                         <div class="addedbtn " *ngIf="book.quantity && value[book.bookId]==book.bookId ">
                             <button style=" height: 32px; width: 191px; background-color: #3371b5;
-                         border-radius: 2px; color: whitesmoke; text-align: center; " mat-button>
-                        ADDED TO BAG</button>
+                            border-radius: 2px; color: whitesmoke; text-align: center; " mat-button>
+                              ADDED TO BAG
+                      </button>
                         </div>
                         <div class="addedbtn " *ngIf="!book.quantity ">
                             <button style=" height: 34px; width: 191px; border-radius: 0px; display: flex;
-                     align-items: center; justify-content: center; margin-top: 10px; border: 1px solid #9d9d9d; " mat-button>
-                     WISHLIST</button>
+                            align-items: center; justify-content: center;
+                            border: 1px solid #e0d6d6;
+                                outline: none; border-radius: 2px;
+                              opacity: 1; " mat-button>WISHLIST</button>
                         </div>
                     </mat-card-content>
                 </mat-card>
             </div>
         </div>
     </div>
+    <div class="pagination" fxFlexAlign='center'>
+        <a style="border-radius: 40px;  border: 1px solid #e0d6d6;" href="#">
+            <</a>
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a style="color: whitesmoke;" class="active" href="#">5</a>
+                <a href="#">6</a>
+                <a href="#">7</a>
+                <a href="#">8</a>
+                <a href="#">9</a>
+                <a href="#">10</a>
+                <a style="border-radius: 40px;  border: 1px solid #e0d6d6;" href="#" href="#">></a>
+    </div>
+
 </div>

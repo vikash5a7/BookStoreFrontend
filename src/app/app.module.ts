@@ -38,6 +38,7 @@ import { SellerComponent } from './Component/seller/seller/seller.component';
 import { FooterComponent } from './Component/footer/footer.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { SidenavbarComponent } from './Component/sidenavbar/sidenavbar.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -81,6 +82,7 @@ import { SidenavbarComponent } from './Component/sidenavbar/sidenavbar.component
     MatMenuModule,
     MatButtonModule,
     MatSidenavModule,
+    NgxPaginationModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent],

@@ -108,12 +108,15 @@ mat-card-title {
 }
 
 .btn-addbook {
-    height: 50px;
-    width: 120px;
-    margin-left: 10px;
-    margin-bottom: 10px;
     color: white;
-    background-color: rgba(87, 25, 25, 0.904);
+    background-color: #a03037;
+    height: 30px;
+    width: 81px;
+    padding: 0px;
+    border-radius: 3px;
+    font-size: small;
+    border: none;
+    cursor: pointer;
 }
 
 .addtobag {
@@ -202,4 +205,35 @@ mat-card-title {
     background: rgba(143, 43, 47, 1) !important;
     color: #fefefe;
     cursor: default;
+}
+
+.pagination {
+    display: inline-block;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.pagination a {
+    font: Medium Lato;
+    letter-spacing: 0px;
+    color: #707070;
+    opacity: 1;
+    font-size: 9px/11px;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background-color: #8F2B2F;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #d4d5d2;
+}
+
+.pbtn {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #E2E2E2;
+    opacity: 1;
 }
