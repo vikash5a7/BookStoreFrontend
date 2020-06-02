@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   BASE_URL: 'http://localhost:8080',
   BookUrl: 'http://localhost:8080/',
-  getallbooksurl: '',
+  getallbooksurl: 'books/getAllBooks',
   getbookbyIdurl: 'books/',
   addandupdatecartUrl: 'books/addandupdatecart',
   sorting: 'books/sorting',

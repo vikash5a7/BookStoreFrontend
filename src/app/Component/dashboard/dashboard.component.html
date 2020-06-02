@@ -3,15 +3,11 @@
 </div>
 <div class="dashboard-content" style="height: 84%; margin-left: 0%; padding-left: 0%;">
     <div *ngIf="isSeller">
-        <mat-sidenav-container style="width: 100%; height: 100%;  display: flex;margin-left: 0%;  padding-left: 0%;">
-            <mat-sidenav [(opened)]="opened2" mode="side" style="  border: none; width: 15%; align-content: center;">
-                <app-sidenavbar class="app-sidenavbar" fxFlex></app-sidenavbar>
-            </mat-sidenav>
-            <mat-sidenav-content style=" background-color: white; width: 100%; align-content: center;padding: 30px;">
-                <router-outlet></router-outlet>
-            </mat-sidenav-content>
-        </mat-sidenav-container>
+        <app-seller></app-seller>
+        
     </div>
+    <div *ngIf="isUser">
     <app-displaybook></app-displaybook>
+</div>
 </div>
 <app-footer></app-footer>

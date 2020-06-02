@@ -16,7 +16,7 @@ export class BookService {
 
 
   getallBooks() {
-    return this.http.get<any>(environment.BookUrl + environment.getallbooksurl);
+     return this.http.get<any>(environment.BookUrl + environment.getallbooksurl);
   }
 
   setSearchBookData(message: any) {
