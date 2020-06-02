@@ -1,3 +1,4 @@
+import { HeaderComponent } from './Component/header/header.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -34,7 +35,6 @@ import { SpineerComponent } from './Component/spineer/spineer.component';
 import { LoginComponentComponent } from './Component/auth/login-component/login-component.component';
 import { RegistrationComponent } from './Component/auth/registration/registration.component';
 import { SellerComponent } from './Component/seller/seller/seller.component';
-import { HeaderComponent } from './Component/header/header.component';
 import { FooterComponent } from './Component/footer/footer.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { SidenavbarComponent } from './Component/sidenavbar/sidenavbar.component';
@@ -55,10 +55,10 @@ import { SidenavbarComponent } from './Component/sidenavbar/sidenavbar.component
     LoginComponentComponent,
     RegistrationComponent,
     SellerComponent,
-    HeaderComponent,
     FooterComponent,
     DashboardComponent,
     SidenavbarComponent,
+    HeaderComponent
   ],
   imports: [
     MatBadgeModule,

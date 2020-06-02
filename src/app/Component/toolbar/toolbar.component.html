@@ -28,7 +28,7 @@
             </div>
         </div>
         <!-- Shooping cart -->
-        <div class="cart" fxFlex="25" align="center">
+        <div class="cart" fxFlex="85">
             <div class="cart" fxFlex="15" *ngIf="isUser">
                 <span style="color: #fff; font-size: small;">&nbsp;&nbsp;&nbsp;Cart</span>
                 <button mat-icon-button routerLink="/cart" matTooltip="Cart">
@@ -38,7 +38,7 @@
             <!-- to give 1 space for mobile -->
             &nbsp;
             <!-- Profile -->
-            <div class="profile" flex="10">
+            <div class="profile" flex="100">
                 <button mat-icon-button [matMenuTriggerFor]="menu">
      <mat-icon style="transform: scale(1.7); ">account_circle</mat-icon>
     </button>
@@ -54,15 +54,15 @@
                             </div>
                             <div class="div-profile" *ngIf="isLogin">
                                 <div class="div-signout">
-                                    <button style="background-color: whitesmoke;" mat-button [routerLink]="['']" class="signout-button">
-                Signout
-              </button>
+                                    <button (click)="logout($event)" style="background-color: whitesmoke;" mat-button [routerLink]="['']" class="signout-button">
+                                   Signout
+                                </button>
                                 </div>
                             </div>
                             <div class="div-profile" *ngIf="!isLogin">
                                 <div class="div-signout" style="margin-top: 60px; margin-left: 5px;">
                                     <button [routerLink]="['/login']" mat-button class="signout-button" style="background-color: whitesmoke;">Login
-              </button>
+                                </button>
                                 </div>
                             </div>
                         </div>
