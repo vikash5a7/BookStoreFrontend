@@ -1,11 +1,10 @@
-.main{
-    
-    border-color: black; 
+.main {
+    border-color: black;
     width: 85%;
     margin-left: 8%;
     // border:  1px #555;
-    border:slategrey 1px;
-    box-shadow: 0 0 2px 0 rgba(0,0,0,0.6);
+    border: slategrey 1px;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.6);
 }
 
 .smallcard {
@@ -14,103 +13,112 @@
     height: 621px;
     align-items: center;
     touch-action: pinch-zoom;
-    border:1px solid whitesmoke;
+    border: 1px solid whitesmoke;
     background-color: white;
     border-bottom: whitesmoke;
     margin-left: 8%;
 }
+
 .card {
     height: 280px;
     width: 240px;
     background-color: white;
     align-items: center;
-    box-shadow: 0 0 2px rgba(0,0,0,0.6);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
     align-content: center;
 }
+
 .column {
     float: left;
     width: 24.33%;
     padding: 0px;
-    height: 290px; /* Should be removed. Only for demonstration */
-  }
-  
-  /* Clear floats after the columns */
-  .row:after {
+    height: 290px;
+    /* Should be removed. Only for demonstration */
+}
+
+
+/* Clear floats after the columns */
+
+.row:after {
     content: "";
     display: table;
     clear: both;
-  }
-  .bookimage{
-      height: 120px;
-      width: 100px;
-     
-      margin-left: 69px;
-        padding-top: 1em;
-        
-      align-content: center;
-      box-shadow: 0 1 0 7px rgba(0,0,0,0.6);
-  }
-  .author{
-      float: center;
-      margin-left: 10%;
-      font-size: 8px;
-      color: slategrey;
-      padding-top: -1em;
-      }
-      .bookname{
-          margin-left:10%;
-          padding-top: 1em;
-          font-size: 14px;
-          font-style: bold;
-      }
-   .price{
+}
+
+.bookimage {
+    height: 120px;
+    width: 100px;
+    margin-left: 69px;
+    padding-top: 1em;
+    align-content: center;
+    box-shadow: 0 1 0 7px rgba(0, 0, 0, 0.6);
+}
+
+.author {
+    float: center;
+    margin-left: 10%;
+    font-size: 8px;
+    color: slategrey;
+    padding-top: -1em;
+}
+
+.bookname {
+    margin-left: 10%;
+    padding-top: 1em;
+    font-size: 14px;
+    font-style: bold;
+}
+
+.price {
     margin-left: 10%;
     padding-top: -4PX;
     font-size: 14px;
-   }   
+}
 
-   .buttons{
-       background-color: transparent;
-       width: 100%;
-   }
-   .button1{
+.buttons {
+    background-color: transparent;
+    width: 100%;
+}
+
+.button1 {
     margin-left: 10%;
     font-size: 11px;
     width: 93px;
-height: 29px;
-       background-color:#A03037;
-       border-color:#A03037;
-       color: white;
-       border-radius: 2px;
-opacity: 1;
-       outline:#A03037;
-    
-   }
-   .button2{
-       margin-left: 8%;
-       font-size: 11px;
-       width: 93px;
-       height: 29px;
-       border-radius: 2px;
-       opacity: 1;
+    height: 29px;
+    background-color: #A03037;
+    border-color: #A03037;
+    color: white;
+    border-radius: 2px;
+    opacity: 1;
+    outline: #A03037;
+}
+
+.button2 {
+    margin-left: 8%;
+    font-size: 11px;
+    width: 93px;
+    height: 29px;
+    border-radius: 2px;
+    opacity: 1;
     outline: none;
 }
-.button3{
+
+.button3 {
     margin-left: 10%;
     font-size: 11px;
     width: 191px;
-height: 29px;
-       background-color: rgba(36, 120, 230, 0.829);
-       border-color: rgba(36, 120, 230, 0.829);
-       color: white;
-       margin-top: 5px;
-       border-radius: 2px;
-opacity: 1;
-       outline:#A03037;
-    
-   }
-   .style{
-      // position: absolute;
+    height: 29px;
+    background-color: rgba(36, 120, 230, 0.829);
+    border-color: rgba(36, 120, 230, 0.829);
+    color: white;
+    margin-top: 5px;
+    border-radius: 2px;
+    opacity: 1;
+    outline: #A03037;
+}
+
+.style {
+    // position: absolute;
     //    position: static;
     height: 30%;
     display: flex;
