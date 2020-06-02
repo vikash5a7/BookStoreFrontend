@@ -28,7 +28,7 @@ export class LoginComponentComponent implements OnInit {
               private matSnackBar: MatSnackBar,
               private titleService: Title
     ) {
-      this.setTitle('Fundoo Notes');
+      this.setTitle('Display Books');
   }
   handleError(error: { error: any; }) {
     this.isLoading = false;
