@@ -28,7 +28,8 @@ export class LoginComponentComponent implements OnInit {
               private matSnackBar: MatSnackBar,
               private titleService: Title
     ) {
-      this.setTitle('Display Books');
+      this.setTitle('Bookstore | Login');
+
   }
   handleError(error: { error: any; }) {
     this.isLoading = false;
@@ -71,7 +72,7 @@ export class LoginComponentComponent implements OnInit {
     }
     if (this.form.role === 'user') {
       localStorage.setItem('role', 'user');
-      this.route.navigateByUrl('dashboard/');
+      this.route.navigateByUrl('dashboard');
       return;
     }
 }

@@ -1,5 +1,4 @@
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
-import { HeaderComponent } from './Component/header/header.component';
 import { SellerComponent } from './Component/seller/seller/seller.component';
 import { AdminComponent } from './Component/admin/admin/admin.component';
 import { RegistrationComponent } from './Component/auth/registration/registration.component';
@@ -13,6 +12,7 @@ import { DisplaybookComponent } from './Component/displaybook/displaybook.compon
 import { CartComponent } from './Component/cart/cart.component';
 import { OrdergreetingComponent } from './Component/ordergreeting/ordergreeting.component';
 import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.component';
+import { HeaderComponent } from './Component/header/header.component';
 
 
 
@@ -34,7 +34,6 @@ const routes: Routes = [
   {path: 'seller', component: SellerComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'register', component: RegistrationComponent},
-  {path: 'dashboard', component: HeaderComponent},
   {path: '**', component: PagenotfoundComponent},
 ];
 
