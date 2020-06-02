@@ -37,10 +37,12 @@ mat-icon {
     border-radius: 5px;
 }
 
-.btn-upload {
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
+.cart {
+    flex: 1 1 100%;
+    box-sizing: border-box;
+    max-width: 7%;
+    margin-right: 0px;
+    margin-left: 230px;
 }
 
 button:focus {

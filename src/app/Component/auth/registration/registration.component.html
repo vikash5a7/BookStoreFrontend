@@ -70,12 +70,12 @@
 
             </mat-form-field>
             <div class="example-container">
-                <mat-form-field style="width: 245px;" appearance="outline">
+                <mat-form-field style="width: 220px;" appearance="outline">
                     <mat-label>Enter password</mat-label>
                     <input #password="ngModel" matInput required type="password" minlength="5" [(ngModel)]="form.password" name="password" pattern="^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$">
                     <mat-error>Please Enter Strong Password</mat-error>
                 </mat-form-field>
-                <mat-form-field appearance="outline" style="width: 248px; padding-left: 6px;">
+                <mat-form-field appearance="outline" style="width: 220px; padding-left: 6px;">
                     <mat-label>Confirm password</mat-label>
                     <input [(ngModel)]="form.confirmPassword" #pasword="ngModel" name="confirmPassword" matInput required type="password" #confirmpassword="ngModel" pattern="{{ password.value }}">
                     <mat-error required>Please Enter valid Password</mat-error>
