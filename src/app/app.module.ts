@@ -38,6 +38,8 @@ import { HeaderComponent } from './Component/header/header.component';
 import { FooterComponent } from './Component/footer/footer.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { SidenavbarComponent } from './Component/sidenavbar/sidenavbar.component';
+import { AdminunverifiedbooksComponent } from './Component/adminunverifiedbooks/adminunverifiedbooks.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,7 @@ import { SidenavbarComponent } from './Component/sidenavbar/sidenavbar.component
     FooterComponent,
     DashboardComponent,
     SidenavbarComponent,
+    AdminunverifiedbooksComponent,
   ],
   imports: [
     MatBadgeModule,
@@ -81,6 +84,7 @@ import { SidenavbarComponent } from './Component/sidenavbar/sidenavbar.component
     MatMenuModule,
     MatButtonModule,
     MatSidenavModule,
+    MatTableModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent],

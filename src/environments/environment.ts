@@ -23,7 +23,14 @@ export const environment = {
   USER_REGISTRATION: 'registration',
   USER_LOGIN: 'login',
   USER_FORGET_PASSWORD: 'forgotpassword',
-  USER_RESETPASSWORD: 'update'
+  USER_RESETPASSWORD: 'update',
+
+  adminUrl:"http://localhost:8081/",
+  approveBook:"admin/approveBook/",
+  rejectBook:"admin/rejectBook/",
+  unVerifiedBooks:"admin/unVerifedBooks/",
+  rejectedBooks:"admin/allRejectedBooks/",
+  approvedBooks:"admin/allApprovedBooks/",
 };
 
 

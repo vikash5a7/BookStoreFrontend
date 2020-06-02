@@ -13,11 +13,13 @@ import { DisplaybookComponent } from './Component/displaybook/displaybook.compon
 import { CartComponent } from './Component/cart/cart.component';
 import { OrdergreetingComponent } from './Component/ordergreeting/ordergreeting.component';
 import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.component';
+import { AdminunverifiedbooksComponent } from './Component/adminunverifiedbooks/adminunverifiedbooks.component';
 
 
 
 
 const routes: Routes = [
+  {path: 'verifybook', component: AdminunverifiedbooksComponent},
   {
     path: '', redirectTo: 'Displaybook',
     pathMatch: 'full'
@@ -35,7 +37,8 @@ const routes: Routes = [
   {path: 'admin', component: AdminComponent},
   {path: 'register', component: RegistrationComponent},
   {path: 'dashboard', component: HeaderComponent},
-  {path: '**', component: PagenotfoundComponent},
+  {path: '**', component: PagenotfoundComponent}
+
 ];
 
 @NgModule({
