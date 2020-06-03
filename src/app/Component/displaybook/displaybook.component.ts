@@ -12,8 +12,8 @@ export class DisplaybookComponent implements OnInit {
 
 
   boo: any;
-  book = [];
-  books: BookModule = new BookModule();
+  bookList = [];
+  book: BookModule = new BookModule();
   items = [];
   pageofItems: Array<BookModule> = new Array<BookModule>();
   obj: BookModule[];
@@ -35,7 +35,7 @@ leng: any;
   constructor( private service: BookService, private snakbar: MatSnackBar) { }
 
   ngOnInit() {
-    this.getallBooks();
+    this.getallApprovedBooks();
     this.leng = sessionStorage.length;
     for (let i = 0; i < sessionStorage.length; i++) {
       const key = sessionStorage.key(i);
@@ -45,17 +45,15 @@ leng: any;
     console.log(this.value);
   }
 
-  getallBooks() {
-    console.log('gett all book called');
-    this.service.getallBooks().subscribe( response => {
-     this.book = response.bookList;
-     this.obj = response.bookList;
-     this.size = response.bookList.length;
-     this.pageofItems = response.bookList;
-     console.log('Books ::::' + this.obj);
-     return this.book;
+  getallApprovedBooks() {
+    this.service.getAllApprovedBook().subscribe((response: any) => {
+      console.log(response);
+      console.log('Books are the' + response.obj);
+      this.bookList = response.obj;
+      this.size = this.bookList.length;
+      console.log('total books are ' + this.size);
+      console.log('Books are  ', this.bookList);
     });
-    this.getSearchBookData();
   }
 
   modo(value: string) {

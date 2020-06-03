@@ -19,6 +19,7 @@ export class ToolbarComponent implements OnInit {
   isSeller = false;
   isAdmin = false;
   role: string;
+  length: any;
   bookName: string;
   totalItem;
   isbudget = false;
@@ -38,6 +39,8 @@ export class ToolbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.length  = sessionStorage.length;
+    console.log('total item in cart is ' + this.length);
     this.name = localStorage.getItem('Name');
     this.role = localStorage.getItem('role');
     console.log('role check toolbar', this.role);
@@ -53,7 +56,6 @@ export class ToolbarComponent implements OnInit {
      this.isUser = true;
      this.isLogin = true;
      console.log('is user ', this.isUser);
-
    }
   }
   bookSearch() {
