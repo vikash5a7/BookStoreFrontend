@@ -24,7 +24,6 @@ export class HeaderComponent implements OnInit {
   logout(event: MouseEvent) {
     console.log('loggout function called');
     event.preventDefault();
-
     this.token.remove();
     this.token.logedIn(false);
     this.route.navigateByUrl('/login');

@@ -2,18 +2,30 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Subject, Observable } from 'rxjs';
-import { HttpserviceService } from './httpservice.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
+  get autoRefresh$() {
+    return this._autoRefresh$;
+  }
+  constructor(private http: HttpClient, ) { }
   private searchBookData = new Subject<any>();
-  private bookApiUrl = environment.BookUrl;
+  private baseUrl = environment.BASE_URL;
+  private notesList = new Subject<any>();
+  // tslint:disable-next-line: variable-name
+  private _autoRefresh$ = new Subject();
+
+  private httpOtions = {
+    headers: new HttpHeaders({ 'content-type': 'application/json' })
+  };
+
   private httpOptions = {headers: new HttpHeaders({'content-type': 'application/json'})};
 
-  constructor(private http: HttpClient, private httpService: HttpserviceService) { }
-
+  public getAllApprovedBook(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/books/approvedBooks`);
+  }
 
   getallBooks() {
     return this.http.get<any>(environment.BookUrl + environment.getallbooksurl);
@@ -30,8 +42,7 @@ export class BookService {
 
   getBokkByid(Bookid: any): Observable<any> {
     console.log(Bookid, 'hhhhbookid');
-
-    return this.httpService.get(this.bookApiUrl + environment.getbookbyIdurl + '/' + Bookid, this.httpOptions);
+    return null;
   }
   getPagination(data) {
     return this.http.get<any>( environment.BookUrl + environment.cusUrl + '/' + data);

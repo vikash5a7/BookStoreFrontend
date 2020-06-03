@@ -1,5 +1,4 @@
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
-import { HeaderComponent } from './Component/header/header.component';
 import { SellerComponent } from './Component/seller/seller/seller.component';
 import { AdminComponent } from './Component/admin/admin/admin.component';
 import { RegistrationComponent } from './Component/auth/registration/registration.component';
@@ -14,6 +13,7 @@ import { CartComponent } from './Component/cart/cart.component';
 import { OrdergreetingComponent } from './Component/ordergreeting/ordergreeting.component';
 import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.component';
 import { AdminunverifiedbooksComponent } from './Component/adminunverifiedbooks/adminunverifiedbooks.component';
+import { HeaderComponent } from './Component/header/header.component';
 
 
 
