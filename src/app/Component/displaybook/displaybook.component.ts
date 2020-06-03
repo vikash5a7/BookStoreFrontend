@@ -99,7 +99,7 @@ leng: any;
     this.getSearchBookData();
   }
 
-    addtobag( bookId: any) {
+  addtobag( bookId: any) {
   sessionStorage.setItem(bookId, bookId);
   this.getOutput();
   this.ngOnInit();
@@ -111,7 +111,7 @@ getData(event?: PageEvent) {
                  this.boo = result.bookList;
                  this.size = result.bookList.length;
                  console.log(' data:::' + result.bookList);
-  });
+                });
   this.getSearchBookData();
   return event;
 }
