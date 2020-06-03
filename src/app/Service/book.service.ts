@@ -24,9 +24,7 @@ export class BookService {
   private httpOptions = {headers: new HttpHeaders({'content-type': 'application/json'})};
 
   public getAllApprovedBook(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/books/approvedBooks`, {
-      headers : new HttpHeaders().set('token', localStorage.getItem('token'))
-    });
+    return this.http.get(`${this.baseUrl}/books/approvedBooks`);
   }
 
   getallBooks() {
