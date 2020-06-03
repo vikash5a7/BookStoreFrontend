@@ -38,6 +38,10 @@ import { SellerComponent } from './Component/seller/seller/seller.component';
 import { FooterComponent } from './Component/footer/footer.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { SidenavbarComponent } from './Component/sidenavbar/sidenavbar.component';
+import { MatTooltipModule, MatTooltip } from '@angular/material/tooltip';
+import { AddbookComponent } from './Component/addbook/addbook.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { UpdateBookComponent } from './Component/update-book/update-book.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +62,9 @@ import { SidenavbarComponent } from './Component/sidenavbar/sidenavbar.component
     FooterComponent,
     DashboardComponent,
     SidenavbarComponent,
-    HeaderComponent
+    HeaderComponent,
+    AddbookComponent,
+    UpdateBookComponent
   ],
   imports: [
     MatBadgeModule,
@@ -81,6 +87,9 @@ import { SidenavbarComponent } from './Component/sidenavbar/sidenavbar.component
     MatMenuModule,
     MatButtonModule,
     MatSidenavModule,
+    MatTooltipModule,
+    MatDialogModule,
+    
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent],

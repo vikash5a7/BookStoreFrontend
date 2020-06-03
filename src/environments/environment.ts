@@ -5,13 +5,17 @@
 export const environment = {
   production: false,
   BASE_URL: 'http://localhost:8080',
-  BookUrl: 'http://localhost:8080/',
+  BookUrl: 'http://localhost:8080',
   getallbooksurl: 'books/getAllBooks',
   getbookbyIdurl: 'books/',
   addandupdatecartUrl: 'books/addandupdatecart',
   sorting: 'books/sorting',
   SortNewestArrival: 'books/unsorting',
   cusUrl : 'books/pagewise',
+  addbooks:'books/addbook',
+  deleteBook:'books/deletebook',
+  editBook:'books/editbook',
+  verifyBook:'books/editBookStatus',
 
   CartUrl: 'http://localhost:8081/',
   addUrl: 'customers/addcustomer',

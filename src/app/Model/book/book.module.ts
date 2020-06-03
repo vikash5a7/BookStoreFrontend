@@ -16,6 +16,6 @@ export class BookModule {
   authorName:String;
   bookName:String;
   price:number;
-  quantity:number;
+  noOfBooks:number;
   image:string;
  }
