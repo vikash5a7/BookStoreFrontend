@@ -44,6 +44,7 @@ import { AddbookComponent } from './Component/addbook/addbook.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { UpdateBookComponent } from './Component/update-book/update-book.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { UploadBookImageComponent } from './Component/addbook/upload-book-image/upload-book-image.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     SidenavbarComponent,
     HeaderComponent,
     AddbookComponent,
-    UpdateBookComponent
+    UpdateBookComponent,
+    UploadBookImageComponent
   ],
   imports: [
     MatBadgeModule,

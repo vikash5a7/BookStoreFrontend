@@ -16,6 +16,7 @@ export const environment = {
   deleteBook:'books/deletebook',
   editBook:'books/editbook',
   verifyBook:'books/editBookStatus',
+  addBookImage:'books/addBookImage',
 
   CartUrl: 'http://localhost:8081/',
   addUrl: 'customers/addcustomer',

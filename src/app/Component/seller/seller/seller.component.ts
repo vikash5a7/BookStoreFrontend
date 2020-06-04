@@ -7,6 +7,7 @@ import {  MatSnackBar } from "@angular/material/snack-bar";
 import {  MatDialog } from "@angular/material/dialog";
 import { AddbookComponent } from '../../addbook/addbook.component';
 import { UpdateBookComponent } from '../../update-book/update-book.component';
+import { UploadBookImageComponent } from '../../addbook/upload-book-image/upload-book-image.component';
 
 @Component({
   selector: 'app-seller',
@@ -55,15 +56,14 @@ export class SellerComponent implements OnInit {
 
 
   openImageDialog(bookId): void {
-    // this.bookid = this.bookForm.controls["bookCode"].value;
-    // const dialogRef = this.dialog.open(UploadBookimageComponent, {
-    //   width: "auto",
-    //   panelClass: "custom-dialog-container",
-    //   data: { bookId },
-    // });
-    // dialogRef.afterClosed().subscribe((result) => {
-    //   console.log("The dialog was closed");
-    // });
+    const dialogRef = this.dialog.open(UploadBookImageComponent, {
+      width: "25rem",
+      panelClass: "custom-dialog-container",
+      data: { bookId },
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("The dialog was closed");
+    });
   }
 
   editBook(book:any): void {
