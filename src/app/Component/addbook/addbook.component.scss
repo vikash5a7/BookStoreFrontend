@@ -80,3 +80,6 @@
     /* Firefox 18- */
     color: pink;
   }
+  ::ng-deep  .mat-form-field-infix {
+    padding: 0em 0;
+  }
