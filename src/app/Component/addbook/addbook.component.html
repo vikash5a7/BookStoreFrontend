@@ -1,91 +1,62 @@
-<div class="container" >
-  
+<div class="container">
 
-    <div style="background-color: #A03037; width: 100%; margin-bottom: 10px;">
-        <h2 style="color: white; text-align: center;padding-top: 10px;">Add Book</h2>
+
+  <div style="background-color: #A03037; width: 100%; margin-bottom: 10px;">
+    <h2 style="color: white; text-align: center;padding-top: 10px;">Add Book</h2>
+  </div>
+
+
+  <form [formGroup]="bookForm" (ngSubmit)="(bookForm.valid)" noval>
+    <!-- <div class="names"> -->
+    <div class="book-details">
+      <mat-form-field style="margin-bottom: -1.25em;" appearance="outline">
+        <mat-icon matPrefix style="margin-right: 20px;">book</mat-icon>
+        <input id="bookName" matInput formControlName="bookName" placeholder="Enter Book Name" autocomplete="off"
+          required />
+      </mat-form-field>
+    </div>
+    <div class="book-details">
+      <mat-form-field style="margin-bottom: -1.25em;" appearance="outline">
+        <mat-icon matPrefix style="margin-right: 20px;">person</mat-icon>
+        <input id="authorName" matInput formControlName="authorName" placeholder="Enter Author Name" autocomplete="off"
+          required />
+      </mat-form-field>
+    </div>
+    <!-- </div> -->
+    <!-- <div class="price-qty"> -->
+    <div class="book-details">
+      <mat-form-field style="margin-bottom: -1.25em;" appearance="outline">
+        <!-- <mat-icon matPrefix style="margin-right: 20px;">rupees</mat-icon> -->
+        <mat-icon matPrefix> <svg style=" width:24px;height:24px;" viewBox="0 0 24 24">
+            <path fill="currentColor"
+              d="M8,3H18L17,5H13.74C14.22,5.58 14.58,6.26 14.79,7H18L17,9H15C14.75,11.57 12.74,13.63 10.2,13.96V14H9.5L15.5,21H13L7,14V12H9.5V12C11.26,12 12.72,10.7 12.96,9H7L8,7H12.66C12.1,5.82 10.9,5 9.5,5H7L8,3Z" />
+          </svg>
+        </mat-icon>
+        <input id="price" matInput formControlName="price" placeholder="Enter Book Price" autocomplete="off" required />
+
+      </mat-form-field>
+    </div>
+    <div class="book-details">
+      <mat-form-field style="margin-bottom: -1.25em;" appearance="outline">
+        <mat-icon matPrefix style="margin-right: 20px;">pets</mat-icon>
+        <input id="noOfBooks" matInput formControlName="noOfBooks" placeholder="Enter Book quantity" autocomplete="off"
+          required />
+      </mat-form-field>
+    </div>
+    <!-- </div> -->
+    <div class="book-details">
+      <mat-form-field style="margin-bottom: -1.25em;" appearance="outline">
+          <mat-icon matPrefix style="margin-right: 20px;">info</mat-icon>
+      <input id="bookDetails" matInput formControlName="bookDetails" placeholder="Enter Book Details" autocomplete="off"
+        required />
+      </mat-form-field>
     </div>
 
-
-    <form [formGroup]="bookForm" (ngSubmit)="(bookForm.valid)" noval>
-      <!-- <div class="names"> -->
-        <div class="book-details">
-          <mat-form-field style="margin-bottom: -1.25em;" appearance="outline">
-            <mat-icon matPrefix style="margin-right: 20px;">book</mat-icon>
-            <input
-              id="bookName"
-              matInput
-              formControlName="bookName"
-              placeholder="Enter Book Name"
-              autocomplete="off"
-              required
-            />
-          </mat-form-field>
-        </div>
-        <div class="book-details">
-          <mat-form-field style="margin-bottom: -1.25em;" appearance="outline">
-            <mat-icon matPrefix style="margin-right: 20px;">person</mat-icon>
-            <input
-              id="authorName"
-              matInput
-              formControlName="authorName"
-              placeholder="Enter Author Name"
-              autocomplete="off"
-              required
-            />
-          </mat-form-field>
-        </div>
-      <!-- </div> -->
-      <!-- <div class="price-qty"> -->
-        <div class="book-details">
-          <mat-form-field style="margin-bottom: -1.25em;" appearance="outline">
-            <!-- <mat-icon matPrefix style="margin-right: 20px;">rupees</mat-icon> -->
-            <mat-icon matPrefix> <svg style=" width:24px;height:24px;" viewBox="0 0 24 24">
-              <path fill="currentColor" d="M8,3H18L17,5H13.74C14.22,5.58 14.58,6.26 14.79,7H18L17,9H15C14.75,11.57 12.74,13.63 10.2,13.96V14H9.5L15.5,21H13L7,14V12H9.5V12C11.26,12 12.72,10.7 12.96,9H7L8,7H12.66C12.1,5.82 10.9,5 9.5,5H7L8,3Z" />
-          </svg>
-          </mat-icon>
-            <input
-              id="price"
-              matInput
-              formControlName="price"
-              placeholder="Enter Book Price"
-              autocomplete="off"
-              required
-            />
-           
-          </mat-form-field>
-        </div>
-        <div class="book-details">
-          <mat-form-field style="margin-bottom: -1.25em;" appearance="outline">
-            <mat-icon matPrefix style="margin-right: 20px;">pets</mat-icon>
-            <input
-              id="noOfBooks"
-              matInput
-              formControlName="noOfBooks"
-              placeholder="Enter Book quantity"
-              autocomplete="off"
-              required
-            />
-          </mat-form-field>
-        </div>
-      <!-- </div> -->
-      <div class="book-details">
-        <mat-form-field style="margin-bottom: -1.25em;" appearance="outline">
-          <mat-icon matPrefix style="margin-right: 20px;">info</mat-icon>
-          <input
-            id="bookDetails"
-            matInput
-            formControlName="bookDetails"
-            placeholder="Enter Book Details"
-            autocomplete="off"
-            required
-          />
-        </mat-form-field>
-      </div>
-     
-      <div class="submit">
-        <button mat-button type="submit" style="border: none;border-radius: 0px; outline: none;" (click)="onClickaddBook()">
-          Add Book
-        </button>
-      </div>
-    </form>
-  </div>
+    <div class="submit">
+      <button mat-button type="submit" style="border: none;border-radius: 0px; outline: none;"
+        (click)="onClickaddBook()">
+        Add Book
+      </button>
+    </div>
+  </form>
+</div>
