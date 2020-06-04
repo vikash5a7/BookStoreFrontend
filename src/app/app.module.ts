@@ -38,7 +38,13 @@ import { SellerComponent } from './Component/seller/seller/seller.component';
 import { FooterComponent } from './Component/footer/footer.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { SidenavbarComponent } from './Component/sidenavbar/sidenavbar.component';
+
+import { MatTooltipModule, MatTooltip } from '@angular/material/tooltip';
+import { AddbookComponent } from './Component/addbook/addbook.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { UpdateBookComponent } from './Component/update-book/update-book.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
@@ -59,7 +65,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
     FooterComponent,
     DashboardComponent,
     SidenavbarComponent,
-    HeaderComponent
+    HeaderComponent,
+    AddbookComponent,
+    UpdateBookComponent
   ],
   imports: [
     MatBadgeModule,
@@ -82,6 +90,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     MatMenuModule,
     MatButtonModule,
     MatSidenavModule,
+    MatTooltipModule,
+    MatDialogModule,
     NgxPaginationModule
   ],
   providers: [HttpClient],
