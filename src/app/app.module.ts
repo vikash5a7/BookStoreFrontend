@@ -38,7 +38,7 @@ import { SellerComponent } from './Component/seller/seller/seller.component';
 import { FooterComponent } from './Component/footer/footer.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { SidenavbarComponent } from './Component/sidenavbar/sidenavbar.component';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { PracticeComponent } from './Component/practice/practice.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +59,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     FooterComponent,
     DashboardComponent,
     SidenavbarComponent,
-    HeaderComponent
+    HeaderComponent,
+    PracticeComponent
   ],
   imports: [
     MatBadgeModule,
@@ -82,7 +83,6 @@ import {NgxPaginationModule} from 'ngx-pagination';
     MatMenuModule,
     MatButtonModule,
     MatSidenavModule,
-    NgxPaginationModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent],

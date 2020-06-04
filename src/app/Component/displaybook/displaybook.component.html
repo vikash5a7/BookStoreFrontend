@@ -20,10 +20,9 @@
                 border-radius: 3px;
               " fxFlexAlign='end'>
               <option value="audi" selected>Sort by relevance</option>
-                            <option value="volvo">Price: High to low</option>
-                            <option value="saab">Price Low to High</option>
-                            <option value="vw">Newest Arrival</option>
-
+                            <option value="Price:Hightolow">Price: High to low</option>
+                            <option value="PriceLowtoHigh">Price Low to High</option>
+                            <option value="NewestArrival">Newest Arrival</option>
               </select>
             </div>
         </div>
@@ -80,20 +79,25 @@
             </div>
         </div>
     </div>
-    <div class="pagination" fxFlexAlign='center'>
-        <a style="border-radius: 40px;  border: 1px solid #e0d6d6;" href="#">
-            <</a>
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a style="color: whitesmoke;" class="active" href="#">5</a>
-                <a href="#">6</a>
-                <a href="#">7</a>
-                <a href="#">8</a>
-                <a href="#">9</a>
-                <a href="#">10</a>
-                <a style="border-radius: 40px;  border: 1px solid #e0d6d6;" href="#" href="#">></a>
-    </div>
+    <!-- <div class="pagination" fxFlexAlign='center'>
 
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a style="color: whitesmoke;" class="active" href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">7</a>
+        <a href="#">8</a>
+        <a href="#">9</a>
+        <a href="#">10</a>
+        <a style="border-radius: 40px;  border: 1px solid #e0d6d6;" href="#" href="#">></a>
+    </div>
+ -->
+
+    <div class="pagination">
+        <div *ngFor="let p of totalPage; let i=index ">
+            <a href="" (click)="SetPage(i,$event)" [ngClass]="{'active':i==page}">{{i}}</a>
+        </div>
+    </div>
 </div>

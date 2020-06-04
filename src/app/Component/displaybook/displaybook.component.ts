@@ -10,7 +10,8 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class DisplaybookComponent implements OnInit {
 
-
+  min = 0;
+  max = 0;
   boo: any;
   bookList = [];
   book: BookModule = new BookModule();
@@ -22,16 +23,19 @@ export class DisplaybookComponent implements OnInit {
   book_id: number;
   bookSearch: any;
   bookName: string;
+  page = 12;
   length: any = sessionStorage.length;
   pageEvent: PageEvent;
-  lengths = 24;
-  pageSize = 8;
+  lengths = 0;
+  pageSize = 0;
+  CurrentPageNo: 0;
+  totalPage: Array<number>;
   data: any;
   reminder: any;
   s: any; selectoption: any;
   value: any = [];
-  // @Output() output : EventEmitter<any> = new EventEmitter();
-leng: any;
+  @Output() output: EventEmitter<any> = new EventEmitter();
+  leng: any;
   constructor( private service: BookService, private snakbar: MatSnackBar) { }
 
   ngOnInit() {
@@ -46,14 +50,26 @@ leng: any;
   }
 
   getallApprovedBooks() {
-    this.service.getAllApprovedBook().subscribe((response: any) => {
+    this.service.getAllApprovedBookByPage(this.page).subscribe((response: any) => {
       console.log(response);
       console.log('Books are the' + response.obj);
-      this.bookList = response.obj;
-      this.size = this.bookList.length;
+      this.bookList = response.obj.content;
+      this.size = response.obj.totalElements;
+      this.CurrentPageNo = response.obj.pageable.pageNumber;
+      this.totalPage = new Array(response.obj.totalPages);
+      this.max = this.totalPage.length / 12;
+      console.log('Total pages is: ' + this.totalPage);
       console.log('total books are ' + this.size);
+      console.log('curret page number is ' + this.CurrentPageNo);
       console.log('Books are  ', this.bookList);
     });
+  }
+
+  SetPage(i, event: any) {
+    event.preventDefault();
+    this.page = i;
+    console.log('page number you want is' + i);
+    this.getallApprovedBooks();
   }
 
   modo(value: string) {

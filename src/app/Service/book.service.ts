@@ -24,7 +24,10 @@ export class BookService {
   private httpOptions = {headers: new HttpHeaders({'content-type': 'application/json'})};
 
   public getAllApprovedBook(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/books/approvedBooks`);
+    return this.http.get(`${this.baseUrl}/books/approved?order=asc`);
+  }
+  public getAllApprovedBookByPage(page: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/books/approved?page=` + page);
   }
 
   getallBooks() {
