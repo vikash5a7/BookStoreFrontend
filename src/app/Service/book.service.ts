@@ -92,6 +92,15 @@ export class BookService {
       );
   }
 
+  uploadBookImage(bookId,  formData): Observable<any> {
+    return this.httpService
+      .post(`${environment.BookUrl}/${environment.addBookImage}/${bookId}`,formData,{headers:new HttpHeaders({'token':localStorage.token})})
+      .pipe(
+        tap(() => {
+          this._autoRefresh$.next();
+        })
+      );
+  }
   setSearchBookData(message: any) {
     console.log('set service', message);
     return this.searchBookData.next({ books: message });
