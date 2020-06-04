@@ -14,7 +14,9 @@
     background-color: rgba(131, 4, 4, 0.8);
     font-size: 1rem;
     color: white;
-    height: 50px;
+    height: auto;
+    width: auto;
+    border-radius: 0px;
     margin: 0px;
   }
   
@@ -59,7 +61,7 @@
  
   .submit {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     // align-items: center;
     // align-content: center;
     padding-top: 30px;

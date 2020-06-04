@@ -68,7 +68,7 @@ export class SellerComponent implements OnInit {
 
   editBook(book:any): void {
     const dialogRef = this.dialog.open(UpdateBookComponent, {
-      width: "auto",
+      width: "25rem",
       height:"auto",
       panelClass: "custom-dialog-container",
       data: {
@@ -87,7 +87,7 @@ export class SellerComponent implements OnInit {
 
   addBook(){
     const dialogRef = this.dialog.open(AddbookComponent, {
-      width: "auto",
+      width: "25rem",
       panelClass: "custom-dialog-container",
     });
     dialogRef.afterClosed().subscribe((result) => {

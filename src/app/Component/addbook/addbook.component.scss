@@ -51,11 +51,12 @@
     background-color: rgba(131, 4, 4, 0.8);
     font-size: 1rem;
     color: white;
-    height: 50px;
+    height: auto;
+    width: auto;
   }
   .submit {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     // align-items: center;
     // align-content: center;
     padding-top: 30px;
