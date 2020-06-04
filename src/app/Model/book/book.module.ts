@@ -19,13 +19,10 @@ export class BookModule {
   price:number;
   noOfBooks:number;
   image:string;
-<<<<<<< HEAD
   picByte:string;
-=======
+
 
   createdDateAndTime: Date;
   status: string;
 
-
->>>>>>> 2e70d90243b629f93d4ac4f28108b2ed09d55e4c
  }
