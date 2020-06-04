@@ -73,6 +73,6 @@ export class ToolbarComponent implements OnInit {
 
   getUpdatedNotes(event) {
   this.ngOnInit();
-}
+  }
 
 }
