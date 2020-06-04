@@ -1,0 +1,42 @@
+  .dashboard-content {
+      height: 100%;
+      width: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+  }
+
+  .container {
+      overflow-x: hidden;
+      overflow-y: hidden;
+      height: 100%;
+      width: 100%;
+  }
+
+  .bottom {
+      background-color: #2E1D1E;
+      padding: 10px;
+      font-family: Lato;
+      padding-left: 100px;
+      color: white;
+      bottom: 0px;
+      width: 100%;
+  }
+
+  .mat-title {
+      color: #fff;
+      margin: 0;
+      padding-top: 5px;
+  }
+
+  .search {
+      background-color: #fff;
+      padding: 3px;
+      padding-left: 15px;
+      width: 100%;
+      border-radius: 5px;
+      border: none;
+  }
+
+  input.input:focus {
+      outline-width: 0;
+  }

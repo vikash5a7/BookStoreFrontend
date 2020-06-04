@@ -1,0 +1,28 @@
+<div class="container" *ngIf="isAdmin">
+    <div>
+        <button mat-raised-button class="navButton"   (click)="onClickSeller()" type="submit">
+        SELLER</button>
+      </div>
+      <div>
+        <button mat-raised-button class="navButton"   (click)="onClickOrder()" type="submit">
+        ORDER</button>
+      </div>
+      <div>
+        <button mat-raised-button class="navButton"   (click)="onClickReview()" type="submit">
+        REVIEW</button>
+      </div>
+</div>
+<div class="container" *ngIf="isSeller">
+    <div>
+        <button mat-raised-button class="navButton"   (click)="addBook()" type="submit">
+        ADD</button>
+      </div>
+      <div>
+        <button mat-raised-button class="navButton"   (click)="approvedBook()" type="submit">
+        APPROVED</button>
+      </div>
+      <div>
+        <button mat-raised-button class="navButton"   (click)="rejectedBook()" type="submit">
+        REJECTED</button>
+      </div>
+</div>

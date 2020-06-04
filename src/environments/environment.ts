@@ -4,22 +4,30 @@
 
 export const environment = {
   production: false,
-
-  BookUrl: 'http://localhost:8080/',
-  getallbooksurl: '',
+  BASE_URL: 'http://localhost:8080',
+  BookUrl: 'http://localhost:8080',
+  getallbooksurl: 'books/getAllBooks',
   getbookbyIdurl: 'books/',
   addandupdatecartUrl: 'books/addandupdatecart',
   sorting: 'books/sorting',
   SortNewestArrival: 'books/unsorting',
   cusUrl : 'books/pagewise',
+  addbooks:'books/addbook',
+  deleteBook:'books/deletebook',
+  editBook:'books/editbook',
+  verifyBook:'books/editBookStatus',
 
-  CartUrl: 'http://localhost:8080/',
+  CartUrl: 'http://localhost:8081/',
   addUrl: 'customers/addcustomer',
   addtocart: 'carts/addcart',
   getbookprice: 'getbookprice',
 
-  quantity: 'http://localhost:8080/',
-  addbooksquantity: 'addbooksquantity'
+  quantity: 'http://localhost:8081/',
+  addbooksquantity: 'addbooksquantity',
+  USER_REGISTRATION: 'registration',
+  USER_LOGIN: 'login',
+  USER_FORGET_PASSWORD: 'forgotpassword',
+  USER_RESETPASSWORD: 'update'
 };
 
 
