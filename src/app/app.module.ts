@@ -38,12 +38,17 @@ import { SellerComponent } from './Component/seller/seller/seller.component';
 import { FooterComponent } from './Component/footer/footer.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { SidenavbarComponent } from './Component/sidenavbar/sidenavbar.component';
+
+import { AddbookComponent } from './Component/addbook/addbook.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { UpdateBookComponent } from './Component/update-book/update-book.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { GiverateComponent } from './Component/giverate/giverate.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { AdminunverifiedbooksComponent } from './Component/adminunverifiedbooks/adminunverifiedbooks.component';
 import { RatereviewComponent } from './Component/ratereview/ratereview.component';
-import {MatDialogModule} from '@angular/material/dialog';
+import { UploadBookImageComponent } from './Component/addbook/upload-book-image/upload-book-image.component';
+
 
 @NgModule({
   declarations: [
@@ -67,7 +72,10 @@ import {MatDialogModule} from '@angular/material/dialog';
     HeaderComponent,
     GiverateComponent,
     AdminunverifiedbooksComponent,
-    RatereviewComponent
+    RatereviewComponent,
+    AddbookComponent,
+    UpdateBookComponent,
+    UploadBookImageComponent
   ],
   imports: [
     MatBadgeModule,
@@ -92,7 +100,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatSidenavModule,
     NgxPaginationModule,
     MatTooltipModule,
-    MatDialogModule
+    MatDialogModule,
+    NgxPaginationModule
+
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent],

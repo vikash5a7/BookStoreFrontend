@@ -29,6 +29,7 @@ export class LoginComponentComponent implements OnInit {
               private titleService: Title
     ) {
       this.setTitle('Bookstore | Login');
+
   }
   handleError(error: { error: any; }) {
     this.isLoading = false;
@@ -66,12 +67,12 @@ export class LoginComponentComponent implements OnInit {
     }
     if (this.form.role === 'seller') {
       localStorage.setItem('role', 'seller');
-      this.route.navigateByUrl('dashboard');
+      this.route.navigateByUrl('books');
       return;
     }
     if (this.form.role === 'user') {
       localStorage.setItem('role', 'user');
-      this.route.navigateByUrl('dashboard');
+      this.route.navigateByUrl('books');
       return;
     }
 }

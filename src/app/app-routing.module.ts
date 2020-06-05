@@ -23,12 +23,11 @@ import { RatereviewComponent } from './Component/ratereview/ratereview.component
 const routes: Routes = [
   // {path: 'verifybook', component: AdminunverifiedbooksComponent},
   {
-    path: '', redirectTo: 'Displaybook',
+    path: '', redirectTo: 'books',
     pathMatch: 'full'
   },
-  {path: '', component: DisplaybookComponent},
-  {path: 'toolbar', component: ToolbarComponent},
-  {path: 'dashboard', component: DashboardComponent},
+  
+  {path: 'books', component: DashboardComponent},
   {path: 'Displaybook', component: DisplaybookComponent},
   {path: 'cart', component: CartComponent},
   {path: 'greeting', component: OrdergreetingComponent},

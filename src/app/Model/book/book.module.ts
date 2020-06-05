@@ -10,15 +10,18 @@ import { CommonModule } from '@angular/common';
   ]
 })
 export class BookModule {
-  bookId: number;
-  BookModule: string;
-  bookDetails: string;
-  authorName: string;
-  bookName: string;
-  price: number;
-  noOfBooks: number;
-  image: string;
+
+  bookId :number;
+  BookModule:String;
+  bookDetails:String;
+  authorName:String;
+  bookName:String;
+  price:number;
+  noOfBooks:number;
+  image:string;
+
   createdDateAndTime: Date;
   status: string;
+
 
  }
