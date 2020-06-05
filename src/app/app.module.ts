@@ -39,6 +39,11 @@ import { FooterComponent } from './Component/footer/footer.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { SidenavbarComponent } from './Component/sidenavbar/sidenavbar.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { GiverateComponent } from './Component/giverate/giverate.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { AdminunverifiedbooksComponent } from './Component/adminunverifiedbooks/adminunverifiedbooks.component';
+import { RatereviewComponent } from './Component/ratereview/ratereview.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -59,7 +64,10 @@ import {NgxPaginationModule} from 'ngx-pagination';
     FooterComponent,
     DashboardComponent,
     SidenavbarComponent,
-    HeaderComponent
+    HeaderComponent,
+    GiverateComponent,
+    AdminunverifiedbooksComponent,
+    RatereviewComponent
   ],
   imports: [
     MatBadgeModule,
@@ -82,7 +90,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
     MatMenuModule,
     MatButtonModule,
     MatSidenavModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatTooltipModule,
+    MatDialogModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent],

@@ -12,7 +12,10 @@
             </mat-sidenav-content>
         </mat-sidenav-container>
     </div>
+    <div *ngIf="isAdmin">
+        <app-adminunverifiedbooks></app-adminunverifiedbooks>
+    </div>
 
-    <app-displaybook></app-displaybook>
+    <!-- <app-displaybook></app-displaybook> -->
 </div>
 <app-footer></app-footer>
