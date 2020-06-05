@@ -7,15 +7,9 @@ import { ForgetPasswordComponent } from './Component/auth/forget-password/forget
 import { ResetPasswordComponent } from './Component/auth/reset-password/reset-password.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ToolbarComponent } from './Component/toolbar/toolbar.component';
-import { DisplaybookComponent } from './Component/displaybook/displaybook.component';
 import { CartComponent } from './Component/cart/cart.component';
 import { OrdergreetingComponent } from './Component/ordergreeting/ordergreeting.component';
 import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.component';
-import { HeaderComponent } from './Component/header/header.component';
-
-
-
 
 const routes: Routes = [
   {

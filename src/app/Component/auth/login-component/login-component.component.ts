@@ -29,6 +29,7 @@ export class LoginComponentComponent implements OnInit {
               private titleService: Title
     ) {
       this.setTitle('Bookstore | Login');
+
   }
   handleError(error: { error: any; }) {
     this.isLoading = false;

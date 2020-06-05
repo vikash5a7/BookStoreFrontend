@@ -1,7 +1,6 @@
 import { HeaderComponent } from './Component/header/header.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -38,7 +37,13 @@ import { SellerComponent } from './Component/seller/seller/seller.component';
 import { FooterComponent } from './Component/footer/footer.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { SidenavbarComponent } from './Component/sidenavbar/sidenavbar.component';
-import { PracticeComponent } from './Component/practice/practice.component';
+
+import { MatTooltipModule, MatTooltip } from '@angular/material/tooltip';
+import { AddbookComponent } from './Component/addbook/addbook.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { UpdateBookComponent } from './Component/update-book/update-book.component';
+import { UploadBookImageComponent } from './Component/addbook/upload-book-image/upload-book-image.component';
+
 
 @NgModule({
   declarations: [
@@ -60,7 +65,9 @@ import { PracticeComponent } from './Component/practice/practice.component';
     DashboardComponent,
     SidenavbarComponent,
     HeaderComponent,
-    PracticeComponent
+    AddbookComponent,
+    UpdateBookComponent,
+    UploadBookImageComponent
   ],
   imports: [
     MatBadgeModule,
@@ -83,6 +90,8 @@ import { PracticeComponent } from './Component/practice/practice.component';
     MatMenuModule,
     MatButtonModule,
     MatSidenavModule,
+    MatTooltipModule,
+    MatDialogModule,
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent],
