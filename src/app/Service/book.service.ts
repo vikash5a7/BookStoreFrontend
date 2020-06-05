@@ -106,6 +106,13 @@ export class BookService {
         })
       );
   }
+  getBokkByid(Bookid: any): Observable<any> {
+    return this.http.get(`${this.baseUrl}/books/${Bookid}`,
+       { headers: new HttpHeaders().set('token', localStorage.getItem('token')) }).pipe(tap(() => {
+        this._autoRefresh$.next();
+      }));
+  }
+
   setSearchBookData(message: any) {
     console.log('set service', message);
     return this.searchBookData.next({ books: message });
@@ -115,10 +122,6 @@ export class BookService {
     return this.searchBookData.asObservable();
   }
 
-  getBokkByid(Bookid: any): Observable<any> {
-    console.log(Bookid, 'hhhhbookid');
-    return null;
-  }
   getPagination(data) {
     return this.http.get<any>( environment.BookUrl + environment.cusUrl + '/' + data);
   }

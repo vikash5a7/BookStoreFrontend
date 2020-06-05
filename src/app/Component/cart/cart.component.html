@@ -1,16 +1,13 @@
 <app-toolbar [output]="si"></app-toolbar>
 <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-<!-- <mat-horizontal-stepper [linear]="isLinear" #stepper>
-    <mat-step> -->
 <div class="main-conatiner">
-    <!-- <ng-template matStepLabel>My Cart</ng-template> -->
     <div class="row">
         <div class="column">
             <mat-label style=" display:flex; margin-left:6%;padding-top: 2%;font-family: 'Lato', sans-serif;
           font-size: 18px;
           color:black"> Mycart({{length}})</mat-label>
             <div class="column" *ngFor="let books of book ">
-                <mat-card class="card" style="padding: 10px; ">
+                <mat-card class="card" style="padding: 10px;">
                     <img src="assets\bookimage\{{books.image}}" class="bookimage">
                     <div class="details">
                         <span class="bookname" style="font-family: 'Lato', sans-serif; ">{{books.bookName}}</span><br>
@@ -123,8 +120,6 @@
                                 <mat-radio-button style="margin-left: 60%;" (click)="fun('Work')" value="Work" #type>Work</mat-radio-button>
                                 <mat-radio-button style="margin-left: 60%;" (click)="fun('Other')" value="Other" #type>Other</mat-radio-button>
                             </mat-radio-group>
-
-
                         </section>
                     </div>
                 </mat-card-content>
