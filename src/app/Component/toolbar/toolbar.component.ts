@@ -69,8 +69,6 @@ export class ToolbarComponent implements OnInit {
     this.token.logedIn(false);
     this.route.navigateByUrl('/login');
   }
-
-
   getUpdatedNotes(event) {
   this.ngOnInit();
   }
