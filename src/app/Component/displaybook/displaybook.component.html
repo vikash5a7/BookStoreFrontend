@@ -7,7 +7,8 @@
                 </span>
             </div>
             <div>
-                <select id="sort" style="float: right;
+                this is selectvalue {{selectedValue}}
+                <select id="sort" [ngModel]="selectedValue" (ngModelChange)="onChange($event)" style="float: right;
                 height: 30px;
                 width: 161px;
                 padding-top: 0px;
@@ -19,10 +20,10 @@
                 background-color: white;
                 border-radius: 3px;
               " fxFlexAlign='end'>
-              <option value="audi" selected>Sort by relevance</option>
-                            <option value="Price:Hightolow">Price: High to low</option>
-                            <option value="PriceLowtoHigh">Price Low to High</option>
-                            <option value="NewestArrival">Newest Arrival</option>
+              <option value="relevance">Sort by relevance</option>
+                            <option value="mod1">Price: High to low</option>
+                            <option value="mod2">Price: Low to High</option>
+                            <option value="mod3">Newest: Arrival</option>
               </select>
             </div>
         </div>

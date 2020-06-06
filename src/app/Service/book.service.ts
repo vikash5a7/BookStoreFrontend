@@ -41,8 +41,8 @@ export class BookService {
   public getAllApprovedBook(): Observable<any> {
     return this.http.get(`${this.baseUrl}/books/approved?order=asc`);
   }
-  public getAllApprovedBookByPage(page: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/books/approved?page=` + page);
+  public getAllApprovedBookByPage(page: number, sortby ?: string, orderBy ?: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/books/approved?page=${page}&order=${orderBy}&sortBy=${sortby}`);
   }
 
   getallBooks() {

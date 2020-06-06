@@ -10,7 +10,6 @@ export const environment = {
   // BASE_URL: 'http://localhost:8080',
   // BookUrl: 'http://localhost:8080',
   // getallbooksurl: 'books/getAllBooks',
-
   getbookbyIdurl: 'books/',
   addandupdatecartUrl: 'books/addandupdatecart',
   sorting: 'books/sorting',
@@ -21,7 +20,6 @@ export const environment = {
   editBook: 'books/editbook',
   verifyBook: 'books/editBookStatus',
   addBookImage: 'books/addBookImage',
-
   CartUrl: 'http://localhost:8081/',
   addUrl: 'customers/addcustomer',
   addtocart: 'carts/addcart',
@@ -33,7 +31,6 @@ export const environment = {
   USER_LOGIN: 'login',
   USER_FORGET_PASSWORD: 'forgotpassword',
   USER_RESETPASSWORD: 'update',
-
   WRITE_REVIEW: 'books/ratingreview?bookId=',
   GET_REVIEWS: 'books/ratingreviews/?bookId=',
   adminUrl: 'http://localhost:8081/',

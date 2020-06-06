@@ -9,7 +9,8 @@ import { PageEvent } from '@angular/material/paginator';
   styleUrls: ['./displaybook.component.scss']
 })
 export class DisplaybookComponent implements OnInit {
-
+  selectedValue = 'relevance';
+  orderBy = 'asc';
   min = 0;
   max = 0;
   boo: any;
@@ -49,21 +50,45 @@ export class DisplaybookComponent implements OnInit {
     console.log(this.value);
   }
 
+  onChange(deviceValue) {
+    this.selectedValue = deviceValue;
+    console.log(' this is tha value of drope down ' + deviceValue);
+    switch (this.selectedValue) {
+      case 'mod1':
+         console.log('vikash kumar1');
+         this.approvedBookServiceMethod(this.page, 'price', 'des');
+         console.log('Books are from 1  ', this.bookList);
+         break;
+      case 'mod2':
+        this.approvedBookServiceMethod(this.page, 'price', 'asc');
+        console.log('Books are from 2  ', this.bookList);
+        break;
+      case 'mod3':
+        this.approvedBookServiceMethod(this.page, 'created_date_and_time', 'asc');
+        console.log('Books are from 3  ', this.bookList);
+        break;
+    }
+}
+
   getallApprovedBooks() {
-    this.service.getAllApprovedBookByPage(this.page).subscribe((response: any) => {
+    this.approvedBookServiceMethod(this.page, 'book_id', 'asc');
+  }
+
+  approvedBookServiceMethod(page ?: number, order?: string, sortby?: string) {
+    this.service.getAllApprovedBookByPage(page, order, sortby).subscribe((response: any) => {
       console.log(response);
       console.log('Books are the' + response.obj);
       this.bookList = response.obj.content;
       this.size = response.obj.totalElements;
       this.CurrentPageNo = response.obj.pageable.pageNumber;
       this.totalPage = new Array(response.obj.totalPages);
-      this.max = this.totalPage.length / 12;
       console.log('Total pages is: ' + this.totalPage);
       console.log('total books are ' + this.size);
       console.log('curret page number is ' + this.CurrentPageNo);
       console.log('Books are  ', this.bookList);
     });
   }
+
 
   SetPage(i, event: any) {
     event.preventDefault();
@@ -73,17 +98,6 @@ export class DisplaybookComponent implements OnInit {
   }
 
   modo(value: string) {
-    switch (value) {
-      case 'mod1':
-         this.sortingl();
-         break;
-      case 'mod2':
-         this.sortingh();
-         break;
-      case 'mod3':
-         this.SortNewestArrival();
-         break;
-    }
   }
 
   sortingl() {
@@ -140,9 +154,6 @@ getOutput() {
     this.ngOnInit();
     }
 
-onChangePage( pageofItems: Array<any>) {
- this.pageofItems = pageofItems;
-}
 getSearchBookData() {
   this.service.getSearchBookData().subscribe((message) => {
     console.log('search data', message.books);
