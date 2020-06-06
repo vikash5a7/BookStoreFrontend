@@ -19,7 +19,7 @@ export class SellerComponent implements OnInit {
               private matSnackBar: MatSnackBar,
 
   ) { }
-
+  bookSearch: any;
   name: string = null;
   books: any;
   status: string;
@@ -31,6 +31,7 @@ export class SellerComponent implements OnInit {
     });
     this.getUserName();
     this.getallBooks();
+    this.getSearchBookData();
   }
 
   getallBooks() {
@@ -69,7 +70,7 @@ export class SellerComponent implements OnInit {
   editBook(book: any): void {
     const dialogRef = this.dialog.open(UpdateBookComponent, {
       width: '25rem',
-      height : ' auto',
+      height: 'auto',
       panelClass: 'custom-dialog-container',
       data: {
         bookName: book.bookName,
@@ -109,5 +110,12 @@ this.service.verifyBook(bookId, this.status).subscribe((message) => {
 
   getUserName() {
    this.name = localStorage.getItem('Name');
+  }
+
+  getSearchBookData() {
+    this.service.getSearchBookData().subscribe((message) => {
+      console.log('search data', message.books);
+      this.bookSearch = message.books;
+    });
   }
 }
