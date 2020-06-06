@@ -17,3 +17,22 @@
 .mat-error {
     color: #a03037;
 }
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+    /*click effect color change*/
+    background-color: #a03037 !important;
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background-color: #a03037!important;
+    /*inner circle color change*/
+}
+
+::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: #a03037!important;
+    /*outer ring color change*/
+}
+
+.mat-error {
+    color: #a03037;
+}

@@ -11,8 +11,6 @@ import { PageEvent } from '@angular/material/paginator';
 export class DisplaybookComponent implements OnInit {
   selectedValue = 'relevance';
   orderBy = 'asc';
-  min = 0;
-  max = 0;
   boo: any;
   bookList = [];
   book: BookModule = new BookModule();
@@ -105,11 +103,7 @@ export class DisplaybookComponent implements OnInit {
     this.service.sorting(this.data).subscribe( response => {
       this.boo = response.bookList;
       this.obj = response.bookList;
-    //  this.size = response.bookList.length;
-    //  this.pageofItems = response.bookList;
       console.log(this.boo, 'booklist');
-   // console.log("Books ::::"+this.book);
-
       return this.boo;
     });
     this.getSearchBookData();
@@ -119,11 +113,7 @@ export class DisplaybookComponent implements OnInit {
     this.service.sorting(this.data).subscribe( response => {
       this.boo = response.bookList;
       this.obj = response.bookList;
-    //  this.size = response.bookList.length;
-    //  this.pageofItems = response.bookList;
       console.log(this.boo, 'booklist');
-   // console.log("Books ::::"+this.book);
-
       return this.boo;
     });
     this.getSearchBookData();
@@ -147,7 +137,6 @@ getData(event?: PageEvent) {
 }
 
 getOutput() {
-    // this.output.emit("ok");
   }
 
   getUpdatedNotes(event) {

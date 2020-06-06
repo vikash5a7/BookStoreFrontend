@@ -7,17 +7,9 @@
                 </span>
             </div>
             <div>
-                this is selectvalue {{selectedValue}}
                 <select id="sort" [ngModel]="selectedValue" (ngModelChange)="onChange($event)" style="float: right;
-                height: 30px;
-                width: 161px;
-                padding-top: 0px;
-                margin-top: -24px;
-                padding: 5px;
-                display: flex; margin-right: 74px;
-                border: 1px solid #e0d6d6;
-                outline: none;
-                background-color: white;
+                height: 30px; width: 161px; padding-top: 0px; margin-top: -24px; padding: 5px;
+                display: flex; margin-right: 74px; border: 1px solid #e0d6d6; outline: none; background-color: white;
                 border-radius: 3px;
               " fxFlexAlign='end'>
               <option value="relevance">Sort by relevance</option>
@@ -98,6 +90,7 @@
 
     <div class="pagination">
         <div *ngFor="let p of totalPage; let i=index ">
+
             <a href="" (click)="SetPage(i,$event)" [ngClass]="{'active':i==page}">{{i}}</a>
         </div>
     </div>

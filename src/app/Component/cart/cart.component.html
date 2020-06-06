@@ -2,7 +2,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 <div class="main-conatiner">
     <div class="row">
-        <div class="column">
+        <div class="column1">
             <mat-label style=" display:flex; margin-left:6%;padding-top: 2%;font-family: 'Lato', sans-serif;
           font-size: 18px;
           color:black"> Mycart({{length}})</mat-label>
@@ -20,11 +20,10 @@
                         </th>
                         <td mat-cell class="rows-blocks">
                             <div style="display: flex; flex-direction: row; margin-left: -2.0em; margin-top: 7em; border-radius: 2em;">
-
                                 <div style="display: flex; flex-direction: row;margin-bottom: 10px;">
                                     <div style="height: 20px; width: 20px;">
                                         <button style="  height: 30px;  width: 30px;  background-color: transparent ; border-radius: 11em;outline: none; border-color: rgb(238, 233, 233); " (click)="addItem()">  +
-                        </button>
+                                        </button>
                                     </div>
                                     <div style="  margin-left: 30px;  margin-right: 20px;  margin-top: 8px;  ">
                                         {{quantity }}
@@ -39,9 +38,7 @@
                         </button>
                                     </div>
                                     <div>
-                                        <button style="
-                        height: 30px;
-                        width: 60px;font-size: 12px;
+                                        <button style="height: 30px; width: 60px;font-size: 12px;
                         background-color:white;padding-top: 0em; margin-left: 0px; border: transparent;
                       " (click)="Removecart(2)">Remove</button>
                                     </div>
@@ -49,18 +46,16 @@
                             </div>
                         </td>
                     </ng-container>
-                    <div class="buttons">
-                        <button class="button1" style="font-family: 'Lato', sans-serif;" *ngIf="!select" (click)="Toggle()">PLACE ORDER</button>
-                    </div>
                 </mat-card>
             </div>
-
+            <div class="buttons">
+                <button class="button1" style="font-family: 'Lato', sans-serif;" *ngIf="!select" (click)="Toggle()">PLACE ORDER</button>
+            </div>
         </div>
     </div>
     <div class="form-conatiner">
         <a style="font-size:15px ;margin-left: 40px;margin-top: 6%;font-family: 'Lato', sans-serif; ">Customer Details</a>
         <mat-card fxLayoutAlign="center center" fxLayout="column" *ngIf="select">
-
             <form>
                 <mat-card-content>
                     <div class="name-contact">
@@ -68,16 +63,13 @@
                             <mat-form-field appearance="outline" style=" border-color: rgb(51, 49, 49);">
                                 <input style="width: 251px;height: 45px;" id="customerName" placeholder="Name" matInput [formControl]="Name" autocomplete="off" required />
                             </mat-form-field>
-
                         </div>
                         <div fxFlex="45">
                             <mat-form-field appearance="outline">
                                 <input style="width: 251px;height: 45px;font-family: 'Lato', sans-serif;" id="contact" placeholder="Phone number" matInput [formControl]="phoneNumber" required />
                             </mat-form-field>
-
                         </div>
                     </div>
-
                     <div class="name-contact" style="margin-top: 15px;">
                         <div fxFlex="45">
                             <mat-form-field appearance="outline">
@@ -91,7 +83,7 @@
                             </mat-form-field>
                         </div>
                     </div>
-                    <div class="address" style="margin-top: 15px;">
+                    <div class="address" style="margin-top: 10px;">
                         <div>
                             <mat-form-field class="address-field" appearance="outline">
                                 <input id="address" placeholder="Address" matInput [formControl]="address" autocomplete="off" required/>
@@ -99,13 +91,13 @@
                             </mat-form-field>
                         </div>
                     </div>
-                    <div class="name-contact" style="margin-top: 15px;">
+                    <div class="name-contact" style="margin-top: 20px;">
                         <div fxFlex="45">
                             <mat-form-field appearance="outline">
                                 <input style="width: 251px;height: 45px;font-family: 'Lato', sans-serif; font-size: 12px;" id="city" placeholder="City" matInput [formControl]="city" autocomplete="off" required/>
                             </mat-form-field>
                         </div>
-                        <div fxFlex="45">
+                        <div fxFlex="40">
                             <mat-form-field appearance="outline">
                                 <input style="width: 251px;height: 45px;font-family: 'Lato', sans-serif; font-size: 12px;" id="landMark" placeholder="Landmark" matInput [formControl]="landmark" autocomplete="off" required/>
                             </mat-form-field>
@@ -113,7 +105,6 @@
                     </div>
                     <div>
                         <section class="example-section">
-
                             <label class="example-margin" style="margin-left: -3em;font-family: 'Lato', sans-serif;">Type:</label>
                             <mat-radio-group class="example-margin" style="margin-top: 4em; margin-left: 2em;">
                                 <mat-radio-button style="margin-left: 40%;background-color: white; " (click)="fun('Home')" value="Home" #type>Home</mat-radio-button>
@@ -131,8 +122,6 @@
             </form>
         </mat-card>
     </div>
-
-
     <div class="row2" style="padding: 10px;">
         <div>
             <div>
@@ -157,12 +146,5 @@
                 </div>
             </div>
         </div>
-
-
-
     </div>
-
-
 </div>
-<!-- </mat-step>
-</mat-horizontal-stepper> -->
