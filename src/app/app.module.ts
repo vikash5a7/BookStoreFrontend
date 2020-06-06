@@ -38,10 +38,13 @@ import { FooterComponent } from './Component/footer/footer.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { SidenavbarComponent } from './Component/sidenavbar/sidenavbar.component';
 
-import { MatTooltipModule, MatTooltip } from '@angular/material/tooltip';
 import { AddbookComponent } from './Component/addbook/addbook.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { UpdateBookComponent } from './Component/update-book/update-book.component';
+import { GiverateComponent } from './Component/giverate/giverate.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { AdminunverifiedbooksComponent } from './Component/adminunverifiedbooks/adminunverifiedbooks.component';
+import { RatereviewComponent } from './Component/ratereview/ratereview.component';
 import { UploadBookImageComponent } from './Component/addbook/upload-book-image/upload-book-image.component';
 
 
@@ -65,6 +68,9 @@ import { UploadBookImageComponent } from './Component/addbook/upload-book-image/
     DashboardComponent,
     SidenavbarComponent,
     HeaderComponent,
+    GiverateComponent,
+    AdminunverifiedbooksComponent,
+    RatereviewComponent,
     AddbookComponent,
     UpdateBookComponent,
     UploadBookImageComponent
@@ -92,7 +98,7 @@ import { UploadBookImageComponent } from './Component/addbook/upload-book-image/
     MatSidenavModule,
     MatTooltipModule,
     MatDialogModule,
-  ],
+ ],
   providers: [HttpClient],
   bootstrap: [AppComponent],
 
