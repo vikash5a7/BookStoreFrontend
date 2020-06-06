@@ -18,6 +18,7 @@ export class UpdateBookComponent implements OnInit {
   price = new FormControl(this.data.price, [Validators.required]);
   noOfBooks = new FormControl(this.data.noOfBooks, [Validators.required]);
   bookDetails = new FormControl(this.data.bookDetails, [Validators.required,]);
+  private imageFile:string;
 
   constructor( @Inject(MAT_DIALOG_DATA) public data: any,
   private bookservice: BookService,
@@ -29,7 +30,14 @@ export class UpdateBookComponent implements OnInit {
   updatebook: BookModule = new BookModule();
   ngOnInit(): void {
   }
-  update() {
+
+  onSelectedImage(event) {
+    if (event.target.files.length > 0) {
+      const image=event.target.files[0];
+      this.imageFile =image.name; 
+    }
+  }
+  updateBook() {
     
     this.updatebook.bookName = this.data.bookName;
     this.updatebook.authorName = this.data.authorName;
@@ -39,7 +47,7 @@ export class UpdateBookComponent implements OnInit {
     //this.dialogRef.close();
    
     setTimeout(() => {
-      this.bookservice.updateBook(this.data.bookId, this.updatebook).subscribe(
+      this.bookservice.updateBook(this.data.bookId,this.imageFile, this.updatebook).subscribe(
         (response: any) => {
           if (response.statusCode == 200) {
             this.dialogRef.close({ data: this.updatebook });
