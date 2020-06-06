@@ -6,10 +6,16 @@
         <app-seller></app-seller>
         
     </div>
+    <div *ngIf="isAdmin">
+        <app-adminunverifiedbooks></app-adminunverifiedbooks>
+    </div>
+
+    <!-- <app-displaybook></app-displaybook> -->
 
     <div *ngIf="isUser">
 
     <app-displaybook></app-displaybook>
+
 </div>
 </div>
 <app-footer></app-footer>

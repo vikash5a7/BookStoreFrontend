@@ -4,9 +4,13 @@
 
 export const environment = {
   production: false,
-  BASE_URL: 'http://localhost:8080',
-  BookUrl: 'http://localhost:8080',
-  getallbooksurl: 'books/getAllBooks',
+  BASE_URL: 'http://localhost:8081/',
+  BookUrl: 'http://localhost:8081/',
+  getallbooksurl: '',
+  // BASE_URL: 'http://localhost:8080',
+  // BookUrl: 'http://localhost:8080',
+  // getallbooksurl: 'books/getAllBooks',
+
   getbookbyIdurl: 'books/',
   addandupdatecartUrl: 'books/addandupdatecart',
   sorting: 'books/sorting',
@@ -28,7 +32,18 @@ export const environment = {
   USER_REGISTRATION: 'registration',
   USER_LOGIN: 'login',
   USER_FORGET_PASSWORD: 'forgotpassword',
-  USER_RESETPASSWORD: 'update'
+  USER_RESETPASSWORD: 'update',
+
+  WRITE_REVIEW: "books/ratingreview?bookId=",
+  GET_REVIEWS: "books/ratingreviews/?bookId=",
+
+  adminUrl:"http://localhost:8081/",
+  approveBook:"admin/approveBook/",
+  rejectBook:"admin/rejectBook/",
+  unVerifiedBooks:"admin/unVerifedBooks/",
+  rejectedBooks:"admin/allRejectedBooks/",
+  approvedBooks:"admin/allApprovedBooks/",
+  avgrateofbook:"books/avgrate?bookId=",
 };
 
 
