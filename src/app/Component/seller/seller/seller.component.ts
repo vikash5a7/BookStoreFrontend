@@ -15,7 +15,7 @@ import { UploadBookImageComponent } from '../../addbook/upload-book-image/upload
   styleUrls: ['./seller.component.scss']
 })
 export class SellerComponent implements OnInit {
-
+  bookSearch: any;
   name: string = null;
   books :any;
   constructor(private service: BookService ,private dialog: MatDialog,
@@ -30,6 +30,7 @@ export class SellerComponent implements OnInit {
     });
     this.getUserName();
     this.getallBooks();
+    this.getSearchBookData()
   }
 
   getallBooks() {
@@ -111,5 +112,12 @@ this.status="OnHold";
 
   getUserName() {
    this.name = localStorage.getItem('Name');
+  }
+
+  getSearchBookData() {
+    this.service.getSearchBookData().subscribe((message) => {
+      console.log('search data', message.books);
+      this.bookSearch = message.books;
+    });
   }
 }

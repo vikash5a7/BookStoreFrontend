@@ -16,7 +16,7 @@ export class AddbookComponent implements OnInit {
     private bookService: BookService,
     private dialog: MatDialog,
     private dialogRef: MatDialogRef<AddbookComponent>) { }
-
+    private imageFile:string;
   ngOnInit(): void {
     this.bookForm = this.formBuilder.group({
       bookName: ["", [Validators.required]],
@@ -26,13 +26,21 @@ export class AddbookComponent implements OnInit {
       bookDetails: ["", [Validators.required]]
     });
   }
+
+  onSelectedImage(event) {
+    if (event.target.files.length > 0) {
+      const image=event.target.files[0];
+      this.imageFile =image.name; 
+    }
+  }
     onClickaddBook() {
-      this.bookService.addBook(this.bookForm.value).subscribe(
+      this.bookService.addBook(this.bookForm.value,this.imageFile).subscribe(
         (user) => {
-          this.matSnackBar.open("Book Added SuccessFully", "ok", {
-            duration: 4000,
-          });
-          this.dialogRef.close(1);
+          if(user.statusCode === 200)
+          {
+            this.matSnackBar.open(user.response, "ok", {duration: 4000});
+            this.dialogRef.close(1);
+          }
         },
         (error: any) => {
           this.matSnackBar.open(error.error, "ok", { duration: 4000 });

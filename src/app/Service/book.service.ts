@@ -47,12 +47,9 @@ export class BookService {
     return this.httpService.get(`${environment.BookUrl}/${environment.getallbooksurl}`,{headers:new HttpHeaders({'token':localStorage.token})});  
   }
 
-  addBook(book: any): Observable<any> {
-    console.log('url ',`${environment.BookUrl}/${environment.addbooks}`);
-    console.log('data ',book);
-    
+  addBook(book: any,imageName:string): Observable<any> {
     return this.httpService
-      .post(`${environment.BookUrl}/${environment.addbooks}`, book, {headers:new HttpHeaders({'token':localStorage.token})})
+      .post(`${environment.BookUrl}/${environment.addbooks}/${imageName}`, book, {headers:new HttpHeaders({'token':localStorage.token})})
       .pipe(
         tap(() => {
           this._autoRefresh$.next();
@@ -70,9 +67,9 @@ export class BookService {
       );
   }
 
-  updateBook(bookId:any,book:any):Observable<any>{
+  updateBook(bookId:any,imageName:string,book:any):Observable<any>{
     return this.httpService
-    .put(`${environment.BookUrl}/${environment.editBook}/${bookId}`,book, {headers:new HttpHeaders({'token':localStorage.token})})
+    .put(`${environment.BookUrl}/${environment.editBook}/${bookId}/${imageName}`,book, {headers:new HttpHeaders({'token':localStorage.token})})
     .pipe(
       tap(() => {
         this._autoRefresh$.next();

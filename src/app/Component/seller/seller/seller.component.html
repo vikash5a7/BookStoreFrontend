@@ -5,7 +5,7 @@
     </div>
 
     <div class="list-books">
-    <div  *ngFor=" let book of books " >
+    <div  *ngFor=" let book of books | booksearchpipe:bookSearch" >
       <mat-card style="display: flex;flex-direction: row;  padding: 1rem;" matTooltip="{{ book.bookDetails }}">
 
             <div >
@@ -18,10 +18,12 @@
             <mat-card-content style="display: flex;flex-direction: column;flex-wrap: nowrap;width: auto; margin-top: 10px; margin-bottom: 0px;">
                 <div class="out-of-stock" *ngIf="!book.noOfBooks">Out Of stock</div>
                 <div class="bookname">Book Name : {{ book.bookName }}</div>
-                <div class="authorname">Author name :by {{ book.authorName }}</div>
+                <div class="authorname">Author name : {{ book.authorName }}</div>
                 <div class="price">Rs. {{ book.price }}</div>
                 <div class="noofbooks">No of books : {{ book.noOfBooks }}</div>
-                <div class="status">Approval Status : {{ book.status }}</div>
+                <div class="status"*ngIf="book.status == 'OnHold'" >Status : <label style="color: yellow;">{{ book.status }}</label> </div>
+                <div class="status"*ngIf="book.status == 'approved'">Status : <label style="color: green;">{{ book.status }}</label> </div>
+                <div class="status"*ngIf="book.status == 'rejected'">Status : <label style="color: red;">{{ book.status }}</label> </div>
                 <div class="description">Description : {{ book.bookDetails }}</div>
                       
                 <div  style="display: flex; justify-content: space-around; margin-left: 10px;" >

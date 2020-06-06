@@ -6,15 +6,28 @@ import { BookModule } from '../Model/book/book.module';
 })
 export class BooksearchpipePipe implements PipeTransform {
 
-  transform(boo: BookModule[], searchTerm: string): BookModule[] {
-    console.log(searchTerm);
-    if (!boo || !searchTerm) {
+  transform(boo: BookModule[], searchTerm: string){
+    if (!boo || !searchTerm)
+    {
       return boo;
     }
-    return boo.filter(
-      (book) =>
-        book.bookName.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1
-    );
+    else
+    {
+      return boo.filter(book =>
+        {
+            if (searchTerm && book.bookName.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1){
+                return true;
+            }
+            if (searchTerm && book.authorName.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1){
+                return true;
+            }
+            if (searchTerm && book.status.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1){
+                return true;
+            }
+            return false;
+       })
+        
+    }
   }
-
+  
 }
