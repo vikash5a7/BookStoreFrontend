@@ -91,7 +91,7 @@
     <div class="pagination">
         <div *ngFor="let p of totalPage; let i=index ">
 
-            <a href="" (click)="SetPage(i,$event)" [ngClass]="{'active':i==page}">{{i}}</a>
+            <a href="" fxFlexAlign="center" (click)="SetPage(i,$event)" [ngClass]="{'active':i==page}">{{i}}</a>
         </div>
     </div>
 </div>

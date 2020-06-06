@@ -3,6 +3,7 @@ import { BookService } from 'src/app/Service/book.service';
 import {MatSnackBarModule, MatSnackBar} from '@angular/material/snack-bar';
 import { BookModule } from 'src/app/Model/book/book.module';
 import { PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-displaybook',
   templateUrl: './displaybook.component.html',
@@ -12,7 +13,7 @@ export class DisplaybookComponent implements OnInit {
   selectedValue = 'relevance';
   orderBy = 'asc';
   boo: any;
-  bookList = [];
+  bookList = Array<any>();
   book: BookModule = new BookModule();
   items = [];
   pageofItems: Array<BookModule> = new Array<BookModule>();
@@ -22,7 +23,7 @@ export class DisplaybookComponent implements OnInit {
   book_id: number;
   bookSearch: any;
   bookName: string;
-  page = 12;
+  page = 0;
   length: any = sessionStorage.length;
   pageEvent: PageEvent;
   lengths = 0;
@@ -35,7 +36,9 @@ export class DisplaybookComponent implements OnInit {
   value: any = [];
   @Output() output: EventEmitter<any> = new EventEmitter();
   leng: any;
-  constructor( private service: BookService, private snakbar: MatSnackBar) { }
+  constructor( private service: BookService,
+               private matSnackBar: MatSnackBar,
+               private route: Router) { }
 
   ngOnInit() {
     this.getallApprovedBooks();
@@ -95,45 +98,17 @@ export class DisplaybookComponent implements OnInit {
     this.getallApprovedBooks();
   }
 
-  modo(value: string) {
-  }
-
-  sortingl() {
-    this.data = true;
-    this.service.sorting(this.data).subscribe( response => {
-      this.boo = response.bookList;
-      this.obj = response.bookList;
-      console.log(this.boo, 'booklist');
-      return this.boo;
-    });
-    this.getSearchBookData();
-  }
-  sortingh() {
-    this.data = false;
-    this.service.sorting(this.data).subscribe( response => {
-      this.boo = response.bookList;
-      this.obj = response.bookList;
-      console.log(this.boo, 'booklist');
-      return this.boo;
-    });
-    this.getSearchBookData();
-  }
-
   addtobag( bookId: any) {
+  if (localStorage.getItem('token') === null) {
+    this.matSnackBar.open('Please Login first', 'ok', {
+      duration: 5000
+    });
+    sessionStorage.setItem(bookId, bookId);
+    this.route.navigateByUrl('login');
+  }
   sessionStorage.setItem(bookId, bookId);
   this.getOutput();
   this.ngOnInit();
-}
-
-getData(event?: PageEvent) {
-  console.log(' event:::' + event.pageIndex);
-  this.service.getPagination(event.pageIndex).subscribe( result => {
-                 this.boo = result.bookList;
-                 this.size = result.bookList.length;
-                 console.log(' data:::' + result.bookList);
-                });
-  this.getSearchBookData();
-  return event;
 }
 
 getOutput() {
@@ -142,22 +117,4 @@ getOutput() {
   getUpdatedNotes(event) {
     this.ngOnInit();
     }
-
-getSearchBookData() {
-  this.service.getSearchBookData().subscribe((message) => {
-    console.log('search data', message.books);
-    this.bookSearch = message.books;
-  });
-
-
-}
-SortNewestArrival() {
-  this.service.SortNewestArrival().subscribe((response: any) => {
-    this.boo = response.bookList;
-    console.log(this.boo, 'booklist');
-    this.obj = response.bookList;
-  });
-  this.getSearchBookData();
-}
-
 }
