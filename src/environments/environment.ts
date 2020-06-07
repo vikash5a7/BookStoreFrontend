@@ -31,15 +31,21 @@ export const environment = {
   USER_LOGIN: 'login',
   USER_FORGET_PASSWORD: 'forgotpassword',
   USER_RESETPASSWORD: 'update',
-  WRITE_REVIEW: 'books/ratingreview?bookId=',
-  GET_REVIEWS: 'books/ratingreviews/?bookId=',
-  adminUrl: 'http://localhost:8080/',
-  approveBook: 'admin/approveBook/',
-  rejectBook: 'admin/rejectBook/',
-  unVerifiedBooks: 'admin/unVerifedBooks/',
-  rejectedBooks: 'admin/allRejectedBooks/',
-  approvedBooks: 'admin/allApprovedBooks/',
-  avgrateofbook: 'books/avgrate?bookId=',
+
+
+  WRITE_REVIEW: "books/ratingreview?bookId=",
+  GET_REVIEWS: "books/ratingreviews/?bookId=",
+  ratereview: "books/getratereviews/?bookId=",
+
+  adminUrl:"http://localhost:8080/",
+  approveBook:"admin/approveBook/",
+  rejectBook:"admin/rejectBook/",
+  unVerifiedBooks:"admin/unVerifedBooks/",
+  rejectedBooks:"admin/allRejectedBooks/",
+  approvedBooks:"admin/allApprovedBooks/",
+  avgrateofbook:"books/avgrate?bookId=",
+ 
+
 };
 
 
