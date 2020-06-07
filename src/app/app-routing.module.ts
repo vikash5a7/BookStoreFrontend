@@ -12,22 +12,23 @@ import { DisplaybookComponent } from './Component/displaybook/displaybook.compon
 import { CartComponent } from './Component/cart/cart.component';
 import { OrdergreetingComponent } from './Component/ordergreeting/ordergreeting.component';
 import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.component';
-import { AdminunverifiedbooksComponent } from './Component/adminunverifiedbooks/adminunverifiedbooks.component';
 import { HeaderComponent } from './Component/header/header.component';
+import { GiverateComponent } from './Component/giverate/giverate.component';
+import { AdminunverifiedbooksComponent } from './Component/adminunverifiedbooks/adminunverifiedbooks.component';
+import { RatereviewComponent } from './Component/ratereview/ratereview.component';
 
 
 
 
 const routes: Routes = [
-  
-  {
-    path: '', redirectTo: 'Displaybook',
+
+   {
+    path: '', redirectTo: 'books',
     pathMatch: 'full'
   },
-  {path: 'verifybook', component: AdminunverifiedbooksComponent},
-  {path: '', component: DisplaybookComponent},
-  {path: 'toolbar', component: ToolbarComponent},
-  {path: 'dashboard', component: DashboardComponent},
+
+  
+  {path: 'books', component: DashboardComponent},
   {path: 'Displaybook', component: DisplaybookComponent},
   {path: 'cart', component: CartComponent},
   {path: 'greeting', component: OrdergreetingComponent},
@@ -37,8 +38,10 @@ const routes: Routes = [
   {path: 'seller', component: SellerComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'register', component: RegistrationComponent},
-  {path: 'dashboard', component: HeaderComponent},
-  {path: '**', component: PagenotfoundComponent}
+  {path: 'books/ratingandreview/:bookId', component: GiverateComponent},
+  {path: 'verifybook', component: AdminunverifiedbooksComponent},
+  {path: 'books/rate/:bookId', component: RatereviewComponent},
+  {path: '**', component: PagenotfoundComponent},
 
 ];
 

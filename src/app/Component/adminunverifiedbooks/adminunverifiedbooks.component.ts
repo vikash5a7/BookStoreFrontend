@@ -17,7 +17,9 @@ export class AdminunverifiedbooksComponent implements OnInit {
   noteId:number=1;
 
   ngOnInit(): void {
-      this.getUnApprovedBooks();
+
+    this.getUnApprovedBooks();
+
     // this.dataSource.paginator = this.paginator;
     console.log("books ",this.books);
     this.adminService.autoRefresh.subscribe(() => {
@@ -76,20 +78,5 @@ rejectBooks(bookId:number){
         this.snakbar.open(error.error.message, "failed", {duration:5000});
       }
     );
-
-  
-  }
-
-  bookList = [
-    { 
-      bookName:"The dark City" , authorName: "Williams" , price: "2000"
-    },
-    { 
-      bookName:"The MoonLight" , authorName: "Fernas" , price: "5000"
-    },
-    { 
-      bookName:"Machine Learning" , authorName: "john" , price: "900" 
-    },
-
-  ]
+}
 }

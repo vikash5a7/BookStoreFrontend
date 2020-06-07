@@ -38,11 +38,16 @@ import { SellerComponent } from './Component/seller/seller/seller.component';
 import { FooterComponent } from './Component/footer/footer.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { SidenavbarComponent } from './Component/sidenavbar/sidenavbar.component';
-
-import { AdminunverifiedbooksComponent } from './Component/adminunverifiedbooks/adminunverifiedbooks.component';
-import {MatTableModule} from '@angular/material/table';
-
+import { AddbookComponent } from './Component/addbook/addbook.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { UpdateBookComponent } from './Component/update-book/update-book.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { GiverateComponent } from './Component/giverate/giverate.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { AdminunverifiedbooksComponent } from './Component/adminunverifiedbooks/adminunverifiedbooks.component';
+import { RatereviewComponent } from './Component/ratereview/ratereview.component';
+import { UploadBookImageComponent } from './Component/addbook/upload-book-image/upload-book-image.component';
+
 
 
 @NgModule({
@@ -64,10 +69,13 @@ import {NgxPaginationModule} from 'ngx-pagination';
     FooterComponent,
     DashboardComponent,
     SidenavbarComponent,
-
+    HeaderComponent,
+    GiverateComponent,
     AdminunverifiedbooksComponent,
-
-    HeaderComponent
+    RatereviewComponent,
+    AddbookComponent,
+    UpdateBookComponent,
+    UploadBookImageComponent
 
   ],
   imports: [
@@ -91,9 +99,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
     MatMenuModule,
     MatButtonModule,
     MatSidenavModule,
-
-    MatTableModule,
-
+    NgxPaginationModule,
+    MatTooltipModule,
+    MatDialogModule,
     NgxPaginationModule
 
   ],

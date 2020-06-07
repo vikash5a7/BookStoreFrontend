@@ -1,15 +1,19 @@
 
-<div role="combobox" flex="column" style="margin-left: 15%;">
+
+
+<div role="combobox" flex="column" style="margin-left: 23%;">
+
 
   
     <div *ngFor="let book of books">
       <div>
         <mat-card
           class="matcard2"
-        
+
+
         >
           <div class="cartdetails" fxLayout="row" fxLayoutAlign="start start">
-            <img class="bookimg" src="assets\bookimage\books1.jpg" />
+            <img class="bookimg" src="assets\bookimage\img1.jpeg" />
   
             <div class="bookdetails">
               <div class="booktitle" style="word-wrap: break-word;">
@@ -19,23 +23,40 @@
               <div class="sub" style="word-wrap: break-word;">
             {{book.authorName}}
               </div>
-              <div style="margin-bottom: 11%;font: Bold 18px/15px Lato;margin-left: -25px;">
+
+              <div
+                style="
+                  margin-bottom: 11%;
+                  font: Bold 18px/15px Lato;
+                  margin-left: -25px;
+                "
+              >
+
                Rs. {{book.price}}
               </div>
              
             </div>
           </div>
-          <div style="margin-bottom: 8px;margin-top: 10px; font: Bold 18px/15px Lato;margin-left: 27px;">
+          <div style="margin-bottom: 8px; margin-left: 27px; margin-top:20px; font: Bold 18px/15px Lato;" >
             Description:
           </div>
           <div style="margin-left: 27px;">{{book.bookDetails}}</div>
+  
+          <!-- </div> -->
+
           <div fxLayout="row wrap" fxLayoutAlign="end end" >
             <button mat-raised-button class="button" (click)="approveBooks(book.bookId)">
               APPROVE
             </button>
-            <button mat-raised-button class="button" style="background-color: #f44336;" (click)="rejectBooks(book.bookId)">
+            <button
+              mat-raised-button
+              class="button"
+              style="background-color: #f44336;" (click)="rejectBooks(book.bookId)"
+            >
               REJECT
             </button>
+            
+
           </div>
 
         </mat-card>

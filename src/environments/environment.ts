@@ -4,33 +4,49 @@
 
 export const environment = {
   production: false,
-  BASE_URL: 'http://localhost:8080',
+  BASE_URL: 'http://localhost:8080/',
   BookUrl: 'http://localhost:8080/',
-  getallbooksurl: '',
+  // getallbooksurl: '',
+  // BASE_URL: 'http://localhost:8080',
+  // BookUrl: 'http://localhost:8080',
+  getallbooksurl: 'books/getAllBooks',
+
   getbookbyIdurl: 'books/',
   addandupdatecartUrl: 'books/addandupdatecart',
   sorting: 'books/sorting',
   SortNewestArrival: 'books/unsorting',
   cusUrl : 'books/pagewise',
+  addbooks:'books/addbook',
+  deleteBook:'books/deletebook',
+  editBook:'books/editbook',
+  verifyBook:'books/editBookStatus',
+  addBookImage:'books/addBookImage',
 
-  CartUrl: 'http://localhost:8081/',
+  CartUrl: 'http://localhost:8080/',
   addUrl: 'customers/addcustomer',
   addtocart: 'carts/addcart',
   getbookprice: 'getbookprice',
 
-  quantity: 'http://localhost:8081/',
+  quantity: 'http://localhost:8080/',
   addbooksquantity: 'addbooksquantity',
   USER_REGISTRATION: 'registration',
   USER_LOGIN: 'login',
   USER_FORGET_PASSWORD: 'forgotpassword',
   USER_RESETPASSWORD: 'update',
 
-  adminUrl:"http://localhost:8081/",
+
+  WRITE_REVIEW: "books/ratingreview?bookId=",
+  GET_REVIEWS: "books/ratingreviews/?bookId=",
+
+  adminUrl:"http://localhost:8080/",
   approveBook:"admin/approveBook/",
   rejectBook:"admin/rejectBook/",
   unVerifiedBooks:"admin/unVerifedBooks/",
   rejectedBooks:"admin/allRejectedBooks/",
   approvedBooks:"admin/allApprovedBooks/",
+
+  avgrateofbook:"books/avgrate?bookId=",
+
 };
 
 
