@@ -19,6 +19,7 @@ export class AdminService {
   private rejectedBooks = environment.rejectedBooks;
   private approvedBooks = environment.approvedBooks;
 
+
   private token = localStorage.getItem('token');
   private subject = new Subject<any>();
   public get autoRefresh() {

@@ -1,7 +1,6 @@
 import { HeaderComponent } from './Component/header/header.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -41,7 +40,6 @@ import { SidenavbarComponent } from './Component/sidenavbar/sidenavbar.component
 import { AddbookComponent } from './Component/addbook/addbook.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { UpdateBookComponent } from './Component/update-book/update-book.component';
-import {NgxPaginationModule} from 'ngx-pagination';
 import { GiverateComponent } from './Component/giverate/giverate.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { AdminunverifiedbooksComponent } from './Component/adminunverifiedbooks/adminunverifiedbooks.component';
@@ -99,12 +97,9 @@ import { UploadBookImageComponent } from './Component/addbook/upload-book-image/
     MatMenuModule,
     MatButtonModule,
     MatSidenavModule,
-    NgxPaginationModule,
     MatTooltipModule,
     MatDialogModule,
-    NgxPaginationModule
-
-  ],
+ ],
   providers: [HttpClient],
   bootstrap: [AppComponent],
 

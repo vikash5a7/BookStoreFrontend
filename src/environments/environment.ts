@@ -4,24 +4,25 @@
 
 export const environment = {
   production: false,
-  BASE_URL: 'http://localhost:8080/',
-  BookUrl: 'http://localhost:8080/',
-  // getallbooksurl: '',
+
+  BASE_URL: 'http://localhost:8080',
+  BookUrl: 'http://localhost:8080',
+  getallbooksurl: '',
   // BASE_URL: 'http://localhost:8080',
   // BookUrl: 'http://localhost:8080',
-  getallbooksurl: 'books/getAllBooks',
+  // getallbooksurl: 'books/getAllBooks',
 
   getbookbyIdurl: 'books/',
   addandupdatecartUrl: 'books/addandupdatecart',
   sorting: 'books/sorting',
   SortNewestArrival: 'books/unsorting',
   cusUrl : 'books/pagewise',
-  addbooks:'books/addbook',
-  deleteBook:'books/deletebook',
-  editBook:'books/editbook',
-  verifyBook:'books/editBookStatus',
-  addBookImage:'books/addBookImage',
 
+  addbooks: 'books/addbook',
+  deleteBook: 'books/deletebook',
+  editBook: 'books/editbook',
+  verifyBook: 'books/editBookStatus',
+  addBookImage: 'books/addBookImage',
   CartUrl: 'http://localhost:8080/',
   addUrl: 'customers/addcustomer',
   addtocart: 'carts/addcart',
@@ -37,6 +38,7 @@ export const environment = {
 
   WRITE_REVIEW: "books/ratingreview?bookId=",
   GET_REVIEWS: "books/ratingreviews/?bookId=",
+  ratereview: "books/getratereviews/?bookId=",
 
   adminUrl:"http://localhost:8080/",
   approveBook:"admin/approveBook/",
@@ -46,6 +48,7 @@ export const environment = {
   approvedBooks:"admin/allApprovedBooks/",
 
   avgrateofbook:"books/avgrate?bookId=",
+
 
 };
 

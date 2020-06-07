@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ViewChild  } from '@angular/core';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-sidenavbar',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidenavbar.component.scss']
 })
 export class SidenavbarComponent implements OnInit {
+  @ViewChild('sidenav', { static: true }) public sidenav: MatSidenavModule;
   isSeller = false;
   isAdmin=false;
   role:string;

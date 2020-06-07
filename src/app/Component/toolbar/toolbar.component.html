@@ -1,5 +1,11 @@
 <mat-toolbar style="background-color: rgba(131, 4, 4, 0.829);" fxLayout="row" xLayoutAlign="space-between center" fullscreen>
-    <!-- home -->
+  <span *ngIf="isAdmin">
+    <button  mat-icon-button (click)="ontoggel(opened)" class="menu">
+
+      <mat-icon matTooltip="Main menu">menu</mat-icon>
+    </button>
+</span>
+  <!-- home -->
     <div class="home" fxFlex="10" fxLayoutGap="5%"></div>
     <!-- logo  name -->
     <div class="logo-name" fxFlex="15">
@@ -30,7 +36,7 @@
       (input)="bookSearch()"/>
   </div>
   <!-- Shooping cart -->
-  <div class="cart" *ngIf="isUser"  align="center">
+  <div class="cart" align="center" *ngIf="!isAdmin && !isSeller">
     <span style="color: #fff; font-size: small;">Cart</span>
             <button mat-icon-button routerLink="/cart" matTooltip="Cart">
                   <mat-icon matBadge="{{ length }}" matBadgeSize="small">add_shopping_cart</mat-icon>
@@ -71,3 +77,8 @@
             </mat-menu>
         </div>
 </mat-toolbar>
+
+  
+
+
+

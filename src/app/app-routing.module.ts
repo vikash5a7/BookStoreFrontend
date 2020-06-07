@@ -7,29 +7,21 @@ import { ForgetPasswordComponent } from './Component/auth/forget-password/forget
 import { ResetPasswordComponent } from './Component/auth/reset-password/reset-password.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ToolbarComponent } from './Component/toolbar/toolbar.component';
-import { DisplaybookComponent } from './Component/displaybook/displaybook.component';
 import { CartComponent } from './Component/cart/cart.component';
 import { OrdergreetingComponent } from './Component/ordergreeting/ordergreeting.component';
 import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.component';
-import { HeaderComponent } from './Component/header/header.component';
 import { GiverateComponent } from './Component/giverate/giverate.component';
 import { AdminunverifiedbooksComponent } from './Component/adminunverifiedbooks/adminunverifiedbooks.component';
 import { RatereviewComponent } from './Component/ratereview/ratereview.component';
 
 
-
-
 const routes: Routes = [
 
-   {
+  {
     path: '', redirectTo: 'books',
     pathMatch: 'full'
   },
-
-  
   {path: 'books', component: DashboardComponent},
-  {path: 'Displaybook', component: DisplaybookComponent},
   {path: 'cart', component: CartComponent},
   {path: 'greeting', component: OrdergreetingComponent},
   {path: 'reset-password', component: ResetPasswordComponent},
@@ -38,9 +30,9 @@ const routes: Routes = [
   {path: 'seller', component: SellerComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'register', component: RegistrationComponent},
-  {path: 'books/ratingandreview/:bookId', component: GiverateComponent},
+  {path: 'books/rateandreview/:bookId', component: GiverateComponent},
   {path: 'verifybook', component: AdminunverifiedbooksComponent},
-  {path: 'books/rate/:bookId', component: RatereviewComponent},
+  {path: 'books/reviews/:bookId', component: RatereviewComponent},
   {path: '**', component: PagenotfoundComponent},
 
 ];
