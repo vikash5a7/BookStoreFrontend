@@ -40,6 +40,7 @@ export class DisplaybookComponent implements OnInit {
 
   ngOnInit() {
     this.getallApprovedBooks();
+    this.getSearchBookData();
     this.leng = sessionStorage.length;
     for (let i = 0; i < sessionStorage.length; i++) {
       const key = sessionStorage.key(i);
@@ -85,6 +86,12 @@ export class DisplaybookComponent implements OnInit {
       console.log('total books are ' + this.size);
       console.log('curret page number is ' + this.CurrentPageNo);
       console.log('Books are  ', this.bookList);
+    });
+  }
+getSearchBookData() {
+    this.service.getSearchBookData().subscribe((message) => {
+      console.log('search data', message.books);
+      this.bookSearch = message.books;
     });
   }
 
