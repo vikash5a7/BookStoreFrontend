@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Subject, Observable } from 'rxjs';
 import { HttpserviceService } from './httpservice.service';
 import { BookModule } from '../Model/book/book.module';
-import { tap, map, catchError } from "rxjs/operators";
+import { tap, map, catchError } from 'rxjs/operators';
 
 
 @Injectable({
@@ -12,17 +12,25 @@ import { tap, map, catchError } from "rxjs/operators";
 })
 export class BookService {
 
+  // tslint:disable-next-line: variable-name
   private _autoRefresh$ = new Subject();
 
   get autoRefresh$() {
     return this._autoRefresh$;
   }
- 
+
 
   private searchBookData = new Subject<any>();
   private baseUrl = environment.BASE_URL;
   private notesList = new Subject<any>();
+
   // tslint:disable-next-line: variable-name  
+
+  // tslint:disable-next-line: variable-name
+
+
+
+
 
   private httpOtions = {
     headers: new HttpHeaders({ 'content-type': 'application/json' })
@@ -35,21 +43,21 @@ export class BookService {
 
 
   public getAllApprovedBook(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/books/approvedBooks`);
+    return this.http.get(`${this.baseUrl}/books/approved?order=asc`);
+  }
+  public getAllApprovedBookByPage(page: number, sortby ?: string, orderBy ?: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/books/approved?page=${page}&order=${orderBy}&sortBy=${sortby}`);
   }
 
   getallBooks() {
-    //  return this.http.get<any>(environment.BookUrl + environment.getallbooksurl);
-   
-    return this.httpService.get(`${environment.BookUrl}/${environment.getallbooksurl}`,{headers:new HttpHeaders({'token':localStorage.token})});  
+    console.log('getting all books');
+    // tslint:disable-next-line: max-line-length
+    return this.httpService.get(`${this.baseUrl}/books/getAllBooks`, {headers: new HttpHeaders({token: localStorage.token})});
   }
 
-  addBook(book: any): Observable<any> {
-    console.log('url ',`${environment.BookUrl}/${environment.addbooks}`);
-    console.log('data ',book);
-    
+  addBook(book: any, imageName: string): Observable<any> {
     return this.httpService
-      .post(`${environment.BookUrl}/${environment.addbooks}`, book, {headers:new HttpHeaders({'token':localStorage.token})})
+      .post(`${environment.BookUrl}/${environment.addbooks}/${imageName}`, book, {headers: new HttpHeaders({token: localStorage.token})})
       .pipe(
         tap(() => {
           this._autoRefresh$.next();
@@ -57,9 +65,9 @@ export class BookService {
       );
   }
 
-  deleteBook(bookId:any):Observable<any>{
+  deleteBook(bookId: any): Observable<any> {
     return this.httpService
-      .delete(`${environment.BookUrl}/${environment.deleteBook}/${bookId}`, {headers:new HttpHeaders({'token':localStorage.token})})
+      .delete(`${environment.BookUrl}/${environment.deleteBook}/${bookId}`, {headers: new HttpHeaders({token: localStorage.token})})
       .pipe(
         tap(() => {
           this._autoRefresh$.next();
@@ -67,9 +75,10 @@ export class BookService {
       );
   }
 
-  updateBook(bookId:any,book:any):Observable<any>{
+  updateBook(bookId: any, imageName: string, book: any): Observable<any> {
     return this.httpService
-    .put(`${environment.BookUrl}/${environment.editBook}/${bookId}`,book, {headers:new HttpHeaders({'token':localStorage.token})})
+    // tslint:disable-next-line: max-line-length
+    .put(`${environment.BookUrl}/${environment.editBook}/${bookId}/${imageName}`, book, {headers: new HttpHeaders({token: localStorage.token})})
     .pipe(
       tap(() => {
         this._autoRefresh$.next();
@@ -77,11 +86,12 @@ export class BookService {
     );
   }
 
-  verifyBook(bookId:any,status:any):Observable<any>{
-    console.log('url ',`${environment.BookUrl}/${environment.verifyBook}/${bookId}/${status}`);
-    
+  verifyBook(bookId: any, status: any): Observable<any> {
+    console.log('url ', `${environment.BookUrl}/${environment.verifyBook}/${bookId}/${status}`);
+
     return this.httpService
-      .put(`${environment.BookUrl}/${environment.verifyBook}/${bookId}/${status}`, " ",{headers:new HttpHeaders({'token':localStorage.token})})
+      // tslint:disable-next-line: max-line-length
+      .put(`${environment.BookUrl}/${environment.verifyBook}/${bookId}/${status}`, ' ', {headers: new HttpHeaders({token: localStorage.token})})
       .pipe(
         tap(() => {
           this._autoRefresh$.next();
@@ -91,13 +101,21 @@ export class BookService {
 
   uploadBookImage(bookId,  formData): Observable<any> {
     return this.httpService
-      .post(`${environment.BookUrl}/${environment.addBookImage}/${bookId}`,formData,{headers:new HttpHeaders({'token':localStorage.token})})
+      // tslint:disable-next-line: max-line-length
+      .post(`${environment.BookUrl}/${environment.addBookImage}/${bookId}`, formData, {headers: new HttpHeaders({token: localStorage.token})})
       .pipe(
         tap(() => {
           this._autoRefresh$.next();
         })
       );
   }
+  getBokkByid(Bookid: any): Observable<any> {
+    return this.http.get(`${this.baseUrl}/books/${Bookid}`,
+       { headers: new HttpHeaders().set('token', localStorage.getItem('token')) }).pipe(tap(() => {
+        this._autoRefresh$.next();
+      }));
+  }
+
   setSearchBookData(message: any) {
     console.log('set service', message);
     return this.searchBookData.next({ books: message });
@@ -107,26 +125,20 @@ export class BookService {
     return this.searchBookData.asObservable();
   }
 
-  getBokkByid(Bookid: any): Observable<any> {
-    return this.http.get(
-      environment.BASE_URL + "book/bookdetails/" + Bookid,
-      {}
-    );
-  }
-  public getRateOfBookById(bookId: any) : Observable<any>{
-    console.log("get rate  ",bookId);
+
+  public getRateOfBookById(bookId: any): Observable<any> {
+    console.log('get rate  ', bookId);
     console.log( environment.BASE_URL + environment.avgrateofbook + bookId);
-    
     return this.http.get(
       environment.BASE_URL + environment.avgrateofbook + bookId,
       {}
     );
   }
 
-  public getBookById(bookId: any) : Observable<any>{
-    console.log("writring review for bookid ",bookId);
+  public getBookById(bookId: any): Observable<any> {
+    console.log('writring review for bookid ', bookId);
     console.log( environment.BASE_URL + environment.getbookbyIdurl + bookId);
-    
+
     return this.http.get(
       environment.BASE_URL + environment.getbookbyIdurl + bookId,
       {}
@@ -145,13 +157,13 @@ export class BookService {
     return this.http.get<any>(environment.BookUrl + environment.SortNewestArrival);
   }
 
-  public ratingandreview(bookId: Number, data: any){
-    console.log("ratingandreview service method bookId :",bookId);
-    console.log("ratingandreview service method rate& review dto :",data);
-    console.log("url "+environment.BASE_URL+environment.WRITE_REVIEW+bookId);
-    
+  public ratingandreview(bookId: number, data: any) {
+    console.log('ratingandreview service method bookId :', bookId);
+    console.log('ratingandreview service method rate& review dto :', data);
+    console.log('url ' + environment.BASE_URL + environment.WRITE_REVIEW + bookId);
+
     return this.http
-      .put(environment.BASE_URL+environment.WRITE_REVIEW+bookId, data,this.httpOptions)
+      .put(environment.BASE_URL + environment.WRITE_REVIEW + bookId, data, this.httpOptions)
       .pipe(
         tap(() => {
           this.searchBookData.next();

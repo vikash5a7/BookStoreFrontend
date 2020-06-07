@@ -1,14 +1,11 @@
 <div style="width: 100%;" style="height: 11%;">
     <app-toolbar flexLayout="row" (toggleEvent)="nameEventHander($event)">
     </app-toolbar>
-
-  
-
+    <!-- <app-toolbar flexLayout="row"></app-toolbar> -->
 </div>
 <div class="dashboard-content" style="height: 84%; margin-left: 0%; padding-left: 0%;">
     <div *ngIf="isSeller">
         <app-seller></app-seller>
-        
     </div>
     <div *ngIf="isAdmin">   
       
@@ -16,12 +13,10 @@
         <app-adminunverifiedbooks></app-adminunverifiedbooks>
     </div>
 
-    <!-- <app-displaybook></app-displaybook> -->
+    <div *ngIf="!isSeller && !isAdmin">
+        <app-displaybook></app-displaybook>
+        <router-outlet></router-outlet>
+    </div>
 
-    <div *ngIf="isUser">
-
-    <app-displaybook></app-displaybook>
-
-</div>
 </div>
 <app-footer></app-footer>

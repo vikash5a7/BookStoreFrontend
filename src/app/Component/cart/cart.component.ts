@@ -192,15 +192,11 @@ addtcart( user: any) {
     this.value[i] = sessionStorage.getItem(key);
     console.log('key', key);
     console.log('ghgvvb=====' + user);
-
     console.log('---' + this.bid);
-    this.cartService.addtocart(this.value[i], user).subscribe((response: any) => {
+    this.cartService.addtocart(this.value[0], user).subscribe((response: any) => {
      console.log(response);
      this.book[i] = response.obj;
      console.log(this.book, 'kkkkkkkk');
-    // console.log(this.book.bookName,'kkkkkkkk111111111111111111');
-    //  return this.book;
-
 });
 }
 }
@@ -215,21 +211,15 @@ getprice(): any {
      console.log(response);
      this.book[i] = response.obj;
      console.log(this.book, 'kkkkkkkk');
-    // console.log(this.book.bookName,'kkkkkkkk111111111111111111');
      return this.book;
     });
-
   }
   }
 
 
     addItem() {
       this.quantity = this.quantity + 1;
-      // localStorage.setItem(this.quantity);
-
       console.log('plus is : ' + this.quantity);
-
-
       }
 
       removeItem() {
