@@ -6,28 +6,26 @@ import { BookModule } from '../Model/book/book.module';
 })
 export class BooksearchpipePipe implements PipeTransform {
 
-  transform(boo: BookModule[], searchTerm: string){
-    if (!boo || !searchTerm)
-    {
-      return boo;
-    }
-    else
-    {
-      return boo.filter(book =>
-        {
-            if (searchTerm && book.bookName.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1){
+  transform(book: BookModule[], searchTerm: string) {
+    if (!book || !searchTerm) {
+      console.log('searching the ' + searchTerm);
+      return book;
+    } else {
+      // tslint:disable-next-line: no-shadowed-variable
+      return book.filter(book => {
+            if (searchTerm && book.bookName.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1) {
                 return true;
             }
-            if (searchTerm && book.authorName.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1){
+            if (searchTerm && book.authorName.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1) {
                 return true;
             }
-            if (searchTerm && book.status.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1){
+            if (searchTerm && book.status.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1) {
                 return true;
             }
             return false;
-       })
-        
+       });
+
     }
   }
-  
+
 }

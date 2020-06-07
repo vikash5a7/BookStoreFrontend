@@ -10,6 +10,7 @@ export class OrdergreetingComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    sessionStorage.clear();
   }
 
 }

@@ -10,8 +10,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-  @Input()
-  color: ThemePalette;
   public error = null;
   message = null;
   public isloading = false;

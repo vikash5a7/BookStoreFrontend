@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { TokenService } from 'src/app/Service/token.service';
 import { Router } from '@angular/router';
 import { BookService } from 'src/app/Service/book.service';
-import {  MatSnackBar } from "@angular/material/snack-bar";
+import {  MatSnackBar } from '@angular/material/snack-bar';
 
-import {  MatDialog } from "@angular/material/dialog";
+import {  MatDialog } from '@angular/material/dialog';
 import { AddbookComponent } from '../../addbook/addbook.component';
 import { UpdateBookComponent } from '../../update-book/update-book.component';
 import { UploadBookImageComponent } from '../../addbook/upload-book-image/upload-book-image.component';
@@ -15,13 +15,14 @@ import { UploadBookImageComponent } from '../../addbook/upload-book-image/upload
   styleUrls: ['./seller.component.scss']
 })
 export class SellerComponent implements OnInit {
-  bookSearch: any;
-  name: string = null;
-  books :any;
-  constructor(private service: BookService ,private dialog: MatDialog,
-    private matSnackBar: MatSnackBar,
+  constructor(private service: BookService , private dialog: MatDialog,
+              private matSnackBar: MatSnackBar,
 
   ) { }
+  bookSearch: any;
+  name: string = null;
+  books: any;
+  status: string;
 
 
   ngOnInit(): void {
@@ -30,27 +31,26 @@ export class SellerComponent implements OnInit {
     });
     this.getUserName();
     this.getallBooks();
-    this.getSearchBookData()
+    this.getSearchBookData();
   }
 
   getallBooks() {
     console.log('gett all book called');
     this.service.getallBooks().subscribe( response => {
       this.books = response.obj;
-      console.log('All books ',this.books);
+      console.log('All books ', this.books);
     });
-   
+
   }
 
   deleteBook(bookId) {
     this.service.deleteBook(bookId).subscribe((message) => {
-      if(message.statusCode===202)
-      {
-        this.matSnackBar.open("Book Deleted Successfully", "OK", {
+      if (message.statusCode === 202) {
+        this.matSnackBar.open('Book Deleted Successfully', 'OK', {
           duration: 4000,
         });
-    }else{
-      this.matSnackBar.open("Error in Book Deletion", "ok", { duration: 4000 });
+    } else {
+      this.matSnackBar.open('Error in Book Deletion', 'ok', { duration: 4000 });
     }
     });
   }
@@ -58,20 +58,20 @@ export class SellerComponent implements OnInit {
 
   openImageDialog(bookId): void {
     const dialogRef = this.dialog.open(UploadBookImageComponent, {
-      width: "25rem",
-      panelClass: "custom-dialog-container",
+      width: '25rem',
+      panelClass: 'custom-dialog-container',
       data: { bookId },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log("The dialog was closed");
+      console.log('The dialog was closed');
     });
   }
 
-  editBook(book:any): void {
+  editBook(book: any): void {
     const dialogRef = this.dialog.open(UpdateBookComponent, {
-      width: "25rem",
-      height:"auto",
-      panelClass: "custom-dialog-container",
+      width: '25rem',
+      height: 'auto',
+      panelClass: 'custom-dialog-container',
       data: {
         bookName: book.bookName,
         authorName: book.authorName,
@@ -82,30 +82,28 @@ export class SellerComponent implements OnInit {
       },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log("The dialog was closed");
+      console.log('The dialog was closed');
     });
   }
 
-  addBook(){
+  addBook() {
     const dialogRef = this.dialog.open(AddbookComponent, {
-      width: "25rem",
-      panelClass: "custom-dialog-container",
+      width: '25rem',
+      panelClass: 'custom-dialog-container',
     });
     dialogRef.afterClosed().subscribe((result) => {
-      console.log("The dialog was closed");
-    }); 
+      console.log('The dialog was closed');
+    });
   }
-  status:string;
-  verifyBook(bookId:any){
-this.status="OnHold";
-    this.service.verifyBook(bookId,this.status).subscribe((message) => {
-      if(message.statusCode===202)
-      {
-        this.matSnackBar.open("Request sent Successfully", "OK", {
+  verifyBook(bookId: any) {
+this.status = 'OnHold';
+this.service.verifyBook(bookId, this.status).subscribe((message) => {
+      if (message.statusCode === 202) {
+        this.matSnackBar.open('Request sent Successfully', 'OK', {
           duration: 4000,
         });
-    }else{
-      this.matSnackBar.open("Error in Book Deletion", "ok", { duration: 4000 });
+    } else {
+      this.matSnackBar.open('Error in Book Deletion', 'ok', { duration: 4000 });
     }
     });
   }

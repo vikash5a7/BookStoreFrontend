@@ -1,7 +1,7 @@
 export class Customer {
-     Name : String;
-	 Phonenumber : number;
-	 home : any;
-	 Work : any;
-	 Other : any;
+     Name: string;
+     Phonenumber: number;
+     home: any;
+     Work: any;
+     Other: any;
 }
