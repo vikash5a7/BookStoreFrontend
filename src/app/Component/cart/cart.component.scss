@@ -1,10 +1,10 @@
 .main-conatiner {
     border-color: black;
     margin-top: 0%;
-    width: 84.9%;
+    width: 90%;
+    height: 50%;
     margin-left: 8%;
     border: slategrey 1px;
-    // box-shadow: 0 0 2px 0 rgba(0,0,0,0.6);
     justify-content: center;
 }
 
@@ -13,7 +13,7 @@
     margin: 20px;
     padding: 10px;
     border-color: black;
-    width: 54%;
+    width: 55%;
     margin-left: 14%;
     // border:  1px #555;
     border: slategrey 1px;
@@ -37,7 +37,7 @@
     //margin: 20px;
     //padding: 10px;
     border-color: black;
-    width: 54%;
+    width: 55%;
     margin-left: 14%;
     // border:  1px #555;
     border: slategrey 1px;
@@ -195,7 +195,7 @@ mat-form-field {
 
 .author {
     float: center;
-    margin-left: -3em;
+    margin-left: -4em;
     font-size: 10px;
     color: slategrey;
     padding-top: 10px
@@ -210,8 +210,8 @@ mat-form-field {
 
 .price {
     margin-left: -2.3em;
-    padding-top: 40PX;
-    font-size: 15px;
+    padding-top: 34PX;
+    font-size: 17px;
 }
 
 .author1 {
@@ -255,7 +255,7 @@ mat-form-field {
 }
 
 .button2 {
-    margin-left: 70%;
+    margin-left: 0%;
     display: flexbox;
     //float: right;
     border-radius: 2px;
@@ -263,6 +263,7 @@ mat-form-field {
     margin-bottom: 7%;
     font-size: 14px;
     width: 151px;
+    margin-top: 100px;
     height: 35px;
     background-color: #3371B5;
     border-color: #3371B5;
@@ -280,20 +281,15 @@ mat-form-field {
 }
 
 .button1 {
-    display: flexbox;
-    //position: fixed;
-    margin-left: 20em;
-    margin-top: 30%;
+    margin-left: 37em;
+    margin-bottom: 7px;
+    margin-top: 6%;
     font-size: 14px;
-    width: 151px;
+    width: 131px;
     height: 35px;
-    border-radius: 2px;
-    opacity: 1;
     background-color: #3371B5;
     border-color: #3371B5;
     color: white;
-    outline: rgba(224, 34, 34, 0.829);
-    font: Medium 14px/17px Lato;
     opacity: 1;
     outline: none;
     box-shadow: none;
