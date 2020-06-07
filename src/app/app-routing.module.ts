@@ -21,7 +21,7 @@ import { RatereviewComponent } from './Component/ratereview/ratereview.component
 
 
 const routes: Routes = [
-  // {path: 'verifybook', component: AdminunverifiedbooksComponent},
+
   {
     path: '', redirectTo: 'books',
     pathMatch: 'full'
@@ -37,9 +37,9 @@ const routes: Routes = [
   {path: 'seller', component: SellerComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'register', component: RegistrationComponent},
-  {path: 'books/ratingandreview/:bookId', component: GiverateComponent},
+  {path: 'books/rateandreview/:bookId', component: GiverateComponent},
   {path: 'verifybook', component: AdminunverifiedbooksComponent},
-  {path: 'books/rate/:bookId', component: RatereviewComponent},
+  {path: 'books/reviews/:bookId', component: RatereviewComponent},
   {path: '**', component: PagenotfoundComponent},
 ];
 

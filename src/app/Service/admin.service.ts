@@ -18,7 +18,9 @@ export class AdminService {
   private unVerifiedBooks = environment.unVerifiedBooks;
   private rejectedBooks = environment.rejectedBooks;
   private approvedBooks = environment.approvedBooks;
-  private token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6M30.rzol7EjZW2exz-O-d40T3FvIem3Lk8kYGTngic_YHHX2_T7c4zMCcjDfzMXtOHehZkP8cW7TDK_tWELwWkkryQ";
+  // private token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6M30.rzol7EjZW2exz-O-d40T3FvIem3Lk8kYGTngic_YHHX2_T7c4zMCcjDfzMXtOHehZkP8cW7TDK_tWELwWkkryQ";
+
+  private token = localStorage.getItem('token');
 
   private subject = new Subject<any>();
   public get autoRefresh() {

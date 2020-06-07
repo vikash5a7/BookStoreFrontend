@@ -36,6 +36,7 @@ export const environment = {
 
   WRITE_REVIEW: "books/ratingreview?bookId=",
   GET_REVIEWS: "books/ratingreviews/?bookId=",
+  ratereview: "books/getratereviews/?bookId=",
 
   adminUrl:"http://localhost:8081/",
   approveBook:"admin/approveBook/",
@@ -44,6 +45,7 @@ export const environment = {
   rejectedBooks:"admin/allRejectedBooks/",
   approvedBooks:"admin/allApprovedBooks/",
   avgrateofbook:"books/avgrate?bookId=",
+ 
 };
 
 
