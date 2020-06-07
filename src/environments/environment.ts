@@ -4,12 +4,12 @@
 
 export const environment = {
   production: false,
-  BASE_URL: 'http://localhost:8081/',
-  BookUrl: 'http://localhost:8081/',
-  getallbooksurl: '',
-  // BASE_URL: 'http://localhost:8080',
-  // BookUrl: 'http://localhost:8080',
-  // getallbooksurl: 'books/getAllBooks',
+  // BASE_URL: 'http://localhost:8081/',
+  // BookUrl: 'http://localhost:8081/',
+  // getallbooksurl: '',
+  BASE_URL: 'http://localhost:8080',
+  BookUrl: 'http://localhost:8080',
+  getallbooksurl: 'books/getAllBooks',
 
   getbookbyIdurl: 'books/',
   addandupdatecartUrl: 'books/addandupdatecart',
@@ -37,7 +37,7 @@ export const environment = {
   WRITE_REVIEW: "books/ratingreview?bookId=",
   GET_REVIEWS: "books/ratingreviews/?bookId=",
 
-  adminUrl:"http://localhost:8081/",
+  adminUrl:"http://localhost:8080/",
   approveBook:"admin/approveBook/",
   rejectBook:"admin/rejectBook/",
   unVerifiedBooks:"admin/unVerifedBooks/",
