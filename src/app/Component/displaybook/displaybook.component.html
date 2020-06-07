@@ -21,7 +21,7 @@
         </div>
         <br>
         <div class="list-books">
-            <div *ngFor="let book of bookList">
+            <div *ngFor="let book of bookList| booksearchpipe:bookSearch">
                 <mat-card style="height: 22.5em; width: 220px;  margin-right: 40px;">
                     <mat-card-title matTooltip="Book Image">
                         <img src="assets\bookimage\{{book.image}}" style="height: 150px; width: 90px;
@@ -33,7 +33,7 @@
                         <div class="authorname ">by {{ book.authorName }}</div>
                         <div class="price ">Rs. {{ book.price }}</div>
                         <div class="availablity " style="color: rgb(163, 43, 6); " *ngIf="book.noOfBooks < 5 && book.noOfBooks; else elsecondition ">
-                            Only {{ book.quantity }} left hurry up
+                            Only {{ book.noOfBooks }} left hurry up
                         </div>
                         <ng-template #elsecondition>
                             <div class="availablity " style="color: rgb(2, 110, 2); " *ngIf="book.noOfBooks ">
@@ -72,26 +72,12 @@
             </div>
         </div>
     </div>
-    <!-- <div class="pagination" fxFlexAlign='center'>
-
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a style="color: whitesmoke;" class="active" href="#">5</a>
-        <a href="#">6</a>
-        <a href="#">7</a>
-        <a href="#">8</a>
-        <a href="#">9</a>
-        <a href="#">10</a>
-        <a style="border-radius: 40px;  border: 1px solid #e0d6d6;" href="#" href="#">></a>
-    </div>
- -->
-
-    <div class="pagination">
-        <div *ngFor="let p of totalPage; let i=index ">
-
-            <a href="" fxFlexAlign="center" (click)="SetPage(i,$event)" [ngClass]="{'active':i==page}">{{i}}</a>
+    <div class="container text-center">
+        <div class="pagination">
+            <a (click)="previos($event)" style=" margin-right: 12px; border-radius: 40px;  border: 1px solid  #e0d6d6; padding-right: 10px;" href="#" href="#">
+                <</a>
+                    <a *ngFor="let p of totalPage; let i=index " href="" fxFlexAlign="center" (click)="SetPage(i,$event)" [ngClass]="{'active':i==page}">{{i}}</a>
+                    <a (click)="next($event)" style=" margin-right: 12px; border-radius: 40px;  border: 1px solid #e0d6d6; padding-right: 10px;" href="#" href="#">></a>
         </div>
     </div>
 </div>

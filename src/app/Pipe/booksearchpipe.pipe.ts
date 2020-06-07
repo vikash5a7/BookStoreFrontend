@@ -6,11 +6,13 @@ import { BookModule } from '../Model/book/book.module';
 })
 export class BooksearchpipePipe implements PipeTransform {
 
-  transform(boo: BookModule[], searchTerm: string) {
-    if (!boo || !searchTerm) {
-      return boo;
+  transform(book: BookModule[], searchTerm: string) {
+    if (!book || !searchTerm) {
+      console.log('searching the ' + searchTerm);
+      return book;
     } else {
-      return boo.filter(book => {
+      // tslint:disable-next-line: no-shadowed-variable
+      return book.filter(book => {
             if (searchTerm && book.bookName.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1) {
                 return true;
             }

@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./displaybook.component.scss']
 })
 export class DisplaybookComponent implements OnInit {
+  bookSearch: any;
   selectedValue = 'relevance';
   orderBy = 'asc';
   boo: any;
@@ -21,17 +22,14 @@ export class DisplaybookComponent implements OnInit {
   size: number;
   // tslint:disable-next-line: variable-name
   book_id: number;
-  bookSearch: any;
   bookName: string;
   page = 0;
   length: any = sessionStorage.length;
   pageEvent: PageEvent;
   lengths = 0;
-  pageSize = 0;
   CurrentPageNo: 0;
   totalPage: Array<number>;
-  data: any;
-  reminder: any;
+
   s: any; selectoption: any;
   value: any = [];
   @Output() output: EventEmitter<any> = new EventEmitter();
@@ -97,6 +95,19 @@ export class DisplaybookComponent implements OnInit {
     console.log('page number you want is' + i);
     this.getallApprovedBooks();
   }
+
+   previos(event: any) {
+    event.preventDefault();
+    this.page = this.page - 1;
+    console.log('current page from previous' + 'next' + this.page);
+    this.getallApprovedBooks();
+   }
+   next(event: any) {
+    event.preventDefault();
+    this.page = this.page + 1;
+    console.log('current page from next ' + 'next' + this.page);
+    this.getallApprovedBooks();
+   }
 
   addtobag( bookId: any) {
   if (localStorage.getItem('token') === null) {
