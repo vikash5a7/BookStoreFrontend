@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  BASE_URL: 'http://localhost:8081/',
-  BookUrl: 'http://localhost:8081/',
+  BASE_URL: 'http://localhost:8080/',
+  BookUrl: 'http://localhost:8080/',
   getallbooksurl: '',
   // BASE_URL: 'http://localhost:8080',
   // BookUrl: 'http://localhost:8080',
@@ -22,12 +22,12 @@ export const environment = {
   verifyBook:'books/editBookStatus',
   addBookImage:'books/addBookImage',
 
-  CartUrl: 'http://localhost:8081/',
+  CartUrl: 'http://localhost:8080/',
   addUrl: 'customers/addcustomer',
   addtocart: 'carts/addcart',
   getbookprice: 'getbookprice',
 
-  quantity: 'http://localhost:8081/',
+  quantity: 'http://localhost:8080/',
   addbooksquantity: 'addbooksquantity',
   USER_REGISTRATION: 'registration',
   USER_LOGIN: 'login',
@@ -36,8 +36,8 @@ export const environment = {
 
   WRITE_REVIEW: "books/ratingreview?bookId=",
   GET_REVIEWS: "books/ratingreviews/?bookId=",
-
-  adminUrl:"http://localhost:8081/",
+  ratereview: "books/getratereviews/?bookId=",
+  adminUrl:"http://localhost:8080/",
   approveBook:"admin/approveBook/",
   rejectBook:"admin/rejectBook/",
   unVerifiedBooks:"admin/unVerifedBooks/",

@@ -12,10 +12,10 @@
 
     <!-- <app-displaybook></app-displaybook> -->
 
-    <div *ngIf="isUser">
+    <div *ngIf="!isSeller && !isAdmin">
 
     <app-displaybook></app-displaybook>
-
+    <router-outlet></router-outlet>
 </div>
 </div>
 <app-footer></app-footer>
