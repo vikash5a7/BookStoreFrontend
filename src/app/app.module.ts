@@ -45,6 +45,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { AdminunverifiedbooksComponent } from './Component/adminunverifiedbooks/adminunverifiedbooks.component';
 import { RatereviewComponent } from './Component/ratereview/ratereview.component';
 import { UploadBookImageComponent } from './Component/addbook/upload-book-image/upload-book-image.component';
+import { RatedbooksComponent } from './Component/ratedbooks/ratedbooks.component';
 
 
 
@@ -73,7 +74,8 @@ import { UploadBookImageComponent } from './Component/addbook/upload-book-image/
     RatereviewComponent,
     AddbookComponent,
     UpdateBookComponent,
-    UploadBookImageComponent
+    UploadBookImageComponent,
+    RatedbooksComponent
 
   ],
   imports: [

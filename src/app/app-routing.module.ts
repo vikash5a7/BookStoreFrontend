@@ -13,6 +13,8 @@ import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.com
 import { GiverateComponent } from './Component/giverate/giverate.component';
 import { AdminunverifiedbooksComponent } from './Component/adminunverifiedbooks/adminunverifiedbooks.component';
 import { RatereviewComponent } from './Component/ratereview/ratereview.component';
+import { RatedbooksComponent } from './Component/ratedbooks/ratedbooks.component';
+
 
 
 const routes: Routes = [
@@ -28,12 +30,17 @@ const routes: Routes = [
   {path: 'forget-password', component: ForgetPasswordComponent},
   {path: 'login', component: LoginComponentComponent},
   {path: 'seller', component: SellerComponent},
-  {path: 'admin', component: AdminComponent},
+  // {path: 'admin', component: AdminComponent},
+  {path: 'dashboard', component: DashboardComponent,
+  children:[{path: '', component: AdminComponent},
+  {path: 'admin', component: AdminComponent}]},
   {path: 'register', component: RegistrationComponent},
   {path: 'books/rateandreview/:bookId', component: GiverateComponent},
   {path: 'verifybook', component: AdminunverifiedbooksComponent},
   {path: 'books/reviews/:bookId', component: RatereviewComponent},
+  {path: 'ratedbooks', component: RatedbooksComponent},
   {path: '**', component: PagenotfoundComponent},
+ 
 
 ];
 
