@@ -18,6 +18,7 @@ export class AdminService {
   private unVerifiedBooks = environment.unVerifiedBooks;
   private rejectedBooks = environment.rejectedBooks;
   private approvedBooks = environment.approvedBooks;
+  private getallOrderedBooks = environment.getallOrderedBooks;
   // private token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6M30.rzol7EjZW2exz-O-d40T3FvIem3Lk8kYGTngic_YHHX2_T7c4zMCcjDfzMXtOHehZkP8cW7TDK_tWELwWkkryQ";
 
   private token = localStorage.getItem('token');
@@ -57,4 +58,13 @@ export class AdminService {
 
       return this.httpService.put(this.adminUrl+this.rejectBook+noteId,"",this.httpOptions).pipe(tap(()=>{ this.subject.next();}));
     }
+
+    getAllOrderedBooks():Observable<any>{
+      console.log(this.httpService.get(this.adminUrl+this.getallOrderedBooks,this.httpOptions));
+      return this.httpService.get(this.adminUrl+this.getallOrderedBooks,this.httpOptions);
+     }
+
+  //    @GetMapping(value = "bookstore/orderedbooks/{token}")
+	// public ResponseEntity<Response> getOrderlist(@PathVariable("token") String token) throws Exception {
+	
 }

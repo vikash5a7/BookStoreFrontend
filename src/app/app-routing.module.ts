@@ -13,6 +13,7 @@ import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.com
 import { GiverateComponent } from './Component/giverate/giverate.component';
 import { AdminunverifiedbooksComponent } from './Component/adminunverifiedbooks/adminunverifiedbooks.component';
 import { RatereviewComponent } from './Component/ratereview/ratereview.component';
+import { OrderstatusComponent } from './Component/orderstatus/orderstatus.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path: 'books/rateandreview/:bookId', component: GiverateComponent},
   {path: 'verifybook', component: AdminunverifiedbooksComponent},
   {path: 'books/reviews/:bookId', component: RatereviewComponent},
+  {path: 'books/orders', component: OrderstatusComponent},
   {path: '**', component: PagenotfoundComponent},
 ];
 

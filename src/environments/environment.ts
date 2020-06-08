@@ -44,6 +44,7 @@ export const environment = {
   rejectedBooks:"admin/allRejectedBooks/",
   approvedBooks:"admin/allApprovedBooks/",
   avgrateofbook:"books/avgrate?bookId=",
+  getallOrderedBooks:"bookstore/orderedbooks",
  
 
 };
