@@ -8,7 +8,7 @@
 
             <div *ngFor="let book of bookList">
 
-                <mat-card style="height: 22.5em; width: 220px;  margin-right: 40px;">
+                <mat-card style="height: 22.5em; width: 220px;  margin-right: 40px;" (click)="getReviews(book)">
                     <mat-card-title>
                         <img src="assets\bookimage\{{book.image}}" style="height: 150px; width: 90px;
                         margin-left: 55px; margin-right: 55px; padding-top: 20px; padding-bottom: 20px; " />

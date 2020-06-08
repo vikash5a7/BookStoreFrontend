@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BookService } from 'src/app/Service/book.service';
 import {MatSnackBarModule, MatSnackBar} from '@angular/material/snack-bar';
 import { BookModule } from 'src/app/Model/book/book.module';
+import {  MatDialog } from '@angular/material/dialog';
+import { BookreviewsComponent } from '../bookreviews/bookreviews.component';
 
 
 @Component({
@@ -17,7 +19,7 @@ export class RatedbooksComponent implements OnInit {
 
 
   constructor(private service: BookService,
-    private matSnackBar: MatSnackBar,
+    private matSnackBar: MatSnackBar,private dialog: MatDialog
     ) { }
 
   ngOnInit(): void {
@@ -55,6 +57,19 @@ export class RatedbooksComponent implements OnInit {
     if (this.totalRate < 2) {
       this.color = "rgb(250,0,0)";
     }
+  }
+
+  getReviews(book) {
+    const dialogRef = this.dialog.open(BookreviewsComponent, {
+      // width: '25rem',
+      // panelClass: 'custom-dialog-container',
+      // height: '400px',
+      // width: '600px',
+      data : {bookId:book.bookId}
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
   }
 
 }

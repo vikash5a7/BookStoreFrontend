@@ -27,6 +27,7 @@ export const environment = {
   addUrl: 'customers/addcustomer',
   addtocart: 'carts/addcart',
   getbookprice: 'getbookprice',
+  getReview:'books/getratereviews',
 
   quantity: 'http://localhost:8080/',
   addbooksquantity: 'addbooksquantity',
