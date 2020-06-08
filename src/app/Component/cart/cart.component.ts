@@ -84,8 +84,6 @@ tog() {
 
 Removecart(key) {
   console.log('hii');
-  // let key=sessionStorage.key(2);
-  // this.value[2]=sessionStorage.getItem(key);
   sessionStorage.removeItem(key);
   window.location.reload();
   console.log('heyyy');
@@ -100,7 +98,6 @@ for (let i = 0; i < sessionStorage.length; i++) {
    console.log(response);
    this.book[i] = response.obj;
    console.log(this.book, 'kkkkkkkk');
-  // console.log(this.book.bookName,'kkkkkkkk111111111111111111');
    return this.book;
   });
 
@@ -137,13 +134,6 @@ if (this.selectedtype === 'Home') {
      console.log('data' + Customer.phonenumber);
      console.log('data+++' + this.phoneNumber.value);
      this.addtcart(this.user);
-//       let navigationExtras : NavigationExtras =  {
-// queryParams : {
-//   "bookId" :  this.book,
-//   "UserId" : this.bid.output
-// }
-//       }
-//      return this.route.navigate(['/userinfo'], )
     });
 
  }
@@ -238,14 +228,10 @@ getprice(): any {
             this.value[i] = sessionStorage.getItem(key);
             console.log('key', key);
             console.log('ghgvvb=====' + this.user);
-
             this.cartService.addquantity(this.value[i], this.quantity).subscribe((response: any) => {
              console.log(response);
              this.book[i] = response.obj;
              console.log(this.book, 'kkkkkkkk');
-            // console.log(this.book.bookName,'kkkkkkkk111111111111111111');
-            //  return this.book;
-
         });
         }
         }

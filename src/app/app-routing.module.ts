@@ -37,7 +37,7 @@ const routes: Routes = [
   {path: 'register', component: RegistrationComponent},
   {path: 'books/rateandreview/:bookId', component: GiverateComponent},
   {path: 'verifybook', component: AdminunverifiedbooksComponent},
-  {path: 'books/reviews/:bookId', component: RatereviewComponent},
+  {path: 'books/info/:bookId', component: RatereviewComponent},
   {path: 'ratedbooks', component: RatedbooksComponent},
   {path: '**', component: PagenotfoundComponent},
 ];
