@@ -17,13 +17,16 @@ export class AdminunverifiedbooksComponent implements OnInit {
   noteId = 1;
 
   ngOnInit(): void {
+
     this.getUnApprovedBooks();
+
     // this.dataSource.paginator = this.paginator;
     console.log('books ', this.books);
     this.adminService.autoRefresh.subscribe(() => {
       this.getUnApprovedBooks();
     });
   }
+
 
   getUnApprovedBooks() {
     console.log('method called');
@@ -73,6 +76,5 @@ rejectBooks(bookId: number) {
         this.snakbar.open(error.error.message, 'failed', {duration: 5000});
       }
     );
-  }
-
+}
 }

@@ -1,4 +1,28 @@
-<div style="width: 100%;" style="height: 11%;">
-    <app-toolbar flexLayout="row"></app-toolbar>
+<div *ngIf="!unverified&&!orders&&!review">
+    <!-- <p>Jules Abbott, the heroine of bestseller Hawkins’s twisty second psychological thriller,
+      vowed never to return to the sleepy English town of Beckford after an incident when she was
+       a teenager drove a wedge between her and her older sister, Nel. But now Nel, a writer and
+       photographer, is the latest in a long string of women found dead in a part of the local river
+       known as the Drowning Pool. As Nel put it, “Beckford is not a suicide spot. Beckford is a place
+       to get rid of troublesome women.” Before Nel’s death, the best friend of her surly 15-year-old
+       daughter, Lena, drowned herself, an act that had a profound effect on both Nel and Lena. Beckford history is dripping with women who’ve thrown themselves—or been pushed?—off the cliffs into the Drowning Pool, and everyone—from the police detective, plagued by his own demons, working the case to the new cop in town with something to prove—knows more than they’re letting on. Hawkins (The Girl on the Train) may be juggling a few too many story lines for comfort, but the payoff packs a satisfying punch.</p> -->
+    <app-ratedbooks></app-ratedbooks>
 </div>
-<h1>Welcome {{name}} as Admin</h1>
+
+<div *ngIf="unverified&&!orders&&!review">
+    <app-adminunverifiedbooks></app-adminunverifiedbooks>
+</div>
+
+<div *ngIf="!unverified&&orders&&!review">
+    <p>orders</p>
+    <p>A clipped, funny, painfully honest narrative voice lights up Wang’s debut novel about a Chinese-American graduate student who finds the scientific method inadequate for understanding her parents, her boyfriend, or herself. The optimist sees the glass
+        as half-full, the pessimist half-empty, explains the narrator, while a chemist sees it as half-liquid, half-gaseous, probably poisonous. At 27, this aspiring chemist has reached a point in her research at which, seeing no progress, her thesis
+        advisor suggests changing topics. Instead, she has a breakdown in the lab, smashing beakers and shouting until security guards are called. Her romantic relationship also reaches a turning point when her boyfriend takes a job out of state. The</p>
+</div>
+
+<div *ngIf="!unverified&&!orders&&review">
+    <p>reviews</p>
+    <p>Dilbert cartoonist Adams, with his usual adroit touch and sense of humor, offers an enjoyably provocative guide to the art of persuasion. In 2016, Adams predicted that Donald Trump would win the presidency when few others considered him a serious
+        contender. What did Adams see that experts missed? Declaring himself a “lifelong student” of the art of persuasion, Adams offers sharp insights into how Trump persuades people, keeps the spotlight on himself and the topics of his choice, and used
+        these skills to talk his way into the White House.</p>
+</div>

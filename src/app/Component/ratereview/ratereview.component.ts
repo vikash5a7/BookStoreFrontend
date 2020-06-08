@@ -44,6 +44,7 @@ export class RatereviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.bookId = this.route.snapshot.paramMap.get('bookId');
+    this.getRatings();
     console.log('bookid ', this.bookId);
     this.getBookById();
     // this.getRateOfBookById();
@@ -78,27 +79,30 @@ export class RatereviewComponent implements OnInit {
 
   getRatings() {
     this.bookService
-      .getratingandreview(this.bookId)
-      .subscribe((response: any) => {
-        this.ratings = response.obj;
-        // tslint:disable-next-line: forin
-        for (const index in this.ratings) {
-          this.rate = this.ratings[index];
-          this.totalRate += this.rate.rating;
-          this.ratenumber += 1;
-          this.total = this.totalRate;
-        }
-        if (this.ratenumber > 1) {
+    .getratingandreview(this.bookId)
+    .subscribe((response: any) => {
+      this.ratings = response.obj;
+      console.log('rate and reviews for book ' + this.ratings);
+
+      // tslint:disable-next-line: prefer-const
+      // tslint:disable-next-line: forin
+      for (const index in this.ratings) {
+        this.rate = this.ratings[index];
+        this.totalRate += this.rate.rating;
+        this.ratenumber += 1;
+        this.total = this.totalRate;
+      }
+      if (this.ratenumber > 1) {
           this.totalRate = this.totalRate / this.ratenumber;
           this.total = Number.parseFloat(this.totalRate + '').toFixed(1);
         }
-        if (this.totalRate >= 3 || this.totalRate >= 2) {
+      if (this.totalRate >= 3 || this.totalRate >= 2) {
           this.color = 'rgb(245, 182, 110)';
         }
-        if (this.totalRate >= 4) {
+      if (this.totalRate >= 4) {
           this.color = 'rgb(16, 136, 16)';
         }
-        if (this.totalRate < 2) {
+      if (this.totalRate < 2) {
           this.color = 'rgb(216, 69, 59)';
         }
       });

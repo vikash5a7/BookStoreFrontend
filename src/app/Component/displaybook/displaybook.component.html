@@ -75,10 +75,26 @@
             </div>
         </div>
     </div>
+
+    <div class="pagination" fxFlexAlign='center'>
+        <a style="border-radius: 40px;  border: 1px solid #e0d6d6;" href="#">
+            </a>
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a style="color: whitesmoke;" class="active" href="#">5</a>
+                <a href="#">6</a>
+                <a href="#">7</a>
+                <a href="#">8</a>
+                <a href="#">9</a>
+                <a href="#">10</a>
+                <a style="border-radius: 40px;  border: 1px solid #e0d6d6;" href="#" href="#">></a>
+
     <div class="container text-center">
         <div class="pagination">
             <a (click)="previos($event)" style=" margin-right: 12px; border-radius: 40px;  border: 1px solid  #e0d6d6; padding-right: 10px;" href="#" href="#">
-                <</a>
+                </a>
                     <a *ngFor="let p of totalPage; let i=index " href="" fxFlexAlign="center" (click)="SetPage(i,$event)" [ngClass]="{'active':i==page}">{{i+1}}</a>
                     <a (click)="next($event)" style=" margin-right: 12px; border-radius: 40px;  border: 1px solid #e0d6d6; padding-right: 10px;" href="#" href="#">></a>
         </div>
