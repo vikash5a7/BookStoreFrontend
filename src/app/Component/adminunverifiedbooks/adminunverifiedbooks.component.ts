@@ -33,8 +33,6 @@ export class AdminunverifiedbooksComponent implements OnInit {
         console.log('response', response);
         console.log('books:', response.obj);
         this.books = response.obj;
-
-
         },
       (error: any) => {
         this.snakbar.open(error.error.message, 'failed', {duration: 5000});

@@ -25,9 +25,6 @@ export class BookService {
   private notesList = new Subject<any>();
   // tslint:disable-next-line: variable-name
 
-
-
-
   private httpOtions = {
     headers: new HttpHeaders({ 'content-type': 'application/json' })
   };
@@ -134,7 +131,6 @@ export class BookService {
   public getBookById(bookId: any): Observable<any> {
     console.log('writring review for bookid ', bookId);
     console.log( environment.BASE_URL + environment.getbookbyIdurl + bookId);
-
     return this.http.get(
       environment.BASE_URL + environment.getbookbyIdurl + bookId,
       {}

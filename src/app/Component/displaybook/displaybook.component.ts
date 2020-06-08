@@ -69,6 +69,10 @@ export class DisplaybookComponent implements OnInit {
         break;
     }
 }
+Deatails(bookId) {
+    console.log('Redirected to page no ' + bookId);
+    this.route.navigateByUrl('books/info/' + bookId);
+}
 
   getallApprovedBooks() {
     this.approvedBookServiceMethod(this.page, 'book_id', 'asc');

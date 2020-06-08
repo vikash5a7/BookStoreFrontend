@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookModule } from 'src/app/Model/book/book.module';
 import { BookService } from 'src/app/Service/book.service';
-import { Router, ActivatedRoute } from "@angular/router";
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -13,6 +13,15 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class RatereviewComponent implements OnInit {
 
+
+  constructor(
+    private bookService: BookService,
+    private router: Router,
+    private data: BookService,
+    public dialog: MatDialog,
+    private matSnackBar: MatSnackBar,
+    private route: ActivatedRoute,
+  ) { }
   bookId: any;
   ratings: Array<any> = [];
   rate: any;
@@ -27,46 +36,35 @@ export class RatereviewComponent implements OnInit {
   bookDescription: any;
   sellerName: any;
   show: boolean;
- 
 
-  constructor(
-    private bookService: BookService,
-    private router: Router,
-    private data: BookService,
-    private _matSnackBar: MatSnackBar,
-    public dialog: MatDialog,
-    private route: ActivatedRoute
-  ) { }
+  totalRate = 0;
+  ratenumber: number;
+  color: any;
+  total: any;
 
   ngOnInit(): void {
-    this.bookId = this.route.snapshot.paramMap.get("bookId");
-    
-    console.log("bookid ",this.bookId);
+    this.bookId = this.route.snapshot.paramMap.get('bookId');
+    console.log('bookid ', this.bookId);
     this.getBookById();
     // this.getRateOfBookById();
   }
 
   getBookById() {
-    this.bookService.getBookById(this.bookId).subscribe((response: any) => {
-      if (response["obj"] != null) {
-        this.book = response.obj;
-        console.log("book ",this.book);
-        
-        this.bookImage = response.obj["bookImage"];
-        this.bookAuthor = response.obj["authorName"];
-        this.bookName = response.obj["bookName"];
-        this.bookPrice = response.obj["price"];
-        this.bookDescription = response.obj["bookDetails"];
-        this.show = true;
-      }
-    });
+    this.bookService.getBokkByid(this.bookId).subscribe((response: any) => {
+      console.log(response);
+      this.book = response.obj;
+      console.log('get book by id: ' + this.book);
+      console.log(this.book, 'kkkkkkkk');
+      return this.book;
+     });
   }
   getRateOfBookById() {
     this.bookService.getRateOfBookById(this.bookId).subscribe((response: any) => {
-      if (response["obj"] != null) {
-        this.rate = response["obj"] ;
-        if(this.rate == undefined)
-        console.log("book average rate ",this.rate);  
+      if (response.obj != null) {
+        this.rate = response.obj ;
+        if (this.rate === undefined) {
+        console.log('book average rate ', this.rate);
+        }
       }
     });
   }
@@ -74,21 +72,17 @@ export class RatereviewComponent implements OnInit {
   rateNow() {
     // if (this.visible) {
       // localStorage.setItem("totalRate", this.total);
-      this.router.navigate(["books/ratingandreview/" + this.bookId]);
+      this.router.navigate(['books/ratingandreview/' + this.bookId]);
     // }
   }
-
-  totalRate: number = 0;
-  ratenumber: number;
-  color: any;
-  total: any;
 
   getRatings() {
     this.bookService
       .getratingandreview(this.bookId)
       .subscribe((response: any) => {
         this.ratings = response.obj;
-        for (var index in this.ratings) {
+        // tslint:disable-next-line: forin
+        for (const index in this.ratings) {
           this.rate = this.ratings[index];
           this.totalRate += this.rate.rating;
           this.ratenumber += 1;
@@ -96,22 +90,33 @@ export class RatereviewComponent implements OnInit {
         }
         if (this.ratenumber > 1) {
           this.totalRate = this.totalRate / this.ratenumber;
-          this.total = Number.parseFloat(this.totalRate + "").toFixed(1);
+          this.total = Number.parseFloat(this.totalRate + '').toFixed(1);
         }
         if (this.totalRate >= 3 || this.totalRate >= 2) {
-          this.color = "rgb(245, 182, 110)";
+          this.color = 'rgb(245, 182, 110)';
         }
         if (this.totalRate >= 4) {
-          this.color = "rgb(16, 136, 16)";
+          this.color = 'rgb(16, 136, 16)';
         }
         if (this.totalRate < 2) {
-          this.color = "rgb(216, 69, 59)";
+          this.color = 'rgb(216, 69, 59)';
         }
       });
   }
 
 
-  addToCart() {
+  addToCart(bookId: any) {
+    if (localStorage.getItem('token') === null) {
+      this.matSnackBar.open('Please Login first', 'ok', {
+        duration: 5000
+      });
+      sessionStorage.setItem(bookId, bookId);
+      this.isAdded = true;
+      this.router.navigateByUrl('login');
+    }
+    sessionStorage.setItem(bookId, bookId);
+    this.ngOnInit();
+
     // if (this.visible) {
     //   this.bookService.addToCart(this.bookId).subscribe((response: any) => {
     //     this.data.changeMessage("count");
@@ -132,7 +137,7 @@ export class RatereviewComponent implements OnInit {
     // }
   }
 
-  //adding book to wish list if user login
+  // adding book to wish list if user login
   addToWishlist() {
     // if (this.visible) {
     //   this.bookService.addToWishList(this.bookId).subscribe((response: any) => {
@@ -159,8 +164,4 @@ export class RatereviewComponent implements OnInit {
     //     this.isListed = response["obj"];
     //   });
   }
-
-
-
-
 }
