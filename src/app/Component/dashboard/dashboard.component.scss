@@ -41,7 +41,43 @@
       outline-width: 0;
   }
 
-//   .menu{
-//     margin-left: 0;
-//     margin-top: 0;
-//   }
+
+  sidenav-div {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    border: none;
+    border-color: whitesmoke;
+    background-color: white;
+  }
+  
+  .sidenav-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    border-color: whitesmoke;
+    background-color: white;
+  }
+  
+  .matSidenav {
+    font-size: smaller;
+    font-family: monospace;
+    width: 20%;
+    height: 100%;
+    margin: 0;
+    top: 0;
+    overflow: hidden;
+    justify-content: center !important;
+    background-color: white;
+    // background-color: transparent;
+    // border-color: 1px whitesmoke;
+    border:none;
+    margin-top: 10px;
+  }  
+  .sidenav-content {
+    justify-content: center;
+    width: 100%;
+    align-content: center;
+    height: 100%;
+    background-color: white;
+  }

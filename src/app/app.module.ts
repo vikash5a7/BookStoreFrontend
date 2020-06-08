@@ -37,7 +37,6 @@ import { SellerComponent } from './Component/seller/seller/seller.component';
 import { FooterComponent } from './Component/footer/footer.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { SidenavbarComponent } from './Component/sidenavbar/sidenavbar.component';
-
 import { AddbookComponent } from './Component/addbook/addbook.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { UpdateBookComponent } from './Component/update-book/update-book.component';
@@ -46,6 +45,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { AdminunverifiedbooksComponent } from './Component/adminunverifiedbooks/adminunverifiedbooks.component';
 import { RatereviewComponent } from './Component/ratereview/ratereview.component';
 import { UploadBookImageComponent } from './Component/addbook/upload-book-image/upload-book-image.component';
+import { RatedbooksComponent } from './Component/ratedbooks/ratedbooks.component';
+
 
 
 @NgModule({
@@ -73,7 +74,9 @@ import { UploadBookImageComponent } from './Component/addbook/upload-book-image/
     RatereviewComponent,
     AddbookComponent,
     UpdateBookComponent,
-    UploadBookImageComponent
+    UploadBookImageComponent,
+    RatedbooksComponent
+
   ],
   imports: [
     MatBadgeModule,

@@ -7,7 +7,7 @@ import { MatSidenavContent } from '@angular/material/sidenav';
 })
 export class DashboardComponent implements OnInit {
   opened = true;
-  public opened2 = '';
+  public opened2 = false;
   isUser = false;
   isSeller = false;
   isAdmin = false;

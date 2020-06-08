@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class ToolbarComponent implements OnInit {
 
   @Output() toggleEvent = new EventEmitter<boolean>();
-  opened = false;
+  opened:boolean = false;
 
   name: any;
   id: any;
@@ -32,9 +32,8 @@ export class ToolbarComponent implements OnInit {
     ) { }
 
   ontoggel(input: any) {
-    console.log('1' + input);
+    console.log('input' + input);
     this.toggleEvent.emit(input);
-    console.log(input);
     this.opened = !this.opened;
   }
 
@@ -72,5 +71,6 @@ export class ToolbarComponent implements OnInit {
   getUpdatedNotes(event) {
   this.ngOnInit();
   }
+
 
 }
