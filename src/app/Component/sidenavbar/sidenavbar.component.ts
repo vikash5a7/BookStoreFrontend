@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ViewChild  } from '@angular/core';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidenavbar',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidenavbar.component.scss']
 })
 export class SidenavbarComponent implements OnInit {
+  @ViewChild('sidenav', { static: true }) public sidenav: MatSidenavModule;
   isSeller = false;
   isAdmin=false;
   role:string;
-  constructor() { }
+  constructor(private router:Router ) { }
 
   ngOnInit() {
    this.role= localStorage.getItem('role');
@@ -23,11 +26,25 @@ export class SidenavbarComponent implements OnInit {
      this.isSeller=true;
    }
   }
-  onClickSeller(){
-    
+  sellerBooks()
+  {
+    this.router.navigate(['dashboard/admin'],{queryParams:{book:'unverified'}});
   }
-  onClickOrder(){}
-  onClickReview(){}
+
+  orders()
+  {
+    this.router.navigate(['dashboard/admin'],{queryParams:{book:'order'}});
+  }
+
+  reviews()
+  {
+    this.router.navigate(['dashboard/admin'],{queryParams:{book:'review'}});
+  }
+
+  books()
+  {
+    this.router.navigate(['dashboard/admin'],{queryParams:{book:'books'}});
+  }
 
 
   addBook(){

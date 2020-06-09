@@ -6,8 +6,8 @@ import {  MatSnackBar } from '@angular/material/snack-bar';
 import {FormControl, Validators} from '@angular/forms';
 import {  MatDialog } from '@angular/material/dialog';
 import { BookModule } from 'src/app/Model/book/book.module';
+import { Order} from 'src/app/Model/order.model';
 import { AdminService } from 'src/app/Service/admin.service';
-
 
 interface Food {
   value: string;
@@ -31,125 +31,71 @@ name: string = null;
 books: any;
 status: string;
 orderedBooks: any;
+orderdetails = new Array<any>();
 
 animalControl = new FormControl('', Validators.required);
   selectFormControl = new FormControl('', Validators.required);
   
   selectedValue: string;
-  foods: Food[] = [
-    {value: 'option-0', viewValue: 'Order registration in progress'},
-    {value: 'option-1', viewValue: 'Seller in progress to shipment to delivery'}
-  ];
+ 
 
 
 ngOnInit(): void {
-this.service.autoRefresh$.subscribe(() => {
-  // console.log("get all orderbooks called");
-  // console.log("all orderbooks: "+this.getallUserOrderedBooks());
-  
-this.getallUserOrderedBooks();
 
-this.getallOrderedBooks();
-});
-this.getallUserOrderedBooks();
-this.getUserName();
-this.getallOrderedBooks();
-this.getSearchBookData();
+  this.getallUserOrderedBooks();
 
+  this.adminservice.autoRefresh.subscribe(() => {
+    this.getallUserOrderedBooks();
+  });
 }
 
-getallOrderedBooks() {
-console.log('gett all book called');
-this.service.getallBooks().subscribe( response => {
-this.books = response.obj;
-// console.log('All books ', this.books);
-});
 
-}
 getallUserOrderedBooks() {
-  console.log('gett all book called');
+  console.log('order status api called');
   this.adminservice.getAllOrderedBooks().subscribe( response => {
   this.orderedBooks = response.obj;
-  console.log('All odered Books  ', this.orderedBooks);
+  console.log('All orderbooks for order status= :  ', this.orderedBooks);
+  console.log("no of orders "+response.obj.length);
+
+  for (let i = 0; i < response.obj.length; i++) {
+    console.log ("Block statement execution no." + i);
+    console.log("orderId : "+response.obj[i].orderId);
+    console.log("orderStatus : "+response.obj[i].orderStatus);
+    console.log("bookName : "+response.obj[i].booksList[0].bookName);
+    console.log("bookDetails : "+response.obj[i].booksList[0].bookDetails);
+    console.log("authorName : "+response.obj[i].booksList[0].authorName);
+    console.log("image : "+response.obj[i].booksList[0].image);
+    console.log("bookprice : "+response.obj[i].booksList[0].price);
+    console.log("totalprice : "+response.obj[i].quantityOfBooks[0].totalprice);
+    console.log("quantityOfBook : "+response.obj[i].quantityOfBooks[0].quantityOfBook);
+
+
+    var p = {orderId:response.obj[i].orderId, orderStatus:response.obj[i].orderStatus, bookName:response.obj[i].booksList[0].bookName,
+      bookDetails:response.obj[i].booksList[0].bookDetails, authorName:response.obj[i].booksList[0].authorName,
+      image:response.obj[i].booksList[0].image,  totalprice:response.obj[i].quantityOfBooks[0].totalprice,
+      quantityOfBook:response.obj[i].quantityOfBooks[0].quantityOfBook
+    };
+
+      this.orderdetails.push(p);
+      console.log("after push ",this.orderdetails);
+  }  
   });
-  
-  }
-
-deleteBook(bookId) {
-this.service.deleteBook(bookId).subscribe((message) => {
-if (message.statusCode === 202) {
-this.matSnackBar.open('Book Deleted Successfully', 'OK', {
-duration: 4000,
-});
-} else {
-this.matSnackBar.open('Error in Book Deletion', 'ok', { duration: 4000 });
-}
-});
 }
 
+no:any;
 
-openImageDialog(bookId): void {
-// const dialogRef = this.dialog.open(UploadBookImageComponent, {
-// width: '25rem',
-// panelClass: 'custom-dialog-container',
-// data: { bookId },
-// });
-// dialogRef.afterClosed().subscribe((result) => {
-// console.log('The dialog was closed');
-// });
-}
-
-editBook(book: any): void {
-// const dialogRef = this.dialog.open(UpdateBookComponent, {
-// width: '25rem',
-// height: 'auto',
-// panelClass: 'custom-dialog-container',
-// data: {
-// bookName: book.bookName,
-// authorName: book.authorName,
-// price: book.price,
-// noOfBooks: book.noOfBooks,
-// bookDetails: book.bookDetails,
-// bookId: book.bookId,
-// },
-// });
-// dialogRef.afterClosed().subscribe((result) => {
-// console.log('The dialog was closed');
-// });
+updateOrder(orderId:any) {
+  this.adminservice.updateOrderStatus(orderId).subscribe(
+    (response: any) => {
+      this.matSnackBar.open("Order updated by Admin", 'success', {duration: 5000});
+      
+      },
+    (error: any) => {
+      this.matSnackBar.open(error.error.message, 'failed', {duration: 5000});
+    }
+  );
 }
 
-addBook() {
-// const dialogRef = this.dialog.open(AddbookComponent, {
-// width: '25rem',
-// panelClass: 'custom-dialog-container',
-// });
-// dialogRef.afterClosed().subscribe((result) => {
-// console.log('The dialog was closed');
-// });
-}
-verifyBook(bookId: any) {
-this.status = 'OnHold';
-this.service.verifyBook(bookId, this.status).subscribe((message) => {
-if (message.statusCode === 202) {
-this.matSnackBar.open('Request sent Successfully', 'OK', {
-duration: 4000,
-});
-} else {
-this.matSnackBar.open('Error in Book Deletion', 'ok', { duration: 4000 });
-}
-});
-}
-
-getUserName() {
-this.name = localStorage.getItem('Name');
-}
-
-getSearchBookData() {
-this.service.getSearchBookData().subscribe((message) => {
-console.log('search data', message.books);
-this.bookSearch = message.books;
-});
-}
 
   
 }

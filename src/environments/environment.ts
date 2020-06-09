@@ -4,17 +4,20 @@
 
 export const environment = {
   production: false,
+
   BASE_URL: 'http://localhost:8080',
   BookUrl: 'http://localhost:8080',
   getallbooksurl: '',
   // BASE_URL: 'http://localhost:8080',
   // BookUrl: 'http://localhost:8080',
   // getallbooksurl: 'books/getAllBooks',
+
   getbookbyIdurl: 'books/',
   addandupdatecartUrl: 'books/addandupdatecart',
   sorting: 'books/sorting',
   SortNewestArrival: 'books/unsorting',
   cusUrl : 'books/pagewise',
+
   addbooks: 'books/addbook',
   deleteBook: 'books/deletebook',
   editBook: 'books/editbook',
@@ -43,10 +46,10 @@ export const environment = {
   unVerifiedBooks:"admin/unVerifedBooks/",
   rejectedBooks:"admin/allRejectedBooks/",
   approvedBooks:"admin/allApprovedBooks/",
-  avgrateofbook:"books/avgrate?bookId=",
-  getallOrderedBooks:"bookstore/orderedbooks",
- 
 
+  avgrateofbook:"books/avgrate?bookId=",
+  getallOrderedBooks:"bookstore/getorders",
+  changeOrderstatus:"bookstore/orderstatus",
 };
 
 

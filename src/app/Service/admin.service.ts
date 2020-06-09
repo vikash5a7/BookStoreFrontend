@@ -19,10 +19,13 @@ export class AdminService {
   private rejectedBooks = environment.rejectedBooks;
   private approvedBooks = environment.approvedBooks;
   private getallOrderedBooks = environment.getallOrderedBooks;
+  private changeOrderstatus = environment.changeOrderstatus;
+  
   // private token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6M30.rzol7EjZW2exz-O-d40T3FvIem3Lk8kYGTngic_YHHX2_T7c4zMCcjDfzMXtOHehZkP8cW7TDK_tWELwWkkryQ";
 
-  private token = localStorage.getItem('token');
 
+
+  private token = localStorage.getItem('token');
   private subject = new Subject<any>();
   public get autoRefresh() {
     return this.subject;
@@ -60,8 +63,17 @@ export class AdminService {
     }
 
     getAllOrderedBooks():Observable<any>{
+      console.log("order status url");
       console.log(this.httpService.get(this.adminUrl+this.getallOrderedBooks,this.httpOptions));
-      return this.httpService.get(this.adminUrl+this.getallOrderedBooks,this.httpOptions);
+      return this.httpService.get(this.adminUrl+this.getallOrderedBooks,{});
+     }
+
+     updateOrderStatus(orderId:any):Observable<any>{
+      //  var y:number =+orderId;
+       console.log("url "+this.adminUrl+this.changeOrderstatus+"?orderId="+orderId);
+       
+      return this.httpService.put(this.adminUrl+this.changeOrderstatus+"?orderId="+orderId,"",this.httpOptions).pipe(tap(()=>{ this.subject.next();}));
+    
      }
 
   //    @GetMapping(value = "bookstore/orderedbooks/{token}")

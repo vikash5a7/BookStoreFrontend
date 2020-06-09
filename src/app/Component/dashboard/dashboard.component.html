@@ -4,14 +4,31 @@
     <!-- <app-toolbar flexLayout="row"></app-toolbar> -->
 </div>
 <div class="dashboard-content" style="height: 84%; margin-left: 0%; padding-left: 0%;">
+    <div class="sidenav-div" *ngIf="isAdmin">
+        <mat-sidenav-container class="sidenav-container">
+           
+            <mat-sidenav [(opened)]="opened2" mode="side" class="matSidenav">
+                <app-sidenavbar class="app-sidenavbar" fxFlex></app-sidenavbar>
+            </mat-sidenav>
+           
+            <mat-sidenav-content class="sidenav-content">
+                <router-outlet ></router-outlet>
+                <!-- <app-adminunverifiedbooks></app-adminunverifiedbooks> -->
+                <!-- <app-admin></app-admin> -->
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+        </div>
+    
     <div *ngIf="isSeller">
         <app-seller></app-seller>
     </div>
-    <div *ngIf="isAdmin">   
+    <!-- <div *ngIf="isAdmin">   
       
     
         <app-adminunverifiedbooks></app-adminunverifiedbooks>
-    </div>
+    </div> -->
+
+
 
     <div *ngIf="!isSeller && !isAdmin">
         <app-displaybook></app-displaybook>
@@ -19,4 +36,6 @@
     </div>
 
 </div>
+
 <app-footer></app-footer>
+
