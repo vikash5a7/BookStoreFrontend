@@ -24,6 +24,7 @@ export class BookreviewsComponent implements OnInit {
   reviewList =new Array<any>();
   rev:string;
   user=new Array<any>();
+  color: string;
 
   getReviews()
   {
@@ -38,7 +39,7 @@ this.bookService.getReview(this.bookId).subscribe((response: any) => {
 
     console.log("user:",this.user['name']);
     // var pp = {name:this.user.name};
-    var p={name:this.user['name'],review:this.rev};
+    var p={name:this.user['name'],review:this.rev,rating:this.reviews[index].rating};
     this.reviewList.push(p);
     console.log("after push:",this.reviewList);
   
@@ -47,6 +48,7 @@ this.bookService.getReview(this.bookId).subscribe((response: any) => {
 }
 );
   }
+
 
   // reviewList=
   //   [

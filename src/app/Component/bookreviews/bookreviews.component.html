@@ -11,6 +11,33 @@
         </div>
         <div *ngFor="let book of reviewList">
         <div style="margin-left: 27px;font: Bold 18px/15px Lato;">{{book.name}}</div>
+        
+        <!-- <button
+        class="single"
+        fxLayout="row"
+        style="background-color: rgb(16,136,16);margin-left: 27px;"
+      >
+      <button
+      *ngIf="book.rating>=2"
+      class="single"
+      fxLayout="row"
+      style="background-color: rgb(245,182,110);margin-left: 27px;"
+    >
+    <button
+    *ngIf="book.rating>=1"
+    class="single"
+    fxLayout="row"
+    style="background-color: rgb(250,0,0);margin-left: 27px;"
+  >
+        <div>
+          {{ book.rating }}
+        </div>
+        <mat-icon
+          style="font-size: 14px; padding-top: 1.8px; color: white;"
+        >
+          star
+        </mat-icon>
+      </button> -->
         <div style="margin-left: 27px;">{{book.review}}</div>
         <br>
       </div>
@@ -18,6 +45,6 @@
       </mat-card>
     </div>
   </div>
+  </div>
 
-</div>
 
