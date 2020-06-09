@@ -52,7 +52,7 @@ addre: Address = new Address();
                private route: Router, private service: BookService, private cartService: CartService) { }
 
     phoneNumber = new FormControl('', [Validators.required, Validators.pattern('[0-9]{10,10}')]);
-    Name = new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]*')]);
+    Name = new FormControl('', [Validators.required]);
     pincode = new FormControl('', [Validators.required]);
     address = new FormControl('', [Validators.required]);
     locality = new FormControl('', [Validators.required]);
@@ -64,6 +64,8 @@ addre: Address = new Address();
 
   ngOnInit()  {
    this.getsession();
+   this.phoneNumber.setValue('8989898798');
+   this.Name.setValue(localStorage.getItem('Name'));
     }
 
 Toggle() {
@@ -83,7 +85,6 @@ tog() {
 }
 
 Removecart(key) {
-  console.log('hii');
   sessionStorage.removeItem(key);
   window.location.reload();
   console.log('heyyy');
@@ -100,7 +101,6 @@ for (let i = 0; i < sessionStorage.length; i++) {
    console.log(this.book, 'kkkkkkkk');
    return this.book;
   });
-
 }
 }
  fun(type) {

@@ -105,7 +105,7 @@ export class BookService {
       );
   }
   getBokkByid(Bookid: any): Observable<any> {
-    return this.http.get(`${this.baseUrl}/books/${Bookid}`,
+    return this.http.get(`${this.baseUrl}/books/getbook${Bookid}`,
        { headers: new HttpHeaders().set('token', localStorage.getItem('token')) }).pipe(tap(() => {
         this._autoRefresh$.next();
       }));

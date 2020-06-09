@@ -17,7 +17,7 @@
                     <div class="details">
                         <span class="bookname">{{books.bookName}}</span><br>
                         <h2 class="author">by{{books.authorName}}</h2>
-                        <h2 class="price">Rs.{{books.price}}</h2>
+                        <h2 class="price">Rs.{{books.price * quantity}}</h2>
                     </div>
                     <div style="display: flex; flex-direction: row; margin-left: -2.0em; margin-top: 7em; border-radius: 2em;">
                         <div style="display: flex; flex-direction: row;margin-bottom: 10px;">
@@ -140,7 +140,7 @@
                     <div class="details">
                         <span class="bookname">{{books.bookName}}</span><br>
                         <h2 class="author">by{{books.authorName}}</h2>
-                        <h2 class="price">Rs.{{books.price}}</h2>
+                        <h2 class="price">Rs.{{books.price * quantity}}</h2>
                     </div>
                     <div>
                         <button class="button2" routerLink="/greeting">CHECKOUT</button>
