@@ -23,7 +23,11 @@ export class BookService {
   private searchBookData = new Subject<any>();
   private baseUrl = environment.BASE_URL;
   private notesList = new Subject<any>();
+
+  // tslint:disable-next-line: variable-name  
+
   // tslint:disable-next-line: variable-name
+
 
 
 
@@ -168,7 +172,7 @@ export class BookService {
   }
 
   public getratingandreview(bookId: number) {
-    return this.http.get(environment.BASE_URL + environment.GET_REVIEWS + bookId, this.httpOptions);
+    return this.http.get(environment.BASE_URL + environment.ratereview + bookId, this.httpOptions);
   }
 
 }

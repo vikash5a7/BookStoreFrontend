@@ -40,7 +40,7 @@ export class RatereviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.bookId = this.route.snapshot.paramMap.get("bookId");
-    
+    this.getRatings();
     console.log("bookid ",this.bookId);
     this.getBookById();
     // this.getRateOfBookById();
@@ -88,6 +88,8 @@ export class RatereviewComponent implements OnInit {
       .getratingandreview(this.bookId)
       .subscribe((response: any) => {
         this.ratings = response.obj;
+        console.log("rate and reviews for book "+this.ratings);
+        
         for (var index in this.ratings) {
           this.rate = this.ratings[index];
           this.totalRate += this.rate.rating;

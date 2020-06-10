@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+
+
 import { Router, ActivatedRoute,ParamMap} from '@angular/router';
+
+import { Component, OnInit ,ViewChild  } from '@angular/core';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
+
 
 @Component({
   selector: 'app-sidenavbar',
@@ -7,10 +13,15 @@ import { Router, ActivatedRoute,ParamMap} from '@angular/router';
   styleUrls: ['./sidenavbar.component.scss']
 })
 export class SidenavbarComponent implements OnInit {
+  @ViewChild('sidenav', { static: true }) public sidenav: MatSidenavModule;
   isSeller = false;
   isAdmin=false;
   role:string;
-  constructor(private _router:Router,private route:ActivatedRoute,) { }
+
+  constructor(private router:Router,private route:ActivatedRoute,) { }
+
+
+
 
   ngOnInit() {
    this.role= localStorage.getItem('role');
@@ -24,23 +35,35 @@ export class SidenavbarComponent implements OnInit {
      this.isSeller=true;
    }
   }
-  onClickSeller(){
-    
+  sellerBooks()
+  {
+    this.router.navigate(['dashboard/admin'],{queryParams:{book:'unverified'}});
   }
-  onClickOrder(){}
-  onClickReview(){}
+
+  orders()
+  {
+    this.router.navigate(['dashboard/admin'],{queryParams:{book:'order'}});
+  }
+
+  reviews()
+  {
+    this.router.navigate(['dashboard/admin'],{queryParams:{book:'review'}});
+  }
+
+  books()
+  {
+    this.router.navigate(['dashboard/admin'],{queryParams:{book:'books'}});
+  }
 
 
   sellerBook(){
-      // this._router.navigate(['/dashboard/displaynote','archive']);
-      // this._router.navigateByUrl('books');
-      this._router.navigate(['books'],{queryParams:{book:'sellerbook'}});
+    
+      this.router.navigate(['books'],{queryParams:{book:'sellerbook'}});
   }
 
   orderStatus(){
-//  this._router.navigate(['/books','order']);
-// this._router.navigate(['order'],{relativeTo:this.route});
-this._router.navigate(['books'],{queryParams:{book:'order'}});
+
+this.router.navigate(['books'],{queryParams:{book:'order'}});
   }
   
 }

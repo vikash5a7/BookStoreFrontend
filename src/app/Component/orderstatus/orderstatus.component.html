@@ -1,0 +1,40 @@
+<div class="main-container">
+    <div class="container">
+        <div class="list-books">
+            <div *ngFor=" let book of orderdetails | booksearchpipe:bookSearch">
+                <mat-card style="display: flex;flex-direction: row;  padding: 1rem;" matTooltip="{{ book.bookDetails }}">
+
+                    <div>
+                        <mat-card-title style="padding: 1rem;"  matTooltip="Update Image">
+                            <img src="assets\bookimage\{{book.image}}" style="height: 13rem; width: 10rem; padding: 16px 0px 16px 16px ;" />
+                        </mat-card-title>
+                    </div>
+                    <div style="width: 20rem;">
+                        <mat-card-content style="display: flex;flex-direction: column;flex-wrap: nowrap;width: auto; margin-top: 10px; margin-bottom: 0px;">
+                            
+                            <div class="noofbooks">Order Number : {{ book.orderId }}</div>
+                            <div class="bookname">Book Name : {{ book.bookName }}</div>
+                            <div class="authorname">Author name : {{ book.authorName }}</div>
+                            <div class="description">Description : {{ book.bookDetails }}</div>
+                            <div class="description">Quantity of book : {{ book.quantityOfBook }}</div>
+                            <div class="price">Total Price : {{"₹ "+book.totalprice }}</div>
+                            
+                            <div class="status" >Order Status : <label style="color: green;">{{ book.orderStatus }}</label> </div>
+                            
+                            <div style="display: flex; justify-content: space-around; ">
+                                
+                             
+                                <div>
+                                    <button style="width: 8rem; margin-left: -139px; margin-top:auto; color: white; outline: none; border-radius: 0px; background-color: rgba(131, 4, 4, 0.8);"  (click)="updateOrder(book.orderId,'in progress')"  mat-button>
+                              Update-Order
+                          </button>
+                                                                 
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

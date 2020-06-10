@@ -13,10 +13,14 @@ import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.com
 import { GiverateComponent } from './Component/giverate/giverate.component';
 import { AdminunverifiedbooksComponent } from './Component/adminunverifiedbooks/adminunverifiedbooks.component';
 import { RatereviewComponent } from './Component/ratereview/ratereview.component';
+import { OrderstatusComponent } from './Component/orderstatus/orderstatus.component';
+import { RatedbooksComponent } from './Component/ratedbooks/ratedbooks.component';
+
+
 
 
 const routes: Routes = [
-  // {path: 'verifybook', component: AdminunverifiedbooksComponent},
+
   {
     path: '', redirectTo: 'books',
     pathMatch: 'full'
@@ -28,13 +32,24 @@ const routes: Routes = [
   {path: 'forget-password', component: ForgetPasswordComponent},
   {path: 'login', component: LoginComponentComponent},
   {path: 'seller', component: SellerComponent},
+
   {path:'books/:book',component:SellerComponent},
   {path: 'admin', component: AdminComponent},
+
+  // {path: 'admin', component: AdminComponent},
+  {path: 'dashboard', component: DashboardComponent,
+  children:[{path: '', component: AdminComponent},
+  {path: 'admin', component: AdminComponent}]},
+
   {path: 'register', component: RegistrationComponent},
-  {path: 'books/ratingandreview/:bookId', component: GiverateComponent},
+  {path: 'books/rateandreview/:bookId', component: GiverateComponent},
   {path: 'verifybook', component: AdminunverifiedbooksComponent},
-  {path: 'books/rate/:bookId', component: RatereviewComponent},
+  {path: 'books/reviews/:bookId', component: RatereviewComponent},
+  {path: 'books/orders', component: OrderstatusComponent},
+  {path: 'ratedbooks', component: RatedbooksComponent},
   {path: '**', component: PagenotfoundComponent},
+ 
+
 ];
 
 @NgModule({

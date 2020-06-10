@@ -18,7 +18,17 @@ export class AdminService {
   private unVerifiedBooks = environment.unVerifiedBooks;
   private rejectedBooks = environment.rejectedBooks;
   private approvedBooks = environment.approvedBooks;
+
   private token = localStorage.getItem('token');
+
+  private getallOrderedBooks = environment.getallOrderedBooks;
+  private changeOrderstatus = environment.changeOrderstatus;
+  
+  // private token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6M30.rzol7EjZW2exz-O-d40T3FvIem3Lk8kYGTngic_YHHX2_T7c4zMCcjDfzMXtOHehZkP8cW7TDK_tWELwWkkryQ";
+
+
+
+
 
   private subject = new Subject<any>();
   public get autoRefresh() {
@@ -55,4 +65,22 @@ export class AdminService {
 
       return this.httpService.put(this.adminUrl+this.rejectBook+noteId,"",this.httpOptions).pipe(tap(()=>{ this.subject.next();}));
     }
+
+    getAllOrderedBooks():Observable<any>{
+      console.log("order status url");
+      console.log(this.httpService.get(this.adminUrl+this.getallOrderedBooks,this.httpOptions));
+      return this.httpService.get(this.adminUrl+this.getallOrderedBooks,{});
+     }
+
+     updateOrderStatus(orderId:any,status:any):Observable<any>{
+      //  var y:number =+orderId;
+       console.log("url "+this.adminUrl+this.changeOrderstatus+"?orderId="+orderId);
+       
+      return this.httpService.put(this.adminUrl+this.changeOrderstatus+"?orderId="+orderId+"&status="+status,"",this.httpOptions).pipe(tap(()=>{ this.subject.next();}));
+      // http://localhost:8080/bookstore/orderStatusByAdmin?orderId=583785&status=in%20progress
+     }
+
+  //    @GetMapping(value = "bookstore/orderedbooks/{token}")
+	// public ResponseEntity<Response> getOrderlist(@PathVariable("token") String token) throws Exception {
+	
 }

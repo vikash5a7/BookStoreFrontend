@@ -1,4 +1,8 @@
+
+
+
 <div role="combobox" flex="column" style="margin-left: 23%;">
+
 
   
     <div *ngFor="let book of books">
@@ -6,9 +10,10 @@
         <mat-card
           class="matcard2"
 
+
         >
           <div class="cartdetails" fxLayout="row" fxLayoutAlign="start start">
-            <img class="bookimg" src="assets\bookimage\img1.jpeg" />
+            <img class="bookimg" src="assets\bookimage\{{book.image}}" />
   
             <div class="bookdetails">
               <div class="booktitle" style="word-wrap: break-word;">
@@ -18,6 +23,7 @@
               <div class="sub" style="word-wrap: break-word;">
             {{book.authorName}}
               </div>
+
               <div
                 style="
                   margin-bottom: 11%;
@@ -25,6 +31,7 @@
                   margin-left: -25px;
                 "
               >
+
                Rs. {{book.price}}
               </div>
              
@@ -36,6 +43,7 @@
           <div style="margin-left: 27px;">{{book.bookDetails}}</div>
   
           <!-- </div> -->
+
           <div fxLayout="row wrap" fxLayoutAlign="end end" >
             <button mat-raised-button class="button" (click)="approveBooks(book.bookId)">
               APPROVE
@@ -48,6 +56,7 @@
               REJECT
             </button>
             
+
           </div>
 
         </mat-card>
