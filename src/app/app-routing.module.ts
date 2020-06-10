@@ -28,6 +28,7 @@ const routes: Routes = [
   {path: 'forget-password', component: ForgetPasswordComponent},
   {path: 'login', component: LoginComponentComponent},
   {path: 'seller', component: SellerComponent},
+  {path:'books/:book',component:SellerComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'register', component: RegistrationComponent},
   {path: 'books/ratingandreview/:bookId', component: GiverateComponent},

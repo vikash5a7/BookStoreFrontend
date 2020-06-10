@@ -14,15 +14,11 @@
 </div>
 <div class="container" *ngIf="isSeller">
     <div>
-        <button mat-raised-button class="navButton"   (click)="addBook()" type="submit">
-        ADD</button>
+        <button mat-raised-button class="navButton"   (click)="sellerBook()" type="submit">
+        Books</button>
       </div>
       <div>
-        <button mat-raised-button class="navButton"   (click)="approvedBook()" type="submit">
-        APPROVED</button>
-      </div>
-      <div>
-        <button mat-raised-button class="navButton"   (click)="rejectedBook()" type="submit">
-        REJECTED</button>
+        <button mat-raised-button class="navButton"   (click)="orderStatus()" type="submit">
+        Order</button>
       </div>
 </div>

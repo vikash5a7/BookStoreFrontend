@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute,ParamMap} from '@angular/router';
 
 @Component({
   selector: 'app-sidenavbar',
@@ -9,7 +10,7 @@ export class SidenavbarComponent implements OnInit {
   isSeller = false;
   isAdmin=false;
   role:string;
-  constructor() { }
+  constructor(private _router:Router,private route:ActivatedRoute,) { }
 
   ngOnInit() {
    this.role= localStorage.getItem('role');
@@ -30,9 +31,16 @@ export class SidenavbarComponent implements OnInit {
   onClickReview(){}
 
 
-  addBook(){
-
+  sellerBook(){
+      // this._router.navigate(['/dashboard/displaynote','archive']);
+      // this._router.navigateByUrl('books');
+      this._router.navigate(['books'],{queryParams:{book:'sellerbook'}});
   }
-  approvedBook(){}
-  rejectedBook(){}
+
+  orderStatus(){
+//  this._router.navigate(['/books','order']);
+// this._router.navigate(['order'],{relativeTo:this.route});
+this._router.navigate(['books'],{queryParams:{book:'order'}});
+  }
+  
 }

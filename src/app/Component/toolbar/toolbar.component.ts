@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class ToolbarComponent implements OnInit {
 
   @Output() toggleEvent = new EventEmitter<boolean>();
-  opened = false;
+  opened:boolean=false;
 
   name: any;
   id: any;

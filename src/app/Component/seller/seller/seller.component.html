@@ -1,6 +1,8 @@
+<div *ngIf="sellerBooks && !orderBooks">
+
 <div class="main-container">
     <div class="container">
-        <div class="addIcon" style="display: flex; justify-content: flex-end; margin: 2rem 0.5rem;">
+        <div class="addIcon"  style="display: flex; justify-content: flex-end; margin: 2rem 0.5rem;" *ngIf="sellerBooks">
             <mat-icon class="icon-display" (click)="addBook()" matTooltip="Add Book">add</mat-icon>
         </div>
 
@@ -48,4 +50,9 @@
             </div>
         </div>
     </div>
+</div>
+</div>
+
+<div *ngIf="!sellerBooks && orderBooks">
+
 </div>
