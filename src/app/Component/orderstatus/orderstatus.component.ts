@@ -84,8 +84,8 @@ getallUserOrderedBooks() {
 
 no:any;
 
-updateOrder(orderId:any) {
-  this.adminservice.updateOrderStatus(orderId).subscribe(
+updateOrder(orderId:any,status:any) {
+  this.adminservice.updateOrderStatus(orderId,status).subscribe(
     (response: any) => {
       this.matSnackBar.open("Order updated by Admin", 'success', {duration: 5000});
       
