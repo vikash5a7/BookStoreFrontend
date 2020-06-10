@@ -49,8 +49,9 @@ export const environment = {
   approvedBooks:"admin/allApprovedBooks/",
 
   avgrateofbook:"books/avgrate?bookId=",
-
-
+  getallOrderedBooks:"bookstore/getorders",
+  changeOrderstatus:"bookstore/orderstatus",
+  getSortedBookByRate:"books/sortbyrate"
 };
 
 

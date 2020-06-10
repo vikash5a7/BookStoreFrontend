@@ -16,6 +16,7 @@ import { DisplaybookComponent } from './Component/displaybook/displaybook.compon
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatSelectModule} from '@angular/material/select';
 import { BooksearchpipePipe } from './Pipe/booksearchpipe.pipe';
 import { CartComponent } from './Component/cart/cart.component';
 import {MatStepperModule} from '@angular/material/stepper';
@@ -45,6 +46,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { AdminunverifiedbooksComponent } from './Component/adminunverifiedbooks/adminunverifiedbooks.component';
 import { RatereviewComponent } from './Component/ratereview/ratereview.component';
 import { UploadBookImageComponent } from './Component/addbook/upload-book-image/upload-book-image.component';
+import { OrderstatusComponent } from './Component/orderstatus/orderstatus.component';
 import { RatedbooksComponent } from './Component/ratedbooks/ratedbooks.component';
 import { BookreviewsComponent } from './Component/bookreviews/bookreviews.component';
 
@@ -76,8 +78,9 @@ import { BookreviewsComponent } from './Component/bookreviews/bookreviews.compon
     AddbookComponent,
     UpdateBookComponent,
     UploadBookImageComponent,
-    RatedbooksComponent,
-    BookreviewsComponent
+    BookreviewsComponent,
+    OrderstatusComponent,
+    RatedbooksComponent
 
   ],
   imports: [
@@ -101,6 +104,7 @@ import { BookreviewsComponent } from './Component/bookreviews/bookreviews.compon
     MatMenuModule,
     MatButtonModule,
     MatSidenavModule,
+    MatSelectModule,
     MatTooltipModule,
     MatDialogModule,
  ],

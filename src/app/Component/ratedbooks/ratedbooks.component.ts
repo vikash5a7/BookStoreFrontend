@@ -16,19 +16,58 @@ export class RatedbooksComponent implements OnInit {
   bookList = Array<any>();
   totalRate: any;
   color: string;
+  avgRate:any;
+  bookId:any;
+  rateList = Array<any>();
 
 
   constructor(private service: BookService,
     private matSnackBar: MatSnackBar,private dialog: MatDialog
     ) { }
 
+  
   ngOnInit(): void {
-    this.getallApprovedBooks();
-    this.totalRate = 5;
+    // this.getallApprovedBooks();
+    this.getBookByRating();
+    this.totalRate = 0;
+ 
     this.getColor();
 
   }
 
+  getBookByRating(){
+    this.service.getSortedBookByRate().subscribe(
+
+      (response: any) => {
+        console.log('response', response);
+        console.log('books:', response.obj);
+        this.bookList = response.obj;
+
+
+        },
+      (error: any) => {
+        this.matSnackBar.open(error.error.message, 'failed', {duration: 5000});
+      }
+    );
+  
+  }
+
+ getRateOfBook(bookId:number)  {
+    console.log("book id for avgrate:",bookId);
+    this.service.getRateOfBookById(bookId).subscribe(
+
+      (response: any) => {
+        console.log('response', response);
+        console.log('rate of books:', response.obj);
+        this.totalRate= response.obj;
+        
+        },
+      (error: any) => {
+        this.matSnackBar.open(error.error.message, 'failed', {duration: 5000});
+      }
+    );
+   
+  }
 
   getallApprovedBooks() {
     console.log('method called');

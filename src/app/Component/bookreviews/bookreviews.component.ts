@@ -25,9 +25,11 @@ export class BookreviewsComponent implements OnInit {
   rev:string;
   user=new Array<any>();
   color: string;
+  totalRate:any;
 
   getReviews()
   {
+    this.getRateOfBook(this.bookId);
 this.bookService.getReview(this.bookId).subscribe((response: any) => {
 
   console.log("Review response:",response.obj);
@@ -47,6 +49,21 @@ this.bookService.getReview(this.bookId).subscribe((response: any) => {
 
 }
 );
+  }
+
+  getRateOfBook(bookId:number)  {
+    console.log("book id for avgrate:",bookId);
+    this.bookService.getRateOfBookById(bookId).subscribe(
+
+      (response: any) => {
+        console.log('response', response);
+        console.log('rate of books:', response.obj);
+        this.totalRate= response.obj;
+        
+        }
+     
+    );
+   
   }
 
 
