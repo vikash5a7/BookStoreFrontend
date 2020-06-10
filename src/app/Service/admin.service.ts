@@ -68,12 +68,12 @@ export class AdminService {
       return this.httpService.get(this.adminUrl+this.getallOrderedBooks,{});
      }
 
-     updateOrderStatus(orderId:any):Observable<any>{
+     updateOrderStatus(orderId:any,status:any):Observable<any>{
       //  var y:number =+orderId;
        console.log("url "+this.adminUrl+this.changeOrderstatus+"?orderId="+orderId);
        
-      return this.httpService.put(this.adminUrl+this.changeOrderstatus+"?orderId="+orderId,"",this.httpOptions).pipe(tap(()=>{ this.subject.next();}));
-    
+      return this.httpService.put(this.adminUrl+this.changeOrderstatus+"?orderId="+orderId+"&status="+status,"",this.httpOptions).pipe(tap(()=>{ this.subject.next();}));
+      // http://localhost:8080/bookstore/orderStatusByAdmin?orderId=583785&status=in%20progress
      }
 
   //    @GetMapping(value = "bookstore/orderedbooks/{token}")
