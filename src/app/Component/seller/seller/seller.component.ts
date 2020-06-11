@@ -8,6 +8,7 @@ import {  MatDialog } from '@angular/material/dialog';
 import { AddbookComponent } from '../../addbook/addbook.component';
 import { UpdateBookComponent } from '../../update-book/update-book.component';
 import { UploadBookImageComponent } from '../../addbook/upload-book-image/upload-book-image.component';
+import {ActivatedRoute,ParamMap} from '@angular/router';
 
 @Component({
   selector: 'app-seller',
@@ -16,26 +17,49 @@ import { UploadBookImageComponent } from '../../addbook/upload-book-image/upload
 })
 export class SellerComponent implements OnInit {
   constructor(private service: BookService , private dialog: MatDialog,
-              private matSnackBar: MatSnackBar,
+              private matSnackBar: MatSnackBar,private _route:ActivatedRoute
 
   ) { }
   bookSearch: any;
   name: string = null;
   books: any;
   status: string;
+  
+  sellerBooks:boolean=false;
+  orderBooks:boolean=false;
 
-
+  private param:any;
+  
   ngOnInit(): void {
     this.service.autoRefresh$.subscribe(() => {
-      this.getallBooks();
+       this.getallBooks();
     });
+
+    this._route.queryParams.subscribe
+    (params=>
+      {this.param=params['book'];
+      if (this.param == "sellerbook") 
+      {
+      this.sellerBooks=true;
+      this.orderBooks=false
+
+      }
+      if(this.param == "order")
+      {
+        this.sellerBooks=false;
+        this.orderBooks=true;
+      }
+    });
+
     this.getUserName();
     this.getallBooks();
     this.getSearchBookData();
   }
-
+  
   getallBooks() {
-    console.log('gett all book called');
+    this.sellerBooks=true;
+    this.orderBooks=false;
+    console.log('inside seller book meth.....');
     this.service.getallBooks().subscribe( response => {
       this.books = response.obj;
       console.log('All books ', this.books);
@@ -118,4 +142,5 @@ this.service.verifyBook(bookId, this.status).subscribe((message) => {
       this.bookSearch = message.books;
     });
   }
+
 }

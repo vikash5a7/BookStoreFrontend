@@ -6,8 +6,12 @@ import { MatSidenavContent } from '@angular/material/sidenav';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+
+
+
   opened = true;
   public opened2 = false;
+
   isUser = false;
   isSeller = false;
   isAdmin = false;
