@@ -27,6 +27,7 @@ export const environment = {
   addUrl: 'customers/addcustomer',
   addtocart: 'carts/addcart',
   getbookprice: 'getbookprice',
+  getReview:'books/getratereviews',
 
   quantity: 'http://localhost:8080/',
   addbooksquantity: 'addbooksquantity',
@@ -48,8 +49,13 @@ export const environment = {
   approvedBooks:"admin/allApprovedBooks/",
 
   avgrateofbook:"books/avgrate?bookId=",
+
+
+  getSortedBookByRate:"books/sortbyrate",
+
   getallOrderedBooks:"bookstore/getOrdersByAdmin",
   changeOrderstatus:"bookstore/orderStatusByAdmin",
+
 };
 
 
