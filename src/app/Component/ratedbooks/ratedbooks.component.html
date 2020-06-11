@@ -6,7 +6,7 @@
 
         <div class="list-books">
 
-            <div *ngFor="let book of bookList" >
+            <div *ngFor="let book of bookList | booksearchpipe:bookSearch" >
            
 
                 <mat-card style="height: 22.5em; width: 220px;  margin-right: 40px;" (click)="getReviews(book)">

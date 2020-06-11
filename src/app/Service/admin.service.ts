@@ -83,13 +83,17 @@ export class AdminService {
       //  var y:number =+orderId;
        console.log("url "+this.adminUrl+this.changeOrderstatus+"?orderId="+orderId+"&status="+status);
        
+
+      // return this.httpService.put(this.adminUrl+this.changeOrderstatus+"?orderId="+orderId+"&status="+status,"",this.httpOptions);
+
       return this.httpService
                              .put(this.adminUrl+this.changeOrderstatus+"?orderId="+orderId+"&status="+status,"",this.httpOptions)
-                             .pipe(
-                              tap(() => {
-                                this._autoRefresh$.next();
-                              })
-                            );
+                            //  .pipe(
+                            //   tap(() => {
+                            //     this._autoRefresh$.next();
+                            //   })
+                            // );
+
       // http://localhost:8080/bookstore/orderStatusByAdmin?orderId=583785&status=in%20progress
      }
 
