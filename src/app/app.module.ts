@@ -48,6 +48,7 @@ import { RatereviewComponent } from './Component/ratereview/ratereview.component
 import { UploadBookImageComponent } from './Component/addbook/upload-book-image/upload-book-image.component';
 import { OrderstatusComponent } from './Component/orderstatus/orderstatus.component';
 import { RatedbooksComponent } from './Component/ratedbooks/ratedbooks.component';
+import { BookreviewsComponent } from './Component/bookreviews/bookreviews.component';
 
 
 
@@ -77,8 +78,10 @@ import { RatedbooksComponent } from './Component/ratedbooks/ratedbooks.component
     AddbookComponent,
     UpdateBookComponent,
     UploadBookImageComponent,
+    BookreviewsComponent,
     OrderstatusComponent,
     RatedbooksComponent
+
   ],
   imports: [
     MatBadgeModule,

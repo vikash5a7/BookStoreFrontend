@@ -23,6 +23,7 @@ export class BookService {
   private searchBookData = new Subject<any>();
   private baseUrl = environment.BASE_URL;
   private notesList = new Subject<any>();
+  private getReviewUrl = environment.getReview;
 
   // tslint:disable-next-line: variable-name  
 
@@ -127,10 +128,10 @@ export class BookService {
 
 
   public getRateOfBookById(bookId: any): Observable<any> {
-    console.log('get rate  ', bookId);
-    console.log( environment.BASE_URL + environment.avgrateofbook + bookId);
+    
+    console.log( environment.BASE_URL +'/' +environment.avgrateofbook + bookId);
     return this.http.get(
-      environment.BASE_URL + environment.avgrateofbook + bookId,
+      environment.BASE_URL + '/' + environment.avgrateofbook + bookId,
       {}
     );
   }
@@ -175,10 +176,21 @@ export class BookService {
     return this.http.get(environment.BASE_URL + environment.ratereview + bookId, this.httpOptions);
   }
 
+
   getInProgressOrderedBooks():Observable<any>{
     console.log("order status url");
     console.log(this.httpService.get(environment.adminUrl+environment.getOrdersByseller,this.httpOptions));
     return this.httpService.get(environment.adminUrl+environment.getOrdersByseller,{});
    }
+
+  public getReview(bookId: number) {
+    console.log("get review url:",`${environment.BASE_URL}/${this.getReviewUrl}?bookId=${bookId}`);
+    return this.http.get(`${environment.BASE_URL}/${this.getReviewUrl}?bookId=${bookId}`, this.httpOptions);
+  }
+
+  public getSortedBookByRate(): Observable<any> {
+    return this.http.get(`${environment.BASE_URL}/${environment.getSortedBookByRate}`, this.httpOptions);
+  }
+
 
 }

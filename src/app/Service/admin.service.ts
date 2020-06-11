@@ -81,7 +81,7 @@ export class AdminService {
 
      updateOrderStatus(orderId:any,status:any):Observable<any>{
       //  var y:number =+orderId;
-       console.log("url "+this.adminUrl+this.changeOrderstatus+"?orderId="+orderId);
+       console.log("url "+this.adminUrl+this.changeOrderstatus+"?orderId="+orderId+"&status="+status);
        
       return this.httpService
                              .put(this.adminUrl+this.changeOrderstatus+"?orderId="+orderId+"&status="+status,"",this.httpOptions)

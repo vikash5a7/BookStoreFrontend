@@ -12,8 +12,9 @@
             </mat-sidenav>
            
             <mat-sidenav-content class="sidenav-content">
-                <div *ngIf="isAdmin">
-                <router-outlet ></router-outlet>
+
+            <div *ngIf="isAdmin">
+                <app-admin></app-admin>
             </div>
             <div *ngIf="isSeller">
                 <app-seller></app-seller>
@@ -21,6 +22,9 @@
 
                 <!-- <app-adminunverifiedbooks></app-adminunverifiedbooks> -->
                 <!-- <app-admin></app-admin> -->
+
+                
+
             </mat-sidenav-content>
         </mat-sidenav-container>
         </div>

@@ -37,22 +37,22 @@ export class SidenavbarComponent implements OnInit {
   }
   sellerBooks()
   {
-    this.router.navigate(['dashboard/admin'],{queryParams:{book:'unverified'}});
+    this.router.navigate(['books'],{queryParams:{book:'unverified'}});
   }
 
   orders()
   {
-    this.router.navigate(['dashboard/admin'],{queryParams:{book:'order'}});
+    this.router.navigate(['books'],{queryParams:{book:'order'}});
   }
 
   reviews()
   {
-    this.router.navigate(['dashboard/admin'],{queryParams:{book:'review'}});
+    this.router.navigate(['books'],{queryParams:{book:'review'}});
   }
 
   books()
   {
-    this.router.navigate(['dashboard/admin'],{queryParams:{book:'books'}});
+    this.router.navigate(['books'],{queryParams:{book:'books'}});
   }
 
 
