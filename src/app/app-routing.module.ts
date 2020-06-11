@@ -33,7 +33,19 @@ const routes: Routes = [
   {path: 'forget-password', component: ForgetPasswordComponent},
   {path: 'login', component: LoginComponentComponent},
   {path: 'seller', component: SellerComponent},
+
+
+  {path:'books/:book',component:SellerComponent},
   {path: 'admin', component: AdminComponent},
+
+  // {path: 'admin', component: AdminComponent},
+  {path: 'dashboard', component: DashboardComponent,
+  children:[{path: '', component: AdminComponent},
+  {path: 'admin', component: AdminComponent}]},
+
+
+  {path: 'admin', component: AdminComponent},
+
   {path: 'register', component: RegistrationComponent},
   {path: 'books/rateandreview/:bookId', component: GiverateComponent},
   {path: 'verifybook', component: AdminunverifiedbooksComponent},

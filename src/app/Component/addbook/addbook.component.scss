@@ -80,3 +80,22 @@
     /* Firefox 18- */
     color: pink;
   }
+
+
+  .example-full-width3 {
+    // width: 100%;
+    display: block;
+    position: relative;
+    flex: auto;
+    min-width: 0;
+    width: 50%;
+  }
+   .example-full-width4 {
+    // width: 100%;
+    display: block;
+    position: relative;
+    flex: auto;
+    min-width: 0;
+    width: 50%;
+  }
+ 

@@ -21,14 +21,23 @@
                             
                             <div class="status" >Order Status : <label style="color: green;">{{ book.orderStatus }}</label> </div>
                             
-                            <div style="display: flex; justify-content: space-around; ">
+                            <div style="display: flex; justify-content: flex-start; margin-left: 20px;">
                                 
                              
-                                <div>
-                                    <button style="width: 8rem; margin-left: -139px; margin-top:auto; color: white; outline: none; border-radius: 0px; background-color: rgba(131, 4, 4, 0.8);"  (click)="updateOrder(book.orderId,'in progress')"  mat-button>
+                                <div *ngIf="isAdmin">
+                                    <button [disabled]="book.orderStatus === 'in shipment' || book.orderStatus === 'delivered'" style="width: 8rem; margin-left: -139px; margin-top:auto; color: white; outline: none; border-radius: 0px; background-color: rgba(131, 4, 4, 0.8);"  (click)="updateOrderAdmin(book.orderId,'in progress')"  mat-button>
                               Update-Order
                           </button>
                                                                  
+                                </div>
+                                <div *ngIf="isSeller" >
+                                    <mat-form-field>
+                                        <mat-label>Update Order Status</mat-label>
+                                        <mat-select disableRipple>
+                                        <mat-option [disabled]="book.orderStatus === 'in shipment' || book.orderStatus === 'delivered'" (click)="updateOrderSeller(book.orderId,'in shipment')" >In Shipment</mat-option>
+                                        <mat-option [disabled]="book.orderStatus === 'in progress' || book.orderStatus === 'delivered'  " (click)="updateOrderSeller(book.orderId,'delivered')">Delivered</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
                                 </div>
                             </div>
                         </mat-card-content>

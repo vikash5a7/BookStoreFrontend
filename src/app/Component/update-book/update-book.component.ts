@@ -47,7 +47,7 @@ export class UpdateBookComponent implements OnInit {
     // this.dialogRef.close();
 
     setTimeout(() => {
-      this.bookservice.updateBook(this.data.bookId, this.imageFile, this.updatebook).subscribe(
+      this.bookservice.updateBook(this.data.bookId, this.updatebook).subscribe(
         (response: any) => {
           if (response.statusCode === 200) {
             this.dialogRef.close({ data: this.updatebook });
