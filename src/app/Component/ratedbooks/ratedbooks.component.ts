@@ -19,7 +19,7 @@ export class RatedbooksComponent implements OnInit {
   avgRate:any;
   bookId:any;
   rateList = Array<any>();
-
+  bookSearch:any;
 
   constructor(private service: BookService,
     private matSnackBar: MatSnackBar,private dialog: MatDialog
@@ -32,6 +32,7 @@ export class RatedbooksComponent implements OnInit {
     this.totalRate = 0;
  
     this.getColor();
+    this.getSearchBookData();
 
   }
 
@@ -111,4 +112,10 @@ export class RatedbooksComponent implements OnInit {
     });
   }
 
+  getSearchBookData() {
+    this.service.getSearchBookData().subscribe((message) => {
+      console.log('search data', message.books);
+      this.bookSearch = message.books;
+    });
+  }
 }

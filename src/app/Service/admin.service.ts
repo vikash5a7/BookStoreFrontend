@@ -72,7 +72,7 @@ export class AdminService {
       //  var y:number =+orderId;
        console.log("url "+this.adminUrl+this.changeOrderstatus+"?orderId="+orderId+"&status="+status);
        
-      return this.httpService.put(this.adminUrl+this.changeOrderstatus+"?orderId="+orderId+"&status="+status,"",this.httpOptions).pipe(tap(()=>{ this.subject.next();}));
+      return this.httpService.put(this.adminUrl+this.changeOrderstatus+"?orderId="+orderId+"&status="+status,"",this.httpOptions);
       // http://localhost:8080/bookstore/orderStatusByAdmin?orderId=583785&status=in%20progress
      }
 
