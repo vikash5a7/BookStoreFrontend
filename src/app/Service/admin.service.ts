@@ -23,6 +23,11 @@ export class AdminService {
 
   private getallOrderedBooks = environment.getallOrderedBooks;
   private changeOrderstatus = environment.changeOrderstatus;
+  private _autoRefresh$ = new Subject();
+
+  get autoRefresh$() {
+    return this._autoRefresh$;
+  }
   
   // private token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpZCI6M30.rzol7EjZW2exz-O-d40T3FvIem3Lk8kYGTngic_YHHX2_T7c4zMCcjDfzMXtOHehZkP8cW7TDK_tWELwWkkryQ";
 
@@ -72,11 +77,19 @@ export class AdminService {
       return this.httpService.get(this.adminUrl+this.getallOrderedBooks,{});
      }
 
+
+
      updateOrderStatus(orderId:any,status:any):Observable<any>{
       //  var y:number =+orderId;
        console.log("url "+this.adminUrl+this.changeOrderstatus+"?orderId="+orderId);
        
-      return this.httpService.put(this.adminUrl+this.changeOrderstatus+"?orderId="+orderId+"&status="+status,"",this.httpOptions).pipe(tap(()=>{ this.subject.next();}));
+      return this.httpService
+                             .put(this.adminUrl+this.changeOrderstatus+"?orderId="+orderId+"&status="+status,"",this.httpOptions)
+                             .pipe(
+                              tap(() => {
+                                this._autoRefresh$.next();
+                              })
+                            );
       // http://localhost:8080/bookstore/orderStatusByAdmin?orderId=583785&status=in%20progress
      }
 

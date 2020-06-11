@@ -67,7 +67,7 @@ export const environment = {
 
   getallOrderedBooks:"bookstore/getOrdersByAdmin",
   changeOrderstatus:"bookstore/orderStatusByAdmin",
-
+  getOrdersByseller:"bookstore/getOrdersByseller"
 };
 
 

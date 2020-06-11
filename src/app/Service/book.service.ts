@@ -75,10 +75,10 @@ export class BookService {
       );
   }
 
-  updateBook(bookId: any, imageName: string, book: any): Observable<any> {
+  updateBook(bookId: any, book: any): Observable<any> {
     return this.httpService
     // tslint:disable-next-line: max-line-length
-    .put(`${environment.BookUrl}/${environment.editBook}/${bookId}/${imageName}`, book, {headers: new HttpHeaders({token: localStorage.token})})
+    .put(`${environment.BookUrl}/${environment.editBook}/${bookId}`, book, {headers: new HttpHeaders({token: localStorage.token})})
     .pipe(
       tap(() => {
         this._autoRefresh$.next();
@@ -174,5 +174,11 @@ export class BookService {
   public getratingandreview(bookId: number) {
     return this.http.get(environment.BASE_URL + environment.ratereview + bookId, this.httpOptions);
   }
+
+  getInProgressOrderedBooks():Observable<any>{
+    console.log("order status url");
+    console.log(this.httpService.get(environment.adminUrl+environment.getOrdersByseller,this.httpOptions));
+    return this.httpService.get(environment.adminUrl+environment.getOrdersByseller,{});
+   }
 
 }
