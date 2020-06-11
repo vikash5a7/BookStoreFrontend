@@ -95,9 +95,10 @@ export class SellerComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
+
   verifyBook(bookId: any) {
-this.status = 'OnHold';
-this.service.verifyBook(bookId, this.status).subscribe((message) => {
+  this.status = 'OnHold';
+  this.service.verifyBook(bookId, this.status).subscribe((message) => {
       if (message.statusCode === 202) {
         this.matSnackBar.open('Request sent Successfully', 'OK', {
           duration: 4000,

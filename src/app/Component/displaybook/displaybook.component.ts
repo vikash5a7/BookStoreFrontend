@@ -4,6 +4,7 @@ import {MatSnackBarModule, MatSnackBar} from '@angular/material/snack-bar';
 import { BookModule } from 'src/app/Model/book/book.module';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { CartService } from 'src/app/Service/cart.service';
 @Component({
   selector: 'app-displaybook',
   templateUrl: './displaybook.component.html',
@@ -14,6 +15,7 @@ export class DisplaybookComponent implements OnInit {
   selectedValue = 'relevance';
   orderBy = 'asc';
   boo: any;
+  error = null;
   bookList = Array<any>();
   book: BookModule = new BookModule();
   items = [];
@@ -36,7 +38,8 @@ export class DisplaybookComponent implements OnInit {
   leng: any;
   constructor( private service: BookService,
                private matSnackBar: MatSnackBar,
-               private route: Router) { }
+               private route: Router,
+               private cartService: CartService) { }
 
   ngOnInit() {
     this.getallApprovedBooks();
@@ -68,10 +71,6 @@ export class DisplaybookComponent implements OnInit {
         console.log('Books are from 3  ', this.bookList);
         break;
     }
-}
-Deatails(bookId) {
-    console.log('Redirected to page no ' + bookId);
-    this.route.navigateByUrl('books/info/' + bookId);
 }
 
   getallApprovedBooks() {
@@ -113,6 +112,7 @@ getSearchBookData() {
     console.log('current page from previous' + 'next' + this.page);
     this.getallApprovedBooks();
    }
+
    next(event: any) {
     event.preventDefault();
     this.page = this.page + 1;
@@ -128,14 +128,36 @@ getSearchBookData() {
     sessionStorage.setItem(bookId, bookId);
     this.route.navigateByUrl('login');
   }
+
   sessionStorage.setItem(bookId, bookId);
   this.getOutput();
   this.ngOnInit();
+  this.cartService.addToCart(bookId).subscribe(
+    data => this.handleResponse(data),
+    error => this.handleError(error)
+  );
 }
 
-getOutput() {
+  handleResponse(data: any) {
+    console.log(data);
+    this.matSnackBar.open('Book added successfully Into Cart' , 'ok', {
+    duration: 5000
+  });
+}
+  handleError(error: any) {
+    this.error = error.error.message;
+    console.log(error);
+    this.matSnackBar.open(this.error, 'ok', {
+    duration: 5000
+  });
   }
+  getOutput() {
+  }
+  Deatails(bookId) {
+    console.log('Redirected to page no ' + bookId);
+    this.route.navigateByUrl('books/info/' + bookId);
 
+  }
   getUpdatedNotes(event) {
     this.ngOnInit();
     }

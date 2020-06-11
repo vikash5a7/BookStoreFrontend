@@ -1,3 +1,4 @@
+import { CartService } from 'src/app/Service/cart.service';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { BookService } from 'src/app/Service/book.service';
 import { TokenService } from 'src/app/Service/token.service';
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class ToolbarComponent implements OnInit {
 
   @Output() toggleEvent = new EventEmitter<boolean>();
-  opened:boolean = false;
+  opened = false;
 
   name: any;
   id: any;
@@ -29,6 +30,7 @@ export class ToolbarComponent implements OnInit {
   constructor( private service: BookService,
                private token: TokenService,
                private route: Router,
+               private cartService: CartService
     ) { }
 
   ontoggel(input: any) {
@@ -38,8 +40,10 @@ export class ToolbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.length  = sessionStorage.length;
-    console.log('total item in cart is ' + this.length);
+    this.cartService.autoRefresh$.subscribe(() => {
+      this.getCartItemCount();
+    });
+    this.getCartItemCount();
     this.name = localStorage.getItem('Name');
     this.role = localStorage.getItem('role');
     console.log('role check toolbar', this.role);
@@ -57,6 +61,13 @@ export class ToolbarComponent implements OnInit {
      console.log('is user ', this.isUser);
    }
   }
+
+  getCartItemCount() {
+    this.cartService.getCartItemCount().subscribe((response: any) => {
+      this.length = response.obj;
+      console.log('total number of itemes are' + response.obj);
+     });
+  }
   bookSearch() {
     // console.log(this.bookName);
     this.service.setSearchBookData(this.bookName);
@@ -71,6 +82,4 @@ export class ToolbarComponent implements OnInit {
   getUpdatedNotes(event) {
   this.ngOnInit();
   }
-
-
 }

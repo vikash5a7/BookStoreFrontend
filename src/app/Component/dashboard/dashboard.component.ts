@@ -16,14 +16,11 @@ export class DashboardComponent implements OnInit {
 
   constructor() { }
   nameEventHander($event: any) {
-
     this.opened2 = $event;
     console.log('2', this.opened2);
   }
 
-
   ngOnInit(): void {
-
     this.role = localStorage.getItem('role');
     console.log('role check toolbar', this.role);
     if (this.role === 'admin') {
@@ -38,7 +35,6 @@ export class DashboardComponent implements OnInit {
      this.isUser = true;
      this.isLogin = true;
      console.log('is user ', this.isUser);
-
    }
   }
 }

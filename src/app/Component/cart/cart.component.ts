@@ -5,11 +5,9 @@ import {MatSnackBarModule } from '@angular/material/snack-bar';
 import { BookService } from 'src/app/Service/book.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { BookModule } from 'src/app/Model/book/book.module';
-import { ThrowStmt } from '@angular/compiler';
 import { CartService } from 'src/app/Service/cart.service';
 import { Customer } from 'src/app/Model/customer.model';
 import { Address } from 'src/app/Model/address.model';
-
 
 @Component({
   selector: 'app-cart',
@@ -35,7 +33,7 @@ export class CartComponent implements OnInit {
   si: any = sessionStorage.length;
   value: any = [];
   UserId: number;
-
+  objecrtArry: any = [];
   quantity = 1;
   customer: Customer = new Customer();
   type: any;
@@ -50,7 +48,6 @@ addre: Address = new Address();
   constructor( private matSnackBar: MatSnackBarModule,
                private formBuilder: FormBuilder,
                private route: Router, private service: BookService, private cartService: CartService) { }
-
     phoneNumber = new FormControl('', [Validators.required, Validators.pattern('[0-9]{10,10}')]);
     Name = new FormControl('', [Validators.required]);
     pincode = new FormControl('', [Validators.required]);
@@ -64,8 +61,28 @@ addre: Address = new Address();
 
   ngOnInit()  {
    this.getsession();
+   this.cartService.autoRefresh$.subscribe(() => {
+    this.getCartItemCount();
+  });
+   this.getCartItemCount();
+   this. booksFromCart();
    this.phoneNumber.setValue('8989898798');
    this.Name.setValue(localStorage.getItem('Name'));
+  }
+
+  getCartItemCount() {
+    this.cartService.getCartItemCount().subscribe((response: any) => {
+      this.length = response.obj;
+      console.log('total number of itemes are' + response.obj);
+     });
+  }
+
+  booksFromCart() {
+      this.cartService.getCartBooksFrom().subscribe((Response) => {
+        console.log('response of cart books' + Response.obj);
+        console.log('books are ' + this.book);
+        this.book = Response.obj;
+       });
     }
 
 Toggle() {
@@ -87,7 +104,6 @@ tog() {
 Removecart(key) {
   sessionStorage.removeItem(key);
   window.location.reload();
-  console.log('heyyy');
 }
 
 getsession() {
@@ -97,7 +113,6 @@ for (let i = 0; i < sessionStorage.length; i++) {
   console.log('key', key);
   this.service.getBokkByid(this.value[i]).subscribe((response: any) => {
    console.log(response);
-   this.book[i] = response.obj;
    console.log(this.book, 'kkkkkkkk');
    return this.book;
   });
@@ -135,7 +150,6 @@ if (this.selectedtype === 'Home') {
      console.log('data+++' + this.phoneNumber.value);
      this.addtcart(this.user);
     });
-
  }
 if (this.selectedtype === 'Work') {
   // tslint:disable-next-line: no-shadowed-variable
@@ -171,7 +185,6 @@ if (this.selectedtype === 'Other') {
       console.log('data+++' + this.phoneNumber.value);
       this.addtcart(this.user);
     });
-    // this.addtcart(this.user);
  }
 }
 
@@ -183,7 +196,7 @@ addtcart( user: any) {
     console.log('key', key);
     console.log('ghgvvb=====' + user);
     console.log('---' + this.bid);
-    this.cartService.addtocart(this.value[0], user).subscribe((response: any) => {
+    this.cartService.addtocart(this.value[i], user).subscribe((response: any) => {
      console.log(response);
      this.book[i] = response.obj;
      console.log(this.book, 'kkkkkkkk');
@@ -206,23 +219,19 @@ getprice(): any {
   }
   }
 
-
     addItem() {
       this.quantity = this.quantity + 1;
-
       console.log('plus is : ' + this.quantity);
-
-
       }
 
-      removeItem() {
+    removeItem() {
         this.quantity = this.quantity - 1;
         console.log('plus is : ' + this.quantity);
-        }
-        removelocal() {
-          sessionStorage.clear();
-        }
-        addquantity() {
+    }
+    removelocal() {
+      sessionStorage.clear();
+    }
+    addquantity() {
           for (let i = 0; i < sessionStorage.length; i++) {
             const key = sessionStorage.key(i);
             this.value[i] = sessionStorage.getItem(key);
@@ -233,6 +242,6 @@ getprice(): any {
              this.book[i] = response.obj;
              console.log(this.book, 'kkkkkkkk');
         });
-        }
-        }
+      }
+    }
 }

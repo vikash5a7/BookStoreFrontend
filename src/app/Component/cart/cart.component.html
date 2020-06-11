@@ -8,16 +8,16 @@
           color:black"> Mycart({{length}})</mat-label>
             <div>
                 <div *ngFor="let books of book " fxLayout="row" fxLayoutAlign="space-around center">
-                    <img style="    padding-top: 14px;
+                    <img style="padding-top: 14px;
                     width: 81px;
                     height: 116px;
                     padding-left: 10px;
-                    margin-left: 81px;" src="assets\bookimage\{{books.image}}" class="bookimage">
+                    margin-left: 81px;" src="assets\bookimage\{{books.booksList[0].image}}" class="bookimage">
                     <br>
                     <div class="details">
-                        <span class="bookname">{{books.bookName}}</span><br>
-                        <h2 class="author">by{{books.authorName}}</h2>
-                        <h2 class="price">Rs.{{books.price * quantity}}</h2>
+                        <span class="bookname">{{books.booksList[0].bookName}}</span><br>
+                        <h2 class="author">by{{books.booksList[0].authorName}}</h2>
+                        <h2 class="price">Rs.{{books.booksList[0].price}}</h2>
                     </div>
                     <div style="display: flex; flex-direction: row; margin-left: -2.0em; margin-top: 7em; border-radius: 2em;">
                         <div style="display: flex; flex-direction: row;margin-bottom: 10px;">
@@ -36,7 +36,7 @@
                             <div>
                                 <button style="height: 30px; width: 60px;font-size: 12px;
                                     background-color:white;padding-top: 0em; margin-left: 0px; border: transparent;
-                                   " (click)="Removecart(2)">Remove
+                                   " (click)="Removecart(books.bookId)">Remove
                                    </button>
                             </div>
                         </div>
