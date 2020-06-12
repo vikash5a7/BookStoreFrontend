@@ -23,15 +23,15 @@
                         <div style="display: flex; flex-direction: row;margin-bottom: 10px;">
                             <div style="height: 20px; width: 20px;">
                                 <button style="  height: 30px;  width: 30px;  background-color: transparent ;
-                                border-radius: 11em;outline: none; border-color: rgb(238, 233, 233); " (click)="addItem(books.booksList[0].bookId, books.quantityOfBook[0])">  +
+                                border-radius: 11em;outline: none; border-color: rgb(238, 233, 233); " (click)="increaseQuantity(books.booksList[0].bookId, books.quantityOfBook[0])">  +
                               </button>
                             </div>
                             <div style="  margin-left: 30px;  margin-right: 20px;  margin-top: 8px;  ">
-                                {{quantity }}
+                                {{books.quantityOfBook[0].quantityOfBook}}
                             </div>
                             <div>
                                 <button style="height: 30px; width: 30px; background-color:white;
-                                border-radius: 11em; border-color: rgb(238, 233, 233);outline: none;" (click)="removeItem(books.booksList[0].bookId, books.quantityOfBook[0])">-
+                                border-radius: 11em; border-color: rgb(238, 233, 233);outline: none;" (click)="DecreseQuantity(books.booksList[0].bookId, books.quantityOfBook[0])">-
                                 </button>
                             </div>
                             <div>

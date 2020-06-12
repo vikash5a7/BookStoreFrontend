@@ -15,13 +15,13 @@ import { Address } from 'src/app/Model/address.model';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-
-  constructor( private matSnackBar: MatSnackBarModule,
+  constructor( private matSnackBar: MatSnackBar,
                private formBuilder: FormBuilder,
                private route: Router, private service: BookService, private cartService: CartService) { }
   selected = false;
   isLinear = false;
   customerForm: FormGroup;
+  error: null;
   book = [];
   books: BookModule = new BookModule();
   element: BookModule = new BookModule();
@@ -95,19 +95,40 @@ addre: Address = new Address();
         }
     });
   }
-  addItem(bookId: any , quantityDeatils: any) {
+  increaseQuantity(bookId: any , quantityDeatils: any) {
     console.log('increasing items ');
     console.log('Quatity Details', quantityDeatils);
     this.bookQuantityDetails.quantityId = quantityDeatils.quantity_id;
     this.bookQuantityDetails.eachPrice = quantityDeatils.totalprice / quantityDeatils.quantityOfBook;
     this.bookQuantityDetails.quantityOfBook = quantityDeatils.quantityOfBook;
-    console.log('quantityOfBook details ', this.bookQuantityDetails);
+    this.cartService.increaseBooksQuantity(bookId, this.bookQuantityDetails).subscribe(
+      data => this.handleResponse(data),
+      error => this.handleError(error)
+    );
     console.log('Book id' + bookId);
     }
-  removeItem(bookId: any , quantityDeatils: any) {
+  DecreseQuantity(bookId: any , quantityDeatils: any) {
       console.log('Deacresing items');
       console.log('Quatity Details', quantityDeatils);
       console.log('Book id' + bookId);
+      this.cartService.addToCart(bookId).subscribe(
+        data => this.handleResponse(data),
+        error => this.handleError(error)
+      );
+  }
+  handleResponse(data: any): void {
+    console.log(data);
+    this.matSnackBar.open('Book added successfully Into Cart' , 'ok', {
+    duration: 5000
+  });
+  }
+
+  handleError(error: any) {
+    this.error = error.error.message;
+    console.log(error);
+    this.matSnackBar.open(this.error, 'ok', {
+    duration: 5000
+  });
   }
 
   Removecart(key) {

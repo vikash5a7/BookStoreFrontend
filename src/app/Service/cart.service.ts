@@ -37,10 +37,10 @@ export class CartService {
         })
       );
   }
-  increaseBooksQuantity(quantity) {
+  increaseBooksQuantity(bookId, CartInfo) {
     return this.httpService
     // tslint:disable-next-line: max-line-length
-    .post(`${environment.BookUrl}/${environment.INC_BOOKS_QUANTITY}/${quantity}`, {}, {headers: new HttpHeaders({token: localStorage.token})})
+    .post(`${environment.BookUrl}/${environment.INC_BOOKS_QUANTITY}${bookId}`, {CartInfo}, {headers: new HttpHeaders({token: localStorage.token})})
     .pipe(
       tap(() => {
         this._autoRefresh$.next();
