@@ -59,9 +59,9 @@ addre: Address = new Address();
     Work = new FormControl('', [Validators.required]);
     Other = new FormControl('', [Validators.required]);
     bookQuantityDetails = {
-    eachPrice: null,
-    quantityId: null,
-    quantityOfBook : null
+      eachPrice: null,
+      quantityId: null,
+      quantityOfBook : null
     };
 
   ngOnInit()  {
@@ -103,22 +103,32 @@ addre: Address = new Address();
     this.bookQuantityDetails.quantityOfBook = quantityDeatils.quantityOfBook;
     this.cartService.increaseBooksQuantity(bookId, this.bookQuantityDetails).subscribe(
       data => this.handleResponse(data),
-      error => this.handleError(error)
-    );
+      error => this.handleError(error));
     console.log('Book id' + bookId);
     }
   DecreseQuantity(bookId: any , quantityDeatils: any) {
-      console.log('Deacresing items');
-      console.log('Quatity Details', quantityDeatils);
-      console.log('Book id' + bookId);
-      this.cartService.addToCart(bookId).subscribe(
-        data => this.handleResponse(data),
-        error => this.handleError(error)
-      );
+    console.log('increasing items ');
+    console.log('Quatity Details', quantityDeatils);
+    this.bookQuantityDetails.quantityId = quantityDeatils.quantity_id;
+    this.bookQuantityDetails.eachPrice = quantityDeatils.totalprice / quantityDeatils.quantityOfBook;
+    this.bookQuantityDetails.quantityOfBook = quantityDeatils.quantityOfBook;
+    this.cartService.decreaseBooksQuantity(bookId, this.bookQuantityDetails).subscribe(
+      data => this.handleResponse(data),
+      error => this.handleError(error)
+    );
+    console.log('Book id' + bookId);
+  }
+
+  Removecart(key) {
+    this.cartService.removeIteamFromCart(key).subscribe((Response) => {
+      console.log('removing book', Response);
+    });
+    sessionStorage.removeItem(key);
+    console.log('removinf book id is: ', key);
   }
   handleResponse(data: any): void {
     console.log(data);
-    this.matSnackBar.open('Book added successfully Into Cart' , 'ok', {
+    this.matSnackBar.open(data.message , 'ok', {
     duration: 5000
   });
   }
@@ -129,14 +139,6 @@ addre: Address = new Address();
     this.matSnackBar.open(this.error, 'ok', {
     duration: 5000
   });
-  }
-
-  Removecart(key) {
-    this.cartService.removeIteamFromCart(key).subscribe((Response) => {
-      console.log('removing book', Response);
-    });
-    sessionStorage.removeItem(key);
-    console.log('removinf book id is: ', key);
   }
 
 Toggle() {
@@ -155,8 +157,6 @@ tog() {
   }
 }
 
-
-
 getsession() {
 for (let i = 0; i < sessionStorage.length; i++) {
   const key = sessionStorage.key(i);
@@ -171,20 +171,17 @@ for (let i = 0; i < sessionStorage.length; i++) {
 
 OnRegisterSubmit() {
 console.log('type--' + this.selectedtype);
-
 this.addre.address = this.address.value;
 this.addre.city = this.city.value;
 this.addre.landmark = this.landmark.value;
 this.addre.locality = this.locality.value;
 this.addre.pincode = this.pincode.value;
-
 if (this.selectedtype === 'Home') {
   // tslint:disable-next-line: no-shadowed-variable
   const Customer = {
     name : this.Name.value,
     phonenumber : this.phoneNumber.value,
     home : this.addre
-
   };
 
   console.log('Home----');
@@ -235,8 +232,6 @@ if (this.selectedtype === 'Other') {
     });
  }
 }
-
-
 addtcart( user: any) {
   for (let i = 0; i < sessionStorage.length; i++) {
     const key = sessionStorage.key(i);

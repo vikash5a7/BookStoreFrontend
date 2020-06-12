@@ -5,9 +5,23 @@
 export const environment = {
   production: false,
 
+
+  // BASE_URL: 'http://localhost:8081/',
+  // BookUrl: 'http://localhost:8081/',
+  // getallbooksurl: '',
   BASE_URL: 'http://localhost:8080',
-  BookUrl: 'http://localhost:8080/',
-  getallbooksurl: '',
+  BookUrl: 'http://localhost:8080',
+  getallbooksurl: 'books/getAllBooks',
+
+
+  // BASE_URL: 'http://localhost:8080',
+  // BookUrl: 'http://localhost:8080',
+  // getallbooksurl: '',
+  // BASE_URL: 'http://localhost:8080',
+  // BookUrl: 'http://localhost:8080',
+  // getallbooksurl: 'books/getAllBooks',
+
+
   getbookbyIdurl: 'books/',
   addandupdatecartUrl: 'books/addandupdatecart',
   sorting: 'books/sorting',
@@ -23,14 +37,7 @@ export const environment = {
   addUrl: 'customers/addcustomer',
   addtocart: 'carts/addcart',
   getbookprice: 'getbookprice',
-
-
-  ADDCART: '/bookstore/v3/cart/addbookCart/',
-  COUNT_BOOKS_IN_CART: '/bookstore/v3/cart/bookCount',
-  DEC_BOOKS_QUANTITY: '/bookstore/v3/cart/decreaseQuantityPrice',
-  INC_BOOKS_QUANTITY: '/bookstore/v3/cart/increasebooksquantity?bookId=',
-  REMOVE_BOOKS_FROM_CART: '/bookstore/v3/cart/removeCartBooks',
-  GET_BOOKS_FROM_CART: '/bookstore/v3/cart/getcartbooks',
+  getReview: 'books/getratereviews',
 
   quantity: 'http://localhost:8080/',
   addbooksquantity: 'addbooksquantity',
@@ -42,7 +49,10 @@ export const environment = {
 
   WRITE_REVIEW: 'books/ratingreview?bookId=',
   GET_REVIEWS: 'books/ratingreviews/?bookId=',
+
+
   ratereview: 'books/getratereviews/?bookId=',
+
 
   adminUrl: 'http://localhost:8080/',
   approveBook: 'admin/approveBook/',
@@ -51,9 +61,17 @@ export const environment = {
   rejectedBooks: 'admin/allRejectedBooks/',
   approvedBooks: 'admin/allApprovedBooks/',
 
+
   avgrateofbook: 'books/avgrate?bookId=',
+  getallOrderedBooks: 'bookstore/getOrdersByAdmin',
+  changeOrderstatus: 'bookstore/orderStatusByAdmin',
+  getOrdersByseller: 'bookstore/getOrdersByseller',
 
-
+  getSortedBookByRate: 'books/sortbyrate',
+  ADDCART: '/bookstore/v3/cart/addbookCart/',
+  COUNT_BOOKS_IN_CART: '/bookstore/v3/cart/bookCount',
+  DEC_BOOKS_QUANTITY: '/bookstore/v3/cart/decreaseQuantityPrice?bookId=',
+  INC_BOOKS_QUANTITY: '/bookstore/v3/cart/increasebooksquantity?bookId=',
+  REMOVE_BOOKS_FROM_CART: '/bookstore/v3/cart/removeCartBooks',
+  GET_BOOKS_FROM_CART: '/bookstore/v3/cart/getcartbooks',
 };
-
-

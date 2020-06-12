@@ -13,7 +13,10 @@ import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.com
 import { GiverateComponent } from './Component/giverate/giverate.component';
 import { AdminunverifiedbooksComponent } from './Component/adminunverifiedbooks/adminunverifiedbooks.component';
 import { RatereviewComponent } from './Component/ratereview/ratereview.component';
+import { OrderstatusComponent } from './Component/orderstatus/orderstatus.component';
 import { RatedbooksComponent } from './Component/ratedbooks/ratedbooks.component';
+import { BookreviewsComponent } from './Component/bookreviews/bookreviews.component';
+
 
 
 
@@ -38,7 +41,15 @@ const routes: Routes = [
   {path: 'books/rateandreview/:bookId', component: GiverateComponent},
   {path: 'verifybook', component: AdminunverifiedbooksComponent},
   {path: 'books/info/:bookId', component: RatereviewComponent},
+  {path: 'books/:book', component: SellerComponent},
+  {path: 'admin', component: AdminComponent},
+  {path: 'register', component: RegistrationComponent},
+  {path: 'books/rateandreview/:bookId', component: GiverateComponent},
+  {path: 'verifybook', component: AdminunverifiedbooksComponent},
+  {path: 'books/reviews/:bookId', component: RatereviewComponent},
+  {path: 'books/orders', component: OrderstatusComponent},
   {path: 'ratedbooks', component: RatedbooksComponent},
+  {path: 'bookreviews', component: BookreviewsComponent},
   {path: '**', component: PagenotfoundComponent},
 ];
 

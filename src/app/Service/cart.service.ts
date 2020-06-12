@@ -38,15 +38,31 @@ export class CartService {
       );
   }
   increaseBooksQuantity(bookId, CartInfo) {
+    console.log('cart details are ', CartInfo);
     return this.httpService
     // tslint:disable-next-line: max-line-length
-    .post(`${environment.BookUrl}/${environment.INC_BOOKS_QUANTITY}${bookId}`, {CartInfo}, {headers: new HttpHeaders({token: localStorage.token})})
+    .put(`${environment.BookUrl}/${environment.INC_BOOKS_QUANTITY}${bookId}`, CartInfo , {headers: new HttpHeaders({token: localStorage.token})})
     .pipe(
       tap(() => {
         this._autoRefresh$.next();
       })
     );
   }
+
+ decreaseBooksQuantity(bookId, CartInfo) {
+    console.log('cart details are ', CartInfo);
+    return this.httpService
+    // tslint:disable-next-line: max-line-length
+    .put(`${environment.BookUrl}/${environment.DEC_BOOKS_QUANTITY}${bookId}`, CartInfo , {headers: new HttpHeaders({token: localStorage.token})})
+    .pipe(
+      tap(() => {
+        this._autoRefresh$.next();
+      })
+    );
+  }
+
+
+
 
   removeIteamFromCart(bookId: number) {
     return this.httpService
