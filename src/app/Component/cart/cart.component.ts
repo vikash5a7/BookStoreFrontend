@@ -8,6 +8,7 @@ import { BookModule } from 'src/app/Model/book/book.module';
 import { CartService } from 'src/app/Service/cart.service';
 import { Customer } from 'src/app/Model/customer.model';
 import { Address } from 'src/app/Model/address.model';
+import { UserService } from 'src/app/Service/user.service';
 
 @Component({
   selector: 'app-cart',
@@ -17,7 +18,10 @@ import { Address } from 'src/app/Model/address.model';
 export class CartComponent implements OnInit {
   constructor( private matSnackBar: MatSnackBar,
                private formBuilder: FormBuilder,
-               private route: Router, private service: BookService, private cartService: CartService) { }
+               private route: Router,
+               private service: BookService,
+               private cartService: CartService,
+               private userService: UserService) { }
   selected = false;
   isLinear = false;
   customerForm: FormGroup;
@@ -26,9 +30,8 @@ export class CartComponent implements OnInit {
   books: BookModule = new BookModule();
   element: BookModule = new BookModule();
   items = [];
-  pageofItems: Array<BookModule> = new Array<BookModule>();
-  obj: BookModule[];
   size: number;
+  valueChanged = false;
   // tslint:disable-next-line: variable-name
   book_id: number;
   bookSearch: any;
@@ -40,6 +43,7 @@ export class CartComponent implements OnInit {
   objecrtArry: any = [];
   quantity = 1;
   customer: Customer = new Customer();
+  userAdreessDetails: Address = new Address();
   type: any;
   bid: any;
   user: number;
@@ -70,10 +74,9 @@ addre: Address = new Address();
     this.getCartItemCount();
     this. booksFromCart();
   });
+   this.getUserAdress();
    this.getCartItemCount();
    this. booksFromCart();
-   this.phoneNumber.setValue('8989898798');
-   this.Name.setValue(localStorage.getItem('Name'));
   }
 
   getCartItemCount() {
@@ -126,6 +129,8 @@ addre: Address = new Address();
     sessionStorage.removeItem(key);
     console.log('removinf book id is: ', key);
   }
+
+
   handleResponse(data: any): void {
     console.log(data);
     this.matSnackBar.open(data.message , 'ok', {
@@ -139,6 +144,40 @@ addre: Address = new Address();
     this.matSnackBar.open(this.error, 'ok', {
     duration: 5000
   });
+  }
+
+  getUserAdress() {
+    this.userService.getAdress().subscribe((Response) => {
+      console.log('address', Response);
+      for (const i of Response.obj) {
+        if (i.addressType === 'home' && this.selectedtype === 'Home') {
+          this.setAddresToInput(i);
+          console.log('user adress Of Home : ', i);
+        }
+        if (i.addressType === 'Work' && this.selectedtype === 'Work') {
+          this.setAddresToInput(i);
+          console.log('user adress Of wokr : ', i);
+        }
+        if (i.addressType === 'Work' && this.selectedtype === 'Other') {
+          this.setAddresToInput(i);
+          console.log('user adress Of wokr : ', i);
+        }
+      }
+    });
+  }
+  detectChange() {
+  this.valueChanged = true;
+  console.log('values changed');
+}
+
+  setAddresToInput(adressuser: Address) {
+    this.Name.setValue(localStorage.getItem('Name'));
+    this.pincode.setValue(adressuser.pincode);
+    this.locality.setValue(adressuser.locality);
+    this.address.setValue(adressuser.address);
+    this.city.setValue(adressuser.city);
+    this.landmark.setValue(adressuser.landmark);
+    this.phoneNumber.setValue(adressuser.phoneNumber);
   }
 
 Toggle() {
@@ -167,71 +206,11 @@ for (let i = 0; i < sessionStorage.length; i++) {
 }
  fun(type) {
   this.selectedtype = type;
+  this.getUserAdress();
+  console.log('select item is ' + type);
 }
 
-OnRegisterSubmit() {
-console.log('type--' + this.selectedtype);
-this.addre.address = this.address.value;
-this.addre.city = this.city.value;
-this.addre.landmark = this.landmark.value;
-this.addre.locality = this.locality.value;
-this.addre.pincode = this.pincode.value;
-if (this.selectedtype === 'Home') {
-  // tslint:disable-next-line: no-shadowed-variable
-  const Customer = {
-    name : this.Name.value,
-    phonenumber : this.phoneNumber.value,
-    home : this.addre
-  };
 
-  console.log('Home----');
-  this.cartService.post(Customer).subscribe((response: any) => {
-     this.bid = response.obj;
-     this.user = this.bid.userId;
-     console.log(response);
-     console.log(this.bid);
-     console.log(response, 'Success...');
-     console.log('data' + Customer.phonenumber);
-     console.log('data+++' + this.phoneNumber.value);
-     this.addtcart(this.user);
-    });
- }
-if (this.selectedtype === 'Work') {
-  // tslint:disable-next-line: no-shadowed-variable
-  const Customer = {
-    name : this.Name.value,
-    phonenumber : this.phoneNumber.value,
-    work : this.addre
-  };
-
-  this.cartService.post(Customer).subscribe((response: any) => {
-      this.bid = response.obj;
-      this.user = this.bid.userId;
-      console.log(response, 'Success...');
-      console.log('data' + Customer.phonenumber);
-      console.log('data+++' + this.phoneNumber.value);
-      this.addtcart(this.user);
-    });
-    // this.addtcart( this.user);
- }
-if (this.selectedtype === 'Other') {
-  // tslint:disable-next-line: no-shadowed-variable
-  const Customer = {
-    name : this.Name.value,
-    phonenumber : this.phoneNumber.value,
-    other : this.addre
-  };
-
-  this.cartService.post(Customer).subscribe((response: any) => {
-      this.bid = response.obj;
-      this.user = this.bid.userId;
-      console.log(response, 'Success...', this.user);
-      console.log('data' + this.bid.userId);
-      console.log('data+++' + this.phoneNumber.value);
-      this.addtcart(this.user);
-    });
- }
-}
 addtcart( user: any) {
   for (let i = 0; i < sessionStorage.length; i++) {
     const key = sessionStorage.key(i);
@@ -240,5 +219,8 @@ addtcart( user: any) {
     console.log('ghgvvb=====' + user);
     console.log('---' + this.bid);
 }
+}
+OnRegisterSubmit() {
+  console.log('--------------');
 }
 }

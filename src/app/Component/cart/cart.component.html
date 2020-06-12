@@ -58,7 +58,7 @@
                         <div fxFlex="45">
                             <mat-form-field appearance="outline">
                                 <mat-label>Name</mat-label>
-                                <input matInput placeholder="Name" matInput [formControl]="Name" autocomplete="off" required>
+                                <input (change)='detectChange()' matInput placeholder="Name" matInput [formControl]="Name" autocomplete="off" required>
                                 <mat-error required>Please enter valid name</mat-error>
                             </mat-form-field>
                         </div>
@@ -113,7 +113,7 @@
                     <div class="example-section">
                         <label class="example-margin" style="margin-left: -3em;font-family: 'Lato', sans-serif;">Type:</label>
                         <mat-radio-group class="example-margin" style="margin-top: 4em; margin-left: 2em;">
-                            <mat-radio-button style="margin-left: 40%;background-color: white; " (click)="fun('Home')" value="Home" #type>Home</mat-radio-button>
+                            <mat-radio-button style="margin-left: 40%;background-color: white; " checked (click)="fun('Home')" value="Home" #type>Home</mat-radio-button>
                             <mat-radio-button style="margin-left: 60%;" (click)="fun('Work')" value="Work" #type>Work</mat-radio-button>
                             <mat-radio-button style="margin-left: 60%;" (click)="fun('Other')" value="Other" #type>Other</mat-radio-button>
                         </mat-radio-group>

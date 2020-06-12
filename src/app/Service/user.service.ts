@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -10,6 +10,9 @@ export class UserService {
   private  baseUrl = environment.BASE_URL;
   constructor(private http: HttpClient ) { }
 
+  private httpOtions = {
+    headers: new HttpHeaders({ 'content-type': 'application/json' })
+  };
  public signUp(data: any) {
     return this.http.post(`${this.baseUrl}/registration`, data);
   }
@@ -26,5 +29,8 @@ export class UserService {
     return this.http.put(`${this.baseUrl}/user/update/${token}`,
       updatePassword,
     );
+  }
+  public getAdress(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${environment.GET_ADDRESS_BY_ADDRES}`, {headers: new HttpHeaders({token: localStorage.token})});
   }
 }

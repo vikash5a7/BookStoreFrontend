@@ -45,6 +45,14 @@ export const environment = {
   USER_LOGIN: 'login',
   USER_FORGET_PASSWORD: 'forgotpassword',
   USER_RESETPASSWORD: 'update',
+  ADDCART: '/bookstore/v3/cart/addbookCart/',
+  COUNT_BOOKS_IN_CART: '/bookstore/v3/cart/bookCount',
+  DEC_BOOKS_QUANTITY: '/bookstore/v3/cart/decreaseQuantityPrice?bookId=',
+  INC_BOOKS_QUANTITY: '/bookstore/v3/cart/increasebooksquantity?bookId=',
+  REMOVE_BOOKS_FROM_CART: '/bookstore/v3/cart/removeCartBooks',
+  GET_BOOKS_FROM_CART: '/bookstore/v3/cart/getcartbooks',
+
+  GET_ADDRESS_BY_ADDRES: '/address/users',
 
 
   WRITE_REVIEW: 'books/ratingreview?bookId=',
@@ -68,10 +76,5 @@ export const environment = {
   getOrdersByseller: 'bookstore/getOrdersByseller',
 
   getSortedBookByRate: 'books/sortbyrate',
-  ADDCART: '/bookstore/v3/cart/addbookCart/',
-  COUNT_BOOKS_IN_CART: '/bookstore/v3/cart/bookCount',
-  DEC_BOOKS_QUANTITY: '/bookstore/v3/cart/decreaseQuantityPrice?bookId=',
-  INC_BOOKS_QUANTITY: '/bookstore/v3/cart/increasebooksquantity?bookId=',
-  REMOVE_BOOKS_FROM_CART: '/bookstore/v3/cart/removeCartBooks',
-  GET_BOOKS_FROM_CART: '/bookstore/v3/cart/getcartbooks',
+
 };
