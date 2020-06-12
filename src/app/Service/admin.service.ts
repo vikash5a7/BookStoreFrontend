@@ -46,9 +46,10 @@ export class AdminService {
 
 
 
-    getUnverifiedBooks(){
-
-      return this.httpService.get(this.adminUrl+this.unVerifiedBooks,this.httpOptions);
+    getUnverifiedBooks(status:string){
+      // status='Onhold';
+      console.log("unverified books "+this.adminUrl+this.unVerifiedBooks+"?status="+status);
+      return this.httpService.get(this.adminUrl+this.unVerifiedBooks+"?status="+status,this.httpOptions);
     }
 
     getRejectedBooks(){
@@ -56,19 +57,19 @@ export class AdminService {
       return this.httpService.get(this.adminUrl+this.rejectedBooks,this.httpOptions);
     }
 
-    getApprovedBooks(){
+    getApprovedBooks(status:string){
 
-      return this.httpService.get(this.adminUrl+this.approvedBooks,this.httpOptions);
+      return this.httpService.get(this.adminUrl+this.approvedBooks+"?status="+status,this.httpOptions);
     }
 
-    approveBooks(noteId:number):Observable<any>{
+    approveBooks(noteId:number, status:string):Observable<any>{
 
-      return this.httpService.put(this.adminUrl+this.approveBook+noteId,"",this.httpOptions).pipe(tap(()=>{ this.subject.next();}));
+      return this.httpService.put(this.adminUrl+this.approveBook+noteId+"?"+"status="+status,"",this.httpOptions).pipe(tap(()=>{ this.subject.next();}));
     }
 
-    rejectBooks(noteId:number):Observable<any>{
+    rejectBooks(noteId:number, status:string):Observable<any>{
 
-      return this.httpService.put(this.adminUrl+this.rejectBook+noteId,"",this.httpOptions).pipe(tap(()=>{ this.subject.next();}));
+      return this.httpService.put(this.adminUrl+this.rejectBook+noteId+"?"+"status="+status,"",this.httpOptions).pipe(tap(()=>{ this.subject.next();}));
     }
 
     getAllOrderedBooks():Observable<any>{
@@ -83,13 +84,17 @@ export class AdminService {
       //  var y:number =+orderId;
        console.log("url "+this.adminUrl+this.changeOrderstatus+"?orderId="+orderId+"&status="+status);
        
+
+      // return this.httpService.put(this.adminUrl+this.changeOrderstatus+"?orderId="+orderId+"&status="+status,"",this.httpOptions);
+
       return this.httpService
                              .put(this.adminUrl+this.changeOrderstatus+"?orderId="+orderId+"&status="+status,"",this.httpOptions)
-                             .pipe(
-                              tap(() => {
-                                this._autoRefresh$.next();
-                              })
-                            );
+                            //  .pipe(
+                            //   tap(() => {
+                            //     this._autoRefresh$.next();
+                            //   })
+                            // );
+
       // http://localhost:8080/bookstore/orderStatusByAdmin?orderId=583785&status=in%20progress
      }
 

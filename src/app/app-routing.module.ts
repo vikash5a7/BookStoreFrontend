@@ -37,15 +37,6 @@ const routes: Routes = [
 
   {path:'books/:book',component:SellerComponent},
   {path: 'admin', component: AdminComponent},
-
-  // {path: 'admin', component: AdminComponent},
-  {path: 'dashboard', component: DashboardComponent,
-  children:[{path: '', component: AdminComponent},
-  {path: 'admin', component: AdminComponent}]},
-
-
-  {path: 'admin', component: AdminComponent},
-
   {path: 'register', component: RegistrationComponent},
   {path: 'books/rateandreview/:bookId', component: GiverateComponent},
   {path: 'verifybook', component: AdminunverifiedbooksComponent},

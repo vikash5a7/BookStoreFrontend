@@ -19,14 +19,14 @@
     text-transform: uppercase;
   }
 
-  .navButton:hover{
-    background-color: rgba(131, 4, 4, 0.8);
-  }
-  // .navbutton:hover {
-  //   background-color: rgba(131, 4, 4, 0.3);
-  //   border-top-right-radius: 2em;
-  //   border-bottom-right-radius: 2em;
+  // .navButton:hover{
+  //   background-color: rgba(131, 4, 4, 0.8);
   // }
+  .navbutton:hover {
+    background-color: rgba(131, 4, 4, 0.3);
+    border-top-right-radius: 2em;
+    border-bottom-right-radius: 2em;
+  }
 
   // .navbutton {
   //   width: 100%;

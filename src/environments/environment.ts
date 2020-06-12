@@ -55,11 +55,11 @@ export const environment = {
 
 
   adminUrl:"http://localhost:8080/",
-  approveBook:"admin/approveBook/",
-  rejectBook:"admin/rejectBook/",
-  unVerifiedBooks:"admin/unVerifedBooks/",
-  rejectedBooks:"admin/allRejectedBooks/",
-  approvedBooks:"admin/allApprovedBooks/",
+  approveBook:"admin/update/",
+  rejectBook:"admin/update/",
+  unVerifiedBooks:"admin/books",
+  rejectedBooks:"admin/books",
+  approvedBooks:"admin/books",
 
   avgrateofbook:"books/avgrate?bookId=",
 
