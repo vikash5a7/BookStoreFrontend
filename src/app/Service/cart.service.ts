@@ -28,17 +28,6 @@ export class CartService {
     console.log(arr, 'custmerdetails');
     return this.httpService.post(environment.CartUrl + environment.addUrl, arr, '');
   }
-
-  addBook(book: any, imageName: string): Observable<any> {
-    return this.httpService
-      .post(`${environment.BookUrl}/${environment.addbooks}/${imageName}`, book, {headers: new HttpHeaders({token: localStorage.token})})
-      .pipe(
-        tap(() => {
-          this._autoRefresh$.next();
-        })
-      );
-  }
-
   addToCart(bookId: any): Observable<any> {
     return this.httpService
       .post(`${environment.BookUrl}/${environment.ADDCART}/${bookId}`, {}, {headers: new HttpHeaders({token: localStorage.token})})
@@ -59,6 +48,17 @@ export class CartService {
     );
   }
 
+  removeIteamFromCart(bookId: number) {
+    return this.httpService
+    // tslint:disable-next-line: max-line-length
+    .delete(`${environment.BookUrl}/${environment.REMOVE_BOOKS_FROM_CART}/${bookId}`, {headers: new HttpHeaders({token: localStorage.token})})
+    .pipe(
+      tap(() => {
+        this._autoRefresh$.next();
+      })
+    );
+  }
+
   getCartBooksFrom() {
     // tslint:disable-next-line: max-line-length
     return this.httpService.get(`${this.baseUrl}/${environment.GET_BOOKS_FROM_CART}`, {headers: new HttpHeaders({token: localStorage.token})});
@@ -69,16 +69,7 @@ export class CartService {
     // tslint:disable-next-line: max-line-length
     return this.httpService.get(`${this.baseUrl}/${environment.COUNT_BOOKS_IN_CART}`, {headers: new HttpHeaders({token: localStorage.token})});
   }
-  addtocart(bookId: any, userId): Observable<any> {
-    console.log(bookId, userId, 'ssssssssss');
 
-    return this.httpService.post(environment.CartUrl + environment.addtocart + '/' + bookId + '/' + userId, '', '');
-  }
-
-  getbookprice(bookId: any, quantity: any): Observable<any> {
-    console.log(bookId, quantity, 'ssssssssss');
-    return this.httpService.post(environment.CartUrl + environment.getbookprice + '/' + bookId + '/' + quantity, '', '');
-  }
 
   addquantity(BookId: any, quantity: any): Observable<any> {
     return this.httpService.post(environment.quantity + environment.addbooksquantity + '/' + BookId + '/' + quantity, '', '');  }

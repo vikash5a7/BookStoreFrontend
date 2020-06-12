@@ -14,15 +14,16 @@
                     padding-left: 10px;
                     margin-left: 81px;" src="assets\bookimage\{{books.booksList[0].image}}" class="bookimage">
                     <br>
-                    <div class="details">
-                        <span class="bookname">{{books.booksList[0].bookName}}</span><br>
-                        <h2 class="author">by{{books.booksList[0].authorName}}</h2>
-                        <h2 class="price">Rs.{{books.booksList[0].price}}</h2>
+                    <div>
+                        <span>{{books.booksList[0].bookName}}</span>
+                        <h3>by:{{books.booksList[0].authorName}}</h3>
+                        <h3>Rs.{{books.booksList[0].price}}</h3>
                     </div>
                     <div style="display: flex; flex-direction: row; margin-left: -2.0em; margin-top: 7em; border-radius: 2em;">
                         <div style="display: flex; flex-direction: row;margin-bottom: 10px;">
                             <div style="height: 20px; width: 20px;">
-                                <button style="  height: 30px;  width: 30px;  background-color: transparent ; border-radius: 11em;outline: none; border-color: rgb(238, 233, 233); " (click)="addItem()">  +
+                                <button style="  height: 30px;  width: 30px;  background-color: transparent ;
+                                border-radius: 11em;outline: none; border-color: rgb(238, 233, 233); " (click)="addItem(books.booksList[0].bookId, books.quantityOfBook[0])">  +
                               </button>
                             </div>
                             <div style="  margin-left: 30px;  margin-right: 20px;  margin-top: 8px;  ">
@@ -30,15 +31,16 @@
                             </div>
                             <div>
                                 <button style="height: 30px; width: 30px; background-color:white;
-                                border-radius: 11em; border-color: rgb(238, 233, 233);outline: none;" (click)="removeItem()">-
+                                border-radius: 11em; border-color: rgb(238, 233, 233);outline: none;" (click)="removeItem(books.booksList[0].bookId, books.quantityOfBook[0])">-
                                 </button>
                             </div>
                             <div>
                                 <button style="height: 30px; width: 60px;font-size: 12px;
                                     background-color:white;padding-top: 0em; margin-left: 0px; border: transparent;
-                                   " (click)="Removecart(books.bookId)">Remove
+                                   " (click)="Removecart(books.booksList[0].bookId)">Remove
                                    </button>
                             </div>
+
                         </div>
                     </div>
                 </div>

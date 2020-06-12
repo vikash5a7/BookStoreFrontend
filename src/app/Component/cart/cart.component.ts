@@ -15,6 +15,10 @@ import { Address } from 'src/app/Model/address.model';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+
+  constructor( private matSnackBar: MatSnackBarModule,
+               private formBuilder: FormBuilder,
+               private route: Router, private service: BookService, private cartService: CartService) { }
   selected = false;
   isLinear = false;
   customerForm: FormGroup;
@@ -44,10 +48,6 @@ export class CartComponent implements OnInit {
   @Output() output: EventEmitter<any> = new EventEmitter();
 select = false;
 addre: Address = new Address();
-
-  constructor( private matSnackBar: MatSnackBarModule,
-               private formBuilder: FormBuilder,
-               private route: Router, private service: BookService, private cartService: CartService) { }
     phoneNumber = new FormControl('', [Validators.required, Validators.pattern('[0-9]{10,10}')]);
     Name = new FormControl('', [Validators.required]);
     pincode = new FormControl('', [Validators.required]);
@@ -58,11 +58,17 @@ addre: Address = new Address();
     Home = new FormControl('', [Validators.required]);
     Work = new FormControl('', [Validators.required]);
     Other = new FormControl('', [Validators.required]);
+    bookQuantityDetails = {
+    eachPrice: null,
+    quantityId: null,
+    quantityOfBook : null
+    };
 
   ngOnInit()  {
    this.getsession();
    this.cartService.autoRefresh$.subscribe(() => {
     this.getCartItemCount();
+    this. booksFromCart();
   });
    this.getCartItemCount();
    this. booksFromCart();
@@ -79,11 +85,38 @@ addre: Address = new Address();
 
   booksFromCart() {
       this.cartService.getCartBooksFrom().subscribe((Response) => {
-        console.log('response of cart books' + Response.obj);
-        console.log('books are ' + this.book);
+        console.log('response of cart books' , Response.obj);
+        console.log('books are ', this.book);
         this.book = Response.obj;
-       });
+        console.log('response from cat', Response.obj[0].quantityOfBook[0].quantityOfBook);
+        for (const i of this.book) {
+          console.log('vikash', i.quantityOfBook[0].quantityOfBook);
+          this.quantity = i.quantityOfBook[0].quantityOfBook;
+        }
+    });
+  }
+  addItem(bookId: any , quantityDeatils: any) {
+    console.log('increasing items ');
+    console.log('Quatity Details', quantityDeatils);
+    this.bookQuantityDetails.quantityId = quantityDeatils.quantity_id;
+    this.bookQuantityDetails.eachPrice = quantityDeatils.totalprice / quantityDeatils.quantityOfBook;
+    this.bookQuantityDetails.quantityOfBook = quantityDeatils.quantityOfBook;
+    console.log('quantityOfBook details ', this.bookQuantityDetails);
+    console.log('Book id' + bookId);
     }
+  removeItem(bookId: any , quantityDeatils: any) {
+      console.log('Deacresing items');
+      console.log('Quatity Details', quantityDeatils);
+      console.log('Book id' + bookId);
+  }
+
+  Removecart(key) {
+    this.cartService.removeIteamFromCart(key).subscribe((Response) => {
+      console.log('removing book', Response);
+    });
+    sessionStorage.removeItem(key);
+    console.log('removinf book id is: ', key);
+  }
 
 Toggle() {
   if ( this.select === false) {
@@ -101,22 +134,15 @@ tog() {
   }
 }
 
-Removecart(key) {
-  sessionStorage.removeItem(key);
-  window.location.reload();
-}
+
 
 getsession() {
 for (let i = 0; i < sessionStorage.length; i++) {
   const key = sessionStorage.key(i);
   this.value[i] = sessionStorage.getItem(key);
   console.log('key', key);
-  this.service.getBokkByid(this.value[i]).subscribe((response: any) => {
-   console.log(response);
-   console.log(this.book, 'kkkkkkkk');
-   return this.book;
-  });
 }
+
 }
  fun(type) {
   this.selectedtype = type;
@@ -139,6 +165,7 @@ if (this.selectedtype === 'Home') {
     home : this.addre
 
   };
+
   console.log('Home----');
   this.cartService.post(Customer).subscribe((response: any) => {
      this.bid = response.obj;
@@ -196,52 +223,6 @@ addtcart( user: any) {
     console.log('key', key);
     console.log('ghgvvb=====' + user);
     console.log('---' + this.bid);
-    this.cartService.addtocart(this.value[i], user).subscribe((response: any) => {
-     console.log(response);
-     this.book[i] = response.obj;
-     console.log(this.book, 'kkkkkkkk');
-});
 }
 }
-
-getprice(): any {
-  for (let i = 0; i < sessionStorage.length; i++) {
-    const key = sessionStorage.key(i);
-    this.value[i] = sessionStorage.getItem(key);
-    console.log('key', key);
-    this.quantity = 3;
-    this.cartService.getbookprice(this.value[i], this.quantity).subscribe((response: any) => {
-     console.log(response);
-     this.book[i] = response.obj;
-     console.log(this.book, 'kkkkkkkk');
-     return this.book;
-    });
-  }
-  }
-
-    addItem() {
-      this.quantity = this.quantity + 1;
-      console.log('plus is : ' + this.quantity);
-      }
-
-    removeItem() {
-        this.quantity = this.quantity - 1;
-        console.log('plus is : ' + this.quantity);
-    }
-    removelocal() {
-      sessionStorage.clear();
-    }
-    addquantity() {
-          for (let i = 0; i < sessionStorage.length; i++) {
-            const key = sessionStorage.key(i);
-            this.value[i] = sessionStorage.getItem(key);
-            console.log('key', key);
-            console.log('ghgvvb=====' + this.user);
-            this.cartService.addquantity(this.value[i], this.quantity).subscribe((response: any) => {
-             console.log(response);
-             this.book[i] = response.obj;
-             console.log(this.book, 'kkkkkkkk');
-        });
-      }
-    }
 }

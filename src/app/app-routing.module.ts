@@ -26,7 +26,7 @@ const routes: Routes = [
   {path: 'books', component: DashboardComponent},
   {path: 'cart', component: CartComponent},
   {path: 'greeting', component: OrdergreetingComponent},
-  {path: 'reset-password', component: ResetPasswordComponent},
+  {path: 'update-password', component: ResetPasswordComponent},
   {path: 'forget-password', component: ForgetPasswordComponent},
   {path: 'login', component: LoginComponentComponent},
   {path: 'seller', component: SellerComponent},

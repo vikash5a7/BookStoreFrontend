@@ -29,7 +29,7 @@ export const environment = {
   COUNT_BOOKS_IN_CART: '/bookstore/v3/cart/bookCount',
   DEC_BOOKS_QUANTITY: '/bookstore/v3/cart/decreaseQuantityPrice',
   INC_BOOKS_QUANTITY: '/bookstore/v3/cart/increasebooksquantity',
-  REMOVE_BOOKS_FROM_CART: '/bookstore/v3/cart/removeCartBooks/',
+  REMOVE_BOOKS_FROM_CART: '/bookstore/v3/cart/removeCartBooks',
   GET_BOOKS_FROM_CART: '/bookstore/v3/cart/getcartbooks',
 
   quantity: 'http://localhost:8080/',
