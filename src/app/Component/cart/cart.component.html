@@ -18,32 +18,40 @@
                     padding-left: 10px;
                     margin-left: 81px;" src="assets\bookimage\{{books.booksList[0].image}}" class="bookimage">
                     <br>
-                    <div>
-                        <span>{{books.booksList[0].bookName}}</span>
-                        <h3>by:{{books.booksList[0].authorName}}</h3>
-                        <h3>Rs.{{books.booksList[0].price}}</h3>
+                    <div class="details">
+                        <span style="margin-left: 11%;
+                        padding-top: 1em;
+                        font-size: 14px;">{{books.booksList[0].bookName}}</span>
+                        <h3 style="margin-left: -4em;
+                        font-size: 10px;
+                        color: slategrey;
+                        padding-top: 70px;">by:{{books.booksList[0].authorName}}</h3>
+                        <h3 style="margin-left: -2.3em;
+                        padding-top: 90px;
+                        font-size: 17px;">Rs.{{books.booksList[0].price}}</h3>
                     </div>
-                    <div style="display: flex; flex-direction: row; margin-left: -2.0em; margin-top: 7em; border-radius: 2em;">
+                    <div style="display: flex; flex-direction: row; margin-left: -2.0em; margin-top: 10em; border-radius: 2em;">
                         <div style="display: flex; flex-direction: row;margin-bottom: 10px;">
                             <div style="height: 20px; width: 20px;">
                                 <button style="  height: 30px;  width: 30px;  background-color: transparent ;
-                                border-radius: 11em;outline: none; border-color: rgb(238, 233, 233); " (click)="increaseQuantity(books.booksList[0].bookId, books.quantityOfBook[0])">  +
-                              </button>
+                              border-radius: 11em;outline: none; border-color: rgb(238, 233, 233); " (click)="increaseQuantity(books.booksList[0].bookId, books.quantityOfBook[0])">  +
+                            </button>
                             </div>
                             <div style="  margin-left: 30px;  margin-right: 20px;  margin-top: 8px;  ">
                                 {{books.quantityOfBook[0].quantityOfBook}}
                             </div>
                             <div>
                                 <button style="height: 30px; width: 30px; background-color:white;
-                                border-radius: 11em; border-color: rgb(238, 233, 233);outline: none;" (click)="DecreseQuantity(books.booksList[0].bookId, books.quantityOfBook[0])">-
-                                </button>
+                              border-radius: 11em; border-color: rgb(238, 233, 233);outline: none;" (click)="DecreseQuantity(books.booksList[0].bookId, books.quantityOfBook[0])">-
+                              </button>
                             </div>
                             <div>
                                 <button style="height: 30px; width: 60px;font-size: 12px;
-                                    background-color:white;padding-top: 0em; margin-left: 0px; border: transparent;
-                                   " (click)="Removecart(books.booksList[0].bookId)">Remove
-                                   </button>
+                                  background-color:white;padding-top: 0em; margin-left: 0px; border: transparent;
+                                 " (click)="Removecart(books.booksList[0].bookId)">Remove
+                                 </button>
                             </div>
+
 
                         </div>
                     </div>
@@ -55,6 +63,7 @@
     <div class="form-conatiner">
         <a style="font-size:15px ;margin-left: 40px;margin-top: 6%;font-family: 'Lato', sans-serif; ">Customer Details</a>
         <br>
+        <hr>
         <div fxLayoutAlign="center center" fxLayout="column" *ngIf="select">
             <form>
                 <mat-card-content>
@@ -62,14 +71,14 @@
                         <div fxFlex="45">
                             <mat-form-field appearance="outline">
                                 <mat-label>Name</mat-label>
-                                <input matInput placeholder="Name" matInput [formControl]="Name" autocomplete="off" required>
+                                <input style="height: 20px;" matInput placeholder="Name" matInput [formControl]="Name" autocomplete="off" required>
                                 <mat-error required>Please enter valid name</mat-error>
                             </mat-form-field>
                         </div>
                         <div fxFlex="45">
                             <mat-form-field appearance="outline">
                                 <mat-label>Phone Number</mat-label>
-                                <input id="contact" maxlength='10' placeholder="Phone number" matInput [formControl]="phoneNumber" required />
+                                <input style="height: 20px;" id="contact" maxlength='10' placeholder="Phone number" matInput [formControl]="phoneNumber" required />
                                 <mat-error required>Please enter valid number </mat-error>
                             </mat-form-field>
                         </div>
@@ -78,14 +87,14 @@
                         <div fxFlex="45">
                             <mat-form-field appearance="outline">
                                 <mat-label>Pincode</mat-label>
-                                <input id="pinCode" maxlength='6' placeholder="Pincode" matInput [formControl]="pincode" autocomplete="off" required/>
+                                <input style="height: 20px;" id="pinCode" maxlength='6' placeholder="Pincode" matInput [formControl]="pincode" autocomplete="off" required/>
                                 <mat-error required>Please enter valid pincode </mat-error>
                             </mat-form-field>
                         </div>
                         <div fxFlex="45">
                             <mat-form-field appearance="outline">
                                 <mat-label>locality</mat-label>
-                                <input id="locality" matInput [formControl]="locality" placeholder="Locality" autocomplete="off" required/>
+                                <input style="height: 20px;" id="locality" matInput [formControl]="locality" placeholder="Locality" autocomplete="off" required/>
                                 <mat-error required>Please enter valid locality </mat-error>
                             </mat-form-field>
                         </div>
@@ -93,23 +102,23 @@
                     <div class="address">
                         <mat-form-field appearance="outline">
                             <mat-label>Address</mat-label>
-                            <input id="address" placeholder="Address" matInput [formControl]="address" autocomplete="off" required/>
+                            <input style="height: 30px;" id="address" placeholder="Address" matInput [formControl]="address" autocomplete="off" required/>
                             <mat-error required>Please enter valid Address </mat-error>
 
                         </mat-form-field>
                     </div>
-                    <div class="name-contact" style="margin-top: 60px;">
+                    <div class="name-contact">
                         <div fxFlex="45">
                             <mat-form-field appearance="outline">
                                 <mat-label>City</mat-label>
-                                <input id="city" placeholder="City" matInput [formControl]="city" autocomplete="off" required/>
+                                <input style="height: 20px;" id="city" placeholder="City" matInput [formControl]="city" autocomplete="off" required/>
                                 <mat-error required>Please enter valid City name</mat-error>
                             </mat-form-field>
                         </div>
                         <div fxFlex="45">
                             <mat-form-field appearance="outline">
                                 <mat-label>land Mark</mat-label>
-                                <input id="landMark" placeholder="Landmark" matInput [formControl]="landmark" autocomplete="off" required/>
+                                <input style="height: 20px;" id="landMark" placeholder="Landmark" matInput [formControl]="landmark" autocomplete="off" required/>
                                 <mat-error required>Please enter valid land Mark </mat-error>
                             </mat-form-field>
                         </div>
