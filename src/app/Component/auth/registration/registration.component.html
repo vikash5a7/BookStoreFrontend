@@ -56,7 +56,7 @@
                 <div class="alert alert-danger text-justify" [hidden]="!error">{{error}}</div>
                 <div class="alert alert-success text-justify" [hidden]="!message">{{message}}</div>
                 <mat-form-field appearance="outline" fxLayout="column" style="width: 100%;">
-                    <mat-label>Enter Your Your name</mat-label>
+                    <mat-label>Enter Your name</mat-label>
                     <input matInput minlength="3" maxlength="20" #name="ngModel" required [(ngModel)]="form.name" name="name">
                     <mat-error>Please Enter valid Name </mat-error>
 
@@ -67,7 +67,6 @@
                 <input email required matInput type="email" placeholder="Email" [(ngModel)]="form.email" name="email">
                 <mat-icon style="color: #e1e4e4;" matSuffix>email</mat-icon>
                 <mat-error>Please Enter valid email </mat-error>
-
             </mat-form-field>
             <div class="example-container">
                 <mat-form-field style="width: 220px;" appearance="outline">
@@ -91,7 +90,6 @@
             <mat-radio-group aria-label="Select an option" [(ngModel)]="form.role" name="role">
                 <mat-radio-button value="user" required="required"> User </mat-radio-button> &nbsp;
                 <mat-radio-button value="seller" required="required">Seller </mat-radio-button> &nbsp;
-                <mat-radio-button value="admin" required="required"> Admin </mat-radio-button>
             </mat-radio-group>
 
             <br>

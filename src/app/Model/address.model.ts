@@ -1,9 +1,13 @@
 export class Address {
-
-    address : String;
-    city : String;
-    landmark : String;
-    locality : String;
-    pincode : number;
-
+  name: string;
+  address: string;
+  addressId: number;
+  type: string;
+  country: string;
+  landmark: string;
+  locality: string;
+  city: string;
+  pincode: number;
+  phoneNumber: number;
+  state: string;
 }

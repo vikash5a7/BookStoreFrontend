@@ -17,9 +17,6 @@ import { OrderstatusComponent } from './Component/orderstatus/orderstatus.compon
 import { RatedbooksComponent } from './Component/ratedbooks/ratedbooks.component';
 import { BookreviewsComponent } from './Component/bookreviews/bookreviews.component';
 
-
-
-
 const routes: Routes = [
 
   {
@@ -29,13 +26,19 @@ const routes: Routes = [
   {path: 'books', component: DashboardComponent},
   {path: 'cart', component: CartComponent},
   {path: 'greeting', component: OrdergreetingComponent},
-  {path: 'reset-password', component: ResetPasswordComponent},
+  {path: 'update-password', component: ResetPasswordComponent},
   {path: 'forget-password', component: ForgetPasswordComponent},
   {path: 'login', component: LoginComponentComponent},
   {path: 'seller', component: SellerComponent},
-
-
-  {path:'books/:book',component:SellerComponent},
+  // {path: 'admin', component: AdminComponent},
+  {path: 'dashboard', component: DashboardComponent,
+  children: [{path: '', component: AdminComponent},
+  {path: 'admin', component: AdminComponent}]},
+  {path: 'register', component: RegistrationComponent},
+  {path: 'books/rateandreview/:bookId', component: GiverateComponent},
+  {path: 'verifybook', component: AdminunverifiedbooksComponent},
+  {path: 'books/info/:bookId', component: RatereviewComponent},
+  {path: 'books/:book', component: SellerComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'register', component: RegistrationComponent},
   {path: 'books/rateandreview/:bookId', component: GiverateComponent},
@@ -45,8 +48,6 @@ const routes: Routes = [
   {path: 'ratedbooks', component: RatedbooksComponent},
   {path: 'bookreviews', component: BookreviewsComponent},
   {path: '**', component: PagenotfoundComponent},
- 
-
 ];
 
 @NgModule({

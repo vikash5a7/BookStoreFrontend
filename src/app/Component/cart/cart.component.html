@@ -1,6 +1,10 @@
-<app-toolbar [output]="si"></app-toolbar>
+<div *ngIf="isLoading">
+    <app-spineer></app-spineer>
+</div>
+<app-toolbar [output]="si" *ngIf="!isLoading"></app-toolbar>
+
 <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-<div class="main-conatiner">
+<div class="main-conatiner" *ngIf="!isLoading">
     <div class="row">
         <div class="column1">
             <mat-label style=" display:flex; margin-left:6%;padding-top: 2%;font-family: 'Lato', sans-serif;
@@ -8,42 +12,44 @@
           color:black"> Mycart({{length}})</mat-label>
             <div>
                 <div *ngFor="let books of book " fxLayout="row" fxLayoutAlign="space-around center">
-                    <img style="    padding-top: 14px;
+                    <img style="padding-top: 14px;
                     width: 81px;
                     height: 116px;
                     padding-left: 10px;
-                    margin-left: 81px;" src="assets\bookimage\{{books.image}}" class="bookimage">
+                    margin-left: 81px;" src="assets\bookimage\{{books.booksList[0].image}}" class="bookimage">
                     <br>
-                    <div class="details">
-                        <span class="bookname">{{books.bookName}}</span><br>
-                        <h2 class="author">by{{books.authorName}}</h2>
-                        <h2 class="price">Rs.{{books.price}}</h2>
+                    <div>
+                        <span>{{books.booksList[0].bookName}}</span>
+                        <h3>by:{{books.booksList[0].authorName}}</h3>
+                        <h3>Rs.{{books.booksList[0].price}}</h3>
                     </div>
                     <div style="display: flex; flex-direction: row; margin-left: -2.0em; margin-top: 7em; border-radius: 2em;">
                         <div style="display: flex; flex-direction: row;margin-bottom: 10px;">
                             <div style="height: 20px; width: 20px;">
-                                <button style="  height: 30px;  width: 30px;  background-color: transparent ; border-radius: 11em;outline: none; border-color: rgb(238, 233, 233); " (click)="addItem()">  +
+                                <button style="  height: 30px;  width: 30px;  background-color: transparent ;
+                                border-radius: 11em;outline: none; border-color: rgb(238, 233, 233); " (click)="increaseQuantity(books.booksList[0].bookId, books.quantityOfBook[0])">  +
                               </button>
                             </div>
                             <div style="  margin-left: 30px;  margin-right: 20px;  margin-top: 8px;  ">
-                                {{quantity }}
+                                {{books.quantityOfBook[0].quantityOfBook}}
                             </div>
                             <div>
                                 <button style="height: 30px; width: 30px; background-color:white;
-                                border-radius: 11em; border-color: rgb(238, 233, 233);outline: none;" (click)="removeItem()">-
+                                border-radius: 11em; border-color: rgb(238, 233, 233);outline: none;" (click)="DecreseQuantity(books.booksList[0].bookId, books.quantityOfBook[0])">-
                                 </button>
                             </div>
                             <div>
                                 <button style="height: 30px; width: 60px;font-size: 12px;
                                     background-color:white;padding-top: 0em; margin-left: 0px; border: transparent;
-                                   " (click)="Removecart(2)">Remove
+                                   " (click)="Removecart(books.booksList[0].bookId)">Remove
                                    </button>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
-            <button class="button1" *ngIf="!select" (click)="Toggle()">PLACE ORDER</button>
+            <button class="button1" *ngIf="!select" (click)="Toggle()">CONTINUE</button>
         </div>
     </div>
     <div class="form-conatiner">
@@ -135,15 +141,15 @@
                 width: 81px;
                 height: 116px;
                 padding-left: 10px;
-                margin-left: 81px;" src="assets\bookimage\{{books.image}}" class="bookimage">
+                margin-left: 81px;" src="assets\bookimage\{{books.booksList[0].image}}" class="bookimage">
                     <br>
                     <div class="details">
-                        <span class="bookname">{{books.bookName}}</span><br>
-                        <h2 class="author">by{{books.authorName}}</h2>
-                        <h2 class="price">Rs.{{books.price}}</h2>
+                        <span class="bookname">{{books.booksList[0].bookName}}</span><br>
+                        <h2 class="author">by{{books.booksList[0].authorName}}</h2>
+                        <h1 class="price">Total Price Rs.{{books.quantityOfBook[0].totalprice}}</h1>
                     </div>
                     <div>
-                        <button class="button2" routerLink="/greeting">CHECKOUT</button>
+                        <button class="button2" (click)="placeOrder(books.booksList[0].bookId)">CHECKOUT</button>
                     </div>
                 </div>
             </div>

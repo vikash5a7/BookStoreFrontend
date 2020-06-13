@@ -25,14 +25,9 @@ export class BookService {
   private notesList = new Subject<any>();
   private getReviewUrl = environment.getReview;
 
-  // tslint:disable-next-line: variable-name  
-
   // tslint:disable-next-line: variable-name
 
-
-
-
-
+  // tslint:disable-next-line: variable-name
   private httpOtions = {
     headers: new HttpHeaders({ 'content-type': 'application/json' })
   };
@@ -111,7 +106,8 @@ export class BookService {
       );
   }
   getBokkByid(Bookid: any): Observable<any> {
-    return this.http.get(`${this.baseUrl}/books/${Bookid}`,
+    console.log('book service callerd' + Bookid);
+    return this.http.get(`${this.baseUrl}/books/getbook/${Bookid}`,
        { headers: new HttpHeaders().set('token', localStorage.getItem('token')) }).pipe(tap(() => {
         this._autoRefresh$.next();
       }));
@@ -125,11 +121,9 @@ export class BookService {
     console.log('get service');
     return this.searchBookData.asObservable();
   }
-
-
   public getRateOfBookById(bookId: any): Observable<any> {
-    
-    console.log( environment.BASE_URL +'/' +environment.avgrateofbook + bookId);
+
+    console.log( environment.BASE_URL + '/' + environment.avgrateofbook + bookId);
     return this.http.get(
       environment.BASE_URL + '/' + environment.avgrateofbook + bookId,
       {}
@@ -139,25 +133,11 @@ export class BookService {
   public getBookById(bookId: any): Observable<any> {
     console.log('writring review for bookid ', bookId);
     console.log( environment.BASE_URL + environment.getbookbyIdurl + bookId);
-
     return this.http.get(
       environment.BASE_URL + environment.getbookbyIdurl + bookId,
       {}
     );
   }
-  getPagination(data) {
-    return this.http.get<any>( environment.BookUrl + environment.cusUrl + '/' + data);
-  }
-  sorting(value): Observable<any> {
-    console.log(value, 'value sorting');
-
-    return this.http.get(environment.BookUrl + environment.sorting + '?value=' + value);
-  }
-  SortNewestArrival(): Observable<any> {
-    console.log('sorting by new');
-    return this.http.get<any>(environment.BookUrl + environment.SortNewestArrival);
-  }
-
   public ratingandreview(bookId: number, data: any) {
     console.log('ratingandreview service method bookId :', bookId);
     console.log('ratingandreview service method rate& review dto :', data);
@@ -177,14 +157,14 @@ export class BookService {
   }
 
 
-  getInProgressOrderedBooks():Observable<any>{
-    console.log("order status url");
-    console.log(this.httpService.get(environment.adminUrl+environment.getOrdersByseller,this.httpOptions));
-    return this.httpService.get(environment.adminUrl+environment.getOrdersByseller,{});
+  getInProgressOrderedBooks(): Observable<any> {
+    console.log('order status url');
+    console.log(this.httpService.get(environment.adminUrl + environment.getOrdersByseller, this.httpOptions));
+    return this.httpService.get(environment.adminUrl + environment.getOrdersByseller, {});
    }
 
   public getReview(bookId: number) {
-    console.log("get review url:",`${environment.BASE_URL}/${this.getReviewUrl}?bookId=${bookId}`);
+    console.log('get review url:', `${environment.BASE_URL}/${this.getReviewUrl}?bookId=${bookId}`);
     return this.http.get(`${environment.BASE_URL}/${this.getReviewUrl}?bookId=${bookId}`, this.httpOptions);
   }
 
