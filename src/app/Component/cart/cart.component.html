@@ -1,6 +1,10 @@
-<app-toolbar [output]="si"></app-toolbar>
+<div *ngIf="isLoading">
+    <app-spineer></app-spineer>
+</div>
+<app-toolbar [output]="si" *ngIf="!isLoading"></app-toolbar>
+
 <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-<div class="main-conatiner">
+<div class="main-conatiner" *ngIf="!isLoading">
     <div class="row">
         <div class="column1">
             <mat-label style=" display:flex; margin-left:6%;padding-top: 2%;font-family: 'Lato', sans-serif;

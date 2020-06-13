@@ -30,7 +30,7 @@ export class CartComponent implements OnInit {
   error: null;
   book = [];
   books: BookModule = new BookModule();
-  element: BookModule = new BookModule();
+  public isLoading = false;
   items = [];
   size: number;
   valueChanged = false;
@@ -136,6 +136,7 @@ addre: Address = new Address();
 
 
   handleResponse(data: any): void {
+    this.isLoading = false;
     console.log(data);
     this.matSnackBar.open(data.message , 'ok', {
     duration: 5000
@@ -143,6 +144,7 @@ addre: Address = new Address();
   }
 
   handleError(error: any) {
+    this.isLoading = false;
     this.error = error.error.message;
     console.log(error);
     this.matSnackBar.open(this.error, 'ok', {
@@ -181,6 +183,7 @@ addre: Address = new Address();
 
   setAddresToInput(adressuser: Address) {
     this.Name.setValue(localStorage.getItem('Name'));
+    this.phoneNumber.setValue(localStorage.getItem('phone'));
     this.pincode.setValue(adressuser.pincode);
     this.locality.setValue(adressuser.locality);
     this.address.setValue(adressuser.address);
@@ -234,12 +237,22 @@ addtcart( user: any) {
 }
 }
 placeOrder(bookId: any) {
+  this.isLoading = true;
   console.log('place order', bookId);
   console.log('Address', this.address.value);
-  this.orderService.placeOrder(bookId, this.adressId).subscribe((Response => {
-    console.log('Order place' , Response);
-  }));
+  this.orderService.placeOrder(bookId, this.adressId).subscribe(
+    data => this.handleResponseOfPlaceOrder(data),
+    error => this.handleError(error));
 }
+  handleResponseOfPlaceOrder(data: any): void {
+    this.isLoading = false;
+    console.log('data', data);
+    sessionStorage.removeItem(data.obj.booksList[0].bookId);
+    this.matSnackBar.open(data.message , 'ok', {
+      duration: 5000
+    });
+    this.route.navigateByUrl('greeting');
+  }
 OnRegisterSubmit() {
   this.addre.name = this.Name.value;
   this.addre.locality = this.locality.value;
