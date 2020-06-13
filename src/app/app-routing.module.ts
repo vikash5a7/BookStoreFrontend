@@ -16,6 +16,7 @@ import { RatereviewComponent } from './Component/ratereview/ratereview.component
 import { OrderstatusComponent } from './Component/orderstatus/orderstatus.component';
 import { RatedbooksComponent } from './Component/ratedbooks/ratedbooks.component';
 import { BookreviewsComponent } from './Component/bookreviews/bookreviews.component';
+import { WishComponent } from './Component/wish/wish.component';
 
 const routes: Routes = [
 
@@ -30,6 +31,7 @@ const routes: Routes = [
   {path: 'forget-password', component: ForgetPasswordComponent},
   {path: 'login', component: LoginComponentComponent},
   {path: 'seller', component: SellerComponent},
+  {path: 'wish', component: WishComponent},
   // {path: 'admin', component: AdminComponent},
   {path: 'dashboard', component: DashboardComponent,
   children: [{path: '', component: AdminComponent},

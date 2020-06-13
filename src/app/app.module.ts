@@ -49,6 +49,7 @@ import { RatedbooksComponent } from './Component/ratedbooks/ratedbooks.component
 import { BookreviewsComponent } from './Component/bookreviews/bookreviews.component';
 import { OrderstatusComponent } from './Component/orderstatus/orderstatus.component';
 import { UploadBookImageComponent } from './Component/addbook/upload-book-image/upload-book-image.component';
+import { WishComponent } from './Component/wish/wish.component';
 
 
 
@@ -80,7 +81,8 @@ import { UploadBookImageComponent } from './Component/addbook/upload-book-image/
     PageComponent,
     BookreviewsComponent,
     OrderstatusComponent,
-    RatedbooksComponent
+    RatedbooksComponent,
+    WishComponent
 
   ],
   imports: [
