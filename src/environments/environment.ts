@@ -72,7 +72,6 @@ export const environment = {
   getOrdersByseller: 'bookstore/getOrdersByseller',
   getSortedBookByRate: 'books/sortbyrate',
 
-
   WISHLIST_ADD:'bookstore/v3/wishlist/addbookWishlist',
   WISHLIST_GET:'bookstore/v3/wishlist/getwishbooks',
   WISHLIST_COUNT:'bookstore/v3/wishlist/wishlistcount',
