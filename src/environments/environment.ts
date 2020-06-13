@@ -51,29 +51,21 @@ export const environment = {
   INC_BOOKS_QUANTITY: '/bookstore/v3/cart/increasebooksquantity?bookId=',
   REMOVE_BOOKS_FROM_CART: '/bookstore/v3/cart/removeCartBooks',
   GET_BOOKS_FROM_CART: '/bookstore/v3/cart/getcartbooks',
-
   GET_ADDRESS_BY_ADDRES: '/address/users',
   UPDATE_ADDRESS: '/address/updateAddress',
   ADD_ADDRESS: '/address/add',
-
-
   PLACE_ORDER: '/bookstore/placeOrder?addressId=',
-
   WRITE_REVIEW: 'books/ratingreview?bookId=',
   GET_REVIEWS: 'books/ratingreviews/?bookId=',
 
-
   ratereview: 'books/getratereviews/?bookId=',
 
-
   adminUrl: 'http://localhost:8080/',
-  approveBook: 'admin/approveBook/',
-  rejectBook: 'admin/rejectBook/',
-  unVerifiedBooks: 'admin/unVerifedBooks/',
-  rejectedBooks: 'admin/allRejectedBooks/',
-  approvedBooks: 'admin/allApprovedBooks/',
-
-
+  approveBook: 'admin/update/',
+  rejectBook: 'admin/update/',
+  unVerifiedBooks: 'admin/books',
+  rejectedBooks: 'admin/books',
+  approvedBooks: 'admin/books',
   avgrateofbook: 'books/avgrate?bookId=',
   getallOrderedBooks: 'bookstore/getOrdersByAdmin',
   changeOrderstatus: 'bookstore/orderStatusByAdmin',
