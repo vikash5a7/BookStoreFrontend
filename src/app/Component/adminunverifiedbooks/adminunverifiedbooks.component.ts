@@ -15,7 +15,7 @@ export class AdminunverifiedbooksComponent implements OnInit {
   book = [];
   books = new Array<BookModule>();
   noteId = 1;
-  status:string;
+  status: string;
 
   ngOnInit(): void {
 
@@ -29,9 +29,9 @@ export class AdminunverifiedbooksComponent implements OnInit {
   }
 
 
-  getUnApprovedBooks(status:string) {
+  getUnApprovedBooks(status: string) {
     console.log('method called');
-    this.adminService.getUnverifiedBooks("OnHold").subscribe(
+    this.adminService.getUnverifiedBooks('OnHold').subscribe(
 
       (response: any) => {
         console.log('response', response);
@@ -46,9 +46,9 @@ export class AdminunverifiedbooksComponent implements OnInit {
 
   }
 
-  approveBooks(bookId: number, status:string) {
+  approveBooks(bookId: number, status: string) {
     console.log('bookId from approve button:', bookId);
-    this.adminService.approveBooks(bookId,status).subscribe(
+    this.adminService.approveBooks(bookId, status).subscribe(
 
       (response: any) => {
         console.log('response', response);
@@ -63,9 +63,9 @@ export class AdminunverifiedbooksComponent implements OnInit {
 
   }
 
-rejectBooks(bookId: number, status:string) {
+rejectBooks(bookId: number, status: string) {
   console.log('bookId from reject button:', bookId);
-  this.adminService.rejectBooks(bookId,status).subscribe(
+  this.adminService.rejectBooks(bookId, status).subscribe(
 
       (response: any) => {
         console.log('response', response);
