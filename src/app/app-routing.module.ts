@@ -17,9 +17,6 @@ import { OrderstatusComponent } from './Component/orderstatus/orderstatus.compon
 import { RatedbooksComponent } from './Component/ratedbooks/ratedbooks.component';
 import { BookreviewsComponent } from './Component/bookreviews/bookreviews.component';
 
-
-
-
 const routes: Routes = [
 
   {

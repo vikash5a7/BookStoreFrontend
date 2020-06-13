@@ -121,8 +121,6 @@ export class BookService {
     console.log('get service');
     return this.searchBookData.asObservable();
   }
-
-
   public getRateOfBookById(bookId: any): Observable<any> {
 
     console.log( environment.BASE_URL + '/' + environment.avgrateofbook + bookId);
@@ -140,19 +138,6 @@ export class BookService {
       {}
     );
   }
-  getPagination(data) {
-    return this.http.get<any>( environment.BookUrl + environment.cusUrl + '/' + data);
-  }
-  sorting(value): Observable<any> {
-    console.log(value, 'value sorting');
-
-    return this.http.get(environment.BookUrl + environment.sorting + '?value=' + value);
-  }
-  SortNewestArrival(): Observable<any> {
-    console.log('sorting by new');
-    return this.http.get<any>(environment.BookUrl + environment.SortNewestArrival);
-  }
-
   public ratingandreview(bookId: number, data: any) {
     console.log('ratingandreview service method bookId :', bookId);
     console.log('ratingandreview service method rate& review dto :', data);

@@ -33,4 +33,12 @@ export class UserService {
   public getAdress(): Observable<any> {
     return this.http.get(`${this.baseUrl}/${environment.GET_ADDRESS_BY_ADDRES}`, {headers: new HttpHeaders({token: localStorage.token})});
   }
+  public addAdress(address: any) {
+    return this.http
+    .post(`${environment.BASE_URL}/${environment.ADD_ADDRESS}`, address, {headers: new HttpHeaders({token: localStorage.token})});
+  }
+  public updateAdress(address: any) {
+    return this.http
+    .put(`${environment.BASE_URL}/${environment.UPDATE_ADDRESS}`, address, {headers: new HttpHeaders({token: localStorage.token})});
+   }
 }

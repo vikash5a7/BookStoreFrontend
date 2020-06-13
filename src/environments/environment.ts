@@ -53,7 +53,11 @@ export const environment = {
   GET_BOOKS_FROM_CART: '/bookstore/v3/cart/getcartbooks',
 
   GET_ADDRESS_BY_ADDRES: '/address/users',
+  UPDATE_ADDRESS: '/address/updateAddress',
+  ADD_ADDRESS: '/address/add',
 
+
+  PLACE_ORDER: '/bookstore/placeOrder?addressId=',
 
   WRITE_REVIEW: 'books/ratingreview?bookId=',
   GET_REVIEWS: 'books/ratingreviews/?bookId=',
@@ -74,7 +78,6 @@ export const environment = {
   getallOrderedBooks: 'bookstore/getOrdersByAdmin',
   changeOrderstatus: 'bookstore/orderStatusByAdmin',
   getOrdersByseller: 'bookstore/getOrdersByseller',
-
   getSortedBookByRate: 'books/sortbyrate',
 
 };

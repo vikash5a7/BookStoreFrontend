@@ -1,3 +1,4 @@
+import { OrderService } from './../../Service/order.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
@@ -21,7 +22,8 @@ export class CartComponent implements OnInit {
                private route: Router,
                private service: BookService,
                private cartService: CartService,
-               private userService: UserService) { }
+               private userService: UserService,
+               private orderService: OrderService) { }
   selected = false;
   isLinear = false;
   customerForm: FormGroup;
@@ -49,6 +51,7 @@ export class CartComponent implements OnInit {
   user: number;
   num = 2;
   selectedtype: any;
+  adressId: any;
   @Output() output: EventEmitter<any> = new EventEmitter();
 select = false;
 addre: Address = new Address();
@@ -74,7 +77,8 @@ addre: Address = new Address();
     this.getCartItemCount();
     this. booksFromCart();
   });
-   this.getUserAdress();
+   this.Name.setValue(localStorage.getItem('Name'));
+   this.fun(this.type);
    this.getCartItemCount();
    this. booksFromCart();
   }
@@ -150,25 +154,30 @@ addre: Address = new Address();
     this.userService.getAdress().subscribe((Response) => {
       console.log('address', Response);
       for (const i of Response.obj) {
+        if (i.addressType === 'home') {
+          this.setAddresToInput(i);
+          console.log('user adress Of Home : ', i);
+          this.adressId = i.addressId;
+        }
         if (i.addressType === 'home' && this.selectedtype === 'Home') {
           this.setAddresToInput(i);
           console.log('user adress Of Home : ', i);
+          this.adressId = i.addressId;
         }
         if (i.addressType === 'Work' && this.selectedtype === 'Work') {
           this.setAddresToInput(i);
           console.log('user adress Of wokr : ', i);
+          this.adressId = i.addressId;
         }
-        if (i.addressType === 'Work' && this.selectedtype === 'Other') {
+        if (i.addressType === 'Other' && this.selectedtype === 'Other') {
           this.setAddresToInput(i);
           console.log('user adress Of wokr : ', i);
+          this.adressId = i.addressId;
         }
       }
     });
   }
-  detectChange() {
-  this.valueChanged = true;
-  console.log('values changed');
-}
+
 
   setAddresToInput(adressuser: Address) {
     this.Name.setValue(localStorage.getItem('Name'));
@@ -180,6 +189,10 @@ addre: Address = new Address();
     this.phoneNumber.setValue(adressuser.phoneNumber);
   }
 
+  addAdress() {
+    this.addre.name = this.Name.value;
+    console.log('adding adress is ', this.addre);
+  }
 Toggle() {
   if ( this.select === false) {
     this.select = true;
@@ -220,7 +233,32 @@ addtcart( user: any) {
     console.log('---' + this.bid);
 }
 }
+placeOrder(bookId: any) {
+  console.log('place order', bookId);
+  console.log('Address', this.address.value);
+  this.orderService.placeOrder(bookId, this.adressId).subscribe((Response => {
+    console.log('Order place' , Response);
+  }));
+}
 OnRegisterSubmit() {
-  console.log('--------------');
+  this.addre.name = this.Name.value;
+  this.addre.locality = this.locality.value;
+  this.addre.address = this.address.value;
+  this.addre.pincode = this.pincode.value;
+  this.addre.phoneNumber = this.phoneNumber.value;
+  this.addre.city = this.city.value;
+  this.addre.landmark = this.landmark.value;
+  if (this.adressId === null) {
+    this.addre.type = this.selectedtype;
+    this.userService.addAdress(this.addre).subscribe((Response) => {
+    console.log('adress address', Response);
+  });
+ } else {
+  console.log('adding adress is ', this.addre);
+  this.addre.addressId = this.adressId;
+  this.userService.updateAdress(this.addre).subscribe((Response) => {
+     console.log('address updated', Response);
+   });
+ }
 }
 }
