@@ -35,6 +35,12 @@
       [(ngModel)]="bookName"
       (input)="bookSearch()"/>
   </div>
+  <div class="wish-list" align="center" *ngIf="!isAdmin && !isSeller">
+    <span style="color: #fff; font-size: small;"></span>
+    <button mat-icon-button  routerLink="/wish" matTooltip="Wishlist">
+    <mat-icon matBadge="{{wishlistLength}}" matBadgeSize="small" >favorite_border</mat-icon>
+    </button>
+    </div>
   <!-- Shooping cart -->
   <div class="cart" align="center" *ngIf="!isAdmin && !isSeller">
     <span style="color: #fff; font-size: small;">Cart</span>

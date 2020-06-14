@@ -46,7 +46,14 @@ export class WishlistService {
   {
     console.log("removeFromWishList");
     console.log(`${this.baseUrl}/${environment.WISHLIST_REMOVE}`+orderId);
-    return this.httpService.delete(`${this.baseUrl}/${environment.WISHLIST_REMOVE}`+orderId, {headers: new HttpHeaders({token: localStorage.token})});
+   // return this.httpService.delete(`${this.baseUrl}/${environment.WISHLIST_REMOVE}`+orderId, {headers: new HttpHeaders({token: localStorage.token})});
+    return this.httpService.delete(`${this.baseUrl}/${environment.WISHLIST_REMOVE}`+orderId, {headers: new HttpHeaders({token: localStorage.token})})
+    .pipe(
+      tap(() => {
+        this._autoRefresh$.next();
+      })
+    );
+  
   }
 
  

@@ -1,7 +1,8 @@
-  
+<app-toolbar ></app-toolbar>
+  <br><br>
 <div role="combobox" flex="column" style="margin-left: 16%;">
     <mat-card class="matcard2">
-      <div >My WishList&nbsp;({{ countbook }})</div>
+      <div >My WishList book&nbsp;({{ countbook }}) </div><br><br>
       <!-- <div >My WishList&nbsp;({{ countbook }})</div> -->
       <div *ngFor="let book of WishListdetails">
         <div *ngIf="book != null">
@@ -34,7 +35,7 @@
           fxLayout="row wrap"
           style="margin-left: 12%; margin-bottom: 2%;"
         >
-          <button
+          <!-- <button
             fxLayout="column"
             fxLayoutAlign="end start"
             style="
@@ -51,9 +52,9 @@
             <div style="font: 18px/15px Lato; flex-wrap: wrap;">
               &nbsp; Add To Cart
             </div>
-          </button>
+          </button> -->
   
-          <button
+          <!-- <button
             style="
               margin-bottom: 22px;
               background-color: white;
@@ -66,24 +67,18 @@
             (click)="remoiveFromWish(book.bookId)"
 
           >
-            <div style="font: 18px/15px Lato; flex-wrap: wrap;">
+            <div style="font: 18px/15px Lato; flex-wrap: wrap;" >
               &nbsp; Remove
             </div>
+          </button> -->
+          <button mat-raised-button class="button" (click)="remoiveFromWish(book.bookId)" >
+            Remove
           </button>
         </div>
       </div>
     </mat-card>
   </div>
-  <div
-    style="margin-bottom: 4%;"
-    class="footer"
-    *ngIf="WishListdetails.length > 2; else foot"
-
-  >
-    <app-footer></app-footer>
+  <br><br>
+  <div style='margin-top: 330px;'>
+  <app-footer ></app-footer>
   </div>
-  <ng-template #foot>
-    <div class="foot" style="margin-bottom: 4%;">
-      <app-footer></app-footer>
-    </div>
-  </ng-template>

@@ -3,6 +3,8 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { BookService } from 'src/app/Service/book.service';
 import { TokenService } from 'src/app/Service/token.service';
 import { Router } from '@angular/router';
+import { WishlistService } from 'src/app/Service/wishlist.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-toolbar',
@@ -35,7 +37,9 @@ export class ToolbarComponent implements OnInit {
   constructor( private service: BookService,
                private token: TokenService,
                private route: Router,
-               private cartService: CartService
+               private cartService: CartService,
+               private wishlistService:WishlistService,
+               private matSnackBar:MatSnackBar
     ) { }
 
   ontoggel(input: any) {
@@ -44,10 +48,20 @@ export class ToolbarComponent implements OnInit {
     this.opened = !this.opened;
   }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    this.wishlistService.autoRefresh$.subscribe(()=>{
+          
+      this. getWishlistCount();
+    }
+  
+    );
+    this. getWishlistCount();
+    
     this.cartService.autoRefresh$.subscribe(() => {
       this.getCartItemCount();
+
     });
+    
     this.getCartItemCount();
     this.name = localStorage.getItem('Name');
     this.role = localStorage.getItem('role');
@@ -87,4 +101,17 @@ export class ToolbarComponent implements OnInit {
   getUpdatedNotes(event) {
   this.ngOnInit();
   }
+
+
+  wishlistLength:number
+  getWishlistCount() {
+    this.wishlistService.getWishlistCount().subscribe((response: any) => {
+      this.wishlistLength = response.obj;
+      console.log('total number wishBook are' + response.obj);
+     });
+  }
+
+
+
+ 
 }
