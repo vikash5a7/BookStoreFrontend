@@ -77,11 +77,11 @@ export class WishComponent implements OnInit {
 
   remoiveFromWish(orderId:any) {
     console.log("removeing bookId "+orderId);
- 
+  
     this.wishlistService.removeFromWishList(orderId).subscribe(
       (response: any) => {
         this.matSnackBar.open("Book removed from wish list", 'success', {duration: 5000});
-        
+        window.location.reload();
         },
       (error: any) => {
         this.matSnackBar.open(error.error.message, 'failed', {duration: 5000});
