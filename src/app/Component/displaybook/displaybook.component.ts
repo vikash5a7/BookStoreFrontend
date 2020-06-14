@@ -5,6 +5,7 @@ import { BookModule } from 'src/app/Model/book/book.module';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/Service/cart.service';
+import { WishlistService } from 'src/app/Service/wishlist.service';
 @Component({
   selector: 'app-displaybook',
   templateUrl: './displaybook.component.html',
@@ -39,7 +40,8 @@ export class DisplaybookComponent implements OnInit {
   constructor( private service: BookService,
                private matSnackBar: MatSnackBar,
                private route: Router,
-               private cartService: CartService) { }
+               private cartService: CartService,
+               private wishlistService: WishlistService) { }
 
   ngOnInit() {
     this.getallApprovedBooks();
@@ -144,6 +146,14 @@ getSearchBookData() {
     duration: 5000
   });
 }
+handleWishResponse(wishdata: any) {
+  console.log(wishdata);
+  this.matSnackBar.open('Book is added successfully to wishlist' , 'ok', {
+  duration: 5000
+});
+}
+
+
   handleError(error: any) {
     this.error = error.error.message;
     console.log(error);
@@ -160,5 +170,23 @@ getSearchBookData() {
   }
   getUpdatedNotes(event) {
     this.ngOnInit();
+    }
+
+    addtoWish( bookId: any) {
+      if (localStorage.getItem('token') === null) {
+        this.matSnackBar.open('Please Login first', 'ok', {
+          duration: 5000
+        });
+        
+        this.route.navigateByUrl('login');
+      }
+      
+    
+      sessionStorage.setItem(bookId, bookId);
+    
+      this.wishlistService.addToWishlist(bookId).subscribe(
+        wishdata => this.handleWishResponse(wishdata),
+        error => this.handleError(error)
+      );
     }
 }
