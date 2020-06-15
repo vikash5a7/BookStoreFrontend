@@ -15,29 +15,28 @@ export class AdminunverifiedbooksComponent implements OnInit {
   book = [];
   books = new Array<BookModule>();
   noteId = 1;
+  status: string;
 
   ngOnInit(): void {
 
-    this.getUnApprovedBooks();
+    this.getUnApprovedBooks(status);
 
     // this.dataSource.paginator = this.paginator;
     console.log('books ', this.books);
     this.adminService.autoRefresh.subscribe(() => {
-      this.getUnApprovedBooks();
+      this.getUnApprovedBooks(status);
     });
   }
 
 
-  getUnApprovedBooks() {
+  getUnApprovedBooks(status: string) {
     console.log('method called');
-    this.adminService.getUnverifiedBooks().subscribe(
+    this.adminService.getUnverifiedBooks('OnHold').subscribe(
 
       (response: any) => {
         console.log('response', response);
         console.log('books:', response.obj);
         this.books = response.obj;
-
-
         },
       (error: any) => {
         this.snakbar.open(error.error.message, 'failed', {duration: 5000});
@@ -47,9 +46,9 @@ export class AdminunverifiedbooksComponent implements OnInit {
 
   }
 
-  approveBooks(bookId: number) {
+  approveBooks(bookId: number, status: string) {
     console.log('bookId from approve button:', bookId);
-    this.adminService.approveBooks(bookId).subscribe(
+    this.adminService.approveBooks(bookId, status).subscribe(
 
       (response: any) => {
         console.log('response', response);
@@ -64,9 +63,9 @@ export class AdminunverifiedbooksComponent implements OnInit {
 
   }
 
-rejectBooks(bookId: number) {
+rejectBooks(bookId: number, status: string) {
   console.log('bookId from reject button:', bookId);
-  this.adminService.rejectBooks(bookId).subscribe(
+  this.adminService.rejectBooks(bookId, status).subscribe(
 
       (response: any) => {
         console.log('response', response);

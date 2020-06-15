@@ -25,7 +25,8 @@
                                 
                              
                                 <div *ngIf="isAdmin">
-                                    <button [disabled]="book.orderStatus === 'in shipment' || book.orderStatus === 'delivered' || book.orderStatus === 'in progress'" style="width: 8rem; margin-left: 0px; margin-top:auto; color: white; outline: none; border-radius: 0px; background-color: rgba(131, 4, 4, 0.8);"  (click)="updateOrderAdmin(book.orderId,'in progress')"  mat-button>
+                                    <button [disabled]="book.orderStatus === 'in shipment' || book.orderStatus === 'delivered' || book.orderStatus === 'in progress'" 
+                                    [hidden]="book.orderStatus === 'in shipment' || book.orderStatus === 'delivered' || book.orderStatus === 'in progress'" style="width: 8rem; margin-left: 0px; margin-top:auto; color: white; outline: none; border-radius: 0px; background-color: rgba(131, 4, 4, 0.8);"  (click)="updateOrderAdmin(book.orderId,'in progress')"  mat-button>
                               Update-Order
                           </button>
                                                                  

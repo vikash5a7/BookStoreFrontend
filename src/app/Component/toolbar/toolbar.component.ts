@@ -1,7 +1,10 @@
+import { CartService } from 'src/app/Service/cart.service';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { BookService } from 'src/app/Service/book.service';
 import { TokenService } from 'src/app/Service/token.service';
 import { Router } from '@angular/router';
+import { WishlistService } from 'src/app/Service/wishlist.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-toolbar',
@@ -12,7 +15,9 @@ export class ToolbarComponent implements OnInit {
 
   @Output() toggleEvent = new EventEmitter<boolean>();
 
-  opened:boolean=false;
+
+  opened = false;
+
 
 
 
@@ -32,6 +37,9 @@ export class ToolbarComponent implements OnInit {
   constructor( private service: BookService,
                private token: TokenService,
                private route: Router,
+               private cartService: CartService,
+               private wishlistService:WishlistService,
+               private matSnackBar:MatSnackBar
     ) { }
 
   ontoggel(input: any) {
@@ -40,9 +48,21 @@ export class ToolbarComponent implements OnInit {
     this.opened = !this.opened;
   }
 
-  ngOnInit(): void {
-    this.length  = sessionStorage.length;
-    console.log('total item in cart is ' + this.length);
+  ngOnInit(){
+    this.wishlistService.autoRefresh$.subscribe(()=>{
+          
+      this. getWishlistCount();
+    }
+  
+    );
+    this. getWishlistCount();
+    
+    this.cartService.autoRefresh$.subscribe(() => {
+      this.getCartItemCount();
+
+    });
+    
+    this.getCartItemCount();
     this.name = localStorage.getItem('Name');
     this.role = localStorage.getItem('role');
     console.log('role check toolbar', this.role);
@@ -60,6 +80,13 @@ export class ToolbarComponent implements OnInit {
      console.log('is user ', this.isUser);
    }
   }
+
+  getCartItemCount() {
+    this.cartService.getCartItemCount().subscribe((response: any) => {
+      this.length = response.obj;
+      console.log('total number of itemes are' + response.obj);
+     });
+  }
   bookSearch() {
     // console.log(this.bookName);
     this.service.setSearchBookData(this.bookName);
@@ -76,4 +103,15 @@ export class ToolbarComponent implements OnInit {
   }
 
 
+  wishlistLength:number
+  getWishlistCount() {
+    this.wishlistService.getWishlistCount().subscribe((response: any) => {
+      this.wishlistLength = response.obj;
+      console.log('total number wishBook are' + response.obj);
+     });
+  }
+
+
+
+ 
 }

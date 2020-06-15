@@ -37,7 +37,7 @@ export const environment = {
   addUrl: 'customers/addcustomer',
   addtocart: 'carts/addcart',
   getbookprice: 'getbookprice',
-  getReview:'books/getratereviews',
+  getReview: 'books/getratereviews',
 
   quantity: 'http://localhost:8080/',
   addbooksquantity: 'addbooksquantity',
@@ -45,38 +45,36 @@ export const environment = {
   USER_LOGIN: 'login',
   USER_FORGET_PASSWORD: 'forgotpassword',
   USER_RESETPASSWORD: 'update',
+  ADDCART: '/bookstore/v3/cart/addbookCart/',
+  COUNT_BOOKS_IN_CART: '/bookstore/v3/cart/bookCount',
+  DEC_BOOKS_QUANTITY: '/bookstore/v3/cart/decreaseQuantityPrice?bookId=',
+  INC_BOOKS_QUANTITY: '/bookstore/v3/cart/increasebooksquantity?bookId=',
+  REMOVE_BOOKS_FROM_CART: '/bookstore/v3/cart/removeCartBooks',
+  GET_BOOKS_FROM_CART: '/bookstore/v3/cart/getcartbooks',
+  GET_ADDRESS_BY_ADDRES: '/address/users',
+  UPDATE_ADDRESS: '/address/updateAddress',
+  ADD_ADDRESS: '/address/add',
+  PLACE_ORDER: '/bookstore/placeOrder?addressId=',
+  WRITE_REVIEW: 'books/ratingreview?bookId=',
+  GET_REVIEWS: 'books/ratingreviews/?bookId=',
 
+  ratereview: 'books/getratereviews/?bookId=',
 
-  WRITE_REVIEW: "books/ratingreview?bookId=",
-  GET_REVIEWS: "books/ratingreviews/?bookId=",
+  adminUrl: 'http://localhost:8080/',
+  approveBook: 'admin/update/',
+  rejectBook: 'admin/update/',
+  unVerifiedBooks: 'admin/books',
+  rejectedBooks: 'admin/books',
+  approvedBooks: 'admin/books',
+  avgrateofbook: 'books/avgrate?bookId=',
+  getallOrderedBooks: 'bookstore/getOrdersByAdmin',
+  changeOrderstatus: 'bookstore/orderStatusByAdmin',
+  getOrdersByseller: 'bookstore/getOrdersByseller',
+  getSortedBookByRate: 'books/sortbyrate',
 
-
-  ratereview: "books/getratereviews/?bookId=",
-
-
-  adminUrl:"http://localhost:8080/",
-  approveBook:"admin/approveBook/",
-  rejectBook:"admin/rejectBook/",
-  unVerifiedBooks:"admin/unVerifedBooks/",
-  rejectedBooks:"admin/allRejectedBooks/",
-  approvedBooks:"admin/allApprovedBooks/",
-
-  avgrateofbook:"books/avgrate?bookId=",
-
-
-
-
-
-  getallOrderedBooks:"bookstore/getOrdersByAdmin",
-  changeOrderstatus:"bookstore/orderStatusByAdmin",
-  getOrdersByseller:"bookstore/getOrdersByseller",
-
-  getSortedBookByRate:"books/sortbyrate",
-
-
-
-
+  WISHLIST_ADD:'bookstore/v3/wishlist/addbookWishlist',
+  WISHLIST_GET:'bookstore/v3/wishlist/getwishbooks',
+  WISHLIST_COUNT:'bookstore/v3/wishlist/wishlistcount',
+  WISHLIST_REMOVE:'bookstore/v3/wishlist/removeWishlist/',
 
 };
-
-
