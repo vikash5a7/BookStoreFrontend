@@ -54,6 +54,7 @@ export class LoginComponentComponent implements OnInit {
 
   handleResponse(data) {
     this.token.handle(data);
+    console.log(data);
     this.isLoading = false;
     this.token.logedIn(true);
     console.log('user is --->' + data);

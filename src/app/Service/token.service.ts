@@ -8,7 +8,6 @@ export class TokenService {
   public loggedIn = false;
   constructor() { }
   public handle(data) {
-    console.log('token is going to be set');
     this.set(data);
   }
   // setting token in local
@@ -16,6 +15,7 @@ export class TokenService {
     localStorage.setItem('token', data.token);
     localStorage.setItem('email', data.obj.email);
     localStorage.setItem('Name', data.obj.name);
+    localStorage.setItem('phone', data.obj.mobileNumber);
   }
   // getting token from the local storage
  public get() {
@@ -27,6 +27,7 @@ export class TokenService {
     localStorage.removeItem('email');
     localStorage.removeItem('Name');
     localStorage.removeItem('role');
+    localStorage.removeItem('phone');
   }
   logedIn(value: boolean) {
   if ( this.get() != null) {

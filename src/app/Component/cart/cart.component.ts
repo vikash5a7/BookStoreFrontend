@@ -1,3 +1,4 @@
+import { OrderService } from './../../Service/order.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
@@ -5,11 +6,10 @@ import {MatSnackBarModule } from '@angular/material/snack-bar';
 import { BookService } from 'src/app/Service/book.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { BookModule } from 'src/app/Model/book/book.module';
-import { ThrowStmt } from '@angular/compiler';
 import { CartService } from 'src/app/Service/cart.service';
 import { Customer } from 'src/app/Model/customer.model';
 import { Address } from 'src/app/Model/address.model';
-
+import { UserService } from 'src/app/Service/user.service';
 
 @Component({
   selector: 'app-cart',
@@ -17,16 +17,23 @@ import { Address } from 'src/app/Model/address.model';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+  constructor( private matSnackBar: MatSnackBar,
+               private formBuilder: FormBuilder,
+               private route: Router,
+               private service: BookService,
+               private cartService: CartService,
+               private userService: UserService,
+               private orderService: OrderService) { }
   selected = false;
   isLinear = false;
   customerForm: FormGroup;
+  error: null;
   book = [];
   books: BookModule = new BookModule();
-  element: BookModule = new BookModule();
+  public isLoading = false;
   items = [];
-  pageofItems: Array<BookModule> = new Array<BookModule>();
-  obj: BookModule[];
   size: number;
+  valueChanged = false;
   // tslint:disable-next-line: variable-name
   book_id: number;
   bookSearch: any;
@@ -35,24 +42,21 @@ export class CartComponent implements OnInit {
   si: any = sessionStorage.length;
   value: any = [];
   UserId: number;
-
+  objecrtArry: any = [];
   quantity = 1;
   customer: Customer = new Customer();
+  userAdreessDetails: Address = new Address();
   type: any;
   bid: any;
   user: number;
   num = 2;
   selectedtype: any;
+  adressId: any;
   @Output() output: EventEmitter<any> = new EventEmitter();
 select = false;
 addre: Address = new Address();
-
-  constructor( private matSnackBar: MatSnackBarModule,
-               private formBuilder: FormBuilder,
-               private route: Router, private service: BookService, private cartService: CartService) { }
-
     phoneNumber = new FormControl('', [Validators.required, Validators.pattern('[0-9]{10,10}')]);
-    Name = new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]*')]);
+    Name = new FormControl('', [Validators.required]);
     pincode = new FormControl('', [Validators.required]);
     address = new FormControl('', [Validators.required]);
     locality = new FormControl('', [Validators.required]);
@@ -61,11 +65,137 @@ addre: Address = new Address();
     Home = new FormControl('', [Validators.required]);
     Work = new FormControl('', [Validators.required]);
     Other = new FormControl('', [Validators.required]);
+    bookQuantityDetails = {
+      eachPrice: null,
+      quantityId: null,
+      quantityOfBook : null
+    };
 
   ngOnInit()  {
    this.getsession();
-    }
+   this.cartService.autoRefresh$.subscribe(() => {
+    this.getCartItemCount();
+    this. booksFromCart();
+  });
+   this.Name.setValue(localStorage.getItem('Name'));
+   this.fun(this.type);
+   this.getCartItemCount();
+   this. booksFromCart();
+  }
 
+  getCartItemCount() {
+    this.cartService.getCartItemCount().subscribe((response: any) => {
+      this.length = response.obj;
+      console.log('total number of itemes are' + response.obj);
+     });
+  }
+
+  booksFromCart() {
+      this.cartService.getCartBooksFrom().subscribe((Response) => {
+        console.log('response of cart books' , Response.obj);
+        console.log('books are ', this.book);
+        this.book = Response.obj;
+        console.log('response from cat', Response.obj[0].quantityOfBook[0].quantityOfBook);
+        for (const i of this.book) {
+          console.log('vikash', i.quantityOfBook[0].quantityOfBook);
+          this.quantity = i.quantityOfBook[0].quantityOfBook;
+        }
+    });
+  }
+  increaseQuantity(bookId: any , quantityDeatils: any) {
+    console.log('increasing items ');
+    console.log('Quatity Details', quantityDeatils);
+    this.bookQuantityDetails.quantityId = quantityDeatils.quantity_id;
+    this.bookQuantityDetails.eachPrice = quantityDeatils.totalprice / quantityDeatils.quantityOfBook;
+    this.bookQuantityDetails.quantityOfBook = quantityDeatils.quantityOfBook;
+    this.cartService.increaseBooksQuantity(bookId, this.bookQuantityDetails).subscribe(
+      data => this.handleResponse(data),
+      error => this.handleError(error));
+    console.log('Book id' + bookId);
+    }
+  DecreseQuantity(bookId: any , quantityDeatils: any) {
+    console.log('increasing items ');
+    console.log('Quatity Details', quantityDeatils);
+    this.bookQuantityDetails.quantityId = quantityDeatils.quantity_id;
+    this.bookQuantityDetails.eachPrice = quantityDeatils.totalprice / quantityDeatils.quantityOfBook;
+    this.bookQuantityDetails.quantityOfBook = quantityDeatils.quantityOfBook;
+    this.cartService.decreaseBooksQuantity(bookId, this.bookQuantityDetails).subscribe(
+      data => this.handleResponse(data),
+      error => this.handleError(error)
+    );
+    console.log('Book id' + bookId);
+  }
+
+  Removecart(key) {
+    this.cartService.removeIteamFromCart(key).subscribe((Response) => {
+      console.log('removing book', Response);
+    });
+    sessionStorage.removeItem(key);
+    console.log('removinf book id is: ', key);
+  }
+
+
+  handleResponse(data: any): void {
+    this.isLoading = false;
+    console.log(data);
+    this.matSnackBar.open(data.message , 'ok', {
+    duration: 5000
+  });
+  }
+
+  handleError(error: any) {
+    this.isLoading = false;
+    this.error = error.error.message;
+    console.log(error);
+    this.matSnackBar.open(this.error, 'ok', {
+    duration: 5000
+  });
+  }
+
+  getUserAdress() {
+    this.userService.getAdress().subscribe((Response) => {
+      console.log('address', Response);
+      for (const i of Response.obj) {
+        if (i.addressType === 'home') {
+          this.setAddresToInput(i);
+          console.log('user adress Of Home : ', i);
+          this.adressId = i.addressId;
+        }
+        if (i.addressType === 'home' && this.selectedtype === 'Home') {
+          this.setAddresToInput(i);
+          console.log('user adress Of Home : ', i);
+          this.adressId = i.addressId;
+        }
+        if (i.addressType === 'Work' && this.selectedtype === 'Work') {
+          this.setAddresToInput(i);
+          console.log('user adress Of wokr : ', i);
+          this.adressId = i.addressId;
+        }
+        if (i.addressType === 'Other' && this.selectedtype === 'Other') {
+          this.setAddresToInput(i);
+          console.log('user adress Of wokr : ', i);
+          this.adressId = i.addressId;
+        }
+      }
+    });
+  }
+
+
+  setAddresToInput(adressuser: Address) {
+    this.Name.setValue(localStorage.getItem('Name'));
+    this.phoneNumber.setValue(localStorage.getItem('phone'));
+    this.pincode.setValue(adressuser.pincode);
+    this.locality.setValue(adressuser.locality);
+    this.address.setValue(adressuser.address);
+    this.city.setValue(adressuser.city);
+    this.landmark.setValue(adressuser.landmark);
+    this.phoneNumber.setValue(adressuser.phoneNumber);
+  }
+
+  addAdress() {
+    this.addre.name = this.Name.value;
+    console.log('adding adress is ', this.addre);
+  }
 Toggle() {
   if ( this.select === false) {
     this.select = true;
@@ -82,107 +212,18 @@ tog() {
   }
 }
 
-Removecart(key) {
-  console.log('hii');
-  // let key=sessionStorage.key(2);
-  // this.value[2]=sessionStorage.getItem(key);
-  sessionStorage.removeItem(key);
-  window.location.reload();
-  console.log('heyyy');
-}
-
 getsession() {
 for (let i = 0; i < sessionStorage.length; i++) {
   const key = sessionStorage.key(i);
   this.value[i] = sessionStorage.getItem(key);
   console.log('key', key);
-  this.service.getBokkByid(this.value[i]).subscribe((response: any) => {
-   console.log(response);
-   this.book[i] = response.obj;
-   console.log(this.book, 'kkkkkkkk');
-  // console.log(this.book.bookName,'kkkkkkkk111111111111111111');
-   return this.book;
-  });
-
 }
+
 }
  fun(type) {
   this.selectedtype = type;
-}
-
-OnRegisterSubmit() {
-console.log('type--' + this.selectedtype);
-
-this.addre.address = this.address.value;
-this.addre.city = this.city.value;
-this.addre.landmark = this.landmark.value;
-this.addre.locality = this.locality.value;
-this.addre.pincode = this.pincode.value;
-
-if (this.selectedtype === 'Home') {
-  // tslint:disable-next-line: no-shadowed-variable
-  const Customer = {
-    name : this.Name.value,
-    phonenumber : this.phoneNumber.value,
-    home : this.addre
-
-  };
-  console.log('Home----');
-  this.cartService.post(Customer).subscribe((response: any) => {
-     this.bid = response.obj;
-     this.user = this.bid.userId;
-     console.log(response);
-     console.log(this.bid);
-     console.log(response, 'Success...');
-     console.log('data' + Customer.phonenumber);
-     console.log('data+++' + this.phoneNumber.value);
-     this.addtcart(this.user);
-//       let navigationExtras : NavigationExtras =  {
-// queryParams : {
-//   "bookId" :  this.book,
-//   "UserId" : this.bid.output
-// }
-//       }
-//      return this.route.navigate(['/userinfo'], )
-    });
-
- }
-if (this.selectedtype === 'Work') {
-  // tslint:disable-next-line: no-shadowed-variable
-  const Customer = {
-    name : this.Name.value,
-    phonenumber : this.phoneNumber.value,
-    work : this.addre
-  };
-
-  this.cartService.post(Customer).subscribe((response: any) => {
-      this.bid = response.obj;
-      this.user = this.bid.userId;
-      console.log(response, 'Success...');
-      console.log('data' + Customer.phonenumber);
-      console.log('data+++' + this.phoneNumber.value);
-      this.addtcart(this.user);
-    });
-    // this.addtcart( this.user);
- }
-if (this.selectedtype === 'Other') {
-  // tslint:disable-next-line: no-shadowed-variable
-  const Customer = {
-    name : this.Name.value,
-    phonenumber : this.phoneNumber.value,
-    other : this.addre
-  };
-
-  this.cartService.post(Customer).subscribe((response: any) => {
-      this.bid = response.obj;
-      this.user = this.bid.userId;
-      console.log(response, 'Success...', this.user);
-      console.log('data' + this.bid.userId);
-      console.log('data+++' + this.phoneNumber.value);
-      this.addtcart(this.user);
-    });
-    // this.addtcart(this.user);
- }
+  this.getUserAdress();
+  console.log('select item is ' + type);
 }
 
 
@@ -193,60 +234,44 @@ addtcart( user: any) {
     console.log('key', key);
     console.log('ghgvvb=====' + user);
     console.log('---' + this.bid);
-    this.cartService.addtocart(this.value[0], user).subscribe((response: any) => {
-     console.log(response);
-     this.book[i] = response.obj;
-     console.log(this.book, 'kkkkkkkk');
-});
 }
 }
-
-getprice(): any {
-  for (let i = 0; i < sessionStorage.length; i++) {
-    const key = sessionStorage.key(i);
-    this.value[i] = sessionStorage.getItem(key);
-    console.log('key', key);
-    this.quantity = 3;
-    this.cartService.getbookprice(this.value[i], this.quantity).subscribe((response: any) => {
-     console.log(response);
-     this.book[i] = response.obj;
-     console.log(this.book, 'kkkkkkkk');
-     return this.book;
+placeOrder(bookId: any) {
+  this.isLoading = true;
+  console.log('place order', bookId);
+  console.log('Address', this.address.value);
+  this.orderService.placeOrder(bookId, this.adressId).subscribe(
+    data => this.handleResponseOfPlaceOrder(data),
+    error => this.handleError(error));
+}
+  handleResponseOfPlaceOrder(data: any): void {
+    this.isLoading = false;
+    console.log('data', data);
+    sessionStorage.removeItem(data.obj.booksList[0].bookId);
+    this.matSnackBar.open(data.message , 'ok', {
+      duration: 5000
     });
+    this.route.navigateByUrl('greeting');
   }
-  }
-
-
-    addItem() {
-      this.quantity = this.quantity + 1;
-
-      console.log('plus is : ' + this.quantity);
-
-
-      }
-
-      removeItem() {
-        this.quantity = this.quantity - 1;
-        console.log('plus is : ' + this.quantity);
-        }
-        removelocal() {
-          sessionStorage.clear();
-        }
-        addquantity() {
-          for (let i = 0; i < sessionStorage.length; i++) {
-            const key = sessionStorage.key(i);
-            this.value[i] = sessionStorage.getItem(key);
-            console.log('key', key);
-            console.log('ghgvvb=====' + this.user);
-
-            this.cartService.addquantity(this.value[i], this.quantity).subscribe((response: any) => {
-             console.log(response);
-             this.book[i] = response.obj;
-             console.log(this.book, 'kkkkkkkk');
-            // console.log(this.book.bookName,'kkkkkkkk111111111111111111');
-            //  return this.book;
-
-        });
-        }
-        }
+OnRegisterSubmit() {
+  this.addre.name = this.Name.value;
+  this.addre.locality = this.locality.value;
+  this.addre.address = this.address.value;
+  this.addre.pincode = this.pincode.value;
+  this.addre.phoneNumber = this.phoneNumber.value;
+  this.addre.city = this.city.value;
+  this.addre.landmark = this.landmark.value;
+  if (this.adressId === null) {
+    this.addre.type = this.selectedtype;
+    this.userService.addAdress(this.addre).subscribe((Response) => {
+    console.log('adress address', Response);
+  });
+ } else {
+  console.log('adding adress is ', this.addre);
+  this.addre.addressId = this.adressId;
+  this.userService.updateAdress(this.addre).subscribe((Response) => {
+     console.log('address updated', Response);
+   });
+ }
+}
 }
