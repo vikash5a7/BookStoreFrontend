@@ -38,7 +38,7 @@
                                         DELETE
                                     </button>
                                 </div>
-                                <div style="margin-left: 10px;">
+                                <div style="margin-left: 10px;" *ngIf="book.status != 'approved' && book.status != 'OnHold' ">
                                     <button style="width: 5rem; color: white; outline: none; border-radius: 0px; background-color: rgba(131, 4, 4, 0.8);" (click)="verifyBook(book.bookId)" mat-button>
                                         Verify
                                     </button>

@@ -11,7 +11,7 @@ export const environment = {
   // getallbooksurl: '',
   BASE_URL: 'http://localhost:8080',
   BookUrl: 'http://localhost:8080',
-  getallbooksurl: 'books/getAllBooks',
+  getallbooksurl: 'books/',
 
 
   // BASE_URL: 'http://localhost:8080',
@@ -28,11 +28,11 @@ export const environment = {
   SortNewestArrival: 'books/unsorting',
   cusUrl : 'books/pagewise',
 
-  addbooks: 'books/addbook',
-  deleteBook: 'books/deletebook',
-  editBook: 'books/editbook',
-  verifyBook: 'books/editBookStatus',
-  addBookImage: 'books/addBookImage',
+  addbooks: 'books',
+  deleteBook: 'books',
+  editBook: 'books',
+  verifyBook: 'books',
+  addBookImage: 'books/bookimage',
   CartUrl: 'http://localhost:8080/',
   addUrl: 'customers/addcustomer',
   addtocart: 'carts/addcart',

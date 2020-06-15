@@ -53,7 +53,7 @@ export class BookService {
   getallBooks() {
     console.log('getting all books');
     // tslint:disable-next-line: max-line-length
-    return this.httpService.get(`${this.baseUrl}/books/getAllBooks`, {headers: new HttpHeaders({token: localStorage.token})});
+    return this.httpService.get(`${this.baseUrl}/books/`, {headers: new HttpHeaders({token: localStorage.token})});
   }
 
   addBook(book: any, imageName: string): Observable<any> {
