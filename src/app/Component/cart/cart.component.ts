@@ -78,6 +78,7 @@ addre: Address = new Address();
     this. booksFromCart();
   });
    this.Name.setValue(localStorage.getItem('Name'));
+   this.phoneNumber.setValue(localStorage.getItem('phone'));
    this.fun(this.type);
    this.getCartItemCount();
    this. booksFromCart();
@@ -161,17 +162,17 @@ addre: Address = new Address();
           console.log('user adress Of Home : ', i);
           this.adressId = i.addressId;
         }
-        if (i.addressType === 'home' && this.selectedtype === 'Home') {
+        if (i.addressType === 'home' && this.selectedtype === 'home') {
           this.setAddresToInput(i);
           console.log('user adress Of Home : ', i);
           this.adressId = i.addressId;
         }
-        if (i.addressType === 'Work' && this.selectedtype === 'Work') {
+        if (i.addressType === 'Work' && this.selectedtype === 'work') {
           this.setAddresToInput(i);
           console.log('user adress Of wokr : ', i);
           this.adressId = i.addressId;
         }
-        if (i.addressType === 'Other' && this.selectedtype === 'Other') {
+        if (i.addressType === 'Other' && this.selectedtype === 'other') {
           this.setAddresToInput(i);
           console.log('user adress Of wokr : ', i);
           this.adressId = i.addressId;
@@ -182,8 +183,8 @@ addre: Address = new Address();
 
 
   setAddresToInput(adressuser: Address) {
-    this.Name.setValue(localStorage.getItem('Name'));
-    this.phoneNumber.setValue(localStorage.getItem('phone'));
+    this.Name.setValue(adressuser.name);
+    this.phoneNumber.setValue(adressuser.phoneNumber);
     this.pincode.setValue(adressuser.pincode);
     this.locality.setValue(adressuser.locality);
     this.address.setValue(adressuser.address);
@@ -261,7 +262,7 @@ OnRegisterSubmit() {
   this.addre.phoneNumber = this.phoneNumber.value;
   this.addre.city = this.city.value;
   this.addre.landmark = this.landmark.value;
-  if (this.adressId === null) {
+  if (this.adressId === null || this.adressId === undefined) {
     this.addre.type = this.selectedtype;
     this.userService.addAdress(this.addre).subscribe((Response) => {
     console.log('adress address', Response);

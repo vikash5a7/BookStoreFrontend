@@ -127,12 +127,10 @@ getSearchBookData() {
     this.matSnackBar.open('Please Login first', 'ok', {
       duration: 5000
     });
-    sessionStorage.setItem(bookId, bookId);
     this.route.navigateByUrl('login');
+    return;
   }
-
   sessionStorage.setItem(bookId, bookId);
-  this.getOutput();
   this.ngOnInit();
   this.cartService.addToCart(bookId).subscribe(
     data => this.handleResponse(data),
@@ -177,13 +175,9 @@ handleWishResponse(wishdata: any) {
         this.matSnackBar.open('Please Login first', 'ok', {
           duration: 5000
         });
-        
         this.route.navigateByUrl('login');
       }
-      
-    
       sessionStorage.setItem(bookId, bookId);
-    
       this.wishlistService.addToWishlist(bookId).subscribe(
         wishdata => this.handleWishResponse(wishdata),
         error => this.handleError(error)
