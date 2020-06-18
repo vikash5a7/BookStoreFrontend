@@ -37,11 +37,11 @@ this.bookService.getReview(this.bookId).subscribe((response: any) => {
   console.log("Reviews stored:",response.obj['review']);
   for (var index in this.reviews) {
     this.rev = this.reviews[index].review;
-    this.user = this.reviews[index].user;
+    this.user = this.reviews[index].userName;
 
-    console.log("user:",this.user['name']);
-    // var pp = {name:this.user.name};
-    var p={name:this.user['name'],review:this.rev,rating:this.reviews[index].rating};
+    console.log("user:",this.user);
+   
+    var p={name:this.user,review:this.rev,rating:this.reviews[index].rating};
     this.reviewList.push(p);
     console.log("after push:",this.reviewList);
   

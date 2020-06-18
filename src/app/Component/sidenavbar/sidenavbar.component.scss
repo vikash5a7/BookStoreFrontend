@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     margin-left: 0px;
+ 
   }
 
   .navButton{
@@ -22,25 +23,25 @@
   // .navButton:hover{
   //   background-color: rgba(131, 4, 4, 0.8);
   // }
-  .navbutton:hover {
+  .navbuttons:hover {
     background-color: rgba(131, 4, 4, 0.3);
     border-top-right-radius: 2em;
     border-bottom-right-radius: 2em;
   }
 
-  // .navbutton {
-  //   width: 100%;
-  //   height: 50px;
-  //   margin-left: 0px;
-  //   outline: none;
-  //   background: none;
-  //   border-bottom: none;
-  //   border:none;
-  //   border-style: none;
-  //   border-bottom-style:hidden;
+  .navbuttons {
+    width: 100%;
+    height: 50px;
+    margin-left: 0px;
+    outline: none;
+    background: none;
+    border-bottom: none;
+    border:none;
+    border-style: none;
+    border-bottom-style:hidden;
     
     
-  // }
+  }
   
   
   
