@@ -106,7 +106,8 @@ export class BookService {
       );
   }
   getBokkByid(Bookid: any): Observable<any> {
-    console.log('book service callerd' + Bookid);
+    console.log('book service callerd', Bookid);
+    console.log("book url",`${this.baseUrl}/books/getbook/${Bookid}`);
     return this.http.get(`${this.baseUrl}/books/getbook/${Bookid}`,
        { headers: new HttpHeaders().set('token', localStorage.getItem('token')) }).pipe(tap(() => {
         this._autoRefresh$.next();
@@ -178,6 +179,12 @@ export class BookService {
   {
     return this.http.get(`${this.baseUrl}/books/getbook/${bookId}`,
     {headers: new HttpHeaders({token:token})});
+  }
+
+  public getOneBookById(bookId:number)
+  {
+    return this.http.get(`${this.baseUrl}/books/getbook/${bookId}`,
+    this.httpOptions);
   }
 
 
