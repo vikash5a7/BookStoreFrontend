@@ -30,24 +30,31 @@ export class GiverateComponent implements OnInit {
   bookImage: any;
   bookName: any;
   bookAuthor: any;
+  token:any;
 
   ngOnInit(): void {
+    this.bookService.autoRefresh$.subscribe(() => {
+      this.getRateOfBook(this.bookId);
+    });
     this.bookId = this.route.snapshot.paramMap.get('bookId');
+    console.log("bookId:",this.bookId);
+    this.token = this.route.snapshot.paramMap.get('token');
+    console.log("token:",this.token);
     this.getBookById();
     for (let index = 0; index < this.starCount; index++) {
       this.ratingArr.push(index);
     }
-    this.totalRate = localStorage.getItem('totalRate');
+    this.getRateOfBook(this.bookId);
     this.getColor();
   }
-  // this.totalRate = localStorage.getItem("totalRate");
-  // this.getColor();
+ 
 
   onClick(rating: any) {
     this.snackBar.open('You rated ' + rating + ' / ' + this.starCount, '', {
       duration: this.snackBarDuration,
     });
     this.rating = rating;
+    this.getColor();
     return false;
   }
 
@@ -60,13 +67,15 @@ export class GiverateComponent implements OnInit {
   }
 
   getBookById() {
-    this.bookService.getBookById(this.bookId).subscribe((response: any) => {
+    console.log("get book called")
+    this.bookService.getOneBook(this.bookId , this.token).subscribe((response: any) => {
       if (response.obj != null) {
         this.book = response.obj;
         this.bookImage = response.obj.image;
         this.bookAuthor = response.obj.authorName;
         this.bookName = response.obj.bookName;
       }
+      this.getColor();
     });
   }
 
@@ -81,10 +90,16 @@ export class GiverateComponent implements OnInit {
     console.log('rating is', data.rating);
     console.log('review is ', data.review);
     this.bookService
-      .ratingandreview(this.bookId, data)
+      .ratingandreview(this.bookId, data , this.token)
       .subscribe((response: any) => {
-        this.snackBar.open('Thank you..for your review', 'ok', { duration: 1000 });
-      });
+        console.log("submit rate response:",response);
+        this.snackBar.open(response.response, 'ok', { duration: 2000 });
+      },
+      (error: any) => {
+        this.snackBar.open(error.error.message, 'ok', { duration: 2000 });
+      }
+      
+      );
   }
 
 
@@ -100,6 +115,19 @@ export class GiverateComponent implements OnInit {
     }
   }
 
+  getRateOfBook(bookId:number)  {
+    console.log("book id for avgrate:",bookId);
+    this.bookService.getRateOfBookById(bookId).subscribe(
 
+      (response: any) => {
+        console.log('response', response);
+        console.log('rate of books:', response.obj);
+        this.totalRate= response.obj;
+        
+        }
+     
+    );
+   
+  }
 
 }
