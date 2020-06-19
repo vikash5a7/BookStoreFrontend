@@ -45,7 +45,6 @@ import { GiverateComponent } from './Component/giverate/giverate.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { AdminunverifiedbooksComponent } from './Component/adminunverifiedbooks/adminunverifiedbooks.component';
 import { RatereviewComponent } from './Component/ratereview/ratereview.component';
-import { PageComponent } from './Component/page/page.component';
 import { RatedbooksComponent } from './Component/ratedbooks/ratedbooks.component';
 import { BookreviewsComponent } from './Component/bookreviews/bookreviews.component';
 import { OrderstatusComponent } from './Component/orderstatus/orderstatus.component';
@@ -78,7 +77,6 @@ import { UploadBookImageComponent } from './Component/addbook/upload-book-image/
     AddbookComponent,
     UpdateBookComponent,
     UploadBookImageComponent,
-    PageComponent,
     BookreviewsComponent,
     OrderstatusComponent,
     RatedbooksComponent,

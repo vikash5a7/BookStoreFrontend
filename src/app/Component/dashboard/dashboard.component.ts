@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSidenavContent } from '@angular/material/sidenav';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -18,7 +19,9 @@ export class DashboardComponent implements OnInit {
   role: string;
   isLogin = false;
 
-  constructor() { }
+  constructor(
+    private titleService: Title
+  ) { }
   nameEventHander($event: any) {
     this.opened2 = $event;
     console.log('2', this.opened2);
@@ -26,6 +29,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.role = localStorage.getItem('role');
+    this.setTitle('Bookstore');
     console.log('role check toolbar', this.role);
     if (this.role === 'admin') {
      this.isAdmin = true;
@@ -41,4 +45,7 @@ export class DashboardComponent implements OnInit {
      console.log('is user ', this.isUser);
    }
   }
+  public setTitle( dashboard: string) {
+    this.titleService.setTitle( dashboard );
+    }
 }

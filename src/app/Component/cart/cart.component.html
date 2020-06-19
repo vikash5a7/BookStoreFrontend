@@ -33,8 +33,12 @@
                     <div style="display: flex; flex-direction: row; margin-left: -2.0em; margin-top: 10em; border-radius: 2em;">
                         <div style="display: flex; flex-direction: row;margin-bottom: 10px;">
                             <div style="height: 20px; width: 20px;">
-                                <button style="  height: 25px;  width: 25px; text-align: center;  background-color: transparent ;
-                            border-radius: 11em;outline: none; border-color: rgb(238, 233, 233);" [disabled]="books.quantityOfBook[0].quantityOfBook >= books.booksList[0].noOfBooks" (click)="increaseQuantity(books.booksList[0].bookId, books.quantityOfBook[0])">  +
+                                <button style="  height: 25px;
+                                width: 25px;
+                                text-align: center;
+                                background-color: #f9f9f9;
+                                border-radius: 11em;
+                                border-color: #eee9e9;" [disabled]="books.quantityOfBook[0].quantityOfBook >= books.booksList[0].noOfBooks" (click)="increaseQuantity(books.booksList[0].bookId, books.quantityOfBook[0])">  +
                           </button>
                             </div>
                             <div style="margin-left: 13px;
@@ -51,13 +55,17 @@
                                 {{books.quantityOfBook[0].quantityOfBook}}
                             </div>
                             <div>
-                                <button style="height: 25px; width: 25px; background-color:white;
-                            border-radius: 11em; border-color: rgb(238, 233, 233);outline: none;" [disabled]="books.quantityOfBook[0].quantityOfBook < 2" (click)="DecreseQuantity(books.booksList[0].bookId, books.quantityOfBook[0])">-
+                                <button style="height: 25px;
+                                width: 25px;
+                                text-align: center;
+                                background-color: #f9f9f9;
+                                border-radius: 11em;
+                                border-color: #eee9e9;" [disabled]="books.quantityOfBook[0].quantityOfBook < 2" (click)="DecreseQuantity(books.booksList[0].bookId, books.quantityOfBook[0])">-
                             </button>
                             </div>
                             <div>
                                 <button style="height: 30px; width: 60px;font-size: 12px;
-                                background-color:white;padding-top: 0em; margin-left: 0px; border: transparent;
+                                background-color:white;padding-top: 0em; margin-left: 10px; border: transparent;
                                " (click)="Removecart(books.booksList[0].bookId)">Remove
                                </button>
                             </div>

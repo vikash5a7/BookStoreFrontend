@@ -48,8 +48,8 @@
                             <div>
                                 <button class="addtobag " (output)="getUpdatedNotes($event)" (click)="addtobag(book.bookId)" #clickState mat-button>ADD TO BAG</button>
                             </div>
-                            <div>
-                                <button  style="border: 1px solid #e0d6d6;
+                            <div (click)="addtoWish(book.bookId)">
+                                <button style="border: 1px solid #e0d6d6;
                                 outline: none;
                                 width: 83px;
                                 height: 35px;
@@ -63,7 +63,7 @@
                               ADDED TO BAG
                       </button>
                         </div>
-                        <div class="addedbtn " (click)= "addtoWish(book.bookId)"*ngIf="!book.noOfBooks">
+                        <div class="addedbtn " (click)="addtoWish(book.bookId)" *ngIf="!book.noOfBooks">
                             <button style=" height: 34px; width: 191px; border-radius: 0px; display: flex;
                             align-items: center; justify-content: center;
                             border: 1px solid #e0d6d6;

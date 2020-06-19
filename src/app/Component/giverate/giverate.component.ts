@@ -60,7 +60,7 @@ export class GiverateComponent implements OnInit {
   }
 
   getBookById() {
-    this.bookService.getBookById(this.bookId).subscribe((response: any) => {
+    this.bookService.getBokkByid(this.bookId).subscribe((response: any) => {
       if (response.obj != null) {
         this.book = response.obj;
         this.bookImage = response.obj.image;

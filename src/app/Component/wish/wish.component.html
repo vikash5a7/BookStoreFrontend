@@ -26,42 +26,31 @@
                 </div>
             </div>
             <div fxLayoutAlign="start end" fxLayout="row wrap" style="margin-left: 12%; margin-bottom: 2%;">
-                <!-- <button
-            fxLayout="column"
-            fxLayoutAlign="end start"
-            style="
+                <button fxLayout="column" fxLayoutAlign="end start" style="
               justify-content: flex-center;
               margin-bottom: 22px;
               background-color: white;
               border: none;
               outline: none;
               cursor: pointer;
-            "
-            class="grab"
-            (click)="addToWish(book.bookId)"
-    >
+            " class="grab" (click)="addToWish(book.bookId)">
             <div style="font: 18px/15px Lato; flex-wrap: wrap;">
               &nbsp; Add To Cart
             </div>
-          </button> -->
+          </button>
 
-                <!-- <button
-            style="
+                <button style="
               margin-bottom: 22px;
               background-color: white;
               border: none;
               outline: none;
               color: red;
               cursor: pointer;
-            "
-            class="grab"
-            (click)="remoiveFromWish(book.bookId)"
-
-          >
+            " class="grab" (click)="remoiveFromWish(book.bookId)">
             <div style="font: 18px/15px Lato; flex-wrap: wrap;" >
               &nbsp; Remove
             </div>
-          </button> -->
+          </button>
                 <button mat-raised-button class="button" (click)="remoiveFromWish(book.bookId)">
             Remove
           </button>
