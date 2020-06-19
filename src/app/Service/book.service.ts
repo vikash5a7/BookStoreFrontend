@@ -141,10 +141,12 @@ export class BookService {
   public ratingandreview(bookId: number, data: any) {
     console.log('ratingandreview service method bookId :', bookId);
     console.log('ratingandreview service method rate& review dto :', data);
-    console.log('url ' + environment.BASE_URL + environment.WRITE_REVIEW + bookId);
+    console.log(environment.BASE_URL + environment.WRITE_REVIEW + bookId);
+    
+    console.log('url ' + environment.BASE_URL + environment.WRITE_REVIEW +"?bookId="+bookId);
 
     return this.http
-      .put(environment.BASE_URL + environment.WRITE_REVIEW + bookId, data, this.httpOptions)
+      .put(environment.BASE_URL + environment.WRITE_REVIEW + bookId, data, this.httpOtions)
       .pipe(
         tap(() => {
           this.searchBookData.next();

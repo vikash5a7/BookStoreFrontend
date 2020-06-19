@@ -71,10 +71,13 @@ export class GiverateComponent implements OnInit {
   }
 
   submitRate() {
+    console.log("rating review method called");
     const data = {
       rating: this.rating,
       review: this.review,
     };
+    console.log("rating review method called");
+    
     console.log('rating is', data.rating);
     console.log('review is ', data.review);
     this.bookService
