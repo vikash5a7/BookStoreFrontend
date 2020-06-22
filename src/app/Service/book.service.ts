@@ -107,11 +107,9 @@ export class BookService {
   }
   getBokkByid(Bookid: any): Observable<any> {
     console.log('book service callerd', Bookid);
-    console.log("book url",`${this.baseUrl}/books/getbook/${Bookid}`);
+    console.log('book url', `${this.baseUrl}/books/getbook/${Bookid}`);
     return this.http.get(`${this.baseUrl}/books/getbook/${Bookid}`,
-       { headers: new HttpHeaders().set('token', localStorage.getItem('token')) }).pipe(tap(() => {
-        this._autoRefresh$.next();
-      }));
+       {});
   }
 
   setSearchBookData(message: any) {
@@ -131,6 +129,14 @@ export class BookService {
     );
   }
 
+  // public getBookById(bookId: any): Observable<any> {
+  //   console.log('writring review for bookid ', bookId);
+  //   console.log( environment.BASE_URL + environment.getbookbyIdurl + bookId);
+  //   return this.http.get(
+  //     environment.BASE_URL + environment.getbookbyIdurl + bookId,
+  //     {}
+  //   );
+  // }
   public getBookById(bookId: any): Observable<any> {
     console.log('writring review for bookid ', bookId);
     console.log( environment.BASE_URL + environment.getbookbyIdurl + bookId);
@@ -139,15 +145,15 @@ export class BookService {
       {}
     );
   }
-  public ratingandreview(bookId: number, data: any , token:any) {
+  public ratingandreview(bookId: number, data: any , token: any) {
     console.log('ratingandreview service method bookId :', bookId);
     console.log('ratingandreview service method rate& review dto :', data);
-    console.log("token to give rate:",token);
-    console.log('url ' + environment.BASE_URL +'/'+ environment.WRITE_REVIEW + bookId);
+    console.log('token to give rate:', token);
+    console.log('url ' + environment.BASE_URL + '/' + environment.WRITE_REVIEW + bookId);
     const tokens = token;
 
     return this.http
-      .put(environment.BASE_URL +'/'+ environment.WRITE_REVIEW + bookId, data, {headers: new HttpHeaders({token:token})})
+      .put(environment.BASE_URL + '/' + environment.WRITE_REVIEW + bookId, data, {headers: new HttpHeaders({token})})
       .pipe(
         tap(() => {
           this.searchBookData.next();
@@ -158,7 +164,6 @@ export class BookService {
   public getratingandreview(bookId: number) {
     return this.http.get(environment.BASE_URL + environment.ratereview + bookId, this.httpOptions);
   }
-
 
   getInProgressOrderedBooks(): Observable<any> {
     console.log('order status url');
@@ -175,14 +180,12 @@ export class BookService {
     return this.http.get(`${environment.BASE_URL}/${environment.getSortedBookByRate}`, this.httpOptions);
   }
 
-  public getOneBook(bookId:number , token:any)
-  {
+  public getOneBook(bookId: number , token: any) {
     return this.http.get(`${this.baseUrl}/books/getbook/${bookId}`,
-    {headers: new HttpHeaders({token:token})});
+    {headers: new HttpHeaders({token})});
   }
 
-  public getOneBookById(bookId:number)
-  {
+  public getOneBookById(bookId: number) {
     return this.http.get(`${this.baseUrl}/books/getbook/${bookId}`,
     this.httpOptions);
   }

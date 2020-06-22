@@ -10,4 +10,5 @@ export class Address {
   pincode: number;
   phoneNumber: number;
   state: string;
+  addressType: any;
 }

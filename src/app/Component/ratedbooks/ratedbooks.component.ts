@@ -16,27 +16,27 @@ export class RatedbooksComponent implements OnInit {
   bookList = Array<any>();
   totalRate: any;
   color: string;
-  avgRate:any;
-  bookId:any;
+  avgRate: any;
+  bookId: any;
   rateList = Array<any>();
-  bookSearch:any;
+  bookSearch: any;
 
   constructor(private service: BookService,
-    private matSnackBar: MatSnackBar,private dialog: MatDialog
+              private matSnackBar: MatSnackBar, private dialog: MatDialog
     ) { }
 
-  
+
   ngOnInit(): void {
     // this.getallApprovedBooks();
     this.getBookByRating();
     this.totalRate = 0;
- 
+
     this.getColor();
     this.getSearchBookData();
 
   }
 
-  getBookByRating(){
+  getBookByRating() {
     this.service.getSortedBookByRate().subscribe(
 
       (response: any) => {
@@ -50,24 +50,24 @@ export class RatedbooksComponent implements OnInit {
         this.matSnackBar.open(error.error.message, 'failed', {duration: 5000});
       }
     );
-  
+
   }
 
- getRateOfBook(bookId:number)  {
-    console.log("book id for avgrate:",bookId);
+ getRateOfBook(bookId: number)  {
+    console.log('book id for avgrate:', bookId);
     this.service.getRateOfBookById(bookId).subscribe(
 
       (response: any) => {
         console.log('response', response);
         console.log('rate of books:', response.obj);
-        this.totalRate= response.obj;
-        
+        this.totalRate = response.obj;
+
         },
       (error: any) => {
         this.matSnackBar.open(error.error.message, 'failed', {duration: 5000});
       }
     );
-   
+
   }
 
   getallApprovedBooks() {
@@ -89,13 +89,13 @@ export class RatedbooksComponent implements OnInit {
 
   getColor() {
     if (this.totalRate >= 3 || this.totalRate >= 2) {
-      this.color = "rgb(245,182,110)";
+      this.color = 'rgb(245,182,110)';
     }
     if (this.totalRate >= 4) {
-      this.color = "rgb(16,136,16)";
+      this.color = 'rgb(16,136,16)';
     }
     if (this.totalRate < 2) {
-      this.color = "rgb(250,0,0)";
+      this.color = 'rgb(250,0,0)';
     }
   }
 
@@ -105,7 +105,7 @@ export class RatedbooksComponent implements OnInit {
       // panelClass: 'custom-dialog-container',
       // height: '400px',
       // width: '600px',
-      data : {bookId:book.bookId}
+      data : {bookId: book.bookId}
     });
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
