@@ -10,6 +10,7 @@ import { tap } from 'rxjs/operators';
 })
 export class WishlistService {
 
+  // tslint:disable-next-line: variable-name
   private _autoRefresh$ = new Subject();
   private  addwhistlistUrl = environment.WISHLIST_ADD;
   private baseUrl = environment.BASE_URL;

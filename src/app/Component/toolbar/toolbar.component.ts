@@ -12,6 +12,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
+  constructor( private service: BookService,
+               private token: TokenService,
+               private route: Router,
+               private cartService: CartService,
+               private wishlistService: WishlistService,
+               private matSnackBar: MatSnackBar
+    ) { }
 
   @Output() toggleEvent = new EventEmitter<boolean>();
 
@@ -34,13 +41,9 @@ export class ToolbarComponent implements OnInit {
   isLogin = false;
  @Input() output: any;
  @Input() function: any;
-  constructor( private service: BookService,
-               private token: TokenService,
-               private route: Router,
-               private cartService: CartService,
-               private wishlistService:WishlistService,
-               private matSnackBar:MatSnackBar
-    ) { }
+
+
+  wishlistLength: number;
 
   ontoggel(input: any) {
     console.log('input' + input);
@@ -48,20 +51,20 @@ export class ToolbarComponent implements OnInit {
     this.opened = !this.opened;
   }
 
-  ngOnInit(){
-    this.wishlistService.autoRefresh$.subscribe(()=>{
-          
+  ngOnInit() {
+    this.wishlistService.autoRefresh$.subscribe(() => {
+
       this. getWishlistCount();
     }
-  
+
     );
     this. getWishlistCount();
-    
+
     this.cartService.autoRefresh$.subscribe(() => {
       this.getCartItemCount();
 
     });
-    
+
     this.getCartItemCount();
     this.name = localStorage.getItem('Name');
     this.role = localStorage.getItem('role');
@@ -101,9 +104,6 @@ export class ToolbarComponent implements OnInit {
   getUpdatedNotes(event) {
   this.ngOnInit();
   }
-
-
-  wishlistLength:number
   getWishlistCount() {
     this.wishlistService.getWishlistCount().subscribe((response: any) => {
       this.wishlistLength = response.obj;
@@ -113,5 +113,5 @@ export class ToolbarComponent implements OnInit {
 
 
 
- 
+
 }

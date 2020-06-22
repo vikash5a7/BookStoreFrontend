@@ -157,22 +157,15 @@ addre: Address = new Address();
     this.userService.getAdress().subscribe((Response) => {
       console.log('address', Response);
       for (const i of Response.obj) {
-        if (i.addressType === 'home') {
-          this.setAddresToInput(i);
-          console.log('user adress Of Home : ', i);
-          this.adressId = i.addressId;
-        }
         if (i.addressType === 'home' && this.selectedtype === 'home') {
           this.setAddresToInput(i);
           console.log('user adress Of Home : ', i);
           this.adressId = i.addressId;
-        }
-        if (i.addressType === 'Work' && this.selectedtype === 'work') {
+        } else if (i.addressType === 'work' && this.selectedtype === 'work') {
           this.setAddresToInput(i);
           console.log('user adress Of wokr : ', i);
           this.adressId = i.addressId;
-        }
-        if (i.addressType === 'Other' && this.selectedtype === 'other') {
+        } else if (i.addressType === 'other' && this.selectedtype === 'other') {
           this.setAddresToInput(i);
           console.log('user adress Of wokr : ', i);
           this.adressId = i.addressId;
@@ -223,6 +216,8 @@ for (let i = 0; i < sessionStorage.length; i++) {
 }
  fun(type) {
   this.selectedtype = type;
+  this.adressId = null;
+  this.setAddresToInput(this.addre);
   this.getUserAdress();
   console.log('select item is ' + type);
 }
@@ -264,12 +259,15 @@ OnRegisterSubmit() {
   this.addre.landmark = this.landmark.value;
   if (this.adressId === null || this.adressId === undefined) {
     this.addre.type = this.selectedtype;
+    console.log('adress is going to upadted is ' + this.addre);
     this.userService.addAdress(this.addre).subscribe((Response) => {
     console.log('adress address', Response);
   });
  } else {
-  console.log('adding adress is ', this.addre);
+  this.addre.addressType = this.selectedtype;
+  console.log('adress type is selected' ,   this.addre.addressType );
   this.addre.addressId = this.adressId;
+  console.log('adress is going to upadted is ', this.addre);
   this.userService.updateAdress(this.addre).subscribe((Response) => {
      console.log('address updated', Response);
    });
