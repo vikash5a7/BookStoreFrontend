@@ -46,7 +46,7 @@ export class CartComponent implements OnInit {
   quantity = 1;
   customer: Customer = new Customer();
   userAdreessDetails: Address = new Address();
-  type: any;
+  type = 'home';
   bid: any;
   user: number;
   num = 2;

@@ -36,15 +36,15 @@
                 color: white;
               " [ngStyle]="{ 'background-color': color }">
               <div>
-                {{ total  }}
+                {{ totalRate  }}
               </div>
               <mat-icon style="font-size: 14px; padding-top: 1.8px;">
                 star
               </mat-icon>
             </button>
-                    <button mat-button class="rating" (click)="rateNow()" style="color: #0a0102; background-color: white;">
+                    <!-- <button mat-button class="rating" (click)="rateNow()" style="color: #0a0102; background-color: white;">
               <strong >RATE BOOK</strong>
-            </button>
+            </button> -->
                 </div>
                 <div fxLayout="row wrap">
                     <div fxLayout="row" style="margin-bottom: 5%;">
@@ -84,7 +84,7 @@
             <div style="font-size: 20px;">
                 <strong>Ratings & Reviews</strong>
             </div>
-            <div *ngFor="let rate of ratings">
+            <div *ngFor="let review of reviewList">
                 <div fxLayout="row" style="margin-top: 4%;">
                     <div>
                         <button class="single" fxLayout="row" style="
@@ -99,7 +99,7 @@
                   background-color: rgb(16, 136, 16);
                 ">
                 <div>
-                  {{ rate.rating }}
+                  {{ review.rating }}
                 </div>
                 <mat-icon style="font-size: 14px; padding-top: 1.8px;">
                   star
@@ -107,10 +107,10 @@
               </button>
                     </div>
                     <div style="margin-left: 20px;">
-                        <strong>{{ "rate.userName" }}</strong>
+                        <strong>{{ review.name }}</strong>
                     </div>
                 </div>
-                <div>{{ "rate.review" }}</div>
+                <div>{{ review.review }}</div>
             </div>
             <div>
                 <label *ngIf="totalRate == 0" class="total" style="color: black; background-color: white;">

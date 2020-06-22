@@ -38,25 +38,28 @@ export class RatereviewComponent implements OnInit {
   show: boolean;
 
   totalRate = 0;
-  ratenumber: number;
+  ratenumber: number=0;
   color: any;
   total: any;
+  reviewList =new Array<any>();
+  rev:string;
+  user=new Array<any>();
 
   ngOnInit(): void {
     this.bookId = this.route.snapshot.paramMap.get('bookId');
+    this.getBookById();
     this.getRatings();
     console.log('bookid ', this.bookId);
-    this.getBookById();
+    
     // this.getRateOfBookById();
   }
 
   getBookById() {
-    this.bookService.getBokkByid(this.bookId).subscribe((response: any) => {
+    this.bookService.getOneBookById(this.bookId).subscribe((response: any) => {
       console.log(response);
       this.book = response.obj;
-      console.log('get book by id: ' + this.book);
+      console.log("get book by id:" ,this.book);
       console.log(this.book, 'kkkkkkkk');
-      return this.book;
      });
   }
   getRateOfBookById() {
@@ -79,7 +82,7 @@ export class RatereviewComponent implements OnInit {
 
   getRatings() {
     this.bookService
-    .getratingandreview(this.bookId)
+    .getReview(this.bookId)
     .subscribe((response: any) => {
       this.ratings = response.obj;
       console.log('rate and reviews for book ' + this.ratings);
@@ -91,6 +94,14 @@ export class RatereviewComponent implements OnInit {
         this.totalRate += this.rate.rating;
         this.ratenumber += 1;
         this.total = this.totalRate;
+        this.rev = this.ratings[index].review;
+        this.user = this.ratings[index].userName;
+    
+        console.log("user:",this.user);
+       
+        var p={name:this.user,review:this.rev,rating:this.ratings[index].rating};
+        this.reviewList.push(p);
+        console.log("after push:",this.reviewList);
       }
       if (this.ratenumber > 1) {
           this.totalRate = this.totalRate / this.ratenumber;
