@@ -41,9 +41,11 @@
             <div class="text-left">
                 <h4>Login As</h4>
                 <mat-radio-group aria-label="Select an option" [(ngModel)]="form.role" name="role">
+
                     <mat-radio-button value="user" required="required" id="userbutton"> User </mat-radio-button> &nbsp;
                     <mat-radio-button value="seller" required="required">Seller </mat-radio-button> &nbsp;
                     <mat-radio-button value="admin" required="required"> Admin </mat-radio-button>
+
                 </mat-radio-group>
             </div>
             <br>
@@ -60,6 +62,7 @@
 
             " [disabled]="!loginForm.valid" type="submit"
             id="loginbutton">Login</button>
+
             </div>
         </form>
     </mat-card>
