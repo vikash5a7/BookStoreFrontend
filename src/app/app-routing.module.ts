@@ -9,7 +9,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CartComponent } from './Component/cart/cart.component';
 import { OrdergreetingComponent } from './Component/ordergreeting/ordergreeting.component';
-import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.component';
 import { GiverateComponent } from './Component/giverate/giverate.component';
 import { AdminunverifiedbooksComponent } from './Component/adminunverifiedbooks/adminunverifiedbooks.component';
 import { RatereviewComponent } from './Component/ratereview/ratereview.component';
@@ -45,7 +44,6 @@ const routes: Routes = [
   {path: 'books/orders', component: OrderstatusComponent},
   {path: 'ratedbooks', component: RatedbooksComponent},
   {path: 'bookreviews', component: BookreviewsComponent},
-  {path: '**', component: PagenotfoundComponent},
 ];
 
 @NgModule({
