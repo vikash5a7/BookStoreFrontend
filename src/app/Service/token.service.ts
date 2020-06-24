@@ -28,6 +28,7 @@ export class TokenService {
     localStorage.removeItem('Name');
     localStorage.removeItem('role');
     localStorage.removeItem('phone');
+    sessionStorage.clear();
   }
   logedIn(value: boolean) {
   if ( this.get() != null) {
