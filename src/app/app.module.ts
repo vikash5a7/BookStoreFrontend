@@ -27,7 +27,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.component';
 import { ForgetPasswordComponent } from './Component/auth/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './Component/auth/reset-password/reset-password.component';
 import { AdminComponent } from './Component/admin/admin/admin.component';
@@ -60,7 +59,6 @@ import { UploadBookImageComponent } from './Component/addbook/upload-book-image/
     BooksearchpipePipe,
     CartComponent,
     OrdergreetingComponent,
-    PagenotfoundComponent,
     ForgetPasswordComponent,
     ResetPasswordComponent,
     AdminComponent,
