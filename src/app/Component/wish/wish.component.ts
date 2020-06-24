@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WishlistService } from 'src/app/Service/wishlist.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CartService } from 'src/app/Service/cart.service';
 
 @Component({
   selector: 'app-wish',
@@ -10,11 +11,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class WishComponent implements OnInit {
 
-  constructor(private wishlistService: WishlistService , private route: Router,
-              private matSnackBar: MatSnackBar) { }
+  constructor( private cartService: CartService, private wishlistService: WishlistService , private route: Router,
+               private matSnackBar: MatSnackBar) { }
 
   // tslint:disable-next-line: variable-name
   book_id: number;
+  error: any;
   books = [];
   WishListdetails = new Array<any>();
 
@@ -77,13 +79,15 @@ export class WishComponent implements OnInit {
     );
   }
 
-  remoiveFromWish(orderId: any) {
-    console.log('removeing bookId ' + orderId);
+  remoiveFromWish(BookId: any) {
+    console.log('removeing bookId ' + BookId);
 
-    this.wishlistService.removeFromWishList(orderId).subscribe(
+    this.wishlistService.removeFromWishList(BookId).subscribe(
       (response: any) => {
+
         this.matSnackBar.open('Book removed from wish list', 'success', {duration: 5000});
         window.location.reload();
+        sessionStorage.removeItem(BookId);
         },
       (error: any) => {
         this.matSnackBar.open(error.error.message, 'failed', {duration: 5000});
@@ -106,5 +110,36 @@ export class WishComponent implements OnInit {
   }
 
 
+  addtobag( bookId: any) {
+    if (localStorage.getItem('token') === null) {
+      this.matSnackBar.open('Please Login first', 'ok', {
+        duration: 5000
+      });
+      sessionStorage.setItem(bookId, bookId);
+      this.route.navigateByUrl('login');
+    }
 
+    sessionStorage.setItem(bookId, bookId);
+
+    this.cartService.addToCart(bookId).subscribe(
+      data => this.handleResponse(data),
+      error => this.handleError(error)
+    );
+  }
+  handleResponse(data: any) {
+    console.log(data);
+    window.location.reload();
+    this.matSnackBar.open('Book added successfully Into Cart' , 'ok', {
+    duration: 5000
+  });
+}
+
+handleError(error: any) {
+  this.error = error.error.message;
+  console.log(error);
+  window.location.reload();
+  this.matSnackBar.open(this.error, 'ok', {
+  duration: 5000
+});
+}
 }
